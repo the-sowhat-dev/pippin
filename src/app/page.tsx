@@ -17,7 +17,7 @@ export default function Home() {
             />
           </div>
           <div className="w-full pt-12 justify-center text-lg sm:text-2xl text-center flex-none">
-            Votre indépendance par l'Open Finance.
+            Votre indépendance par l&apos;Open Finance.
           </div>
           <div className='flex grow justify-center items-center min-h-52'>
             <Image
