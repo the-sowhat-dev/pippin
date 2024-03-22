@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  let pathname = usePathname() || "/";
+  const pathname = usePathname() || "/";
 
   return (
     <>
