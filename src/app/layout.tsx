@@ -1,7 +1,6 @@
 import "./globals.css";
 import { poppins } from './fonts';
 import type { Metadata } from "next";
-import Navbar from './components/nav-bar';
 
 export const metadata: Metadata = {
   title: "Sowhat",
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${poppins.className}`}>
-        <Navbar />
         {children}
       </body>
     </html>

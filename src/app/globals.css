@@ -12,34 +12,33 @@ body {
   overflow: auto;
 }
 
-button {
-  height: 30px;
-  overflow: hidden;
-  transition: all 200ms;
-}
-
 .text-box {
   font-weight: bold;
   color: #0077b7;
 }
 
-.ibe {
-  height: 80px;
+.box-box {
   transform: translateY(0%);
   transition: inherit;
 }
 
-.box-container:hover .ibe {
-  transform: translateY(-40%);
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.box-container:hover .box-box {
+  transform: translateY(-50%);
   transition-duration: 400ms;
 }
 
-p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  height: 50%;
-  font-size: 18px;
-  font-weight: 600;
+.contact-button:hover .shake {
+  animation: tilt-shaking 0.7s infinite;
 }

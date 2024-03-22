@@ -1,20 +1,40 @@
-import ProfileImage from '../components/profile-image';
+import Link from "next/link";
+import Image from "next/image";
+import ContactProfile from "../components/contact-profile";
 
 export default function Page() {
-  return <>
-    <main className='min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-yellow-400 to-yellow-300'>
-      <div className=' px-10 sm:px-20 2xl:px-40 grid grid-cols-2 gap-5 w-full h-full place-items-center'>
-        <ProfileImage imagePath="/raph.png" imageAlt="Raphaël Metrop profile image" title="CEO" text="Raphaël METROP" link="rapha%C3%ABl-metrop-05714323" />
-        <ProfileImage imagePath="/hugo.png" imageAlt="Hugo Bayoud profile image" title="CTO" text="Hugo BAYOUD" link="hugo-bayoud-4aa927194" />
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-yellow-400 to-yellow-300 flex flex-col">
+      <div className="w-full py-4 p-8">
+        <Link href="/">
+          <Image
+            width={32}
+            height={32}
+            style={{ objectFit: "contain" }}
+            src="/arrow-left.svg"
+            alt="Back arrow left icon"
+          />
+        </Link>
       </div>
-      <div className='fixed text-center bottom-0 pb-14 box-container'>
-        <button>
-          <div className='ibe'>
-            <div>Vous préfèrez une adresse email ?</div>
-            <p className='text-box'>hello@sowhat-app.com</p>
-          </div>
-        </button>
-      </div>
-    </main>
-  </>
+      <main className="grid md:grid-cols-2 place-items-center flex-grow">
+        <ContactProfile
+          imagePath="/raph.png"
+          imageAlt="Raphael Metrop profile image"
+          title="CEO & Co-founder"
+          name="Raphaël METROP"
+          link="rapha%C3%ABl-metrop-05714323"
+          email="raphael.metrop@sowhat-app.com"
+        />
+
+        <ContactProfile
+          imagePath="/hugo.png"
+          imageAlt="Hugo Bayoud profile image"
+          title="CTO & Co-founder"
+          name="Hugo BAYOUD"
+          link="hugo-bayoud-4aa927194"
+          email="hugo.bayoud@sowhat-app.com"
+        />
+      </main>
+    </div>
+  );
 }
