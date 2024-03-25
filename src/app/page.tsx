@@ -2,6 +2,7 @@ import Image from "next/image";
 import Footer from "./components/footer";
 import Strategy from "./components/strategy";
 import Button from "./components/button";
+import StrategyCharts from './components/strategy-charts';
 
 export default function Home() {
   return (
@@ -20,8 +21,8 @@ export default function Home() {
                 alt="Font Logo"
               />
             </div>
-            <div className="w-full pt-12 text-lg sm:text-2xl text-center">
-              L&apos;indépendance par l&apos;
+            <div className="w-full pt-12 text-lg sm:text-2xl lg:text-4xl text-center">
+              Votre indépendance par l&apos;
               <span className="font-bold">Open Finance</span>.
             </div>
           </div>
@@ -47,24 +48,22 @@ export default function Home() {
         text={`Aujourd'hui, vous ne disposez pas des bonnes informations pour prendre les bonnes décisions !`}
         imagePath="/compass.png"
         canva="secondary"
-        button={true}
       />
 
       <Strategy
         title={`Solution Sowhat`}
-        text={`Anticipant l'émergence de l'Open Finance via la réglementation européenne DSP3, les équipes Sowhat ont développé une solution unique, ludique et innovante.`}
-        text2={`Elle souhaite révolutionner l'expérience de gestion et faciliter la prise de décision`}
+        text={`Anticipant l'émergence de l'Open Finance via la réglementation européenne DSP3, les équipes Sowhat ont développé une solution unique, ludique et innovante, qui révolutionne l'expérience`}
+        secondText={`Elle souhaite révolutionner l'expérience de gestion et faciliter la prise de décision`}
         imagePath="/robot.png"
         canva="primary"
         brand={true}
       />
 
-      <Strategy
-        title={`Testée et approuvée par une agence indépendante.`}
-        text={`"enfin la bonne information pour la bonne décision... instantanément !"`}
-        imagePath="/chart.png"
-        canva="secondary"
-        maximize={true}
+      <StrategyCharts
+        title={`Testée et approuvée par une agence indépendante`}
+        smallImagePath="/charts-small.png"
+        largeImagePath="/charts-large.png"
+        canva="dark"
       />
 
       <Strategy

@@ -20,7 +20,7 @@ export default function Page() {
         <ContactProfile
           imagePath="/raph.png"
           imageAlt="Raphael Metrop profile image"
-          title="CEO & Co-founder"
+          title="Co-founder & CEO"
           name="Raphaël METROP"
           link="rapha%C3%ABl-metrop-05714323"
           email="raphael.metrop@sowhat-app.com"
@@ -29,7 +29,7 @@ export default function Page() {
         <ContactProfile
           imagePath="/hugo.png"
           imageAlt="Hugo Bayoud profile image"
-          title="CTO & Co-founder"
+          title="Co-founder & CTO"
           name="Hugo BAYOUD"
           link="hugo-bayoud-4aa927194"
           email="hugo.bayoud@sowhat-app.com"
