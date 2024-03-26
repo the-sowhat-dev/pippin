@@ -6,7 +6,6 @@ interface StrategyProps {
   imagePath: string;
   title: string;
   text: string;
-  secondText?: string;
   canva: "primary" | "secondary" | "dark";
   brand?: boolean;
   maximize?: boolean;
@@ -16,7 +15,6 @@ const Strategy: React.FC<StrategyProps> = ({
   imagePath,
   title,
   text,
-  secondText,
   canva,
   brand,
   maximize,
@@ -45,12 +43,6 @@ const Strategy: React.FC<StrategyProps> = ({
           className={`flex items-center flex-col justify-center text-xl sm:text-2xl ${imageAlignment} text-center`}
         >
           <div>{text}</div>
-          {secondText && (
-            <>
-              <br />
-              <div>{secondText}</div>
-            </>
-          )}
         </div>
 
         {!maximize ? (

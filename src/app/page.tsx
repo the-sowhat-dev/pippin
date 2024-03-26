@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Footer from "./components/footer";
-import Strategy from "./components/strategy";
 import Button from "./components/button";
+import Strategy from "./components/strategy";
 import StrategyCharts from './components/strategy-charts';
 
 export default function Home() {
@@ -52,8 +52,7 @@ export default function Home() {
 
       <Strategy
         title={`Solution Sowhat`}
-        text={`Anticipant l'émergence de l'Open Finance via la réglementation européenne DSP3, les équipes Sowhat ont développé une solution unique, ludique et innovante, qui révolutionne l'expérience`}
-        secondText={`Elle souhaite révolutionner l'expérience de gestion et faciliter la prise de décision`}
+        text={`Les équipes Sowhat ont développé une solution innovante, basée sur l’Open Finance, qui révolutionne l’expérience de gestion et facilite la prise de décision.`}
         imagePath="/robot.png"
         canva="primary"
         brand={true}
