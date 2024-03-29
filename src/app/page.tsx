@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Footer from "./components/footer";
-import Button from "./components/button";
-import Strategy from "./components/strategy";
-import StrategyCharts from './components/strategy-charts';
+import Image from 'next/image';
+import Footer from '../components/footer';
+import Button from '../components/button';
+import Strategy from '../components/strategy';
+import StrategyCharts from '../components/strategy-charts';
 
 export default function Home() {
   return (
@@ -16,8 +16,13 @@ export default function Home() {
               <Image
                 width={0}
                 height={0}
-                style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                src="/font.svg"
+                priority
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain',
+                }}
+                src="/images/font.svg"
                 alt="Font Logo"
               />
             </div>
@@ -28,15 +33,17 @@ export default function Home() {
           </div>
 
           <div className="w-full flex flex-col items-center gap-24 pt-40">
-            <Button />
+            <Button title="Nous contacter" icon="greet" uri="/contact" />
 
             <div className="px-12 sm:px-0 my-11 max-w-[500px] w-full">
               <Image
-                src="/mockup.png"
+                src="/images/mockup.png"
                 alt="Strategy Image"
                 width={500}
-                height={0}
-                style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                height={442}
+                style={{
+                  objectFit: 'contain',
+                }}
               />
             </div>
           </div>
@@ -46,29 +53,29 @@ export default function Home() {
       <Strategy
         title={`Gestion, budget, épargne`}
         text={`Aujourd'hui, vous ne disposez pas des bonnes informations pour prendre les bonnes décisions !`}
-        imagePath="/compass.png"
+        imagePath="/images/compass.png"
         canva="secondary"
       />
 
       <Strategy
         title={`Solution Sowhat`}
         text={`Les équipes Sowhat ont développé une solution innovante, basée sur l’Open Finance, qui révolutionne l’expérience de gestion et facilite la prise de décision.`}
-        imagePath="/robot.png"
+        imagePath="/images/robot.png"
         canva="primary"
         brand={true}
       />
 
       <StrategyCharts
         title={`Testée et approuvée par une agence indépendante`}
-        smallImagePath="/charts-small.png"
-        largeImagePath="/charts-large.png"
+        smallImagePath="/images/charts-small.png"
+        largeImagePath="/images/charts-large.png"
         canva="dark"
       />
 
       <Strategy
         title={`Coming soon...`}
         text={`Nos équipes travaillent au lancement de Sowhat® avec l'objectif de la rendre disponible le plus vite possible.`}
-        imagePath="/logo-blanc.png"
+        imagePath="/images/logo-blanc.png"
         canva="primary"
       />
 

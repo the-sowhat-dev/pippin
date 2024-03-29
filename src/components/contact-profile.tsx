@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { mulish } from "../fonts";
-import React, { useState } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import { mulish } from '../utils/fonts';
+import React, { useState } from 'react';
 
 interface ContactProfileProps {
   imagePath: string;
@@ -14,13 +14,7 @@ interface ContactProfileProps {
   email: string;
 }
 
-const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath,
-  imageAlt,
-  name,
-  title,
-  link,
-  email,
-}) => {
+const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath, imageAlt, name, title, link, email }) => {
   const [copied, setCopied] = useState(false);
 
   function copyToClipboard() {
@@ -31,20 +25,10 @@ const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath,
   return (
     <>
       <div className="text-center box-container group flex flex-col items-center">
-        <h1
-          className={`${mulish.className} text-xl sm:text-3xl font-bold mb-8`}
-        >
-          {title}
-        </h1>
+        <h1 className={`${mulish.className} text-xl sm:text-3xl font-bold mb-8`}>{title}</h1>
 
         <div className="bg-gray-300 rounded-full transition-colors duration-500 ease-in-out w-[200px] h-[200px] group-hover:bg-[#0077B7]">
-          <Image
-            src={imagePath}
-            alt={imageAlt}
-            width={200}
-            height={200}
-            priority
-          />
+          <Image src={imagePath} alt={imageAlt} width={200} height={200} priority />
         </div>
 
         <div className="h-[100px] overflow-hidden transition-all duration-500">
@@ -53,48 +37,40 @@ const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath,
 
             {/* Hidden when not hover */}
             <div className="grid grid-rows-2 place-items-center">
-              <Link
-                href={`https://www.linkedin.com/in/${link}`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
                 <div className="flex text-box">
                   <Image
-                    src="/linkedin.png"
+                    src="/images/linkedin.png"
                     alt="LinkedIn icon"
                     width={20}
                     height={20}
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: 'contain' }}
                   />
                   &nbsp;&nbsp;Linkedin
                 </div>
               </Link>
 
-              <button
-                className="flex items-center"
-                onMouseLeave={() => setCopied(false)}
-                onClick={copyToClipboard}
-              >
+              <button className="flex items-center" onMouseLeave={() => setCopied(false)} onClick={copyToClipboard}>
                 {!copied ? (
                   <>
                     <Image
-                      src="/copy.svg"
+                      src="/icons/copy.svg"
                       alt="Copy icon"
                       width={20}
                       height={20}
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: 'contain' }}
                     />
                     &nbsp;&nbsp;{email}
                   </>
                 ) : (
                   <>
                     <Image
-                      src="/checked.svg"
+                      src="/icons/checked.svg"
                       alt="Copy icon"
                       width={20}
                       height={20}
-                      style={{ objectFit: "contain" }}
-                    />{" "}
+                      style={{ objectFit: 'contain' }}
+                    />{' '}
                     &nbsp;&nbsp;<span className="text-green-600">{email}</span>
                   </>
                 )}
