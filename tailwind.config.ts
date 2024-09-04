@@ -34,7 +34,7 @@ const config: Config = {
             200: '#FEF08A',
             50: '#FEFCE8'
           },
-          black: '',
+          black: '#1D1B20',
           slate: {
             500: '#64748B',
             200:'#E2E8F0',
