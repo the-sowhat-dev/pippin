@@ -42,12 +42,7 @@ export default function Home() {
       <section
         className={`p-16 sm:p-24 min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col gap-24`}
       >
-        {/* <h1
-          className={`${mulish.className} text-2xl sm:text-4xl text-center flex justify-center pb-12 lg:pb-32`}
-        >
-          Vous aussi vous vous sentez seul(e) face à votre épargne ?
-        </h1> */}
-        <div className="text-xl lg:text-2xl text-center px-20 lg:px-52">
+        <div className="text-xl lg:text-2xl text-center px-0 lg:px-52">
           Vous aussi vous vous sentez seul(e) face à{' '}
           <span className="font-bold">votre épargne ?</span>
         </div>
@@ -71,7 +66,7 @@ export default function Home() {
           </div>
 
           <div className="flex-1 mb-10">
-            <div className="flex w-full flex-col gap-8 justify-center items-center mt-24">
+            <div className="flex w-full flex-col gap-8 justify-center items-center xl:mt-24">
               <div
                 className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
               >
@@ -113,7 +108,7 @@ export default function Home() {
       >
         <div className="flex flex-col xl:flex-row gap-24 justify-between">
           <div className="flex w-full flex-col gap-8 justify-center items-center">
-            <div className="text-xl lg:text-2xl text-center px-20">
+            <div className="text-xl lg:text-2xl text-center px-0 lg:px-20">
               Les équipes Sowhat ont développé{' '}
               <span className="font-bold">une solution Open Finance + IA</span> pour vous aider et
               vous rassurer…
@@ -136,7 +131,7 @@ export default function Home() {
               <p className="text-blue-500 font-bold text-center text-2xl sm:text-4xl">
                 Centralisation des données bancaires et patrimoniales
               </p>
-              <p className="text-xl">propulsée par l’Open Finance</p>
+              <p className="text-xl text-center">propulsée par l’Open Finance</p>
             </div>
 
             <Image
@@ -152,7 +147,7 @@ export default function Home() {
               <p className="text-blue-500 font-bold text-center text-2xl sm:text-4xl">
                 Personnalisation du budget et de l’épargne
               </p>
-              <p className="text-xl">algorithme propriétaire Sowhat</p>
+              <p className="text-xl text-center">algorithme propriétaire Sowhat</p>
             </div>
 
             <Image
@@ -168,7 +163,7 @@ export default function Home() {
               <p className="text-blue-500 font-bold text-center text-2xl sm:text-4xl">
                 Aide à la prise de décision financière
               </p>
-              <p className="text-xl">optimisée par l’IA</p>
+              <p className="text-xl text-center">optimisée par l’IA</p>
             </div>
           </div>
         </div>
@@ -250,7 +245,7 @@ export default function Home() {
       >
         <div className="flex flex-col xl:flex-row gap-24 justify-between">
           <div className="items-center flex flex-col gap-24">
-            <div className="text-xl lg:text-2xl text-center sm:px-12">
+            <div className="text-xl lg:text-2xl text-center px-0 lg:px-20">
               Au niveau mondial, il existe une application qui a révolutionné chaque aspect
               important de notre vie
             </div>
