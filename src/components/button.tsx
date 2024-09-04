@@ -13,7 +13,7 @@ const Button = (props: PrimaryButtonProps) => {
   return (
     <Link
       href={uri}
-      className="px-12 py-4 text-md sm:px-10 sm:py-6 sm:text-lg whitespace-nowrap bg-blue-500 rounded-2xl shadow-custom text-white flex items-center gap-2 contact-button hover:bg-sky-600 hover:text-white transition-all duration-500 hover:scale-105"
+      className="flex justify-center items-center min-h-[80px] min-w-[270px] text-md sm:text-lg whitespace-nowrap bg-blue-500 rounded-2xl shadow-custom text-white gap-2 contact-button hover:bg-sky-600 hover:text-white transition-all duration-500 hover:scale-105"
     >
       {icon && (
         <Image

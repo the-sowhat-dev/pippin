@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import ContactProfile from '../../components/contact-profile';
-import Head from 'next/head';
 import { Metadata } from 'next';
+
+import ContactProfile from '../../components/contact-profile';
 
 export const metadata: Metadata = {
   title: 'Sowhat | Nous contacter',
