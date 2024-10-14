@@ -1,6 +1,7 @@
 import '../utils/globals.css';
 import { poppins } from '../utils/fonts';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: `Sowhat | L’avenir de la gestion du budget et de l’épargne, propulsé par l’Open Finance, optimisé par l’IA`,
@@ -28,6 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <Script id="metricool" strategy="afterInteractive">
+        {`
+          function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"4722ebb2d0bac377cd9be2740983fe3c"})});
+  `}
+      </Script>
       <body className={`${poppins.className}`}>{children}</body>
     </html>
   );

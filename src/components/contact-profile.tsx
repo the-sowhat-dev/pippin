@@ -14,7 +14,14 @@ interface ContactProfileProps {
   email: string;
 }
 
-const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath, imageAlt, name, title, link, email }) => {
+const ContactProfile: React.FC<ContactProfileProps> = ({
+  imagePath,
+  imageAlt,
+  name,
+  title,
+  link,
+  email,
+}) => {
   const [copied, setCopied] = useState(false);
 
   function copyToClipboard() {
@@ -37,7 +44,11 @@ const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath, imageAlt, na
 
             {/* Hidden when not hover */}
             <div className="grid grid-rows-2 place-items-center">
-              <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
+              <Link
+                href={`https://www.linkedin.com/in/${link}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <div className="flex text-box">
                   <Image
                     src="/images/linkedin.png"
@@ -50,7 +61,11 @@ const ContactProfile: React.FC<ContactProfileProps> = ({ imagePath, imageAlt, na
                 </div>
               </Link>
 
-              <button className="flex items-center" onMouseLeave={() => setCopied(false)} onClick={copyToClipboard}>
+              <button
+                className="flex items-center"
+                onMouseLeave={() => setCopied(false)}
+                onClick={copyToClipboard}
+              >
                 {!copied ? (
                   <>
                     <Image
