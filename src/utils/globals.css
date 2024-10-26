@@ -42,3 +42,58 @@ body {
 .contact-button:hover .shake {
   animation: tilt-shaking 0.7s infinite;
 }
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.banner {
+  overflow: hidden;
+  padding: 30px 0;
+  background: linear-gradient(#111827, #374151);
+  white-space: nowrap;
+  position: relative;
+}
+
+.banner:before,
+.banner:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.banner:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #111827);
+}
+
+.banner:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #111827);
+}
+
+.banner:hover .banner-slide {
+  animation-play-state: paused;
+}
+
+.banner-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.banner-slide span {
+  height: 50px;
+  width: 60px;
+  background-color: 'red';
+  align-items: center;
+  margin: 0 40px;
+}

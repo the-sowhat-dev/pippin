@@ -11,7 +11,6 @@ interface ContactProfileProps {
   name: string;
   title: string;
   link: string;
-  email: string;
 }
 
 const ContactProfile: React.FC<ContactProfileProps> = ({
@@ -20,79 +19,49 @@ const ContactProfile: React.FC<ContactProfileProps> = ({
   name,
   title,
   link,
-  email,
 }) => {
-  const [copied, setCopied] = useState(false);
-
-  function copyToClipboard() {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-  }
-
   return (
     <>
       <div className="text-center box-container group flex flex-col items-center">
-        <h1 className={`${mulish.className} text-xl sm:text-3xl font-bold mb-8`}>{title}</h1>
+        <h1 className={`${mulish.className} text-l sm:text-2xl font-bold mb-8`}>{title}</h1>
 
-        <div className="bg-gray-300 rounded-full transition-colors duration-500 ease-in-out w-[200px] h-[200px] group-hover:bg-[#0077B7]">
-          <Image src={imagePath} alt={imageAlt} width={200} height={200} priority />
+        <div className="bg-gray-300 rounded-full transition-colors duration-500 ease-in-out mb-8 w-[120px] sm:w-[200px] sm:h-[200px] group-hover:bg-[#0077B7]">
+          <Image
+            src={imagePath}
+            alt={imageAlt}
+            width={200}
+            height={200}
+            priority
+            className="w-[120px] sm:w-[200px]"
+          />
         </div>
 
-        <div className="h-[100px] overflow-hidden transition-all duration-500">
-          <div className="grid grid-rows-2 h-[200px] box-box">
-            <div className="m-auto">{name}</div>
-
-            {/* Hidden when not hover */}
-            <div className="grid grid-rows-2 place-items-center">
-              <Link
-                href={`https://www.linkedin.com/in/${link}`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <div className="flex text-box">
-                  <Image
-                    src="/images/linkedin.png"
-                    alt="LinkedIn icon"
-                    width={20}
-                    height={20}
-                    style={{ objectFit: 'contain' }}
-                  />
-                  &nbsp;&nbsp;Linkedin
-                </div>
-              </Link>
-
-              <button
-                className="flex items-center"
-                onMouseLeave={() => setCopied(false)}
-                onClick={copyToClipboard}
-              >
-                {!copied ? (
-                  <>
-                    <Image
-                      src="/icons/copy.svg"
-                      alt="Copy icon"
-                      width={20}
-                      height={20}
-                      style={{ objectFit: 'contain' }}
-                    />
-                    &nbsp;&nbsp;{email}
-                  </>
-                ) : (
-                  <>
-                    <Image
-                      src="/icons/checked.svg"
-                      alt="Copy icon"
-                      width={20}
-                      height={20}
-                      style={{ objectFit: 'contain' }}
-                    />{' '}
-                    &nbsp;&nbsp;<span className="text-green-600">{email}</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
+        <Link
+          href={`https://www.linkedin.com/in/${link}`}
+          rel="noopener noreferrer"
+          target="_blank"
+          style={{
+            display: 'flex',
+            gap: 12,
+            fontSize: 18,
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            borderRadius: 8,
+            padding: 12,
+            paddingRight: 24,
+            paddingLeft: 24,
+          }}
+        >
+          <Image
+            src="/images/linkedin.png"
+            alt="LinkedIn icon"
+            width={32}
+            height={32}
+            className="w-[24px] sm:w-[24px]"
+            style={{ objectFit: 'contain' }}
+          />
+          <div className="m-auto text-sm sm:text-base">{name}</div>
+        </Link>
       </div>
     </>
   );
