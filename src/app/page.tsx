@@ -29,7 +29,7 @@ export default function Home() {
             </div>
             <div className="w-full pt-12 text-lg sm:text-2xl lg:text-4xl text-center">
               <span className="font-bold">
-                L'application essentielle pour les finances personnelles
+                L’application essentielle pour les finances personnelles
               </span>
               <div className="mt-4">propulsé par l’Open Finance, optimisé par l’IA</div>
             </div>
