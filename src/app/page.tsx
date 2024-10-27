@@ -202,26 +202,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className={`pb-0 sm:pb-0 min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col`}
-      >
-        <div className="p-16 sm:p-24 items-center flex flex-col gap-24">
-          <h1 className={`${mulish.className} text-2xl sm:text-4xl text-center pb-12 text-black`}>
-            Un petit mot de notre CEO
-          </h1>
-
-          <div>
-            <iframe
-              className="w-full aspect-video self-stretch md:min-h-96"
-              src="https://www.youtube.com/embed/1FLYZdxsteo"
-              frameBorder="0"
-              title="Product Overview Video"
-              aria-hidden="true"
-            />
-          </div>
-        </div>
-      </section>
-
       <section className={`p-16 sm:p-24 min-h-[750px] bg-gradient-to-b from-gray-900 to-gray-700`}>
         <h1
           className={`${mulish.className} text-2xl sm:text-4xl text-center pb-12 lg:pb-32 text-white`}
