@@ -43,7 +43,7 @@ body {
   animation: tilt-shaking 0.7s infinite;
 }
 
-@keyframes slide {
+@keyframes sliding {
   from {
     transform: translateX(0);
   }
@@ -53,16 +53,8 @@ body {
   }
 }
 
-.banner {
-  overflow: hidden;
-  padding: 30px 0;
-  background: linear-gradient(#111827, #374151);
-  white-space: nowrap;
-  position: relative;
-}
-
-.banner:before,
-.banner:after {
+.titles:before,
+.titles:after {
   position: absolute;
   top: 0;
   width: 250px;
@@ -71,29 +63,34 @@ body {
   z-index: 2;
 }
 
-.banner:before {
+.titles:before {
   left: 0;
   background: linear-gradient(to left, rgba(255, 255, 255, 0), #111827);
 }
 
-.banner:after {
+.titles:after {
   right: 0;
   background: linear-gradient(to right, rgba(255, 255, 255, 0), #111827);
 }
 
-.banner:hover .banner-slide {
-  animation-play-state: paused;
+
+.titles {
+  overflow: hidden;
+  background-color: #0077b7;
+  padding: 30px 0px;
+  background: linear-gradient(#111827, #374151);
+    white-space: nowrap;
+    position: relative;
 }
 
-.banner-slide {
+.titles-slide {
+  
   display: inline-block;
-  animation: 35s slide infinite linear;
+  animation: sliding 45s infinite linear;
 }
 
-.banner-slide span {
-  height: 50px;
-  width: 60px;
-  background-color: 'red';
-  align-items: center;
-  margin: 0 40px;
+.titles-slide p {
+  text-align: center;
+  display: inline-block;
+  margin: 0px 60px;
 }

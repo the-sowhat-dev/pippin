@@ -4,6 +4,7 @@ import { mulish } from '../utils/fonts';
 
 import Footer from '../components/footer';
 import Button from '../components/button';
+import NetworkLogo from '../components/network-logo';
 
 export default function Home() {
   return (
@@ -31,7 +32,7 @@ export default function Home() {
               <span className="font-bold">
                 L’application essentielle pour les finances personnelles
               </span>
-              <div className="mt-4">propulsé par l’Open Finance, optimisé par l’IA</div>
+              <div className="mt-4">propulsée par l’Open Finance, optimisée par l’IA</div>
             </div>
           </div>
 
@@ -105,25 +106,67 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="banner text-zinc-50">
-        <div className="banner-slide">
-          <span>Connectée</span>
-          <span>Personnalisée</span>
-          <span>Simple</span>
-          <span>Sécurisée</span>
-          <span>Française</span>
-          <span>Cool</span>
-          <span>Gratuite</span>
+      <div className="titles text-zinc-50">
+        <div className="titles-slide">
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
         </div>
 
-        <div className="banner-slide">
-          <span>Connectée</span>
-          <span>Personnalisée</span>
-          <span>Simple</span>
-          <span>Sécurisée</span>
-          <span>Française</span>
-          <span>Cool</span>
-          <span>Gratuite</span>
+        <div className="titles-slide greenard">
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
+          <p>Connectée</p>
+          <p>Personnalisée</p>
+          <p>Simple</p>
+          <p>Sécurisée</p>
+          <p>Française</p>
+          <p>Cool</p>
+          <p>Gratuite</p>
         </div>
       </div>
 
@@ -235,112 +278,50 @@ export default function Home() {
               style={{ width: '100%', maxHeight: '400px', height: 'auto', objectFit: 'contain' }}
             />
           </div>
-
-          {/* <div className="flex justify-center visible xl:invisible">
-            <span className="h-0.5 max-w-[500px] bg-gray-600 rounded w-full" />
-          </div> */}
-
-          {/* <div className="flex flex-1 flex-col gap-12 justify-center mx-auto">
-            <PhotoComent
-              alt="Strategy Image"
-              src={'/images/photo-2.png'}
-              text={
-                <span>
-                  « Si on l’utilise, je pense qu’on devient <span className="font-bold">accro</span>{' '}
-                  ! »*
-                </span>
-              }
-            />
-
-            <PhotoComent
-              alt="Strategy Image"
-              src={'/images/photo-1.png'}
-              text={
-                <span>
-                  «{' '}
-                  <span className="font-bold">
-                    Quand je pense au temps que je perds sur mon fichier excel...
-                  </span>{' '}
-                  je pourrais payer 10 € par mois pour un outil comme ça ! »*
-                </span>
-              }
-            />
-
-            <div className="text-white text-xs">
-              * : photos de profile fictives mais citations réelles
-            </div>
-          </div> */}
         </div>
       </section>
 
       <section
-        className={`p-16 sm:p-24 pb-0 sm:pb-0 min-h-[600px] bg-gradient-to-b from-yellow-400 to-yellow-300 flex flex-col`}
+        className={`min-h-[600px] bg-gradient-to-b from-yellow-400 to-yellow-300 flex flex-col`}
       >
-        <div className="flex flex-col xl:flex-row gap-24 justify-between">
-          <div className="items-center flex flex-col w-[100%] justify-center gap-24">
+        <div className="flex grow flex-col xl:flex-row gap-16">
+          <div className=" basis-1/2 p-8 sm:p-16 flex flex-col gap-12">
             <div
-              className={`text-2xl sm:text-4xl ${mulish.className} text-blue-500 text-center sm:px-12`}
+              className={`text-2xl sm:text-4xl w-full  ${mulish.className} text-blue-500 text-center sm:px-12`}
             >
               Nos réseaux sociaux
             </div>
 
-            <div className="flex flex-col sm:flex-row p-6 sm:p-0 w-[100%] gap-8 justify-center">
-              <Link
-                className="sm:w-[100%]"
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-between items-center grow ">
+              <NetworkLogo
+                src={'/images/linkedin_logo.png'}
+                alt="Logo Linkedin"
                 href={`https://www.linkedin.com/company/sowhat-app/`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Image
-                  src={'/images/logo-linkedin.png'}
-                  alt="Logo Linkedin"
-                  width={1024}
-                  height={1024}
-                  style={{ maxHeight: '100px', height: 'auto', objectFit: 'contain' }}
-                />
-              </Link>
-              <Link
-                className="sm:w-[100%]"
-                href={`https://www.facebook.com/SowhatApp`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Image
-                  src={'/images/logo-fb.png'}
-                  alt="Logo Facebook"
-                  width={960}
-                  height={960}
-                  style={{ flex: 1, maxHeight: '100px', height: 'auto', objectFit: 'contain' }}
-                />
-              </Link>
-              <Link
-                className="sm:w-[100%]"
-                href={`https://www.instagram.com/sowhat_app/`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Image
-                  src={'/images/logo-ig.png'}
-                  alt="Logo Instagram"
-                  width={1200}
-                  height={1200}
-                  style={{
-                    width: '100%',
-                    maxHeight: '100px',
-                    height: 'auto',
-                    objectFit: 'contain',
-                  }}
-                />
-              </Link>
+              />
+
+              <NetworkLogo
+                src={'/images/facebook_logo.png'}
+                alt="Logo Facebook"
+                href={`https://www.facebook.com/share/9VV2yufSwGX31iXM`}
+              />
+
+              <NetworkLogo
+                src={'/images/instagram_logo.png'}
+                alt="Logo Instagram"
+                href={`https://www.instagram.com/sowhat_officiel`}
+              />
+
+              <NetworkLogo
+                src={'/images/tiktok_logo.png'}
+                alt="Logo Tiktok"
+                href={`https://www.tiktok.com/@sowhat_app`}
+              />
             </div>
           </div>
 
-          <div className="p-8 sm:p-12 flex justify-center visible xl:invisible">
-            <span className="h-0.5 max-w-[500px] bg-yellow-200 rounded w-full" />
-          </div>
-
-          <div className="flex w-full flex-col gap-8 justify-end">
+          <div className=" place-items-center basis-1/2">
             <Image
+              className=""
               src={'/images/mockup-phone.png'}
               alt="Strategy Image"
               width={774}

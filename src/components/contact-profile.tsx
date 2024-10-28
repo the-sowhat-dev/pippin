@@ -53,7 +53,7 @@ const ContactProfile: React.FC<ContactProfileProps> = ({
           }}
         >
           <Image
-            src="/images/linkedin.png"
+            src="/images/linkedin_logo.png"
             alt="LinkedIn icon"
             width={32}
             height={32}
