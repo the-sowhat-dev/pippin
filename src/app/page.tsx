@@ -220,10 +220,14 @@ export default function Home() {
           </div>
 
           <div className="flex w-full flex-col gap-8 justify-between items-center">
-            <div className="p-16 sm:p-24 text-xl lg:text-2xl text-center">
-              Les équipes Sowhat ont développé{' '}
-              <span className="font-bold">une solution Open Finance + IA</span> pour vous aider et
-              vous rassurer…
+            <div className="p-12 sm:p-24 sm:px-16 text-xl lg:text-2xl text-center">
+              Sowhat, c’est
+              <span className="font-bold">
+                {` tous vos comptes bancaires et 100% de votre patrimoine `}
+              </span>
+              connectés dans une seule app, mais surtout c’est ce qu’il y a de plus facile et
+              personnalisé pour gérer vos projets d’épargne, votre argent et votre budget : et c’est
+              100% gratuit !
             </div>
 
             <div className="self-end">
@@ -289,7 +293,7 @@ export default function Home() {
             <div
               className={`text-2xl sm:text-4xl w-full  ${mulish.className} text-blue-500 text-center sm:px-12`}
             >
-              Nos réseaux sociaux
+              Suivez-nous !
             </div>
 
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-between items-center grow ">
