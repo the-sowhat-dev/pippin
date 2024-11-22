@@ -312,7 +312,7 @@ export default function Home() {
               <NetworkLogo
                 src={'/images/instagram_logo.png'}
                 alt="Logo Instagram"
-                href={`https://www.instagram.com/sowhat_officiel`}
+                href={`https://www.instagram.com/sowhat_app_officiel/`}
               />
 
               <NetworkLogo
