@@ -4,7 +4,7 @@ import Link from 'next/link';
 type PrimaryButtonProps = {
   title: string;
   uri: string;
-  icon: 'greet' | null;
+  icon: 'greet' | 'communique-de-presse' | null;
 };
 
 const Button = (props: PrimaryButtonProps) => {

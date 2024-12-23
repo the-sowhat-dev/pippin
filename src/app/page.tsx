@@ -1,110 +1,34 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { mulish } from '../utils/fonts';
 
 import Footer from '../components/footer';
-import Button from '../components/button';
 import NetworkLogo from '../components/network-logo';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <>
       <main
-        className={`flex md:min-h-screen px-8 md:px-12 py-16 md:py-24 bg-gradient-to-b from-yellow-400 to-yellow-300 relative`}
+        className={`flex px-8 md:px-12 pt-16 md:pt-24 bg-gradient-to-b pb-32 md:pb-64 from-yellow-400 to-yellow-300 relative`}
       >
         <div className="flex flex-col w-full justify-between">
-          <div>
-            <div className="flex-none">
-              <Image
-                width={0}
-                height={0}
-                priority
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'contain',
-                }}
-                src="/images/font.svg"
-                alt="Font Logo"
-              />
-            </div>
-            <div className="w-full pt-12 text-lg sm:text-2xl lg:text-4xl text-center">
-              <span className="font-bold">
-                L’application essentielle pour les finances personnelles
-              </span>
-              <div className="mt-4">propulsée par l’Open Finance, optimisée par l’IA</div>
-            </div>
-          </div>
-
-          <div className="w-full flex flex-col items-center gap-24 pt-40">
-            <Button title="Nous contacter" icon="greet" uri="/contact" />
+          <Image
+            width={0}
+            height={0}
+            priority
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+            }}
+            src="/images/font.svg"
+            alt="Font Logo"
+          />
+          <div className="w-full pt-12 text-lg sm:text-2xl lg:text-4xl text-center">
+            <span>L’application essentielle pour les finances personnelles</span>
           </div>
         </div>
       </main>
-
-      <section
-        className={`p-16 sm:p-24 min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col gap-24`}
-      >
-        <div className="text-xl lg:text-2xl text-center px-0 lg:px-52">
-          Vous aussi vous vous sentez seul(e) face à{' '}
-          <span className="font-bold">votre épargne ?</span>
-        </div>
-        <div className="flex flex-col xl:flex-row gap-12 justify-between">
-          <div className="flex-1 mb-10">
-            <div className="flex w-full flex-col gap-8 justify-center items-center">
-              <div
-                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
-              >
-                Est-ce que je peux me permettre ?
-              </div>
-              <Image
-                src={'/images/bubble-1-x.png'}
-                alt="Strategy Image"
-                className="animate-float"
-                width={607}
-                height={487}
-                style={{ width: '100%', maxHeight: '380px', height: 'auto', objectFit: 'contain' }}
-              />
-            </div>
-          </div>
-
-          <div className="flex-1 mb-10">
-            <div className="flex w-full flex-col gap-8 justify-center items-center xl:mt-24">
-              <div
-                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
-              >
-                Je suis complètement perdu(e)...
-              </div>
-              <Image
-                src={'/images/bubble-2-x.png'}
-                alt="Strategy Image"
-                className="animate-float2"
-                width={607}
-                height={568}
-                style={{ width: '100%', maxHeight: '400px', height: 'auto', objectFit: 'contain' }}
-              />
-            </div>
-          </div>
-
-          <div className="flex-1 mb-10">
-            <div className="flex w-full flex-col gap-8 justify-center items-center">
-              <div
-                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
-              >
-                Oups !
-              </div>
-              <Image
-                src={'/images/bubble-3-x.png'}
-                alt="Strategy Image"
-                className="animate-float"
-                width={607}
-                height={487}
-                style={{ width: '100%', maxHeight: '380px', height: 'auto', objectFit: 'contain' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div className="titles text-zinc-50">
         <div className="titles-slide">
@@ -170,11 +94,74 @@ export default function Home() {
         </div>
       </div>
 
-      <section
-        className={`min-h-[600px] bg-gradient-to-b from-yellow-400 to-yellow-300 flex flex-col`}
+      {/* <section
+        className={`p-16 sm:p-24 min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col gap-24`}
       >
-        <div className="flex flex-col xl:flex-row gap-24 justify-betwe==en">
-          <div className="p-16 sm:p-24 items-center flex flex-col gap-12">
+        <div className="text-xl lg:text-2xl text-center px-0 lg:px-52">
+          Vous aussi vous vous sentez seul(e) face à{' '}
+          <span className="font-bold">votre épargne ?</span>
+        </div>
+        <div className="flex flex-col xl:flex-row gap-12 justify-between">
+          <div className="flex-1 mb-10">
+            <div className="flex w-full flex-col gap-8 justify-center items-center">
+              <div
+                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
+              >
+                Est-ce que je peux me permettre ?
+              </div>
+              <Image
+                src={'/images/bubble-1-x.png'}
+                alt="Strategy Image"
+                className="animate-float"
+                width={607}
+                height={487}
+                style={{ width: '100%', maxHeight: '380px', height: 'auto', objectFit: 'contain' }}
+              />
+            </div>
+          </div>
+
+          <div className="flex-1 mb-10">
+            <div className="flex w-full flex-col gap-8 justify-center items-center xl:mt-24">
+              <div
+                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
+              >
+                Je suis complètement perdu(e)...
+              </div>
+              <Image
+                src={'/images/bubble-2-x.png'}
+                alt="Strategy Image"
+                className="animate-float2"
+                width={607}
+                height={568}
+                style={{ width: '100%', maxHeight: '400px', height: 'auto', objectFit: 'contain' }}
+              />
+            </div>
+          </div>
+
+          <div className="flex-1 mb-10">
+            <div className="flex w-full flex-col gap-8 justify-center items-center">
+              <div
+                className={`text-2xl sm:text-4xl ${mulish.className} text-yellow-500 text-center sm:px-12`}
+              >
+                Oups !
+              </div>
+              <Image
+                src={'/images/bubble-3-x.png'}
+                alt="Strategy Image"
+                className="animate-float"
+                width={607}
+                height={487}
+                style={{ width: '100%', maxHeight: '380px', height: 'auto', objectFit: 'contain' }}
+              />
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <section
+        className={`min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col`}
+      >
+        {/* <div className="p-16 sm:p-24 items-center flex flex-col gap-12">
             <div className="items-center flex flex-col gap-3">
               <p className="text-blue-500 font-bold text-center text-2xl sm:text-4xl">
                 Centralisation des données bancaires et patrimoniales
@@ -213,39 +200,41 @@ export default function Home() {
               </p>
               <p className="text-xl text-center">optimisée par l’IA</p>
             </div>
-          </div>
+          </div> */}
 
-          <div className="p-8 sm:p-16 flex justify-center visible xl:invisible">
-            <span className="h-0.5 max-w-[500px] bg-yellow-200 rounded w-full" />
+        <div className="p-8 sm:p-16 pb-4 sm:pb-4 flex w-full flex-col gap-8 items-center">
+          <div className={`text-2xl sm:text-4xl ${mulish.className} text-dark text-center`}>
+            Sowhat c’est
           </div>
-
-          <div className="flex w-full flex-col gap-8 justify-between items-center">
-            <div className="p-12 sm:p-24 sm:px-16 text-xl lg:text-2xl text-center">
-              Sowhat, c’est
-              <span className="font-bold">
-                {` tous vos comptes bancaires et 100% de votre patrimoine `}
-              </span>
-              connectés dans une seule app, mais surtout c’est ce qu’il y a de plus facile et
-              personnalisé pour gérer vos projets d’épargne, votre argent et votre budget : et c’est
-              100% gratuit !
-            </div>
-
-            <div className="self-end">
-              <Image
-                src={'/images/fourmi-3d.png'}
-                alt="Strategy Image"
-                width={856}
-                height={1072}
-                style={{
-                  width: '100%',
-                  maxHeight: '500px',
-                  height: 'auto',
-                  alignSelf: 'end',
-                  objectFit: 'contain',
-                }}
-              />
-            </div>
+          <div className="px-0 lg:px-64 text-xl lg:text-2xl text-center mb-8">
+            tous vos comptes bancaires et 100% de votre patrimoine connectés dans une seule app.
           </div>
+          <div className={`text-2xl sm:text-4xl ${mulish.className} text-dark text-center`}>
+            Mais surtout
+          </div>
+          <div className="px-0 lg:px-64 text-xl lg:text-2xl text-center mb-8">
+            c’est ce qu’il y a de plus facile et personnalisé pour gérer vos projets d’épargne,
+            votre argent et votre budget.
+          </div>
+          <div className={`text-2xl sm:text-4xl ${mulish.className} text-dark text-center`}>
+            100% gratuite !
+          </div>
+        </div>
+
+        <div className="self-end">
+          <Image
+            src={'/images/fourmi-3d.png'}
+            alt="Strategy Image"
+            width={856}
+            height={1072}
+            style={{
+              width: '100%',
+              maxHeight: '500px',
+              height: 'auto',
+              alignSelf: 'end',
+              objectFit: 'contain',
+            }}
+          />
         </div>
       </section>
 
@@ -289,11 +278,35 @@ export default function Home() {
         className={`min-h-[600px] bg-gradient-to-b from-yellow-400 to-yellow-300 flex flex-col`}
       >
         <div className="flex grow flex-col xl:flex-row gap-16">
-          <div className=" basis-1/2 p-8 sm:p-16 flex flex-col gap-12">
+          <div className=" basis-1/2 p-8 sm:p-16 flex flex-col gap-12 grow">
             <div
-              className={`text-2xl sm:text-4xl w-full  ${mulish.className} text-blue-500 text-center sm:px-12`}
+              className={`text-2xl sm:text-4xl w-full flex-1 ${mulish.className} text-blue-500 text-center sm:px-12`}
             >
-              Suivez-nous !
+              Téléchargez dès maintenant l'app
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-center items-center grow">
+              <Link
+                href={'https://gogle.com'}
+                className="flex justify-center items-center min-h-[80px] min-w-[270px] text-md sm:text-lg whitespace-nowrap bg-blue-500 rounded-2xl shadow-custom text-white gap-2 contact-button hover:bg-sky-600 hover:text-white transition-all duration-500 hover:scale-105"
+              >
+                Disponible sur iOS&nbsp;
+                <Image
+                  src={'/images/apple_logo.png'}
+                  alt={'Apple logo'}
+                  width={28}
+                  height={28}
+                  style={{ objectFit: 'contain', marginTop: -8 }}
+                />
+              </Link>
+            </div>
+          </div>
+
+          <div className="basis-1/2 pb-8 sm:p-16 flex flex-col gap-12 lg:px-64 xl:px-32">
+            <div
+              className={`text-2xl sm:text-4xl w-full flex-1 ${mulish.className} text-blue-500 text-center sm:px-12`}
+            >
+              et suivez-nous !
             </div>
 
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-between items-center grow ">
@@ -314,24 +327,7 @@ export default function Home() {
                 alt="Logo Instagram"
                 href={`https://www.instagram.com/sowhat_app_officiel/`}
               />
-
-              <NetworkLogo
-                src={'/images/tiktok_logo.png'}
-                alt="Logo Tiktok"
-                href={`https://www.tiktok.com/@sowhat_app`}
-              />
             </div>
-          </div>
-
-          <div className=" place-items-center basis-1/2">
-            <Image
-              className=""
-              src={'/images/mockup-phone.png'}
-              alt="Strategy Image"
-              width={774}
-              height={1070}
-              style={{ width: '100%', maxHeight: '600px', height: 'auto', objectFit: 'contain' }}
-            />
           </div>
         </div>
       </section>

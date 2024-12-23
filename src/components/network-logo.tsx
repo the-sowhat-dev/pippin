@@ -11,8 +11,8 @@ interface NetworkLogoProps {
 
 const NetworkLogo: React.FC<NetworkLogoProps> = ({ href, src, alt }) => {
   return (
-    <Link className="w-[60px] sm:w-[100px]" href={href} rel="noopener noreferrer" target="_blank">
-      <Image src={src} alt={alt} width={100} height={100} style={{ objectFit: 'contain' }} />
+    <Link className="w-[50px] sm:w-[80px]" href={href} rel="noopener noreferrer" target="_blank">
+      <Image src={src} alt={alt} width={80} height={80} style={{ objectFit: 'contain' }} />
     </Link>
   );
 };
