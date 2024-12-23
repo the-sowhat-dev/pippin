@@ -281,9 +281,7 @@ export default function Home() {
           <div className=" basis-1/2 p-8 sm:p-16 flex flex-col gap-12 grow">
             <div
               className={`text-2xl sm:text-4xl w-full flex-1 ${mulish.className} text-blue-500 text-center sm:px-12`}
-            >
-              Téléchargez dès maintenant l'app
-            </div>
+            >{`Téléchargez dès maintenant l'app`}</div>
 
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-center items-center grow">
               <Link
