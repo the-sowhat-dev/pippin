@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import WavingHandOutlinedIcon from '@mui/icons-material/WavingHandOutlined';
 
 type PrimaryButtonProps = {
   title: string;
@@ -11,22 +11,19 @@ const Button = (props: PrimaryButtonProps) => {
   const { title, uri, icon } = props;
 
   return (
-    <Link
-      href={uri}
-      className="flex justify-center items-center min-h-[80px] min-w-[270px] text-md sm:text-lg whitespace-nowrap bg-blue-500 rounded-2xl shadow-custom text-white gap-2 contact-button hover:bg-sky-600 hover:text-white transition-all duration-500 hover:scale-105"
-    >
-      {icon && (
-        <Image
-          src={`/icons/${icon}.svg`}
-          alt={`${icon} icon`}
-          width={40}
-          height={40}
-          style={{ objectFit: 'contain' }}
-          className="shake"
+    <div className="gap-3 flex flex-col items-center">
+      <Link
+        href={uri}
+        className="flex gap-3 justify-center items-center text-md sm:text-lg rounded-md shadow-custom text-black bg-yellow-400 hover:bg-yellow-300 transition-all duration-300 py-4 px-8 group"
+      >
+        <WavingHandOutlinedIcon
+          fontSize="large"
+          className="group-hover:animate-wave origin-bottom"
         />
-      )}
-      &nbsp;{title}
-    </Link>
+
+        <span>{title}</span>
+      </Link>
+    </div>
   );
 };
 
