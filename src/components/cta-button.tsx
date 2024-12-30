@@ -8,6 +8,8 @@ export function CTAButton() {
   return (
     <div className="gap-3 flex flex-col items-center">
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         href={'https://apps.apple.com/fr/app/sowhat-app/id6736385732'}
         className="flex gap-3 justify-center items-center text-md sm:text-lg bg-blue-500 rounded-md shadow-custom text-white hover:bg-blue-500/85 transition-all duration-300 py-4 px-8"
       >

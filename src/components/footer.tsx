@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import Button from './button';
+import { ContactButton } from './contact-button';
 import PressKitButton from './press-kit.button';
+import { DialogCloseButton } from './contact-dialog';
 
 const Footer = () => {
   return (
@@ -12,7 +13,7 @@ const Footer = () => {
         <PressKitButton />
       </div>
 
-      <Button title="Nous contacter" icon="greet" uri="/contact" />
+      <DialogCloseButton />
     </div>
   );
 };

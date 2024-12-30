@@ -26,14 +26,14 @@ const images = [
 ];
 
 const titles = [
-  'Inscription rapide',
-  'Consultation des comptes bancaires..',
-  '.. des comptes épargnes ..',
-  '.. et du patrimoine.',
-  'Récapitulatif complet',
-  'Gestion du budget',
-  `Gestion de l'épargne..`,
-  '.. et simulation des projets',
+  'Inscription rapide et gratuite',
+  'Connexion des comptes bancaires...',
+  '...des comptes épargne...',
+  '...et de tous vos autres biens.',
+  'Vision complète du patrimoine.',
+  'Gestion du budget...',
+  `...de projets d'épargne...`,
+  `...avec simulateur intégré.`,
 ];
 
 export function CarouselDemo() {
@@ -86,7 +86,7 @@ export function CarouselDemo() {
                         alt={`Étape n°${index + 1} du carousel`}
                         width={1100}
                         height={2279}
-                        className="w-[110px] sm:w-[230px]"
+                        className="w-[200px] sm:w-[230px]"
                         style={{
                           objectFit: 'contain',
                         }}
@@ -120,13 +120,13 @@ export function CarouselDemo() {
         />
         <CardDemo
           title={`Pourquoi Sowhat est sûre ?`}
-          description={`30 secondes pour comprendre ce que Sowhat peut faire et n’a pas le droit de faire avec vos données bancaires.`}
+          description={`30 secondes pour comprendre notre politique de sécurité pour vos données personnelles et vos données bancaires.`}
           link={`https://www.youtube.com/shorts/_wupOKMEI6c`}
         />
         <CardDemo
           title={`Pas encore convaincu(e) ?`}
           description={`Tout est résumé ici, rien que pour vous !`}
-          link={`https://www.youtube.com/@sowhat_app`}
+          link={`https://www.veed.io/view/d2b369f4-6785-4efd-9499-7076efa127b2`}
         />
       </div>
     </section>

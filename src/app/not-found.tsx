@@ -1,4 +1,3 @@
-import Button from '../components/button';
 import Head from 'next/head';
 
 export default function NotFound() {
@@ -10,9 +9,6 @@ export default function NotFound() {
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-yellow-400 to-yellow-300">
         <h1 className="w-full py-4 p-8 text-3xl text-center">404 - Page non trouvée.</h1>
-        <div className="pt-24 w-full flex justify-center">
-          <Button title="Retourner à l'accueil" uri="/" icon={null} />
-        </div>
       </div>
     </>
   );

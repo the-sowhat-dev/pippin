@@ -1,10 +1,9 @@
 import Image from 'next/image';
 
 import Footer from '../components/footer';
-import { CarouselDemo } from '../components/carousel-demo';
 import { CTAButton } from '../components/cta-button';
 import { NetworkButton } from '../components/rs-button';
-import { CardDemo } from '../components/yt-card';
+import { CarouselDemo } from '../components/carousel-demo';
 
 export default function Home() {
   return (

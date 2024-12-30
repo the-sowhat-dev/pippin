@@ -14,7 +14,7 @@ export default function Page() {
         className="w-full py-4 p-8"
         style={{ display: 'flex', gap: 32, justifyContent: 'center' }}
       >
-        <Link href="/">
+        <Link href="/" target="_blank" rel="noopener noreferrer">
           <Image
             width={32}
             height={32}
