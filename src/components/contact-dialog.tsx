@@ -23,9 +23,7 @@ export function DialogCloseButton() {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Envie de discuter ?</DialogTitle>
-          <DialogDescription>
-            Nous contacter sur LinkedIn, WhatsApp ou bien par email.
-          </DialogDescription>
+          <DialogDescription>Nous contacter sur LinkedIn ou bien par email.</DialogDescription>
         </DialogHeader>
         <div className="gap-8 py-4 flex flex-col">
           <ProfileContactDialog
@@ -78,9 +76,9 @@ const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
         <p>{title}</p>
       </div>
 
-      <Link href={`https://wa.me/${phone}`} rel="noopener noreferrer" target="_blank">
+      {/* <Link href={`https://wa.me/${phone}`} rel="noopener noreferrer" target="_blank">
         <WhatsApp fontSize="large" className=" hover:text-green-600 transition-all duration-300" />
-      </Link>
+      </Link> */}
 
       <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
         <LinkedIn fontSize="large" className=" hover:text-blue-600 transition-all duration-300" />
