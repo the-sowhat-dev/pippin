@@ -1,5 +1,5 @@
-import '../utils/globals.css';
-import { poppins } from '../utils/fonts';
+import '@/src/utils/globals.css';
+import { SourceSansPro } from '../utils/fonts';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 
@@ -22,6 +22,18 @@ export const metadata: Metadata = {
   },
 };
 
+// export const metadata: Metadata = {
+//   metadataBase: new URL('https://leerob.com'),
+//   alternates: {
+//     canonical: '/',
+//   },
+//   title: {
+//     default: 'Lee Robinson',
+//     template: '%s | Lee Robinson',
+//   },
+//   description: 'Frontend developer, optimist, community builder.',
+// };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +46,7 @@ export default function RootLayout({
           function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"4722ebb2d0bac377cd9be2740983fe3c"})});
   `}
       </Script>
-      <body className={`${poppins.className}`}>{children}</body>
+      <body className={`${SourceSansPro.className}`}>{children}</body>
     </html>
   );
 }

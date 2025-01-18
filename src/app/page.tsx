@@ -4,6 +4,7 @@ import Footer from '../components/footer';
 import { CTAButton } from '../components/cta-button';
 import { NetworkButton } from '../components/rs-button';
 import { CarouselDemo } from '../components/carousel-demo';
+import { WordsCarousel } from '../components/new/words-carousel';
 
 export default function Home() {
   return (
@@ -34,69 +35,7 @@ export default function Home() {
         </div>
       </main>
 
-      <div className="titles text-zinc-50">
-        <div className="titles-slide">
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-        </div>
-
-        <div className="titles-slide greenard">
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-          <p>Connectée</p>
-          <p>Personnalisée</p>
-          <p>Simple</p>
-          <p>Sécurisée</p>
-          <p>Française</p>
-          <p>Cool</p>
-          <p>Gratuite</p>
-        </div>
-      </div>
+      <WordsCarousel />
 
       <section
         className={`min-h-[600px] bg-gradient-to-b from-yellow-100 to-yellow-50 flex flex-col`}

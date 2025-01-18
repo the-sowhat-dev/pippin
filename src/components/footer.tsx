@@ -1,19 +1,20 @@
 import Link from 'next/link';
-import { ContactButton } from './contact-button';
-import PressKitButton from './press-kit.button';
-import { DialogCloseButton } from './contact-dialog';
 
 const Footer = () => {
   return (
-    <div className="w-full bg-black flex flex-col sm:flex-row gap-6 justify-center md:justify-between text-white items-center p-8 sm:px-12 lg:px-24 sm:py-12">
-      <div className="sm:px-12 flex flex-col lg:flex-row lg:justify-between items-center flex-1">
-        <Link href="/legal" className="text-sm underline">
-          Mentions légales
-        </Link>
-        <PressKitButton />
-      </div>
+    <div className="w-full bg-black flex flex-col sm:flex-row gap-12 justify-between text-white items-center p-8 sm:px-16">
+      <Link href="/legal" className="text-sm underline">
+        Mentions légales
+      </Link>
 
-      <DialogCloseButton />
+      <Link
+        href={
+          'https://sowhat99-my.sharepoint.com/:f:/g/personal/hugo_bayoud_sowhat-app_com/EtRACoCC5M1NlaLgbXfdGhkB6po0755BznP4JILb4Z9Fyw'
+        }
+        className="px-8 py-2 text-black bg-gray-200"
+      >
+        Kit presse
+      </Link>
     </div>
   );
 };

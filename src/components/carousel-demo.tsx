@@ -82,7 +82,7 @@ export function CarouselDemo() {
                         {titles[index]}
                       </span>
                       <Image
-                        src={`/images/${images[index]}`}
+                        src={`/images/step-${index}.png`}
                         alt={`Étape n°${index + 1} du carousel`}
                         width={1100}
                         height={2279}

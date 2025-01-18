@@ -53,6 +53,16 @@ body {
   }
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-x: hidden;
+    scrollbar-width: none;
+  }
+}
+
 .titles:before,
 .titles:after {
   position: absolute;
@@ -75,7 +85,6 @@ body {
 
 .titles {
   overflow: hidden;
-  background-color: #0077b7;
   padding: 30px 0px;
   background: linear-gradient(#111827, #374151);
   white-space: nowrap;

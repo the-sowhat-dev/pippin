@@ -17,15 +17,12 @@ type CardProps = { description: string; title: string; link: string } & React.Co
 export function CardDemo({ className, title, description, link, ...props }: CardProps) {
   return (
     <Card
-      className={cn(
-        'mx-auto basis-1/3 sm:gap-4 max-w-[470px] flex flex-col justify-between',
-        className
-      )}
+      className={cn('w-full sm:w-[350px] min-h-[200px] flex flex-col justify-between', className)}
       {...props}
     >
       <CardHeader>
-        <CardTitle className="text-pretty">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardTitle className="text-pretty truncate font-opensans font-bold">{title}</CardTitle>
+        <CardDescription className="line-clamp-2">{description}</CardDescription>
       </CardHeader>
       <CardFooter className="justify-end">
         <YTButton link={link} />

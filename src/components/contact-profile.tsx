@@ -1,9 +1,10 @@
 'use client';
 
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
-import { mulish } from '../utils/fonts';
-import React, { useState } from 'react';
+import Image from 'next/image';
+
+import { OpenSans } from '../utils/fonts';
 
 interface ContactProfileProps {
   imagePath: string;
@@ -23,7 +24,7 @@ const ContactProfile: React.FC<ContactProfileProps> = ({
   return (
     <>
       <div className="text-center box-container group flex flex-col items-center">
-        <h1 className={`${mulish.className} text-l sm:text-2xl font-bold mb-8`}>{title}</h1>
+        <h1 className={`${OpenSans.className} text-l sm:text-2xl font-bold mb-8`}>{title}</h1>
 
         <div className="bg-gray-300 rounded-full transition-colors duration-500 ease-in-out mb-8 w-[120px] sm:w-[200px] sm:h-[200px] group-hover:bg-[#0077B7]">
           <Image

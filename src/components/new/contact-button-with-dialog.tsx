@@ -7,18 +7,17 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import Link from 'next/link';
-import { ArrowForward, LinkedIn, WhatsApp } from '@mui/icons-material';
+import { LinkedIn } from '@mui/icons-material';
 
-import { ContactButton } from './contact-button';
-import { AvatarDemo } from './avatar-profile';
+import { AvatarDemo } from '../avatar-profile';
 
 const EMAIL = 'contact@sowhat-app.com';
 
-export function DialogCloseButton() {
+export function ContactButtonWithDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <ContactButton />
+        <button className="px-5 sm:px-8 py-2 bg-gray-200">Nous contacter</button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

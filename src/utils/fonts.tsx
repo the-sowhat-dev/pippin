@@ -1,8 +1,11 @@
-import { Mulish } from 'next/font/google';
-import { Poppins } from 'next/font/google';
+import { Open_Sans, Source_Sans_3 } from 'next/font/google';
 
-export const poppins = Poppins({
-  weight: ['400', '700'],
-  subsets: ['devanagari'],
+export const SourceSansPro = Source_Sans_3({
+  weight: ['400'],
+  subsets: ['latin'],
 });
-export const mulish = Mulish({ weight: ['900'], subsets: ['cyrillic'] });
+
+export const OpenSans = Open_Sans({
+  weight: ['700'],
+  subsets: ['latin'],
+});
