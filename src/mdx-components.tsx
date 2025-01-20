@@ -77,7 +77,13 @@ const components = {
   },
   ImageWithCaption: ({ src, alt, caption, maxHeight }: ImageWithCaptionProps) => (
     <div className="">
-      <Image src={src} alt={alt} className={`w-full object-cover max-h-[${maxHeight}px]`} />
+      <Image
+        src={src}
+        alt={alt}
+        className={`w-full object-cover max-h-[${maxHeight}px]`}
+        width={1000}
+        height={700}
+      />
       {caption && <p className="text-sm text-gray-500 text-center">{caption}</p>}
     </div>
   ),

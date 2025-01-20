@@ -4,6 +4,12 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === 'production' ? 'https://sowhat-app.com' : 'http://localhost:3000'
+  ),
+  alternates: {
+    canonical: '/',
+  },
   title: `Sowhat | L’avenir de la gestion du budget et de l’épargne, propulsé par l’Open Finance, optimisé par l’IA`,
   description:
     'Découvrez la solution innovante, basée sur l’Open Finance, qui révolutionne l’expérience de gestion et facilite la prise de décision pour vos finances personnelles.',
@@ -21,18 +27,6 @@ export const metadata: Metadata = {
     images: { url: '../../public/images/logo-blanc.png' },
   },
 };
-
-// export const metadata: Metadata = {
-//   metadataBase: new URL('https://leerob.com'),
-//   alternates: {
-//     canonical: '/',
-//   },
-//   title: {
-//     default: 'Lee Robinson',
-//     template: '%s | Lee Robinson',
-//   },
-//   description: 'Frontend developer, optimist, community builder.',
-// };
 
 export default function RootLayout({
   children,

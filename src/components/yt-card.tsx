@@ -17,7 +17,10 @@ type CardProps = { description: string; title: string; link: string } & React.Co
 export function CardDemo({ className, title, description, link, ...props }: CardProps) {
   return (
     <Card
-      className={cn('w-full sm:w-[350px] min-h-[200px] flex flex-col justify-between', className)}
+      className={cn(
+        'w-full aspect-video max-w-[400px] min-h-[200px] flex flex-col justify-between',
+        className
+      )}
       {...props}
     >
       <CardHeader>

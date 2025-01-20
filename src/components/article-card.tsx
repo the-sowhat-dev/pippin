@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+
 import { OpenSans } from '../utils/fonts';
 
 interface ArticleCardProps {
@@ -10,30 +11,26 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ title, slug, date }: ArticleCardProps) {
   // Dynamic import for the splash image
-  const SplashImage = require(`@/src/app/a/${slug}/splash.jpg`).default;
+  const SplashImage = require(`@/src/app/a/${slug}/splash.png`).default;
 
   return (
-    <Link href={`/a/${slug}`} className="block group">
-      <div className="relative w-full aspect-[3/4] max-w-[300px] bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-300 transition-all hover:shadow-sm">
+    <Link href={`/a/${slug}`}>
+      <div className="aspect-[3/4] max-w-[300px] hover:border-yellow-400 hover:shadow-md">
         {/* Image Container - Square aspect ratio */}
-        <div className="relative w-full aspect-square">
+        <div className="relative aspect-square">
           <Image
             src={SplashImage}
             alt={title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className={`w-full h-full object-cover`}
+            width={1000}
+            height={700}
           />
         </div>
 
         {/* Content Container */}
-        <div className="p-4 absolute bottom-0 w-full bg-gradient-to-t from-white via-white/95 to-white/0">
+        <div className="p-4 bg-white">
           <time className="text-sm text-gray-500 mb-2 block">{date}</time>
-          <h2
-            className={`text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-gray-700 ${OpenSans.className}`}
-          >
-            {title}
-          </h2>
+          <h2 className={`sm:text-lg font-semibold line-clamp-2 ${OpenSans.className}`}>{title}</h2>
         </div>
       </div>
     </Link>
