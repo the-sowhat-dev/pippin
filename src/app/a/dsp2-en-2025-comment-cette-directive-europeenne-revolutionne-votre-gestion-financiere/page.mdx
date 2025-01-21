@@ -1,5 +1,49 @@
 import Splash from './splash.png';
 
+export const metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === 'production' ? 'https://sowhat-app.com' : 'http://localhost:3000'
+  ),
+  alternates: {
+    canonical:
+      '/a/dsp2-en-2025-comment-cette-directive-europeenne-revolutionne-votre-gestion-financiere',
+  },
+  title: `DSP2 en 2025 : Comment cette directive européenne révolutionne votre gestion financière ? | Sowhat`,
+  description: `Découvrez comment la DSP2 transforme la gestion financière en 2025 : centralisation des comptes, gestion budgétaire simplifiée et optimisation de l'épargne. Guide complet sur cette directive européenne.`,
+  openGraph: {
+    type: 'article',
+    title: `DSP2 en 2025 : La révolution de la gestion financière | Sowhat`,
+    description: `Découvrez comment la DSP2 transforme la gestion financière en 2025 : centralisation des comptes, gestion budgétaire simplifiée et optimisation de l'épargne.`,
+    images: [
+      {
+        url: '/images/logo-blanc.png',
+        width: 1545,
+        height: 694,
+        alt: 'Sowhat Logo',
+      },
+    ],
+    siteName: 'Sowhat',
+    locale: 'fr_FR',
+    publishedTime: '2025-01-25T00:00:00.000Z',
+    authors: ['Sowhat'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `DSP2 en 2025 : La révolution de la gestion financière | Sowhat`,
+    description: `Découvrez comment la DSP2 transforme la gestion financière en 2025 : centralisation des comptes, gestion budgétaire simplifiée et optimisation de l'épargne.`,
+    images: ['/images/logo-blanc.png'],
+  },
+  keywords: [
+    'DSP2',
+    'gestion financière',
+    'banque en ligne',
+    'finance personnelle',
+    'épargne',
+    'directive européenne',
+    'open banking',
+  ],
+};
+
 # DSP2 en 2025 : Comment cette directive européenne révolutionne votre gestion financière ?
 
 <p data-key="date">25/01/2025</p>
@@ -31,7 +75,7 @@ L'une des applications les plus évidentes de la DSP2 est la possibilité de cen
 
 &nbsp;
 
-Il est important de noter que ces applications ne sont pas des banques en soi, mais des plateformes de lecture de données bancaires. Elles n'ont accès qu'à la lecture des informations et hormis certaines qui sont agréées et bien évidemment davantage controlées, vous ne pouvez même pas effectuer de virements depuis celles-ci.
+Il est important de noter que ces applications ne sont pas des banques en soi, mais des plateformes de lecture de données bancaires. Cependant, certaines d'entre elles, comme Bankin ou Finary permettent d'effectuer des virements directement depuis leur interface.
 
 &nbsp;
 
@@ -55,11 +99,11 @@ Bien que moins répandue, la gestion de l'épargne est une des applications prom
 
 &nbsp;
 
-Cette fonctionnalité, rendue possible grâce à l'ouverture des données des comptes d'épargne (une évolution apportée par la [DSP3](https://www.adyen.com/fr_FR/ressources/dsp3)), aide les utilisateurs à donner un sens à leur épargne et à atteindre leurs objectifs financiers plus efficacement.
+Cette fonctionnalité, rendue possible grâce à l'ouverture des données des comptes d'épargne (une évolution apportée par la [DSP3](https://www.adyen.com/fr_FR/ressources/dsp3) qui n'est pas encore signée à l'échelle Européenne à ce jour), aide les utilisateurs à donner un sens à leur épargne et à atteindre leurs objectifs financiers plus efficacement.
 
 &nbsp;
 
-_Note : Chez Sowhat nous voulons vulgariser les finances personnelles en France. Aussi, nous avons créé une application 100% gratuite qui vous permet de suivre rapidement et simplement vos comptes courant et épargne ainsi que l'ensemble de votre patrimoine. Nous utilisons de façon sécurisée l'application de la DSP2._
+_Note : Chez Sowhat nous voulons vulgariser les finances personnelles en France. Aussi, nous avons créé une application 100% gratuite qui vous permet de suivre rapidement et simplement vos comptes courants et épargne ainsi que l'ensemble de votre patrimoine. Nous utilisons de façon sécurisée l'application de la DSP2._
 
 &nbsp;
 

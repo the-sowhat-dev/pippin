@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { OpenSans } from '../utils/fonts';
@@ -13,8 +12,9 @@ export default function ArticleCard({ title, slug, date }: ArticleCardProps) {
   // Dynamic import for the splash image
   const SplashImage = require(`@/src/app/a/${slug}/splash.png`).default;
 
+  // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
   return (
-    <Link href={`/a/${slug}`}>
+    <a href={`/a/${slug}`}>
       <div className="aspect-[3/4] max-w-[300px] hover:border-yellow-400 hover:shadow-md">
         {/* Image Container - Square aspect ratio */}
         <div className="relative aspect-square">
@@ -33,6 +33,6 @@ export default function ArticleCard({ title, slug, date }: ArticleCardProps) {
           <h2 className={`sm:text-lg font-semibold line-clamp-2 ${OpenSans.className}`}>{title}</h2>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }

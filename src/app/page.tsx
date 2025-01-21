@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Apple } from '@mui/icons-material';
+import { Android, Apple } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import {
@@ -13,12 +12,12 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Footer from '@/src/components/footer';
+import { Header } from '../components/header';
 import { Title } from '@/src/components/new/title';
 import { CardDemo } from '@/src/components/yt-card';
 import { NetworkButton } from '@/src/components/rs-button';
 import { PrimaryLink } from '@/src/components/new/primary-link';
 import { WordsCarousel } from '@/src/components/new/words-carousel';
-import { ContactButtonWithDialog } from '@/src/components/new/contact-button-with-dialog';
 
 interface Step {
   index: number;
@@ -32,19 +31,19 @@ const STEPS: Step[] = [
     index: 0,
     tag: 'Inscription',
     title: 'Inscription rapide et gratuite',
-    description: `Sowhat est une application disponible sur iOS et Android, totalement gratuite et sans aucune contrainte. Pas de frais cachés, pas besoin d'ajouter une carte bancaire, pas de publicités intrusives et aucune version premium payante. De plus, l'inscription est simple et rapide : en moins de 2 minutes, vous êtes prêt à utiliser toutes les fonctionnalités de l'application.`,
+    description: `Sowhat est une application mobile française et gratuite disponible sur iOS et Android. Seule votre adresse e-mail suffit pour vous inscrire et obtenir en moins de 2 minutes un accès illimité à toutes les fonctionnalités.`,
   },
   {
     index: 1,
     tag: 'Connexion',
-    title: 'Connexion des comptes courants',
-    description: `Connectez facilement et en toute sécurité vos comptes bancaires provenant de plus de 120 établissements, couvrant les institutions les plus connues et utilisées en France. Suivez vos finances en temps réel grâce à une intégration rapide et illimitée.`,
+    title: 'Connexion sécurisée de vos comptes bancaires',
+    description: `Grâce à notre partenaire Powens, basé en France, certifié DSP2 et agréé par la Banque de France, connectez facilement et en toute sécurité vos comptes bancaires dans l'application.`,
   },
   {
     index: 2,
     tag: 'Comptes épargne',
-    title: 'Connexion des comptes épargnes',
-    description: `Pour anticiper le future, il faut avoir une bonne gestion de son épargne également. Sowhat vous permet de connecter vos comptes d'épargne tels que le Livret A, le PEL ou le LDD. Vous pouvez également ajouter vos crédits, pour avoir une vision complète et précise de votre situation financière et de ce que vous possédez réellement.`,
+    title: 'Application unique pour toutes vos banques',
+    description: `Connectez plus de 120 établissements bancaires et gérez vos comptes courants, épargne (Livret A, PEL, etc.), comptes enfants ou d'entreprise en un seul endroit. Même en changeant de banque, vos données et votre historique restent intacts.`,
   },
   {
     index: 3,
@@ -56,25 +55,25 @@ const STEPS: Step[] = [
     index: 4,
     tag: `Vision complète`,
     title: 'Vision complète du patrimoine',
-    description: `Que vous partagiez un compte commun avec votre partenaire ou que votre crédit soit encore en cours de remboursement, Sowhat vous aide à connaître la valeur réelle de votre patrimoine en temps réel. Grâce à une interface intuitive, obtenez une vision claire et détaillée de tout ce que vous possédez.`,
+    description: `Découvrez enfin quelle est la valeur réelle de votre patrimoine. Sowhat vous permet de comprendre la répartition de votre patrimoine mais également de suivre son évolution dans le temps.`,
   },
   {
     index: 5,
     tag: `Budget`,
-    title: 'Gestion du budget',
-    description: `Savez-vous combien vous dépensez chaque mois ? Avec Sowhat, suivez vos revenus et vos dépenses de manière simple et adaptée à vos centres d'intérêt. Analysez vos mouvements bancaires pour mieux comprendre vos habitudes et reprendre le contrôle de votre budget.`,
+    title: 'Gestion de budget simple et facultative',
+    description: `Fixez et suivez vos objectifs financiers avec une interface épurée. Pas envie d'y consacrer trop de temps ? La gestion du budget est totalement facultative et désactivable.`,
   },
   {
     index: 6,
     tag: `Projets d'épargne`,
-    title: `Gestion des projets d'épargne`,
-    description: `La plupart des applications de gestion financière se concentrent uniquement sur vos revenus et salaires. Mais Sowhat va plus loin : pourquoi épargnez-vous vraiment ? Que ce soit pour un voyage, une maison ou un autre projet, Sowhat vous aide à planifier et à anticiper vos objectifs futurs.`,
+    title: `Première solution pour les projets d'épargne `,
+    description: `Que ce soit pour une maison, des vacances ou votre retraite, Sowhat vous aide à visualiser et planifier vos projets. Grâce à son simulateur intégré, gérez votre épargne en toute simplicité et prenez des décisions éclairées en quelques secondes.`,
   },
   {
     index: 7,
-    tag: `Simulateur`,
-    title: 'Simulateur intégré',
-    description: `Anticipez vos rêves avec Sowhat. Grâce à son simulateur intégré, l'application vous permet d'évaluer vos projets en fonction de votre épargne actuelle. Découvrez combien il vous reste à économiser pour concrétiser vos envies, qu'il s'agisse d'une nouvelle voiture, de vacances ou de votre futur logement.`,
+    tag: `Accessible`,
+    title: 'Accessible à toutes et à tous ',
+    description: `Vous trouvez Excel ou les autres outils de gestion financière trop complexes ? Nous aussi. Sowhat rend la gestion de vos finances simple et agréable, avec des fonctionnalités intuitives et une interface conçue pour tous, même pour les non-initiés.`,
   },
 ];
 
@@ -91,23 +90,29 @@ export default function Home() {
             height={0}
             priority
             style={{
-              width: '50%',
+              width: '60%',
               height: 'auto',
               objectFit: 'contain',
             }}
             src="/images/font.svg"
             alt="Font Logo"
           />
-          <p className="w-[50%] sm:text-xl text-pretty">{`L’application essentielle pour les finances personnelles.`}</p>
+          <p className="w-[60%] sm:text-xl text-pretty">{`L’application essentielle pour les finances personnelles, accessible à tous.`}</p>
         </div>
 
         <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
-          <div className="flex basis-1/2 items-center justify-center">
+          <div className="flex flex-col gap-4 basis-1/2 items-center justify-center">
+            {/* APPLE DOWNLOAD BUTTON */}
             <PrimaryLink
-              title={`Télécharger l'application`}
+              title={`Télécharger sur iOS`}
               link="https://apps.apple.com/fr/app/sowhat-app/id6736385732"
             >
               <Apple fontSize="medium" />
+            </PrimaryLink>
+
+            {/* ANDROID DOWNLOAD BUTTON */}
+            <PrimaryLink title={`Télécharger sur Android`} link="" disabled>
+              <Android fontSize="medium" />
             </PrimaryLink>
           </div>
 
@@ -129,9 +134,9 @@ export default function Home() {
         <WordsCarousel />
       </section>
 
-      <section className="flex min-h-screen items-center">
-        <div className="w-full flex-1 flex flex-col sm:flex-row gap-8 pt-24 p-8 sm:p-16">
-          <div className="flex basis-1/2 items-center justify-center p-12 sm:p-0">
+      <section className="flex items-center">
+        <div className="w-full flex-1 flex flex-col sm:flex-row gap-8 p-8 sm:p-16 pt-12">
+          <div className="flex basis-1/2 items-center justify-center p-6">
             <Image
               src={'/images/three_mockups.png'}
               alt="Trois mockups en un pour présentation"
@@ -145,24 +150,24 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex basis-1/2 flex-col p-8 md:p-16 gap-8">
+          <div className="flex basis-1/2 flex-col p-8 md:p-12 gap-8">
             <Title centered={false} text={`Sowhat c'est`} />
             <p className="sm:text-lg">
               {`Tous vos comptes bancaires et 100% de votre patrimoine connectés dans une seule app.`}
             </p>
             <p className="sm:text-lg">{`La gestion de vos différents projets d'épargne grâce à un système d'enveloppes virtuelles et un outil de prévision.`}</p>
             <p className="sm:text-lg">
-              {`En toute sécurité puisque l'application ne touche pas à l'argent réel (paiements, virements et investissements impossibles depuis Sowhat)`}
+              {`La priorité sur la sécurité puisque l'application ne touche pas à l'argent réel (paiements, virements et investissements impossibles depuis Sowhat).`}
             </p>
-            <p className="text-lg">
-              {`C'est ce qu'il y a de plus facile et personnalisé pour gérer vos projets d'épargne, votre argent et votre budget.`}
+            <p className="sm:text-lg">
+              {`Ce qu'il y a de plus facile et personnalisé pour gérer vos projets d'épargne, votre argent et votre budget.`}
             </p>
-            <p className="font-bold text-blue-500 text-lg">{`et c'est 100% gratuite`}</p>
+            <p className="font-bold text-blue-500 sm:text-lg">{`100% gratuite.`}</p>
           </div>
         </div>
       </section>
 
-      <section className="flex flex-col gap-16 items-center p-8 py-12 sm:px-16 sm:py-24 bg-yellow-400">
+      <section className="flex flex-col gap-16 sm:gap-12 items-center p-8 py-12 sm:px-16 sm:py-24 bg-yellow-400">
         <Title text={`Nos 8 principes pour une bonne application de finance`} />
 
         {/* WHEN ON MOBILE */}
@@ -263,18 +268,24 @@ export default function Home() {
         </div>
 
         {/* DOWNLOAD BUTTON */}
-        <div className="w-full justify-center flex my-8">
+        <div className="w-full flex flex-col sm:flex-row gap-4 justify-center items-center my-8">
+          {/* APPLE DOWNLOAD BUTTON */}
           <PrimaryLink
-            title={`Télécharger l'application`}
+            title={`Télécharger sur iOS`}
             link="https://apps.apple.com/fr/app/sowhat-app/id6736385732"
           >
             <Apple fontSize="medium" />
+          </PrimaryLink>
+
+          {/* ANDROID DOWNLOAD BUTTON */}
+          <PrimaryLink title={`Télécharger sur Android`} link="" disabled>
+            <Android fontSize="medium" />
           </PrimaryLink>
         </div>
       </section>
 
       <section className="flex flex-col gap-16 items-center p-8 py-12 sm:px-16 sm:py-24">
-        <Title text={`Sowhat sur les réseaux sociaux`} />
+        <Title text={`Plus d'information sur nos réseaux`} />
 
         <div className={`flex flex-col lg:flex-row gap-8 justify-center items-center w-full`}>
           <CardDemo
@@ -294,7 +305,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex w-full lg:flex-row lg:justify-evenly items-center gap-8 flex-col">
+        <div className="flex w-full items-center gap-8 flex-col">
           <NetworkButton type="facebook" />
           <NetworkButton type="instagram" />
           <NetworkButton type="linkedin" />
@@ -305,14 +316,3 @@ export default function Home() {
     </main>
   );
 }
-
-const Header = () => {
-  return (
-    <div className="text-sm sm:text-base p-4 sm:p-8 gap-4 sm:gap-8 absolute top-0 w-full flex justify-end bg-white/05 backdrop-blur-sm z-10">
-      <Link href={'/a'}>
-        <div className="px-5 sm:px-8 py-2 bg-gray-200">Articles</div>
-      </Link>
-      <ContactButtonWithDialog />
-    </div>
-  );
-};
