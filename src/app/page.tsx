@@ -101,7 +101,7 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
-          <div className="flex flex-col gap-4 basis-1/2 items-center justify-center">
+          <div className="flex flex-col gap-4 basis-1/2 justify-center">
             {/* APPLE DOWNLOAD BUTTON */}
             <PrimaryLink
               title={`Télécharger sur iOS`}
@@ -186,7 +186,7 @@ export default function Home() {
                 : 'bg-white border-yellow-200 hover:border-gray-100 hover:bg-gray-100'
             } border`}
                 >
-                  <div>{s.index}</div>
+                  <div>{s.index + 1}</div>
                   <div>{s.tag}</div>
                 </button>
               ))}
@@ -285,7 +285,7 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-16 items-center p-8 py-12 sm:px-16 sm:py-24">
-        <Title text={`Plus d'information sur nos réseaux`} />
+        <Title text={`Plus d'informations sur nos réseaux`} />
 
         <div className={`flex flex-col lg:flex-row gap-8 justify-center items-center w-full`}>
           <CardDemo
