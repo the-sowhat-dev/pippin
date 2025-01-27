@@ -111,7 +111,10 @@ export default function Home() {
             </PrimaryLink>
 
             {/* ANDROID DOWNLOAD BUTTON */}
-            <PrimaryLink title={`Télécharger sur Android`} link="" disabled>
+            <PrimaryLink
+              title={`Télécharger sur Android`}
+              link="https://play.google.com/store/apps/details?id=com.thesowhatdev.fintech&pcampaignid=web_share"
+            >
               <Android fontSize="medium" />
             </PrimaryLink>
           </div>
@@ -278,7 +281,10 @@ export default function Home() {
           </PrimaryLink>
 
           {/* ANDROID DOWNLOAD BUTTON */}
-          <PrimaryLink title={`Télécharger sur Android`} link="" disabled>
+          <PrimaryLink
+            title={`Télécharger sur Android`}
+            link="https://play.google.com/store/apps/details?id=com.thesowhatdev.fintech&pcampaignid=web_share"
+          >
             <Android fontSize="medium" />
           </PrimaryLink>
         </div>
