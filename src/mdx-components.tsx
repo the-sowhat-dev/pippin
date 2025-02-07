@@ -3,6 +3,7 @@ import { highlight } from 'sugar-high';
 import { OpenSans } from './utils/fonts';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CollaborationBlock } from './components/collaboration-block';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -47,7 +48,7 @@ const components = {
   li: (props: ListItemProps) => <li className="pl-1 text-base sm:text-lg" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => <em className="font-medium" {...props} />,
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
-    <strong className="font-medium" {...props} />
+    <strong className="font-bold" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className = 'text-amber-600 hover:text-amber-500';
@@ -87,6 +88,7 @@ const components = {
       {caption && <p className="text-sm text-gray-500 text-center">{caption}</p>}
     </div>
   ),
+  CollaborationBlock: ({ id }: { id: string }) => <CollaborationBlock id="adi" />,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>
       <thead>

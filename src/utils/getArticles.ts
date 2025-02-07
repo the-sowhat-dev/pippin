@@ -6,6 +6,7 @@ interface Article {
   title: string;
   slug: string;
   date: string;
+  collaboration: string | null;
 }
 
 export function getArticles(): Article[] {
@@ -29,10 +30,15 @@ export function getArticles(): Article[] {
         const dateMatch = fileContents.match(/<p data-key="date">(.*?)<\/p>/);
         const date = dateMatch ? dateMatch[1].trim() : '01/01/2024';
 
+        // If collaboration is present
+        const collabMatch = fileContents.match(/<p data-key="collaboration">(.*?)<\/p>/);
+        const collaboration = collabMatch ? collabMatch[1].trim() : null;
+
         articles.push({
           title,
           slug: entry.name,
           date,
+          collaboration,
         });
       }
     }
