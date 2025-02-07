@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { MetadataRoute } from 'next';
 import path from 'path';
 
 async function getNoteSlugs(dir: string) {
@@ -17,18 +18,22 @@ async function getNoteSlugs(dir: string) {
     .map((slug) => slug.replace(/\\/g, '/'));
 }
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const notesDirectory = path.join(process.cwd(), 'src', 'app', 'a');
   const slugs = await getNoteSlugs(notesDirectory);
 
   const notes = slugs.map((slug) => ({
     url: `https://sowhat-app.com/a/${slug}`,
-    lastModified: new Date().toISOString(),
+    lastModified: new Date(),
+    changeFrequency: 'yearly' as const,
+    priority: 1,
   }));
 
   const routes = ['', '/work'].map((route) => ({
     url: `https://sowhat-app.com${route}`,
-    lastModified: new Date().toISOString(),
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
   }));
 
   return [...routes, ...notes];
