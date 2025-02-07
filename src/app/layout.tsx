@@ -6,26 +6,22 @@ import '@/src/utils/globals.css';
 import { SourceSansPro } from '../utils/fonts';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NODE_ENV === 'production' ? 'https://sowhat-app.com' : 'http://localhost:3000'
-  ),
+  metadataBase: new URL('https://sowhat-app.com'),
   alternates: {
     canonical: '/',
   },
-  title: `Sowhat | L’avenir de la gestion du budget et de l’épargne, propulsé par l’Open Finance, optimisé par l’IA`,
+  title: `Sowhat | L’application essentielle pour les finances personnelles, accessible à tous.`,
   description:
     'Découvrez la solution innovante, basée sur l’Open Finance, qui révolutionne l’expérience de gestion et facilite la prise de décision pour vos finances personnelles.',
   openGraph: {
     title: 'Sowhat Application',
-    description:
-      'L’avenir de la gestion du budget et de l’épargne, propulsé par l’Open Finance, optimisé par l’IA.',
+    description: 'L’application essentielle pour les finances personnelles, accessible à tous..',
     images: { url: '../../public/images/logo-blanc.png' },
     url: 'https://www.sowhat-app.com',
   },
   twitter: {
     title: 'Sowhat Application',
-    description:
-      'L’avenir de la gestion du budget et de l’épargne, propulsé par l’Open Finance, optimisé par l’IA.',
+    description: 'L’application essentielle pour les finances personnelles, accessible à tous..',
     images: { url: '../../public/images/logo-blanc.png' },
   },
 };
