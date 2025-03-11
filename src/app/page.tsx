@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Android, Apple } from '@mui/icons-material';
+import { Android, Apple, YouTube } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Instagram, LinkedIn, Facebook } from '@mui/icons-material';
 
 import {
   Accordion,
@@ -11,71 +12,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { STEPS } from '../utils/steps';
 import Footer from '@/src/components/footer';
 import { Header } from '../components/header';
 import { Title } from '@/src/components/new/title';
 import { CardDemo } from '@/src/components/yt-card';
-import { NetworkButton } from '@/src/components/rs-button';
+import VideoStrategy from '../components/VideoStrategy';
 import { PrimaryLink } from '@/src/components/new/primary-link';
+import BrandsListStrategy from '../components/BrandsListStrategy';
 import { WordsCarousel } from '@/src/components/new/words-carousel';
-
-interface Step {
-  index: number;
-  tag: string;
-  title: string;
-  description: string;
-}
-
-const STEPS: Step[] = [
-  {
-    index: 0,
-    tag: 'Inscription',
-    title: 'Inscription rapide et gratuite',
-    description: `Sowhat est une application mobile française et gratuite disponible sur iOS et Android. Seule votre adresse e-mail suffit pour vous inscrire et obtenir en moins de 2 minutes un accès illimité à toutes les fonctionnalités.`,
-  },
-  {
-    index: 1,
-    tag: 'Connexion',
-    title: 'Connexion sécurisée de vos comptes bancaires',
-    description: `Grâce à notre partenaire Powens, basé en France, certifié DSP2 et agréé par la Banque de France, connectez facilement et en toute sécurité vos comptes bancaires dans l'application.`,
-  },
-  {
-    index: 2,
-    tag: 'Comptes épargne',
-    title: 'Application unique pour toutes vos banques',
-    description: `Connectez plus de 120 établissements bancaires et gérez vos comptes courants, épargne (Livret A, PEL, etc.), comptes enfants ou d'entreprise en un seul endroit. Même en changeant de banque, vos données et votre historique restent intacts.`,
-  },
-  {
-    index: 3,
-    tag: 'Autre patrimoine',
-    title: 'Enregistrement de tous vos autres biens',
-    description: `Pour comprendre réellement votre patrimoine, il faut voir au-delà des comptes bancaires. Avec Sowhat, ajoutez vos biens immobiliers, votre véhicule, vos investissements en bourse, vos cryptomonnaies et bien plus encore. Sowhat vous offre une vue complète et détaillée de tout ce que vous possédez, afin de mieux gérer et planifier vos finances.`,
-  },
-  {
-    index: 4,
-    tag: `Vision complète`,
-    title: 'Vision complète du patrimoine',
-    description: `Découvrez enfin quelle est la valeur réelle de votre patrimoine. Sowhat vous permet de comprendre la répartition de votre patrimoine mais également de suivre son évolution dans le temps.`,
-  },
-  {
-    index: 5,
-    tag: `Budget`,
-    title: 'Gestion de budget simple et facultative',
-    description: `Fixez et suivez vos objectifs financiers avec une interface épurée. Pas envie d'y consacrer trop de temps ? La gestion du budget est totalement facultative et désactivable.`,
-  },
-  {
-    index: 6,
-    tag: `Projets d'épargne`,
-    title: `Première solution pour les projets d'épargne `,
-    description: `Que ce soit pour une maison, des vacances ou votre retraite, Sowhat vous aide à visualiser et planifier vos projets. Grâce à son simulateur intégré, gérez votre épargne en toute simplicité et prenez des décisions éclairées en quelques secondes.`,
-  },
-  {
-    index: 7,
-    tag: `Accessible`,
-    title: 'Accessible à toutes et à tous ',
-    description: `Vous trouvez Excel ou les autres outils de gestion financière trop complexes ? Nous aussi. Sowhat rend la gestion de vos finances simple et agréable, avec des fonctionnalités intuitives et une interface conçue pour tous, même pour les non-initiés.`,
-  },
-];
+import { SocialButton } from '../components/SocialButton';
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -290,31 +236,41 @@ export default function Home() {
         </div>
       </section>
 
+      <BrandsListStrategy />
+
+      <VideoStrategy />
+
       <section className="flex flex-col gap-16 items-center p-8 py-12 sm:px-16 sm:py-24">
         <Title text={`Plus d'informations sur nos réseaux`} />
 
-        <div className={`flex flex-col lg:flex-row gap-8 justify-center items-center w-full`}>
-          <CardDemo
-            title={`Comprendre Sowhat en vidéo`}
-            description={`Et ce, grâce à Shakespear...`}
-            link={`https://youtu.be/nyaZ-3tXlBw`}
-          />
-          <CardDemo
-            title={`Pourquoi Sowhat est sûre ?`}
-            description={`30 secondes pour comprendre notre politique de sécurité pour vos données personnelles et vos données bancaires.`}
-            link={`https://youtu.be/Lu5ly6mkpOQ`}
-          />
-          <CardDemo
-            title={`Pas encore convaincu(e) ?`}
-            description={`Tout est résumé ici, rien que pour vous !`}
-            link={`https://youtu.be/CrU8JcBPVSo`}
-          />
-        </div>
-
         <div className="flex w-full items-center gap-8 flex-col">
-          <NetworkButton type="facebook" />
-          <NetworkButton type="instagram" />
-          <NetworkButton type="linkedin" />
+          <SocialButton
+            href="https://www.facebook.com/share/9VV2yufSwGX31iXM"
+            icon={<Facebook fontSize="large" className="text-[#095DFE]" />}
+          >
+            sur Facebook
+          </SocialButton>
+
+          <SocialButton
+            href="https://www.instagram.com/sowhat_app_officiel/"
+            icon={<Instagram fontSize="large" style={{ color: '#F50E6A' }} />}
+          >
+            sur Instagram
+          </SocialButton>
+
+          <SocialButton
+            href="https://www.linkedin.com/company/sowhat-app/"
+            icon={<LinkedIn fontSize="large" style={{ color: '#0C5CBA' }} />}
+          >
+            sur LinkedIn
+          </SocialButton>
+
+          <SocialButton
+            href="https://www.youtube.com/@sowhat_app"
+            icon={<YouTube fontSize="large" style={{ color: '#FF002F' }} />}
+          >
+            sur Youtube
+          </SocialButton>
         </div>
       </section>
 

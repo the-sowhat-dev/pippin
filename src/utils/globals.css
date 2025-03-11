@@ -102,6 +102,22 @@ body {
   margin: 0px 60px;
 }
 
+.titles-slide a {
+  text-align: center;
+  display: inline-block;
+  margin: 0px 60px;
+}
+
+.brand-item {
+  display: inline-block;
+  margin: 0 30px;
+  transition: transform 0.3s ease;
+}
+
+.brand-item:hover {
+  transform: scale(1.2);
+}
+
 @layer base {
   :root {
     --card: 0 0% 100%;
