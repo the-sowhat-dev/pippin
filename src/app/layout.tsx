@@ -45,6 +45,7 @@ export default function RootLayout({
         <body className={`${SourceSansPro.className} antialiased`}>
           <Theme>
             <Header />
+
             {children}
 
             <Footer />

@@ -32,6 +32,43 @@ export default function Page() {
           <p className="text-center text-sm text-gray-600">{`Vous êtes à la recherche d'informations et de conseils sur vos finances personnelles ? Découvrez ici nos recommandations.`}</p>
         </div>
 
+        {/* EDUCATION FINANCIÈRE */}
+        <div className="w-full flex flex-col gap-6">
+          <SubTitle text={`Éducation financière`} />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/lfpt_logo.webp?alt=media&token=9dfd3984-9a83-4aff-8eaa-a775945ed535`}
+            link={`https://www.lafinancepourtous.com`}
+            title={`Le site pédagogique sur l'argent et la finance.`}
+            description={`La finance pour tous est une association d'intérêt général, créée pour aider chacun à se sentir plus à l'aise avec les questions économiques et financières.`}
+          />
+        </div>
+
+        {/* MEDIA SPECIALISE */}
+        <div className="w-full flex flex-col gap-6">
+          <SubTitle text={`Media spécialisé`} />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/spak_logo.webp?alt=media&token=a5097da6-0e9f-4732-832a-2483762adaa2`}
+            link={`https://spak.fr`}
+            title={`Pour une meilleure éducation financière.`}
+            description={`SPAK développe des programmes de sensibilisation et des solutions pour favoriser une meilleure éducation financière.`}
+          />
+        </div>
+
+        {/* PODCAST */}
+        <div className="w-full flex flex-col gap-6">
+          <SubTitle text={`Podcast`} />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/lbf_logo.webp?alt=media&token=65ac8e5f-1e17-4f87-b667-5088e45ba1a5`}
+            link={`https://la-bonne-fortune.com/`}
+            title={`Il est temps de prendre en main vos finances personnelles.`}
+            description={`Le podcast "La bonne fortune", c'est plus de 60 invités et 170.000 écoutes dans le but de rendre les finances personnelles simples et accessibles à tous.`}
+          />
+        </div>
+
+        {/* INVESTISSEMENT */}
         <div className="w-full flex flex-col gap-6">
           <SubTitle text={`Investissement`} />
 
@@ -49,14 +86,29 @@ export default function Page() {
           />
         </div>
 
+        {/* STARTUPS PARTENAIRES */}
         <div className="w-full flex flex-col gap-6">
-          <SubTitle text={`Éducation financière`} />
+          <SubTitle text={`Startups partenaires`} />
 
           <PrimaryCard
-            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/lfpt_logo.webp?alt=media&token=9dfd3984-9a83-4aff-8eaa-a775945ed535`}
-            link={`https://www.lafinancepourtous.com`}
-            title={`Le site pédagogique sur l'argent et la finance.`}
-            description={`La finance pour tous est une association d'intérêt général, créée pour aider chacun à se sentir plus à l'aise avec les questions économiques et financières.`}
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/iziwup_logo.webp?alt=media&token=ff1a65c2-2724-4e49-bd59-bec102979dda`}
+            link={`https://www.iziwup.com/`}
+            title={`L'éducation financière accessible à tous.`}
+            description={`Iziwup est dédiée à l'éducation financière des jeunes, avec pour mission de rendre la gestion de l'argent accessible dès le plus jeune âge. Son objectif : intégrer l'éducation financière dans les programmes scolaires pour préparer les jeunes à une gestion éclairée de leur argent.`}
+          />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/jared_logo.webp?alt=media&token=c3f68888-af3a-4a5e-8296-fb333e5332f3`}
+            link={`https://jared.finance/`}
+            title={`Vos objectifs financiers à portée de main.`}
+            description={`Jared est un assistant financier qui vous aide au quotidien à progresser dans vos finances. Discutez avec votre assistant, identifiez vos objectifs, et bénéficiez de tout ce qu'il faut pour les atteindre !`}
+          />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/skade_logo.webp?alt=media&token=c0897bc2-7aa6-42a8-9f11-962163cb3079`}
+            link={`https://www.skade.io/?r=0`}
+            title={`Le réseau social qui réunit les investisseur en bourse.`}
+            description={`Skade.io est le premier réseau social qui révolutionne l'investissement en bourse en réunissant les investisseurs dans un écosystème transparent où l'intelligence collective est au cœur des décisions.`}
           />
         </div>
       </article>

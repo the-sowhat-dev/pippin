@@ -12,7 +12,10 @@ import { ContactButtonWithDialog } from '@/components/new/contact-button-with-di
 export default function Header() {
   const pathname = usePathname();
   const isArticlesPage = pathname.startsWith('/a');
+  const isAdvicePage = pathname === '/advices';
   const { messages } = useLanguage();
+
+  if (isAdvicePage) return null;
 
   return (
     <div className="fixed px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
