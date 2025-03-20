@@ -1,12 +1,5 @@
-import {
-  Card,
-  CardTitle,
-  CardFooter,
-  CardHeader,
-  CardContent,
-  CardDescription,
-} from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { Card, CardTitle, CardFooter, CardHeader, CardDescription } from '../../components/ui/card';
+import { cn } from '../../lib/utils';
 
 import { YTButton } from './yt-button';
 

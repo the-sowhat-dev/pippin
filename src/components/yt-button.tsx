@@ -1,17 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export function YTButton({ link }: { link: string }) {
-  const openInNewTab = (url: string) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-    if (newWindow) newWindow.opener = null;
-  };
-
   return (
     <div className="gap-3 flex flex-col items-center">
       <Link
