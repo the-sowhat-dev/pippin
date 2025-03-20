@@ -1,14 +1,11 @@
 import { getArticles } from '@/utils/getArticles';
 import ArticleCard from '@/components/article-card';
+import { MDXWrapper } from '@/components/MDXWrapper';
 
-# Nos articles
-
-Retrouvez tous nos articles pour bien épargner.
-
-&nbsp;
-
-<div className="items-center flex flex-col sm:grid sm:grid-cols-2 gap-4">
-  {getArticles().map((article) => (
-    <ArticleCard key={article.slug} {...article} />
-  ))}
-</div>
+<MDXWrapper>
+  <div className="items-center flex flex-col sm:grid sm:grid-cols-2 gap-4">
+    {getArticles().map((article) => (
+      <ArticleCard key={article.slug} {...article} />
+    ))}
+  </div>
+</MDXWrapper>

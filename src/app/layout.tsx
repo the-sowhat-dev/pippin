@@ -1,7 +1,7 @@
 import '@/utils/globals.css';
 
-import Script from 'next/script';
 import type { Metadata } from 'next';
+import { Theme } from '@radix-ui/themes';
 import { Analytics } from '@vercel/analytics/next';
 
 import Footer from '@/components/footer';
@@ -43,13 +43,14 @@ export default function RootLayout({
 
       <LanguageProvider>
         <body className={`${SourceSansPro.className} antialiased`}>
-          <Header />
+          <Theme>
+            <Header />
+            {children}
 
-          {children}
+            <Footer />
 
-          <Footer />
-
-          <Analytics />
+            <Analytics />
+          </Theme>
         </body>
       </LanguageProvider>
     </html>

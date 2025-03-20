@@ -7,11 +7,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
+  AccordionContent,
   AccordionTrigger,
 } from '../../../components/ui/accordion';
-import { STEPS } from '@/utils/steps';
 import { Title } from '@/components/new/title';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { PrimaryLink } from '@/components/new/primary-link';
@@ -19,29 +18,30 @@ import { PrimaryLink } from '@/components/new/primary-link';
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(1);
   const { messages } = useLanguage();
+  const steps = messages.home.principles.steps;
 
   return (
     <section className="flex flex-col gap-16 sm:gap-12 items-center p-8 py-12 sm:px-16 sm:py-24 bg-yellow-400">
-      <Title text={`Nos 8 principes pour une bonne application de finance`} />
+      <Title text={messages.home.principles.title} />
 
       {/* WHEN ON MOBILE */}
       <div className="lg:hidden w-full flex flex-col">
         {/* Container for horizontal scrolling for mobile experience ONLY */}
         <div className="w-full overflow-x-auto">
           <div className="flex sm:flex-wrap gap-x-4 gap-y-4 pb-4 sm:pb-0 min-w-max sm:min-w-0">
-            {STEPS.map((s) => (
+            {steps.map((step) => (
               <button
-                key={s.index}
-                onClick={() => setActiveStep(s.index)}
+                key={step.index}
+                onClick={() => setActiveStep(step.index)}
                 className={`p-2 px-4 sm:p-4 gap-2 sm:gap-4 text-base sm:text-lg flex items-center rounded-md transition-colors whitespace-nowrap
-            ${
-              activeStep === s.index
-                ? 'bg-yellow-300 border-yellow-300 shadow-md'
-                : 'bg-white border-yellow-200 hover:border-gray-100 hover:bg-gray-100'
-            } border`}
+                  ${
+                    activeStep === step.index
+                      ? 'bg-yellow-300 border-yellow-300 shadow-md'
+                      : 'bg-white border-yellow-200 hover:border-gray-100 hover:bg-gray-100'
+                  } border`}
               >
-                <div>{s.index + 1}</div>
-                <div>{s.tag}</div>
+                <div>{step.index + 1}</div>
+                <div>{step.tag}</div>
               </button>
             ))}
           </div>
@@ -49,7 +49,7 @@ export default function PrinciplesStrategy() {
 
         <div className="flex items-center justify-center flex-col gap-8 p-6 sm:p-16 self-center overflow-hidden">
           <p className="text-center text-base sm:text-lg sm:w-[70%]">
-            {STEPS[activeStep > 7 ? 0 : activeStep]?.description}
+            {steps[activeStep > 7 ? 0 : activeStep]?.description}
           </p>
           <AnimatePresence mode="wait">
             <motion.div
@@ -86,10 +86,10 @@ export default function PrinciplesStrategy() {
               setActiveStep(Number(value.replace('step-', '')));
             }}
           >
-            {STEPS.map((s) => (
-              <AccordionItem value={`step-${s.index}`} key={`"step-${s.index}"`}>
-                <AccordionTrigger>{`${s.index + 1}. ${s.title}`}</AccordionTrigger>
-                <AccordionContent>{s.description}</AccordionContent>
+            {steps.map((step) => (
+              <AccordionItem value={`step-${step.index}`} key={`step-${step.index}`}>
+                <AccordionTrigger>{`${step.index + 1}. ${step.title}`}</AccordionTrigger>
+                <AccordionContent>{step.description}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

@@ -3,15 +3,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ContactButtonWithDialog } from '@/components/new/contact-button-with-dialog';
+import { Button } from '@radix-ui/themes';
+
 import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { ContactButtonWithDialog } from '@/components/new/contact-button-with-dialog';
 
 export default function Header() {
   const pathname = usePathname();
   const isArticlesPage = pathname.startsWith('/a');
+  const { messages } = useLanguage();
 
   return (
-    <div className="px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 absolute top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
+    <div className="fixed px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
       {/* Show logo only on articles pages */}
       {isArticlesPage && (
         <Link href={'/'}>
@@ -31,11 +35,19 @@ export default function Header() {
 
       {/* Right-side content with flex-grow when no logo */}
       <div className={`flex gap-4 sm:gap-8 ${!isArticlesPage ? 'flex-grow justify-end' : ''}`}>
-        <LanguageToggle />
+        {!isArticlesPage && <LanguageToggle />}
+
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
         <a href={'/a'}>
-          <div className="px-5 sm:px-8 py-2 bg-gray-200 hover:bg-gray-200/80">Articles</div>
+          <Button
+            size="3"
+            variant="solid"
+            className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
+          >
+            {messages.header.articles}
+          </Button>
         </a>
+
         {!isArticlesPage && <ContactButtonWithDialog />}
       </div>
     </div>

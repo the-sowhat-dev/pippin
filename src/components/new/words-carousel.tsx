@@ -1,16 +1,13 @@
-const WORDS = [
-  'Connectée',
-  'Personnalisée',
-  'Simple',
-  'Sécurisée',
-  'Française',
-  'Cool',
-  'Gratuite',
-];
+'use client';
+
+import { useLanguage } from '@/i18n/LanguageProvider';
 
 export function WordsCarousel() {
+  const { messages } = useLanguage();
+  const words = messages.home.wordsCarousel;
+
   // Multiply each word 4 times
-  const repeatedWords = [...Array(4)].flatMap(() => WORDS);
+  const repeatedWords = [...Array(4)].flatMap(() => words.map((w) => w.word));
 
   return (
     <div>

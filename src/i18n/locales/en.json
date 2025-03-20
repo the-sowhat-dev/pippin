@@ -1,4 +1,12 @@
 {
+  "header": {
+    "articles": "Articles",
+    "contact": "Contact us"
+  },
+  "contactDialog": {
+    "title": "Want to discuss?",
+    "description": "Contact us on LinkedIn or by email."
+  },
   "home": {
     "hero": {
       "tagline": "The essential app for personal finance, accessible to everyone.",
@@ -6,6 +14,100 @@
         "ios": "Download on iOS",
         "android": "Download on Android"
       }
+    },
+    "wordsCarousel": [
+      { "index": 0, "word": "Connected" },
+      { "index": 1, "word": "Personalized" },
+      { "index": 2, "word": "Simple" },
+      { "index": 3, "word": "Secure" },
+      { "index": 4, "word": "French" },
+      { "index": 5, "word": "Cool" },
+      { "index": 6, "word": "Free" }
+    ],
+    "description": {
+      "title": "Sowhat is",
+      "features": {
+        "accounts": "All your bank accounts and 100% of your assets connected in a single app.",
+        "envelopes": "Managing your various savings projects with a virtual envelope system and forecasting tool.",
+        "security": "Priority on security since the app doesn't touch real money (payments, transfers, and investments are impossible from Sowhat).",
+        "personalization": "The easiest and most personalized way to manage your savings projects, money, and budget.",
+        "free": "100% free."
+      }
+    },
+    "principles": {
+      "title": "Our 8 principles for a good finance app",
+      "steps": [
+        {
+          "index": 0,
+          "tag": "Sign up",
+          "title": "Quick and free registration",
+          "description": "Sowhat is a free French mobile app available on iOS and Android. Only your email address is needed to register and get unlimited access to all features in less than 2 minutes."
+        },
+        {
+          "index": 1,
+          "tag": "Connection",
+          "title": "Secure connection of your bank accounts",
+          "description": "Thanks to our partner Powens, based in France, PSD2 certified and approved by the Bank of France, easily and securely connect your bank accounts in the app."
+        },
+        {
+          "index": 2,
+          "tag": "Savings accounts",
+          "title": "Single app for all your banks",
+          "description": "Connect over 120 banking institutions and manage your current accounts, savings accounts, children's or business accounts in one place. Even when changing banks, your data and history remain intact."
+        },
+        {
+          "index": 3,
+          "tag": "Other assets",
+          "title": "Record all your other assets",
+          "description": "To truly understand your wealth, you need to look beyond bank accounts. With Sowhat, add your real estate, vehicle, stock investments, cryptocurrencies, and much more. Sowhat gives you a complete and detailed view of everything you own to better manage and plan your finances."
+        },
+        {
+          "index": 4,
+          "tag": "Complete view",
+          "title": "Complete view of your assets",
+          "description": "Finally discover the real value of your assets. Sowhat allows you to understand the distribution of your wealth and also track its evolution over time."
+        },
+        {
+          "index": 5,
+          "tag": "Budget",
+          "title": "Simple and optional budget management",
+          "description": "Set and track your financial goals with a clean interface. Don't want to spend too much time on it? Budget management is completely optional and can be disabled."
+        },
+        {
+          "index": 6,
+          "tag": "Savings projects",
+          "title": "First solution for savings projects",
+          "description": "Whether it's for a house, vacation, or retirement, Sowhat helps you visualize and plan your projects. Thanks to its integrated simulator, manage your savings with ease and make informed decisions in seconds."
+        },
+        {
+          "index": 7,
+          "tag": "Accessible",
+          "title": "Accessible to everyone",
+          "description": "Find Excel or other financial management tools too complex? We do too. Sowhat makes managing your finances simple and enjoyable, with intuitive features and an interface designed for everyone, even beginners."
+        }
+      ]
+    },
+    "brands": {
+      "title": "They talk about us"
+    },
+    "video": {
+      "title": "The details of the Sowhat project",
+      "subtitle": "Explained by Raphaël, co-founder and CEO"
+    },
+    "socials": {
+      "title": "More information on our networks",
+      "facebook": "on Facebook",
+      "instagram": "on Instagram",
+      "linkedin": "on LinkedIn",
+      "youtube": "on Youtube"
     }
+  },
+  "footer": {
+    "legal": "Legal notice",
+    "pressKit": "Press kit"
+  },
+  "articles": {
+    "title": "Our articles (in french)",
+    "subtitle": "Find all our articles to help you save better."
   }
 }

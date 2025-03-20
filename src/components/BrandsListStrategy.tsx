@@ -1,13 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { useLanguage } from '@/i18n/LanguageProvider';
 import { Title } from './new/title';
 import { Brand, BRANDS } from '../utils/brands';
 
 export default function BrandsListStrategy() {
+  const { messages } = useLanguage();
+
   return (
     <section className="flex flex-col gap-16 py-8 sm:py-16 pt-12">
-      <Title text="Ils parlent de nous" />
+      <Title text={messages.home.brands.title} />
       <ScrollingBrandsBanner brands={BRANDS} />
     </section>
   );

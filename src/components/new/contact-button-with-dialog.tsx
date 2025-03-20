@@ -1,7 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { LinkedIn } from '@mui/icons-material';
 
-import { AvatarDemo } from '../avatar-profile';
 import {
   Dialog,
   DialogTitle,
@@ -10,21 +11,26 @@ import {
   DialogTrigger,
   DialogDescription,
 } from '../../../components/ui/dialog';
+import { AvatarDemo } from '../avatar-profile';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { Button } from '@radix-ui/themes';
 
 const EMAIL = 'contact@sowhat-app.com';
 
 export function ContactButtonWithDialog() {
+  const { messages } = useLanguage();
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="px-5 sm:px-8 py-2 bg-gray-200 hover:bg-gray-200/80">
-          Nous contacter
-        </button>
+        <Button size="3" variant="solid" className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
+          {messages.header.contact}
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Envie de discuter ?</DialogTitle>
-          <DialogDescription>Nous contacter sur LinkedIn ou bien par email.</DialogDescription>
+          <DialogTitle>{messages.contactDialog.title}</DialogTitle>
+          <DialogDescription>{messages.contactDialog.description}</DialogDescription>
         </DialogHeader>
         <div className="gap-8 py-4 flex flex-col">
           <ProfileContactDialog
@@ -32,7 +38,6 @@ export function ContactButtonWithDialog() {
             title="Co-founder & CEO"
             name="Raphaël METROP"
             link="rapha%C3%ABl-metrop-05714323"
-            phone="33670028776"
           />
 
           <ProfileContactDialog
@@ -40,7 +45,6 @@ export function ContactButtonWithDialog() {
             title="Co-founder & CTO"
             name="Hugo BAYOUD"
             link="hugo-bayoud-4aa927194"
-            phone="33698352892"
           />
         </div>
 
@@ -58,7 +62,6 @@ interface ProfileContactDialogProps {
   name: string;
   title: string;
   link: string;
-  phone: string;
 }
 
 const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
@@ -66,7 +69,6 @@ const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
   name,
   title,
   link,
-  phone,
 }) => {
   return (
     <div className="flex gap-4 items-center group">
@@ -76,10 +78,6 @@ const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
         <p className="text-lg font-bold">{name}</p>
         <p>{title}</p>
       </div>
-
-      {/* <Link href={`https://wa.me/${phone}`} rel="noopener noreferrer" target="_blank">
-        <WhatsApp fontSize="large" className=" hover:text-green-600 transition-all duration-300" />
-      </Link> */}
 
       <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
         <LinkedIn fontSize="large" className=" hover:text-blue-600 transition-all duration-300" />
