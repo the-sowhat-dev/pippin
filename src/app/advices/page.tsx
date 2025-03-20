@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { OpenInNew } from '@mui/icons-material';
 
-import Footer from '@/src/components/footer';
-import { Title } from '@/src/components/new/title';
+import Footer from '@/components/footer';
+import { Title } from '@/components/new/title';
 
 export default function Page() {
   return (

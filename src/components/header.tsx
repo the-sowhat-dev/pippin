@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ContactButtonWithDialog } from '@/src/components/new/contact-button-with-dialog';
+import { ContactButtonWithDialog } from '@/components/new/contact-button-with-dialog';
+import { LanguageToggle } from './LanguageToggle';
 
-export const Header = () => {
+export default function Header() {
   const pathname = usePathname();
   const isArticlesPage = pathname.startsWith('/a');
 
@@ -30,6 +31,7 @@ export const Header = () => {
 
       {/* Right-side content with flex-grow when no logo */}
       <div className={`flex gap-4 sm:gap-8 ${!isArticlesPage ? 'flex-grow justify-end' : ''}`}>
+        <LanguageToggle />
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
         <a href={'/a'}>
           <div className="px-5 sm:px-8 py-2 bg-gray-200 hover:bg-gray-200/80">Articles</div>
@@ -38,4 +40,4 @@ export const Header = () => {
       </div>
     </div>
   );
-};
+}

@@ -1,0 +1,11 @@
+{
+  "home": {
+    "hero": {
+      "tagline": "L'application essentielle pour les finances personnelles, accessible à tous.",
+      "download": {
+        "ios": "Télécharger sur iOS",
+        "android": "Télécharger sur Android"
+      }
+    }
+  }
+}

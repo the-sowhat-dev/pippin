@@ -1,0 +1,11 @@
+{
+  "home": {
+    "hero": {
+      "tagline": "The essential app for personal finance, accessible to everyone.",
+      "download": {
+        "ios": "Download on iOS",
+        "android": "Download on Android"
+      }
+    }
+  }
+}

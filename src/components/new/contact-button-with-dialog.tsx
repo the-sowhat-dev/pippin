@@ -1,15 +1,15 @@
-import {
-  Dialog,
-  DialogTitle,
-  DialogHeader,
-  DialogTrigger,
-  DialogContent,
-  DialogDescription,
-} from '@/components/ui/dialog';
 import Link from 'next/link';
 import { LinkedIn } from '@mui/icons-material';
 
 import { AvatarDemo } from '../avatar-profile';
+import {
+  Dialog,
+  DialogTitle,
+  DialogHeader,
+  DialogContent,
+  DialogTrigger,
+  DialogDescription,
+} from '../../../components/ui/dialog';
 
 const EMAIL = 'contact@sowhat-app.com';
 
