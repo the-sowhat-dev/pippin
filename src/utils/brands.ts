@@ -43,4 +43,11 @@ export const BRANDS: Brand[] = [
     width: 250,
     height: 250,
   },
+  {
+    logo: '/images/references/mesinfos.jpg',
+    name: 'Mesinfos.',
+    link: 'https://mesinfos.fr/69970-chaponnay/developpee-pres-de-lyon-l-application-sowhat-eclaire-les-choix-d-epargne-des-particuliers-218459.html',
+    width: 250,
+    height: 250,
+  },
 ];
