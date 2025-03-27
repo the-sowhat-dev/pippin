@@ -56,18 +56,6 @@ export default function Page() {
           />
         </div>
 
-        {/* PODCAST */}
-        <div className="w-full flex flex-col gap-6">
-          <SubTitle text={`Podcast`} />
-
-          <PrimaryCard
-            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/lbf_logo.webp?alt=media&token=65ac8e5f-1e17-4f87-b667-5088e45ba1a5`}
-            link={`https://la-bonne-fortune.com/`}
-            title={`Il est temps de prendre en main vos finances personnelles.`}
-            description={`Le podcast "La bonne fortune", c'est plus de 60 invités et 170.000 écoutes dans le but de rendre les finances personnelles simples et accessibles à tous.`}
-          />
-        </div>
-
         {/* INVESTISSEMENT */}
         <div className="w-full flex flex-col gap-6">
           <SubTitle text={`Investissement`} />
@@ -83,6 +71,25 @@ export default function Page() {
               votre épargne, préparer votre retraite, choisir les meilleurs placements, que ce soit
               en assurance vie, en bourse, en immobilier ou ailleurs. Vous êtes désormais plus de
               200 000 visiteurs par mois à nous suivre !`}
+          />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/prosper_conseil_logo.webp?alt=media&token=1e87cdfa-ad35-4fe4-8544-91e1ac8c2492`}
+            link={`https://prosper-conseil.fr/articles/`}
+            title={`Le blog d'un conseiller en gestion de patrimoine vraiment indépendant.`}
+            description={`Sont abordées ici des thématiques clés comme l’immobilier, la retraite, les placements et l'optimisation fiscale.`}
+          />
+        </div>
+
+        {/* PODCAST */}
+        <div className="w-full flex flex-col gap-6">
+          <SubTitle text={`Podcast`} />
+
+          <PrimaryCard
+            image={`https://firebasestorage.googleapis.com/v0/b/fintech-cd7dc.appspot.com/o/lbf_logo.webp?alt=media&token=65ac8e5f-1e17-4f87-b667-5088e45ba1a5`}
+            link={`https://la-bonne-fortune.com/`}
+            title={`Il est temps de prendre en main vos finances personnelles.`}
+            description={`Le podcast "La bonne fortune", c'est plus de 60 invités et 170.000 écoutes dans le but de rendre les finances personnelles simples et accessibles à tous.`}
           />
         </div>
 

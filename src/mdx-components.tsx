@@ -77,7 +77,7 @@ const components = {
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
   ImageWithCaption: ({ src, alt, caption, maxHeight }: ImageWithCaptionProps) => (
-    <div className="">
+    <div>
       <Image
         src={src}
         alt={alt}

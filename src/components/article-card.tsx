@@ -11,7 +11,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ title, slug, date, collaboration }: ArticleCardProps) {
   // Dynamic import for the splash image
-  const SplashImage = require(`@/app/a/${slug}/splash.png`).default;
+  const SplashImage = require(`@/app/a/${slug}/splash.webp`).default;
 
   // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
   return (
