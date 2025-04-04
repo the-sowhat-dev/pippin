@@ -90,19 +90,23 @@ const components = {
   ),
   CollaborationBlock: ({ id }: { id: string }) => <CollaborationBlock id="adi" />,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
-    <table>
+    <table className="w-full border-collapse mb-8">
       <thead>
         <tr>
           {data.headers.map((header, index) => (
-            <th key={index}>{header}</th>
+            <th key={index} className="border border-amber-200 bg-amber-100 p-3 text-left">
+              {header}
+            </th>
           ))}
         </tr>
       </thead>
       <tbody>
         {data.rows.map((row, index) => (
-          <tr key={index}>
+          <tr key={index} className={index % 2 === 0 ? 'bg-amber-50' : 'bg-yellow-50'}>
             {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
+              <td key={cellIndex} className="border border-yellow-300 p-3">
+                {cell}
+              </td>
             ))}
           </tr>
         ))}
