@@ -46,6 +46,13 @@ export function ContactButtonWithDialog() {
             name="Hugo BAYOUD"
             link="hugo-bayoud-4aa927194"
           />
+
+          <ProfileContactDialog
+            person="harold"
+            title="Chief Product Officer"
+            name="Harold DEBUCK"
+            link="harold-debuck-2215b344"
+          />
         </div>
 
         <div className="flex flex-col items-center space-x-2">
@@ -58,7 +65,7 @@ export function ContactButtonWithDialog() {
 }
 
 interface ProfileContactDialogProps {
-  person: 'raph' | 'hugo';
+  person: 'raph' | 'hugo' | 'harold';
   name: string;
   title: string;
   link: string;

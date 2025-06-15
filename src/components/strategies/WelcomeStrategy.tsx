@@ -49,7 +49,7 @@ export default function ArticleCard() {
 
         <div className="flex basis-1/2 self-center justify-center items-center sm:items-end max-w-[300px] sm:max-w-[600px]">
           <Image
-            src={'/images/mockup_us.png'}
+            src={'/images/mockup_nous_3.png'}
             alt="Strategy Image"
             style={{
               maxHeight: '600px',

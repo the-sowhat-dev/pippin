@@ -50,4 +50,25 @@ export const BRANDS: Brand[] = [
     width: 250,
     height: 250,
   },
+  {
+    logo: '/images/references/le_progres.jpg',
+    name: 'Le Progres',
+    link: 'https://www.leprogres.fr/economie/2025/04/16/de-pharmacien-a-entrepreneur-tech-raphael-metrop-reinvente-sa-carriere',
+    width: 250,
+    height: 250,
+  },
+  {
+    logo: '/images/references/investisseur_tv.jpg',
+    name: 'Investisseur.TV',
+    link: 'https://www.investisseur.tv/video/sowhat-appli-d-open-banking-pour-la-gestion-des-finances-personnelles',
+    width: 250,
+    height: 250,
+  },
+  {
+    logo: '/images/references/samourais_business.jpg',
+    name: 'Les Samouraïs du Business',
+    link: 'https://on.soundcloud.com/X6vI9VhO56fIO8GE7z',
+    width: 250,
+    height: 250,
+  },
 ];

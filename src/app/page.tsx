@@ -1,6 +1,5 @@
 'use client';
 
-import VideoStrategy from '@/components/VideoStrategy';
 import BrandsListStrategy from '@/components/BrandsListStrategy';
 import SocialsStrategy from '@/components/strategies/SocialsStrategy';
 import WelcomeStrategy from '@/components/strategies/WelcomeStrategy';
@@ -18,7 +17,7 @@ export default function Home() {
 
       <BrandsListStrategy />
 
-      <VideoStrategy />
+      {/* <VideoStrategy /> */}
 
       <SocialsStrategy />
     </main>
