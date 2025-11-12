@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { Android, Apple } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { PrimaryLink } from '@/components/new/primary-link';
-import { WordsCarousel } from '@/components/new/words-carousel';
+import { PrimaryLink } from '@/components/PrimaryLink';
+import { WordsCarousel } from '@/components/WordsCarousel';
 
 export default function ArticleCard() {
   const { messages } = useLanguage();

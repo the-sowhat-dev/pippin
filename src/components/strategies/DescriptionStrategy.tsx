@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { Title } from '@/components/new/title';
+import { Title } from '@/components/Title';
 
 export default function DescriptionStrategy() {
   const { messages } = useLanguage();

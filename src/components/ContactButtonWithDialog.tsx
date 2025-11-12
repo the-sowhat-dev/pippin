@@ -10,8 +10,8 @@ import {
   DialogContent,
   DialogTrigger,
   DialogDescription,
-} from '../../../components/ui/dialog';
-import { AvatarDemo } from '../avatar-profile';
+} from '../../components/ui/dialog';
+import { AvatarProfile } from './AvatarProfile';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';
 
@@ -72,7 +72,7 @@ const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
 }) => {
   return (
     <div className="flex gap-4 items-center group">
-      <AvatarDemo person={person} />
+      <AvatarProfile person={person} />
 
       <div className=" flex flex-col grow">
         <p className="text-lg font-bold">{name}</p>

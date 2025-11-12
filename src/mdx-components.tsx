@@ -3,7 +3,7 @@ import { highlight } from 'sugar-high';
 import { OpenSans } from './utils/fonts';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CollaborationBlock } from './components/collaboration-block';
+import { CollaborationBlock } from './components/CollaborationBlock';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/i18n/LanguageProvider';
 
-const Footer = () => {
+export function Footer() {
   const { messages } = useLanguage();
 
   return (
@@ -22,6 +22,4 @@ const Footer = () => {
       </Link>
     </div>
   );
-};
-
-export default Footer;
+}

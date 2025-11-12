@@ -1,6 +1,6 @@
 'use client';
 
-import BrandsListStrategy from '@/components/BrandsListStrategy';
+import BrandsListStrategy from '@/components/strategies/BrandsListStrategy';
 import SocialsStrategy from '@/components/strategies/SocialsStrategy';
 import WelcomeStrategy from '@/components/strategies/WelcomeStrategy';
 import PrinciplesStrategy from '@/components/strategies/PrinciplesStrategy';
