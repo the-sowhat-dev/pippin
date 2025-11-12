@@ -1,8 +1,8 @@
-import { readMarkdownFile } from '@/utils/markdownReader';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { readMarkdownFile } from '@/utils/markdownReader';
 
 export default function Page() {
-  const markdownContent = readMarkdownFile('app/legal/page.md');
+  const markdownContent = readMarkdownFile('app/app/legal/tos/page.md');
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-200 to-yellow-50 pt-24 px-8">

@@ -11,11 +11,11 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ title, slug, date, collaboration }: ArticleCardProps) {
   // Dynamic import for the splash image
-  const SplashImage = require(`@/app/a/${slug}/splash.webp`).default;
+  const SplashImage = require(`@/app/blog/a/${slug}/splash.webp`).default;
 
   // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
   return (
-    <a href={`/a/${slug}`}>
+    <a href={`/blog/a/${slug}`}>
       <div className="relative aspect-[3/4] max-w-[250px] sm:max-w-[300px] hover:shadow-md group">
         {/* Image Container - Square aspect ratio with hover transition */}
         <div className="overflow-hidden aspect-square flex">

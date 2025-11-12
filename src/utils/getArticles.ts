@@ -9,7 +9,7 @@ interface Article {
 }
 
 export function getArticles(): Article[] {
-  const articlesDirectory = path.join(process.cwd(), 'src/app/a');
+  const articlesDirectory = path.join(process.cwd(), 'src/app/blog/a');
   const articles: Article[] = [];
 
   const entries = fs.readdirSync(articlesDirectory, { withFileTypes: true });

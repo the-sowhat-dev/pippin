@@ -11,17 +11,21 @@ import { ContactButtonWithDialog } from '@/components/new/contact-button-with-di
 
 export default function Header() {
   const pathname = usePathname();
-  const isArticlesPage = pathname.startsWith('/a');
+  const isArticlesPage = pathname.startsWith('/blog/a/');
+  const isBlogPage = pathname === '/blog';
+  const isAppPage = pathname.startsWith('/app');
   const isAdvicePage = pathname === '/advices';
   const { messages } = useLanguage();
 
   if (isAdvicePage) return null;
 
+  const showLogo = isArticlesPage || isBlogPage || isAppPage;
+
   return (
     <div className="fixed px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
-      {/* Show logo only on articles pages */}
-      {isArticlesPage && (
-        <Link href={'/'}>
+      {/* Show logo on articles, blog, and app pages */}
+      {showLogo && (
+        <Link href={'/app'}>
           <Image
             src={'/images/logo-blanc.png'}
             alt="Logo"
@@ -37,11 +41,22 @@ export default function Header() {
       )}
 
       {/* Right-side content with flex-grow when no logo */}
-      <div className={`flex gap-4 sm:gap-8 ${!isArticlesPage ? 'flex-grow justify-end' : ''}`}>
-        {!isArticlesPage && <LanguageToggle />}
+      <div
+        className={`flex gap-4 sm:gap-8 items-center ${!showLogo ? 'flex-grow justify-end' : ''}`}
+      >
+        {!isArticlesPage && !isBlogPage && <LanguageToggle />}
+
+        {/* Show Home link on blog pages */}
+        {(isBlogPage || isArticlesPage) && (
+          <Link href={'/app'}>
+            <Button size="3" variant="ghost" className="hover:bg-gray-200/20">
+              Accueil
+            </Button>
+          </Link>
+        )}
 
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
-        <a href={'/a'}>
+        <a href={'/blog'}>
           <Button
             size="3"
             variant="solid"
