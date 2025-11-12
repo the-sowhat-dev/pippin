@@ -44,11 +44,11 @@ export default function RootLayout({
       <LanguageProvider>
         <body className={`${SourceSansPro.className} antialiased`}>
           <Theme>
-            <Header />
+            {/* <Header /> */}
 
             {children}
 
-            <Footer />
+            {/* <Footer /> */}
 
             <Analytics />
           </Theme>
