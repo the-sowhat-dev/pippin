@@ -1,5 +1,5 @@
 import { getArticles } from '@/utils/getArticles';
-import ArticleCard from '@/components/article-card';
+import ArticleCard from '@/components/ArticleCard';
 import Header from '@/components/header';
 
 export default function Page() {

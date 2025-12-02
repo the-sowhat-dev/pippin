@@ -3,7 +3,7 @@
 import { YouTube } from '@mui/icons-material';
 import { Instagram, LinkedIn, Facebook } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { Title } from '@/components/new/title';
+import { Title } from '@/components/Title';
 import { SocialButton } from '@/components/SocialButton';
 
 export default function SocialsStrategy() {

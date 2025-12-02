@@ -9,7 +9,7 @@
   },
   "home": {
     "hero": {
-      "tagline": "L'application essentielle pour les finances personnelles, accessible à tous.",
+      "tagline": "Téléchargez l'application et laissez le monde de la finance venir à vous.",
       "download": {
         "ios": "Télécharger sur iOS",
         "android": "Télécharger sur Android"
@@ -25,12 +25,11 @@
       { "index": 6, "word": "Gratuite" }
     ],
     "description": {
-      "title": "Sowhat c'est",
       "features": {
-        "accounts": "Tous vos comptes bancaires et 100% de votre patrimoine connectés dans une seule app.",
-        "envelopes": "La gestion de vos différents projets d'épargne grâce à un système d'enveloppes virtuelles et un outil de prévision.",
-        "security": "La priorité sur la sécurité puisque l'application ne touche pas à l'argent réel (paiements, virements et investissements impossibles depuis Sowhat).",
-        "personalization": "Ce qu'il y a de plus facile et personnalisé pour gérer vos projets d'épargne, votre argent et votre budget.",
+        "accounts": "Vous souhaitez gagner mieux avec votre argent 💶 mais n'avez jamais franchi le pas ?",
+        "envelopes": "Rejoignez l'expérience invstore® et laissez-vous guider sans effort. 💡🧭",
+        "security": "Notre IA fait matcher chaque profil financier avec les meilleurs experts et opportunités. ",
+        "personalization": "",
         "free": "100% gratuite."
       }
     },
@@ -88,7 +87,7 @@
       ]
     },
     "brands": {
-      "title": "Ils parlent de nous"
+      "title": "Ils nous font confiance"
     },
     "video": {
       "title": "Les détails du projet Sowhat",

@@ -11,9 +11,9 @@ import {
   AccordionContent,
   AccordionTrigger,
 } from '../../../components/ui/accordion';
-import { Title } from '@/components/new/title';
+import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { PrimaryLink } from '@/components/new/primary-link';
+import { PrimaryLink } from '@/components/PrimaryLink';
 
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(1);

@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { Title } from './new/title';
-import { Brand, BRANDS } from '../utils/brands';
+import { Title } from '../Title';
+import { Brand, BRANDS } from '../../utils/brands';
 
 export default function BrandsListStrategy() {
   const { messages } = useLanguage();

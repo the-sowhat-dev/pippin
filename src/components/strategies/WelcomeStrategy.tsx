@@ -4,32 +4,34 @@ import Image from 'next/image';
 
 import { Android, Apple } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { PrimaryLink } from '@/components/new/primary-link';
-import { WordsCarousel } from '@/components/new/words-carousel';
+import { PrimaryLink } from '@/components/PrimaryLink';
+import { WordsCarousel } from '@/components/WordsCarousel';
 
 export default function ArticleCard() {
   const { messages } = useLanguage();
 
   return (
     <section>
-      <div className="flex flex-col w-full gap-4 sm:gap-8 p-8 pt-28">
+      <div className="flex items-center justify-center py-12 pt-16 sm:py-12">
         <Image
-          width={0}
-          height={0}
           priority
+          width={1000}
+          height={1000}
           style={{
             width: '60%',
             height: 'auto',
             objectFit: 'contain',
           }}
-          src="/images/font.svg"
+          src="/images/invstore.png"
           alt="Font Logo"
         />
-        <p className="w-[60%] sm:text-xl text-pretty">{messages.home.hero.tagline}</p>
       </div>
 
       <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
+          <p className="w-[60%] text-center flex self-center pb-8 sm:text-xl text-pretty">
+            {messages.home.hero.tagline}
+          </p>
           {/* APPLE DOWNLOAD BUTTON */}
           <PrimaryLink
             title={messages.home.hero.download.ios}

@@ -7,7 +7,7 @@ import { Button } from '@radix-ui/themes';
 
 import { LanguageToggle } from './LanguageToggle';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { ContactButtonWithDialog } from '@/components/new/contact-button-with-dialog';
+import { ContactButtonWithDialog } from '@/components/ContactButtonWithDialog';
 
 export default function Header() {
   const pathname = usePathname();
@@ -44,8 +44,6 @@ export default function Header() {
       <div
         className={`flex gap-4 sm:gap-8 items-center ${!showLogo ? 'flex-grow justify-end' : ''}`}
       >
-        {!isArticlesPage && !isBlogPage && <LanguageToggle />}
-
         {/* Show Home link on blog pages */}
         {(isBlogPage || isArticlesPage) && (
           <Link href={'/app'}>
@@ -67,6 +65,8 @@ export default function Header() {
         </a>
 
         {!isArticlesPage && <ContactButtonWithDialog />}
+
+        {!isArticlesPage && !isBlogPage && <LanguageToggle />}
       </div>
     </div>
   );

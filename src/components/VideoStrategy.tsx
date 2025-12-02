@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { Title } from './new/title';
+import { Title } from './Title';
 
 export default function VideoStrategy() {
   const { messages } = useLanguage();
