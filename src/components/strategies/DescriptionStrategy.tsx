@@ -25,12 +25,10 @@ export default function DescriptionStrategy() {
         </div>
 
         <div className="flex basis-1/2 flex-col p-8 md:p-12 gap-8">
-          <Title centered={false} text={messages.home.description.title} />
           <p className="sm:text-lg">{messages.home.description.features.accounts}</p>
           <p className="sm:text-lg">{messages.home.description.features.envelopes}</p>
           <p className="sm:text-lg">{messages.home.description.features.security}</p>
-          <p className="sm:text-lg">{messages.home.description.features.personalization}</p>
-          <p className="font-bold text-blue-500 sm:text-lg">
+          <p className="font-bold text-white sm:text-lg">
             {messages.home.description.features.free}
           </p>
         </div>

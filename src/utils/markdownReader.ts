@@ -3,7 +3,7 @@ import path from 'path';
 
 /**
  * Reads a markdown file from the filesystem
- * @param filePath - Relative path from the app directory (e.g., 'app/legal/cgu/page.md')
+ * @param filePath - Relative path from the app directory (e.g., 'app/legal/cgu/content.md')
  * @returns The markdown content as a string
  */
 export function readMarkdownFile(filePath: string): string {

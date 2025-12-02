@@ -8,14 +8,14 @@ import DescriptionStrategy from '@/components/strategies/DescriptionStrategy';
 
 export default function Page() {
   return (
-    <main className={`bg-gradient-to-b from-yellow-200 to-yellow-50`}>
+    <main className={`bg-gradient-to-b from-[#35C055] to-[#C6F0D0]`}>
       <WelcomeStrategy />
 
       <DescriptionStrategy />
 
-      <PrinciplesStrategy />
-
       <BrandsListStrategy />
+
+      <PrinciplesStrategy />
 
       <SocialsStrategy />
     </main>

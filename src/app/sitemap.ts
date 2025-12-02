@@ -8,7 +8,7 @@ async function getNoteSlugs(dir: string) {
     withFileTypes: true,
   });
   return entries
-    .filter((entry) => entry.isFile() && entry.name === 'page.mdx')
+    .filter((entry) => entry.isFile() && entry.name === 'content.mdx')
     .map((entry) => {
       // Get the full path by joining the directory path with the entry path
       const fullPath = path.join(entry.path, entry.name);
