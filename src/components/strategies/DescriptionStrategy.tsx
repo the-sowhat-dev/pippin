@@ -1,12 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useLanguage } from '@/i18n/LanguageProvider';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 export default function DescriptionStrategy() {
-  const { messages } = useLanguage();
-
   return (
     <section className="flex flex-col md:flex-row items-center gap-16 md:gap-8 bg-[#C2E7FF] p-12 sm:p-16">
       <div className="flex-1">

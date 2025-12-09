@@ -88,7 +88,7 @@ const components = {
       {caption && <p className="text-sm text-gray-500 text-center">{caption}</p>}
     </div>
   ),
-  CollaborationBlock: ({ id }: { id: string }) => <CollaborationBlock id="adi" />,
+  CollaborationBlock: ({ id }: { id: string }) => <CollaborationBlock id={id} />,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table className="w-full border-collapse mb-8">
       <thead>

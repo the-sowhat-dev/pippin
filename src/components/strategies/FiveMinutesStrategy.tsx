@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Slider } from '@mui/material';
-import { Apple, Android, OneK } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Apple, Android } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';
 import {
@@ -14,12 +14,12 @@ import {
 } from '../../../lib/project.utils';
 import { PrimaryLink } from '../PrimaryLink';
 import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
+import { Messages } from 'next-intl';
 
 export default function FiveMinutesStrategy() {
   const { messages } = useLanguage();
   const [step, setStep] = useState(1);
   const [step1Selection, setStep1Selection] = useState<string | null>(null);
-  const [step2Selection, setStep2Selection] = useState<string | null>(null);
   const [amount, setAmount] = useState<number>(1000);
 
   const resolveMessage = (key: string): string => {
@@ -27,8 +27,7 @@ export default function FiveMinutesStrategy() {
     // keys in json: home.project.step1.option1
     // messages object: root of json
     const path = ['home', ...key.split('.')];
-    // @ts-ignore
-    const result = path.reduce((acc, part) => acc?.[part], messages);
+    const result = path.reduce((acc: Messages, part: string) => acc?.[part], messages);
     return typeof result === 'string' ? result : key;
   };
 
@@ -37,8 +36,7 @@ export default function FiveMinutesStrategy() {
     setStep(2);
   };
 
-  const handleStep2 = (text: string) => {
-    setStep2Selection(text);
+  const handleStep2 = () => {
     setStep(3);
   };
 
@@ -51,7 +49,7 @@ export default function FiveMinutesStrategy() {
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col items-center justify-center p-4 md:p-8">
           <p className="text-2xl font-bold mx-auto text-center">
-            Quelque soit votre définition de "gagner mieux", nous pouvons vous aider
+            Quelque soit votre définition de &quot;gagner mieux&quot;, nous pouvons vous aider
           </p>
         </div>
 
@@ -122,7 +120,7 @@ export default function FiveMinutesStrategy() {
                     {ProjectStep2Options.map((option) => (
                       <button
                         key={option.text}
-                        onClick={() => handleStep2(option.text)}
+                        onClick={handleStep2}
                         className="p-4 bg-white hover:bg-green-50 rounded-lg hover:shadow-lg border border-gray-200 hover:border-green-700 hover:text-green-700 transition-all hover:translate-y-1 text-left font-medium text-gray-700"
                       >
                         {resolveMessage(option.text)}
@@ -134,7 +132,7 @@ export default function FiveMinutesStrategy() {
                     {ProjectStep2BisOptions.map((option) => (
                       <button
                         key={option.text}
-                        onClick={() => handleStep2(option.text)}
+                        onClick={handleStep2}
                         className="px-6 py-3 bg-white rounded-full shadow-sm border border-gray-200 hover:bg-[#35c055] hover:text-white transition-all font-medium text-gray-700"
                       >
                         {resolveMessage(option.text)}

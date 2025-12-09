@@ -11,6 +11,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ title, slug, date, collaboration }: ArticleCardProps) {
   // Dynamic import for the splash image
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const SplashImage = require(`@/app/blog/a/${slug}/splash.webp`).default;
 
   // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
