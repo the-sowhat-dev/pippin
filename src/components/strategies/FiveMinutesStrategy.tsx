@@ -45,13 +45,18 @@ export default function FiveMinutesStrategy() {
   };
 
   return (
-    <section className=" bg-[#C6F0D0] p-12 sm:p-16">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col items-center justify-center p-4 md:p-8">
-          <p className="text-2xl font-bold mx-auto text-center">
+    <section className=" bg-[#c6f0d0]">
+      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8">
+        <p className="text-base sm:text-lg mx-auto text-center text-white">
+          Quelle que soit votre définition de &quot;gagner mieux&quot;, nous avons la solution
+        </p>
+      </div>
+      <div className="max-w-4xl mx-auto p-12 sm:p-16">
+        {/* <div className="flex flex-col items-center justify-center p-4 md:p-8">
+          <p className="text-2xl font-bold mx-auto text-center text-white">
             Quelque soit votre définition de &quot;gagner mieux&quot;, nous pouvons vous aider
           </p>
-        </div>
+        </div> */}
 
         <AnimatePresence mode="wait">
           {step === 1 && (
@@ -61,7 +66,7 @@ export default function FiveMinutesStrategy() {
                   1
                 </span>
                 <p className="text-lg text-green-900 font-bold text-center">
-                  Quel est votre profil ?
+                  Comment pouvons-nous vous aider ?
                 </p>
               </div>
 
@@ -104,7 +109,7 @@ export default function FiveMinutesStrategy() {
                   2
                 </span>
                 <p className="text-lg text-green-900 font-bold text-center">
-                  Que recherchez-vous ?
+                  Concrètement, quel est votre besoin ?
                 </p>
               </div>
 
@@ -151,7 +156,7 @@ export default function FiveMinutesStrategy() {
                   3
                 </span>
                 <p className="text-lg text-green-900 font-bold text-center">
-                  Quel montant souhaitez-vous épargner au départ ?
+                  Quel budget pensez-vous investir (à titre indicatif) ?
                 </p>
               </div>
 
@@ -193,9 +198,14 @@ export default function FiveMinutesStrategy() {
 
           {step === 4 && (
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-8 shadow-lg gap-8 flex items-center flex-col">
-              <div className="text-2xl text-[#1a5d2a] items-center flex flex-col">
-                <p>3 questions suffisent pour identifier rapidement votre besoin.</p>
-                <p className="text-[#35c055]">Télécharger invstore® pour le découvrir</p>
+              <div className="text-2xl text-[#1a5d2a] items-center flex flex-col gap-2">
+                <p className="font-semibold text-center">
+                  Félicitations, vous avez fait le plus dur !
+                </p>
+                <div className="text-green-500 text-center mx-2 sm:mx-8">
+                  <p>Prenez quelques minutes pour télécharger invstore®</p>
+                  <p> et aller au bout de l&apos;expérience.</p>
+                </div>
               </div>
 
               <motion.div

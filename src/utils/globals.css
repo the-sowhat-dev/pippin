@@ -24,10 +24,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-:root {
-  background-color: #ffec70;
-}
-
 /* 5. Improve media defaults */
 img,
 picture,
@@ -78,6 +74,11 @@ h6 {
   isolation: isolate;
 }
 
+html {
+  background: linear-gradient(to bottom, #35c055, #000000);
+  min-height: 100vh;
+}
+
 @keyframes sliding {
   from {
     transform: translateX(0);
@@ -111,7 +112,7 @@ h6 {
 .titles {
   overflow: hidden;
   padding: 30px 0px;
-  background: linear-gradient(#111827, #374151);
+  background: linear-gradient(#203649, #405e79);
   white-space: nowrap;
   position: relative;
 }
@@ -162,7 +163,6 @@ h6 {
     --radius: 0.5rem;
     --warning: 38 92% 50%;
     --warning-foreground: 48 96% 89%;
-    --gray-2: #ececed; /* Your specified gray color (oklch(0.928 0.006 264.531)) */
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -199,6 +199,6 @@ h6 {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }

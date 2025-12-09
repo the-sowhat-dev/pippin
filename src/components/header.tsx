@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@radix-ui/themes';
 
-import { LanguageToggle } from './LanguageToggle';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { ContactButtonWithDialog } from '@/components/ContactButtonWithDialog';
 
@@ -15,7 +14,7 @@ export default function Header() {
   const isBlogPage = pathname === '/blog';
   const isAppPage = pathname.startsWith('/app');
   const isAdvicePage = pathname === '/advices';
-  const isLegalPage = pathname.startsWith('/app/legal');
+  const isLegalPage = pathname.startsWith('/app/legal') || pathname === '/legal';
   const { messages } = useLanguage();
 
   if (isAdvicePage) return null;
@@ -59,7 +58,7 @@ export default function Header() {
 
         {!isArticlesPage && <ContactButtonWithDialog />}
 
-        {!isArticlesPage && !isBlogPage && !isLegalPage && <LanguageToggle />}
+        {/* {!isArticlesPage && !isBlogPage && !isLegalPage && <LanguageToggle />} */}
       </div>
     </div>
   );

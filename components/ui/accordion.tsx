@@ -33,7 +33,7 @@ const AccordionItem = forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      'border-b border-[#FEF08A] px-4 transition-colors duration-300 data-[state=open]:bg-yellow-200',
+      'border-b border-green-100 px-4 transition-colors duration-300 data-[state=open]:bg-green-300',
       className
     )}
     {...props}

@@ -37,43 +37,43 @@
       "steps": [
         {
           "index": 0,
-          "tag": "fast",
+          "tag": "Rapide",
           "title": "Rapide",
           "description": "Je télécharge l'application et complète mon profil en moins de 5 minutes."
         },
         {
           "index": 1,
-          "tag": "free",
+          "tag": "Gratuite",
           "title": "Gratuite",
           "description": "Je reçois immédiatement une analyse basée sur l'IA pour découvrir ma situation et comprendre comment l'améliorer."
         },
         {
           "index": 2,
-          "tag": "anonymous",
+          "tag": "Anonyme",
           "title": "Anonyme",
           "description": "Je laisse l'algorithme invstore® faire matcher mon profil avec les meilleurs experts et opportunités sans que mon identité ou mes coordonnées ne soient divulguées."
         },
         {
           "index": 3,
-          "tag": "simple",
+          "tag": "Simple",
           "title": "Simple",
           "description": "Je reçois directement dans l'application des recommandations et offres de produit personnalisées de la part de banquiers et conseillers en gestion de patrimoine indépendants."
         },
         {
           "index": 4,
-          "tag": "safe",
+          "tag": "Maîtrisée",
           "title": "Maîtrisée",
           "description": "J'accepte un premier échange téléphonique uniquement avec celui ou ceux qui ont le mieux répondu à mon besoin."
         },
         {
           "index": 5,
-          "tag": "efficient",
+          "tag": "Efficace",
           "title": "Efficace",
           "description": "Je choisis mon nouveau conseiller qui me guide pas à pas dans les dernières étapes de l'expérience."
         },
         {
           "index": 6,
-          "tag": "innovative",
+          "tag": "Innovante",
           "title": "Innovante",
           "description": "Si je le souhaite, je peux connecter tous mes comptes bancaires gratuitement pour gérer mes finances directement depuis une seule application."
         }
@@ -108,8 +108,8 @@
         "option6": "Je dois protéger mes enfants, il est temps de parler transmission.",
         "option7": "J'aimerais savoir comment diversifier mon patrimoine pour réduire les risques.",
         "option8": "Je veux participer à l'effort collectif par le financement de l'économie réelle.",
-        "option9": "Je ai envie de donner du sens à mon argent et voudrais en savoir plus sur l'épargne responsable.",
-        "option10": "Je ai peur de l'imprévu et envisage de constituer une épargne de sécurité."
+        "option9": "J'envie de donner du sens à mon argent et voudrais en savoir plus sur l'épargne responsable.",
+        "option10": "J'ai peur de l'imprévu et envisage de constituer une épargne de sécurité."
       },
       "step3": {
         "option1": "Livret A",

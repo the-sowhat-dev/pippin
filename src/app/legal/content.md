@@ -1,4 +1,4 @@
-# MENTIONS LÉGALES
+# Mentions Légales du siteweb
 
 ## Éditeur du site
 

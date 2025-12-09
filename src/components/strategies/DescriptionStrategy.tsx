@@ -20,7 +20,7 @@ export default function DescriptionStrategy() {
       {/* Separator when flex-col */}
       <div className="block md:hidden w-full h-[1px] bg-white/50" />
 
-      <div className="flex flex-1 flex-col gap-12 ">
+      <div className="flex flex-1 flex-col gap-14 items-center">
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
           <span className="font-bold">L&apos;application française invstore®</span> analyse votre
           situation financière <span className="font-bold">en moins de 5 minutes grâce à l’IA</span>

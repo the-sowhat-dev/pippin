@@ -12,7 +12,7 @@ export default function WelcomeStrategy() {
   const { messages } = useLanguage();
 
   return (
-    <section>
+    <section className="bg-[#35c055]">
       <div className="flex items-center justify-center py-12 pt-16 sm:py-12">
         <Image
           priority
@@ -30,14 +30,14 @@ export default function WelcomeStrategy() {
 
       <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
-          <p className="w-[60%] text-center flex self-center pb-8 sm:text-xl text-pretty font-semibold text-white ">
-            {messages.home.hero.tagline}
+          <p className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
+            Notre <span className="font-bold">IA fait matcher chaque profil</span> avec les
+            meilleurs experts et opportunités
           </p>
           {/* APPLE DOWNLOAD BUTTON */}
           <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
             <Apple fontSize="medium" />
           </PrimaryLink>
-
           {/* ANDROID DOWNLOAD BUTTON */}
           <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
             <Android fontSize="medium" />

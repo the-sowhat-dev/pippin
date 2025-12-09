@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../../../components/ui/accordion';
+import { Title } from '../Title';
 
 const questions = [
   {
@@ -297,11 +298,10 @@ const questions = [
 
 export default function QandAStrategy() {
   return (
-    <section className="w-full flex justify-center py-12 px-4">
-      <div className="w-full max-w-3xl bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 font-opensans">
-          Questions fréquentes
-        </h2>
+    <section className="w-full flex justify-center py-12 px-4 bg-[#c6f0d0] text-[#203649]">
+      <div className="flex flex-col w-full max-w-3xl p-6 md:p-8 gap-10 sm:gap-16">
+        <Title text="Questions fréquentes" />
+
         <Accordion type="single" collapsible className="w-full">
           {questions.map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>

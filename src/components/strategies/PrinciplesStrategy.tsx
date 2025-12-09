@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Android, Apple } from '@mui/icons-material';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import {
@@ -13,8 +12,6 @@ import {
 } from '../../../components/ui/accordion';
 import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { PrimaryLink } from '@/components/PrimaryLink';
-import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
 
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -22,7 +19,7 @@ export default function PrinciplesStrategy() {
   const steps = messages.home.principles.steps;
 
   return (
-    <section className="flex flex-col gap-16 sm:gap-12 items-center p-8 py-12 sm:px-16 sm:py-24 bg-yellow-400">
+    <section className="flex flex-col gap-16 sm:gap-12 items-center p-8 py-12 sm:px-16 sm:py-24 bg-[#c6f0d0]">
       <Title text={messages.home.principles.title} />
 
       {/* WHEN ON MOBILE */}
@@ -37,8 +34,8 @@ export default function PrinciplesStrategy() {
                 className={`p-2 px-4 sm:p-4 gap-2 sm:gap-4 text-base sm:text-lg flex items-center rounded-md transition-colors whitespace-nowrap
                   ${
                     activeStep === step.index
-                      ? 'bg-yellow-300 border-yellow-300 shadow-md'
-                      : 'bg-white border-yellow-200 hover:border-gray-100 hover:bg-gray-100'
+                      ? 'bg-green-300 border-green-300 shadow-md'
+                      : 'bg-white border-green-200 hover:border-gray-100 hover:bg-gray-100'
                   } border`}
               >
                 <div>{step.index + 1}</div>
@@ -78,13 +75,13 @@ export default function PrinciplesStrategy() {
       </div>
 
       {/* WHEN ON DESKTOP */}
-      <div className="hidden lg:flex">
-        <div className="flex lg:basis-2/3 xl:basis-1/2 justify-center items-center p-8 sm:p-16 min-h-[700px]">
+      <div className="hidden lg:flex w-full max-w-7xl mx-auto">
+        <div className="flex-1 flex justify-center items-center p-4 xs:p-16 min-h-[700px]">
           <Accordion
             type="single"
             defaultValue="step-1"
             onValueChange={(value: string) => {
-              setActiveStep(Number(value.replace('step-', '')));
+              if (value) setActiveStep(Number(value.replace('step-', '')));
             }}
           >
             {steps.map((step) => (
@@ -96,21 +93,21 @@ export default function PrinciplesStrategy() {
           </Accordion>
         </div>
 
-        <div className="flex lg:basis-1/3 xl:basis-1/2 items-center justify-center p-8 sm:p-16 overflow-hidden">
-          <AnimatePresence mode="wait">
+        <div className="flex-1 flex items-center justify-center p-8 sm:p-16 overflow-hidden min-h-[700px] relative">
+          <AnimatePresence mode="popLayout">
             <motion.div
               key={activeStep}
-              initial={{ x: 300, opacity: 0 }}
+              initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="w-full h-full flex items-center justify-center"
+              exit={{ x: -100, opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="absolute inset-0 flex items-center justify-center p-8 sm:p-16"
             >
               <Image
                 src={`/images/step-${activeStep}.png`}
                 alt={`Step ${activeStep} illustration`}
                 style={{
-                  maxHeight: '700px',
+                  maxHeight: '100%',
                   width: '100%',
                   objectFit: 'contain',
                 }}
@@ -120,19 +117,6 @@ export default function PrinciplesStrategy() {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
-
-      {/* DOWNLOAD BUTTON */}
-      <div className="w-full flex flex-col sm:flex-row gap-4 justify-center items-center my-8">
-        {/* APPLE DOWNLOAD BUTTON */}
-        <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
-          <Apple fontSize="medium" />
-        </PrimaryLink>
-
-        {/* ANDROID DOWNLOAD BUTTON */}
-        <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
-          <Android fontSize="medium" />
-        </PrimaryLink>
       </div>
     </section>
   );
