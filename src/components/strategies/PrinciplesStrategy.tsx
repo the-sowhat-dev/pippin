@@ -14,6 +14,7 @@ import {
 import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { PrimaryLink } from '@/components/PrimaryLink';
+import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
 
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -124,18 +125,12 @@ export default function PrinciplesStrategy() {
       {/* DOWNLOAD BUTTON */}
       <div className="w-full flex flex-col sm:flex-row gap-4 justify-center items-center my-8">
         {/* APPLE DOWNLOAD BUTTON */}
-        <PrimaryLink
-          title={messages.home.hero.download.ios}
-          link="https://apps.apple.com/fr/app/sowhat-app/id6736385732"
-        >
+        <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
           <Apple fontSize="medium" />
         </PrimaryLink>
 
         {/* ANDROID DOWNLOAD BUTTON */}
-        <PrimaryLink
-          title={messages.home.hero.download.android}
-          link="https://play.google.com/store/apps/details?id=com.thesowhatdev.fintech&pcampaignid=web_share"
-        >
+        <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
           <Android fontSize="medium" />
         </PrimaryLink>
       </div>

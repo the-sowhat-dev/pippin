@@ -6,6 +6,7 @@ import { Android, Apple } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { PrimaryLink } from '@/components/PrimaryLink';
 import { WordsCarousel } from '@/components/WordsCarousel';
+import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
 
 export default function WelcomeStrategy() {
   const { messages } = useLanguage();
@@ -33,18 +34,12 @@ export default function WelcomeStrategy() {
             {messages.home.hero.tagline}
           </p>
           {/* APPLE DOWNLOAD BUTTON */}
-          <PrimaryLink
-            title={messages.home.hero.download.ios}
-            link="https://apps.apple.com/fr/app/sowhat-app/id6736385732"
-          >
+          <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
             <Apple fontSize="medium" />
           </PrimaryLink>
 
           {/* ANDROID DOWNLOAD BUTTON */}
-          <PrimaryLink
-            title={messages.home.hero.download.android}
-            link="https://play.google.com/store/apps/details?id=com.thesowhatdev.fintech&pcampaignid=web_share"
-          >
+          <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
             <Android fontSize="medium" />
           </PrimaryLink>
         </div>

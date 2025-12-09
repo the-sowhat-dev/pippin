@@ -6,6 +6,7 @@ import WelcomeStrategy from '@/components/strategies/WelcomeStrategy';
 import PrinciplesStrategy from '@/components/strategies/PrinciplesStrategy';
 import DescriptionStrategy from '@/components/strategies/DescriptionStrategy';
 import QandAStrategy from '@/components/strategies/QandAStrategy';
+import FiveMinutesStrategy from '@/components/strategies/FiveMinutesStrategy';
 
 export default function Page() {
   return (
@@ -13,6 +14,8 @@ export default function Page() {
       <WelcomeStrategy />
 
       <DescriptionStrategy />
+
+      <FiveMinutesStrategy />
 
       <BrandsListStrategy />
 

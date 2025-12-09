@@ -16,13 +16,12 @@
       }
     },
     "wordsCarousel": [
-      { "index": 0, "word": "Connectée" },
-      { "index": 1, "word": "Personnalisée" },
-      { "index": 2, "word": "Simple" },
-      { "index": 3, "word": "Sécurisée" },
-      { "index": 4, "word": "Française" },
-      { "index": 5, "word": "Cool" },
-      { "index": 6, "word": "Gratuite" }
+      { "index": 0, "word": "Rapide" },
+      { "index": 1, "word": "Gratuite" },
+      { "index": 2, "word": "Anonyme" },
+      { "index": 3, "word": "Simple" },
+      { "index": 4, "word": "Sécurisée" },
+      { "index": 5, "word": "Française" }
     ],
     "description": {
       "features": {
@@ -34,55 +33,49 @@
       }
     },
     "principles": {
-      "title": "Nos 8 principes pour une bonne application de finance",
+      "title": "L'expérience invstore®",
       "steps": [
         {
           "index": 0,
-          "tag": "Inscription",
-          "title": "Inscription rapide et gratuite",
-          "description": "Sowhat est une application mobile française et gratuite disponible sur iOS et Android. Seule votre adresse e-mail suffit pour vous inscrire et obtenir en moins de 2 minutes un accès illimité à toutes les fonctionnalités."
+          "tag": "fast",
+          "title": "Rapide",
+          "description": "Je télécharge l'application et complète mon profil en moins de 5 minutes."
         },
         {
           "index": 1,
-          "tag": "Connexion",
-          "title": "Connexion sécurisée de vos comptes bancaires",
-          "description": "Grâce à notre partenaire Powens, basé en France, certifié DSP2 et agréé par la Banque de France, connectez facilement et en toute sécurité vos comptes bancaires dans l'application."
+          "tag": "free",
+          "title": "Gratuite",
+          "description": "Je reçois immédiatement une analyse basée sur l'IA pour découvrir ma situation et comprendre comment l'améliorer."
         },
         {
           "index": 2,
-          "tag": "Comptes épargne",
-          "title": "Application unique pour toutes vos banques",
-          "description": "Connectez plus de 120 établissements bancaires et gérez vos comptes courants, épargne (Livret A, PEL, etc.), comptes enfants ou d'entreprise en un seul endroit. Même en changeant de banque, vos données et votre historique restent intacts."
+          "tag": "anonymous",
+          "title": "Anonyme",
+          "description": "Je laisse l'algorithme invstore® faire matcher mon profil avec les meilleurs experts et opportunités sans que mon identité ou mes coordonnées ne soient divulguées."
         },
         {
           "index": 3,
-          "tag": "Autre patrimoine",
-          "title": "Enregistrement de tous vos autres biens",
-          "description": "Pour comprendre réellement votre patrimoine, il faut voir au-delà des comptes bancaires. Avec Sowhat, ajoutez vos biens immobiliers, votre véhicule, vos investissements en bourse, vos cryptomonnaies et bien plus encore. Sowhat vous offre une vue complète et détaillée de tout ce que vous possédez, afin de mieux gérer et planifier vos finances."
+          "tag": "simple",
+          "title": "Simple",
+          "description": "Je reçois directement dans l'application des recommandations et offres de produit personnalisées de la part de banquiers et conseillers en gestion de patrimoine indépendants."
         },
         {
           "index": 4,
-          "tag": "Vision complète",
-          "title": "Vision complète du patrimoine",
-          "description": "Découvrez enfin quelle est la valeur réelle de votre patrimoine. Sowhat vous permet de comprendre la répartition de votre patrimoine mais également de suivre son évolution dans le temps."
+          "tag": "safe",
+          "title": "Maîtrisée",
+          "description": "J'accepte un premier échange téléphonique uniquement avec celui ou ceux qui ont le mieux répondu à mon besoin."
         },
         {
           "index": 5,
-          "tag": "Budget",
-          "title": "Gestion de budget simple et facultative",
-          "description": "Fixez et suivez vos objectifs financiers avec une interface épurée. Pas envie d'y consacrer trop de temps ? La gestion du budget est totalement facultative et désactivable."
+          "tag": "efficient",
+          "title": "Efficace",
+          "description": "Je choisis mon nouveau conseiller qui me guide pas à pas dans les dernières étapes de l'expérience."
         },
         {
           "index": 6,
-          "tag": "Projets d'épargne",
-          "title": "Première solution pour les projets d'épargne",
-          "description": "Que ce soit pour une maison, des vacances ou votre retraite, Sowhat vous aide à visualiser et planifier vos projets. Grâce à son simulateur intégré, gérez votre épargne en toute simplicité et prenez des décisions éclairées en quelques secondes."
-        },
-        {
-          "index": 7,
-          "tag": "Accessible",
-          "title": "Accessible à toutes et à tous",
-          "description": "Vous trouvez Excel ou les autres outils de gestion financière trop complexes ? Nous aussi. Sowhat rend la gestion de vos finances simple et agréable, avec des fonctionnalités intuitives et une interface conçue pour tous, même pour les non-initiés."
+          "tag": "innovative",
+          "title": "Innovante",
+          "description": "Si je le souhaite, je peux connecter tous mes comptes bancaires gratuitement pour gérer mes finances directement depuis une seule application."
         }
       ]
     },
@@ -99,6 +92,40 @@
       "instagram": "sur Instagram",
       "linkedin": "sur LinkedIn",
       "youtube": "sur Youtube"
+    },
+    "project": {
+      "step1": {
+        "option1": "Je ne sais pas vraiment ce que je cherche, la finance ne m'a jamais réellement intéressé.",
+        "option2": "J'ai un objectif clair en tête, mais je ne sais pas à quel produit il correspond.",
+        "option3": "Je connais bien le sujet, je sais le produit qu'il me faut."
+      },
+      "step2": {
+        "option1": "Je n'ai pas d'idée précise, j'aimerais recevoir des conseils et offres adaptés à ma situation.",
+        "option2": "Je compte me lancer en bourse.",
+        "option3": "Je pense à l'avenir et souhaite préparer ma retraite.",
+        "option4": "J'ai besoin de payer moins d'impôts, il faut que je défiscalise.",
+        "option5": "Je suis dynamique et j'aimerais que mon épargne le soit également, qu'elle me rapporte plus.",
+        "option6": "Je dois protéger mes enfants, il est temps de parler transmission.",
+        "option7": "J'aimerais savoir comment diversifier mon patrimoine pour réduire les risques.",
+        "option8": "Je veux participer à l'effort collectif par le financement de l'économie réelle.",
+        "option9": "Je ai envie de donner du sens à mon argent et voudrais en savoir plus sur l'épargne responsable.",
+        "option10": "Je ai peur de l'imprévu et envisage de constituer une épargne de sécurité."
+      },
+      "step3": {
+        "option1": "Livret A",
+        "option2": "LDDS",
+        "option3": "LEP",
+        "option4": "Compte sur livret",
+        "option5": "Compte à terme",
+        "option6": "Assurance-vie",
+        "option7": "PEA",
+        "option8": "CTO",
+        "option9": "PER",
+        "option10": "Épargne salariale",
+        "option11": "SCPI",
+        "option12": "Private equity",
+        "option13": "Autre"
+      }
     }
   },
   "footer": {
