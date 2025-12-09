@@ -27,15 +27,15 @@ export default function Header() {
       {showLogo && (
         <Link href={'/app'}>
           <Image
-            src={'/images/logo-blanc.png'}
+            src={'/images/inv.svg'}
             alt="Logo"
             style={{
               width: 'auto',
               objectFit: 'contain',
             }}
-            className="max-h-[30px] sm:max-h-[40px]"
-            width={1100}
-            height={1578}
+            className="max-h-[30px] sm:max-h-[30px]"
+            width={546}
+            height={275}
           />
         </Link>
       )}

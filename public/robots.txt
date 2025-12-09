@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://sowhat-app.com/sitemap.xml
+Sitemap: https://invstore.fr/sitemap.xml

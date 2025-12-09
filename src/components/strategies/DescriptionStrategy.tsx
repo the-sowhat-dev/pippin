@@ -2,36 +2,32 @@
 
 import Image from 'next/image';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { Title } from '@/components/Title';
 
 export default function DescriptionStrategy() {
   const { messages } = useLanguage();
 
   return (
-    <section className="flex items-center">
-      <div className="w-full flex-1 flex flex-col sm:flex-row gap-8 p-8 sm:p-16 pt-12">
-        <div className="flex basis-1/2 items-center justify-center p-6">
-          <Image
-            src={'/images/three_mockups.png'}
-            alt="Trois mockups en un pour présentation"
-            style={{
-              maxHeight: '500px',
-              width: '100%',
-              objectFit: 'contain',
-            }}
-            width={800}
-            height={800}
-          />
-        </div>
+    <section className="flex flex-col md:flex-row items-center gap-16 md:gap-8 bg-[#C2E7FF] p-12 sm:p-16">
+      <div className="flex-1">
+        <Image
+          src={'/images/description.svg'}
+          alt="Trois mockups en un pour présentation"
+          style={{ width: '100%', objectFit: 'contain' }}
+          className="max-w-[400px] mx-auto"
+          width={6750}
+          height={14405}
+        />
+      </div>
 
-        <div className="flex basis-1/2 flex-col p-8 md:p-12 gap-8">
-          <p className="sm:text-lg">{messages.home.description.features.accounts}</p>
-          <p className="sm:text-lg">{messages.home.description.features.envelopes}</p>
-          <p className="sm:text-lg">{messages.home.description.features.security}</p>
-          <p className="font-bold text-white sm:text-lg">
-            {messages.home.description.features.free}
-          </p>
-        </div>
+      {/* Separator when flex-col */}
+      <div className="block md:hidden w-full h-[1px] bg-white/50" />
+
+      <div className="flex-1 max-w-[500px]">
+        <p className="text-2xl font-bold mx-auto">L’application française invstore®</p> <br />{' '}
+        analyse votre situation financière en moins de 5 minutes grâce à l’IA, puis vous connecte de
+        manière anonyme avec des experts financiers agréés (banquiers et conseillers en gestion de
+        patrimoine indépendants), qui sont mis en compétition pour vous proposer les solutions
+        d’épargne les plus adaptées à votre besoin.
       </div>
     </section>
   );

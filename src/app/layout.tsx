@@ -8,7 +8,7 @@ import Header from '@/components/header';
 import { SourceSansPro } from '@/utils/fonts';
 import { LanguageProvider } from '@/i18n/LanguageProvider';
 import { MetricoolAnalytics } from '@/components/MetricoolAnalytics';
-import { Footer } from '@/components/Footer';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sowhat-app.com'),
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Sowhat Application`,
     description: `L'téléchargez l'application et laissez le monde de la finance venir à vous..`,
-    images: { url: `../../public/images/logo-blanc.png` },
+    images: { url: `../../public/images/inv.svg` },
     url: `https://www.sowhat-app.com`,
   },
   twitter: {
     title: `Sowhat Application`,
     description: `L'téléchargez l'application et laissez le monde de la finance venir à vous.`,
-    images: { url: `../../public/images/logo-blanc.png` },
+    images: { url: `../../public/images/inv.svg` },
   },
 };
 

@@ -16,8 +16,9 @@ export function getArticles(): Article[] {
 
   entries.forEach((entry) => {
     if (entry.isDirectory() && entry.name !== 'components') {
-      const fullPath = path.join(articlesDirectory, entry.name, 'content.mdx');
-
+      console.log('entry.name', entry.name);
+      const fullPath = path.join(articlesDirectory, entry.name, 'page.mdx');
+      console.log('fullPath', fullPath, fs.existsSync(fullPath));
       if (fs.existsSync(fullPath)) {
         const fileContents = fs.readFileSync(fullPath, 'utf8');
 

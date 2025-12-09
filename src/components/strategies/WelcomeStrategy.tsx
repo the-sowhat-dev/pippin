@@ -7,7 +7,7 @@ import { useLanguage } from '@/i18n/LanguageProvider';
 import { PrimaryLink } from '@/components/PrimaryLink';
 import { WordsCarousel } from '@/components/WordsCarousel';
 
-export default function ArticleCard() {
+export default function WelcomeStrategy() {
   const { messages } = useLanguage();
 
   return (
@@ -29,7 +29,7 @@ export default function ArticleCard() {
 
       <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
-          <p className="w-[60%] text-center flex self-center pb-8 sm:text-xl text-pretty">
+          <p className="w-[60%] text-center flex self-center pb-8 sm:text-xl text-pretty font-semibold text-white ">
             {messages.home.hero.tagline}
           </p>
           {/* APPLE DOWNLOAD BUTTON */}
@@ -51,7 +51,7 @@ export default function ArticleCard() {
 
         <div className="flex basis-1/2 self-center justify-center items-center sm:items-end max-w-[300px] sm:max-w-[600px]">
           <Image
-            src={'/images/mockup_nous_3.png'}
+            src={'/images/welcome_mockup.png'}
             alt="Strategy Image"
             style={{
               maxHeight: '600px',

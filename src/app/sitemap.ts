@@ -8,7 +8,7 @@ async function getNoteSlugs(dir: string) {
     withFileTypes: true,
   });
   return entries
-    .filter((entry) => entry.isFile() && entry.name === 'content.mdx')
+    .filter((entry) => entry.isFile() && entry.name === 'page.mdx')
     .map((entry) => {
       // Get the full path by joining the directory path with the entry path
       const fullPath = path.join(entry.path, entry.name);
@@ -19,18 +19,18 @@ async function getNoteSlugs(dir: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const notesDirectory = path.join(process.cwd(), 'src', 'app', 'a');
+  const notesDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'a');
   const slugs = await getNoteSlugs(notesDirectory);
 
   const notes = slugs.map((slug) => ({
-    url: `https://sowhat-app.com/a/${slug}`,
+    url: `https://invstore.fr/a/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'yearly' as const,
     priority: 1,
   }));
 
   const routes = ['', '/work'].map((route) => ({
-    url: `https://sowhat-app.com${route}`,
+    url: `https://invstore.fr${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
