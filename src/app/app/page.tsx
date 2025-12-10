@@ -22,8 +22,6 @@ export default function Page() {
 
       <FiveMinutesStrategy />
 
-      {/* <BrandsListStrategy /> */}
-
       <PrinciplesStrategy />
 
       {/* DOWNLOAD BUTTON */}
@@ -46,8 +44,6 @@ export default function Page() {
       <InvstoreStrategy />
 
       <QandAStrategy />
-
-      {/* <SocialsStrategy /> */}
     </main>
   );
 }

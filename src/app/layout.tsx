@@ -11,21 +11,22 @@ import { MetricoolAnalytics } from '@/components/MetricoolAnalytics';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sowhat-app.com'),
-  alternates: {
-    canonical: '/',
-  },
-  title: `Sowhat | L'téléchargez l'application et laissez le monde de la finance venir à vous.`,
-  description: `Découvrez la solution innovante, basée sur l'Open Finance, qui révolutionne l'expérience de gestion et facilite la prise de décision pour vos finances personnelles.`,
+  metadataBase: new URL('https://invstore.fr'),
+  alternates: { canonical: '/' },
+  title: `Invstore : Epargne IA Matching`,
+  description:
+    "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
   openGraph: {
-    title: `Sowhat Application`,
-    description: `L'téléchargez l'application et laissez le monde de la finance venir à vous..`,
+    title: `Invstore : Epargne IA Matching`,
+    description:
+      "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
     images: { url: `../../public/images/inv.svg` },
-    url: `https://www.sowhat-app.com`,
+    url: `https://invstore.fr`,
   },
   twitter: {
-    title: `Sowhat Application`,
-    description: `L'téléchargez l'application et laissez le monde de la finance venir à vous.`,
+    title: `Invstore : Epargne IA Matching`,
+    description:
+      "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
     images: { url: `../../public/images/inv.svg` },
   },
 };
