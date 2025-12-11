@@ -1,0 +1,57 @@
+'use client';
+
+import Image from 'next/image';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import { motion } from 'framer-motion';
+
+const ImagesPro = [
+  { src: '/images/france-fintech.png', delay: 0, duration: 3, y: -15 },
+  { src: '/images/french-tech.png', delay: 0.5, duration: 4, y: -20 },
+  { src: '/images/hub-612.png', delay: 0.2, duration: 3.5, y: -18 },
+];
+
+export default function DescriptionProStrategy() {
+  return (
+    <section className="flex flex-col items-center bg-[#35C055] gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white">
+      <div className="flex flex-col items-center gap-16">
+        <div className="relative max-w-xl mx-auto my-8">
+          <FormatQuoteIcon
+            sx={{ fontSize: 100 }}
+            className="absolute -top-10 -left-6 text-white opacity-30 rotate-180"
+          />
+          <p className="text-2xl font-bold relative z-10 text-center md:text-left leading-relaxed">
+            Un projet pensé et conçu au cœur de l&apos;écosystème fintech français
+          </p>
+          <FormatQuoteIcon
+            sx={{ fontSize: 100 }}
+            className="absolute -bottom-10 -right-6 text-white opacity-30"
+          />
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-16 hover:scale-105 transition-all duration-300">
+          {ImagesPro.map((img, index) => (
+            <motion.div
+              key={index}
+              animate={{ y: [0, img.y, 0] }}
+              transition={{
+                duration: img.duration,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: img.delay,
+              }}
+              className="relative overflow-hidden"
+            >
+              <Image
+                src={img.src}
+                alt={`Option ${index + 1}`}
+                width={300}
+                height={300}
+                className="w-16 sm:w-24 h-auto object-cover"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

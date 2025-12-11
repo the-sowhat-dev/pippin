@@ -119,20 +119,6 @@ export default function InvstoreStrategy() {
               alt="TikTok icon"
             />
           </Link>
-
-          {/* <SocialButton
-            href=
-            icon={}
-          >
-            {messages.home.socials.linkedin}
-          </SocialButton>
-
-          <SocialButton
-            href=
-            icon={<YouTube fontSize="large" style={{ color: '#FF002F' }} />}
-          >
-            {messages.home.socials.youtube}
-          </SocialButton> */}
         </div>
       </div>
     </section>
