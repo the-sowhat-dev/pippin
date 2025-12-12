@@ -16,16 +16,17 @@ export default function Header() {
   const isAdvicePage = pathname === '/advices';
   const isLegalPage = pathname.startsWith('/app/legal') || pathname === '/legal';
   const { messages } = useLanguage();
+  const isProPage = pathname === '/pro';
 
   if (isAdvicePage) return null;
 
-  const showLogo = isArticlesPage || isBlogPage || isAppPage || isLegalPage;
+  const showLogo = isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage;
 
   return (
     <div className="fixed px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
       {/* Show logo on articles, blog, and app pages */}
       {showLogo && (
-        <Link href={'/app'}>
+        <a href={'/app'} key="logo">
           <Image
             src={'/images/inv.svg'}
             alt="Logo"
@@ -37,15 +38,23 @@ export default function Header() {
             width={546}
             height={275}
           />
-        </Link>
+        </a>
       )}
 
       <div
         className={`flex gap-4 sm:gap-8 items-center ${!showLogo ? 'flex-grow justify-end' : ''}`}
       >
+        {isAppPage && (
+          <a href={'/pro'} key="pro">
+            <Button size="3" variant="solid" className="bg-white text-green-700 hover:bg-white/85">
+              Vous êtes un professionnel ?
+            </Button>
+          </a>
+        )}
+
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
         {!isLegalPage && !isBlogPage && (
-          <a href={'/blog'}>
+          <a href={'/blog'} key="blog">
             <Button
               size="3"
               variant="solid"
@@ -57,7 +66,6 @@ export default function Header() {
         )}
 
         {!isArticlesPage && <ContactButtonWithDialog />}
-
         {/* {!isArticlesPage && !isBlogPage && !isLegalPage && <LanguageToggle />} */}
       </div>
     </div>

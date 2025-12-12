@@ -5,9 +5,27 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { motion } from 'framer-motion';
 
 const ImagesPro = [
-  { src: '/images/france-fintech.png', delay: 0, duration: 3, y: -15 },
-  { src: '/images/french-tech.png', delay: 0.5, duration: 4, y: -20 },
-  { src: '/images/hub-612.png', delay: 0.2, duration: 3.5, y: -18 },
+  {
+    src: '/images/france-fintech.png',
+    delay: 0,
+    duration: 3,
+    y: -15,
+    href: 'https://www.francefintech.org/',
+  },
+  {
+    src: '/images/french-tech.png',
+    delay: 0.5,
+    duration: 4,
+    y: -20,
+    href: 'https://www.lafrenchtech-stl.com/',
+  },
+  {
+    src: '/images/hub-612.png',
+    delay: 0.2,
+    duration: 3.5,
+    y: -18,
+    href: 'https://www.hub612.com/',
+  },
 ];
 
 export default function DescriptionProStrategy() {
@@ -20,7 +38,7 @@ export default function DescriptionProStrategy() {
             className="absolute -top-10 -left-6 text-white opacity-30 rotate-180"
           />
           <p className="text-2xl font-bold relative z-10 text-center md:text-left leading-relaxed">
-            Un projet pensé et conçu au cœur de l&apos;écosystème fintech français
+            Un projet pensé et conçu au cœur de l&apos;écosystème fintech français.
           </p>
           <FormatQuoteIcon
             sx={{ fontSize: 100 }}
@@ -28,27 +46,35 @@ export default function DescriptionProStrategy() {
           />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 sm:gap-16 hover:scale-105 transition-all duration-300">
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
           {ImagesPro.map((img, index) => (
-            <motion.div
+            <a
               key={index}
-              animate={{ y: [0, img.y, 0] }}
-              transition={{
-                duration: img.duration,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: img.delay,
-              }}
-              className="relative overflow-hidden"
+              href={img.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-all duration-300"
             >
-              <Image
-                src={img.src}
-                alt={`Option ${index + 1}`}
-                width={300}
-                height={300}
-                className="w-16 sm:w-24 h-auto object-cover"
-              />
-            </motion.div>
+              <motion.div
+                key={index}
+                animate={{ y: [0, img.y, 0] }}
+                transition={{
+                  duration: img.duration,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: img.delay,
+                }}
+                className="relative overflow-hidden"
+              >
+                <Image
+                  src={img.src}
+                  alt={`Option ${index + 1}`}
+                  width={300}
+                  height={300}
+                  className="w-16 sm:w-24 h-auto object-cover"
+                />
+              </motion.div>
+            </a>
           ))}
         </div>
       </div>

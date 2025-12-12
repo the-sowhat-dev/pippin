@@ -92,11 +92,11 @@ export default function TribuneProStrategy() {
 
       <div className="flex gap-4 items-center justify-center mt-16">
         <Image
-          src={`/images/raph.png`}
+          src={`/images/raph-2.png`}
           alt={`@raph`}
-          width={40}
-          height={40}
-          className="w-16 h-16 rounded-full bg-[#c6f0d0] border-2 border-[#35c055]/10"
+          width={250}
+          height={250}
+          className="w-16 h-16 rounded-lg bg-[#c6f0d0] shadow-sm"
         />
 
         <div>

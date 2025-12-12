@@ -34,7 +34,7 @@ export default function ActionsStrategy() {
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-16 p-8 px-16  py-16 sm:py-24 m-2 sm:m-8 sm:mx-auto max-w-6xl">
         {Actions.map((action, index) => (
           <div key={index} className="flex flex-col items-center md:items-start gap-4 max-w-96">
-            <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-4 hover:text-green-50 transition-all duration-300">
               <Image
                 src={action.image}
                 alt={action.title}
@@ -56,7 +56,7 @@ export default function ActionsStrategy() {
       <div className="flex flex-col items-center gap-8 md:gap-16 bg-[#c2e7ff] p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl">
         <p className="text-lg sm:text-2xl font-bold relative z-10 text-center leading-relaxed max-w-xl">
           Testez l&apos;application pour vous faire votre propre avis avant le lancement des
-          fonctionnalités matching d&apos;ici la fin d&apos;année
+          fonctionnalités matching dans les prochaines semaines.
         </p>
 
         <div className="flex flex-col md:flex-row items-center gap-4">

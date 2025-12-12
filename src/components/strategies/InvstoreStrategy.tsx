@@ -91,7 +91,7 @@ export default function InvstoreStrategy() {
             target="_blank"
             rel="noopener noreferrer"
             href={'https://www.instagram.com/invstore_app/'}
-            className="p-4 transition-all h-18 w-18 duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full"
+            className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
           >
             <Instagram fontSize="large" style={{ color: '#F50E6A' }} />
           </Link>
@@ -100,7 +100,7 @@ export default function InvstoreStrategy() {
             target="_blank"
             rel="noopener noreferrer"
             href={'https://www.linkedin.com/company/invstore/'}
-            className="p-4 transition-all h-18 w-18 duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full"
+            className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
           >
             <LinkedIn fontSize="large" style={{ color: '#0C5CBA' }} />
           </Link>
@@ -109,7 +109,7 @@ export default function InvstoreStrategy() {
             target="_blank"
             rel="noopener noreferrer"
             href={'https://www.tiktok.com/@invstore_app'}
-            className="p-4 transition-all h-18 w-18 duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full"
+            className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
           >
             <Image
               width={28}
