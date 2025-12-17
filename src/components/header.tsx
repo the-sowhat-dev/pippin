@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@radix-ui/themes';
@@ -46,8 +45,19 @@ export default function Header() {
       >
         {isAppPage && (
           <a href={'/pro'} key="pro">
-            <Button size="3" variant="solid" className="bg-white text-green-700 hover:bg-white/85">
+            <Button
+              size="3"
+              variant="solid"
+              className="hidden sm:block bg-white text-green-700 hover:bg-white/85"
+            >
               Vous êtes un professionnel ?
+            </Button>
+            <Button
+              size="2"
+              variant="solid"
+              className="block sm:hidden text-sm bg-white text-green-700 hover:bg-white/85"
+            >
+              professionnel
             </Button>
           </a>
         )}

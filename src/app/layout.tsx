@@ -7,8 +7,9 @@ import { Analytics } from '@vercel/analytics/next';
 import Header from '@/components/header';
 import { SourceSansPro } from '@/utils/fonts';
 import { LanguageProvider } from '@/i18n/LanguageProvider';
-import { MetricoolAnalytics } from '@/components/MetricoolAnalytics';
+import { MetricoolAnalytics } from '@/components/analytics/MetricoolAnalytics';
 import { Footer } from '@/components/footer';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://invstore.fr'),
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <MetricoolAnalytics />
+        <GoogleAnalytics />
       </head>
 
       <LanguageProvider>
