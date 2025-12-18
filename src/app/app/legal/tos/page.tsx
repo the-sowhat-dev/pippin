@@ -5,10 +5,10 @@ export default function Page() {
   const markdownContent = readMarkdownFile('app/app/legal/tos/content.md');
 
   return (
-    <div className="min-h-screen bg-[#C2E7FF] pt-24 px-8 text-[#203649]">
+    <main className="min-h-screen bg-[#C2E7FF] pt-24 px-8 text-[#203649]">
       <div className="max-w-4xl mx-auto p-8 sm:p-12">
         <MarkdownRenderer content={markdownContent} />
       </div>
-    </div>
+    </main>
   );
 }

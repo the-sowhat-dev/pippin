@@ -77,7 +77,7 @@ const components = {
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
   ImageWithCaption: ({ src, alt, caption, maxHeight }: ImageWithCaptionProps) => (
-    <div>
+    <figure>
       <Image
         src={src}
         alt={alt}
@@ -85,8 +85,8 @@ const components = {
         width={1000}
         height={700}
       />
-      {caption && <p className="text-sm text-gray-500 text-center">{caption}</p>}
-    </div>
+      {caption && <figcaption className="text-sm text-gray-500 text-center">{caption}</figcaption>}
+    </figure>
   ),
   CollaborationBlock: ({ id }: { id: string }) => <CollaborationBlock id={id} />,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (

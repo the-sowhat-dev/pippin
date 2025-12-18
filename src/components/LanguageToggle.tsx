@@ -17,7 +17,7 @@ export function LanguageToggle() {
       {/* French Flag Button */}
       <button
         onClick={() => language !== 'fr' && toggleLanguage()}
-        className={`relative z-10 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
+        className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
           language === 'fr' ? 'scale-100' : 'scale-90 opacity-60 hover:opacity-80 hover:scale-95'
         }`}
         aria-label="Switch to French"
@@ -29,7 +29,7 @@ export function LanguageToggle() {
       {/* US Flag Button */}
       <button
         onClick={() => language !== 'en' && toggleLanguage()}
-        className={`relative z-10 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
+        className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
           language === 'en' ? 'scale-100' : 'scale-90 opacity-60 hover:opacity-80 hover:scale-95'
         }`}
         aria-label="Switch to English"

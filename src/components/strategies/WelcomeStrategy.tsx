@@ -30,10 +30,10 @@ export default function WelcomeStrategy() {
 
       <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
-          <p className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
+          <h1 className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
             Notre <span className="font-bold">IA fait matcher chaque profil</span> avec les
             meilleurs experts et opportunités
-          </p>
+          </h1>
           {/* APPLE DOWNLOAD BUTTON */}
           <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
             <Apple fontSize="medium" />
@@ -44,17 +44,14 @@ export default function WelcomeStrategy() {
           </PrimaryLink>
         </div>
 
-        <div className="flex basis-1/2 self-center justify-center items-center sm:items-end max-w-[300px] sm:max-w-[600px]">
+        <div className="flex basis-1/2 self-center justify-center items-center sm:items-end">
           <Image
-            src={'/images/welcome_mockup.png'}
+            src={'/images/mockup_welcome.png'}
             alt="Strategy Image"
-            style={{
-              maxHeight: '600px',
-              width: 'auto',
-              objectFit: 'contain',
-            }}
-            width={1100}
-            height={1578}
+            style={{ maxHeight: '500px', objectFit: 'contain' }}
+            width={419}
+            height={600}
+            fetchPriority="high"
           />
         </div>
       </div>

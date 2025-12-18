@@ -73,7 +73,7 @@ export default function InvstoreStrategy() {
                   sx={{ fontSize: 160 }}
                   className="absolute text-blue-800/5 group-hover:text-blue-800/10 transition-all duration-500 transform -rotate-12 scale-110 hover:-rotate-6"
                 />
-                <div className="relative z-10 pointer-events-none">
+                <div className="relative pointer-events-none">
                   <p className="text-lg font-medium text-center">{item.text}</p>
                 </div>
               </div>

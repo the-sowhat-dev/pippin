@@ -23,8 +23,13 @@ export function ContactButtonWithDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="3" variant="solid" className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
-          {messages.header.contact}
+        <Button
+          size={{ initial: '2', sm: '3' }}
+          variant="solid"
+          className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
+        >
+          <span className="hidden md:inline">{messages.header.contact}</span>
+          <span className="inline md:hidden">contact</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

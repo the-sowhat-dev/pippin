@@ -75,7 +75,7 @@ h6 {
 }
 
 html {
-  background: linear-gradient(to bottom, #35c055, #000000);
+  background: #35c055;
   min-height: 100vh;
 }
 
@@ -96,7 +96,6 @@ html {
   width: 250px;
   height: 100%;
   content: '';
-  z-index: 2;
 }
 
 .titles:before {

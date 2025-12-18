@@ -17,7 +17,11 @@ export default function ArticleCard({ title, slug, date, collaboration }: Articl
   // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
   return (
     <a href={`/blog/a/${slug}`}>
-      <div className="relative aspect-[3/4] max-w-[250px] sm:max-w-[300px] hover:shadow-md group">
+      <article
+        itemScope
+        itemType="http://schema.org/BlogPosting"
+        className="relative aspect-[3/4] max-w-[250px] sm:max-w-[300px] hover:shadow-md group"
+      >
         {/* Image Container - Square aspect ratio with hover transition */}
         <div className="overflow-hidden aspect-square flex">
           <div className="overflow-hidden">
@@ -47,7 +51,7 @@ export default function ArticleCard({ title, slug, date, collaboration }: Articl
             <time className="text-sm text-gray-500 mb-2 block">{date}</time>
           </div>
         </div>
-      </div>
+      </article>
     </a>
   );
 }

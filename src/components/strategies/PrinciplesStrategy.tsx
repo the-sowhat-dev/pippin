@@ -61,11 +61,7 @@ export default function PrinciplesStrategy() {
               <Image
                 src={`/images/step-${activeStep}.png`}
                 alt={`Step ${activeStep} illustration`}
-                style={{
-                  maxHeight: '400px',
-                  width: '100%',
-                  objectFit: 'contain',
-                }}
+                style={{ maxHeight: '400px', width: '100%', objectFit: 'contain' }}
                 width={800}
                 height={800}
               />

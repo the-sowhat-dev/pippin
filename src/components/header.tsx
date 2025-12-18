@@ -22,10 +22,10 @@ export default function Header() {
   const showLogo = isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage;
 
   return (
-    <div className="fixed px-8 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
+    <header className="fixed px-4 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
       {/* Show logo on articles, blog, and app pages */}
       {showLogo && (
-        <a href={'/app'} key="logo">
+        <a href={'/app'} key="logo" className="hidden sm:block">
           <Image
             src={'/images/inv.svg'}
             alt="Logo"
@@ -40,24 +40,18 @@ export default function Header() {
         </a>
       )}
 
-      <div
+      <nav
         className={`flex gap-4 sm:gap-8 items-center ${!showLogo ? 'flex-grow justify-end' : ''}`}
       >
         {isAppPage && (
           <a href={'/pro'} key="pro">
             <Button
-              size="3"
+              size={{ initial: '2', sm: '3' }}
               variant="solid"
-              className="hidden sm:block bg-white text-green-700 hover:bg-white/85"
+              className="bg-white text-green-700 hover:bg-white/85"
             >
-              Vous êtes un professionnel ?
-            </Button>
-            <Button
-              size="2"
-              variant="solid"
-              className="block sm:hidden text-sm bg-white text-green-700 hover:bg-white/85"
-            >
-              professionnel
+              <span className="hidden md:inline">Vous êtes un professionnel ?</span>
+              <span className="inline md:hidden">professionnel</span>
             </Button>
           </a>
         )}
@@ -66,7 +60,7 @@ export default function Header() {
         {!isLegalPage && !isBlogPage && (
           <a href={'/blog'} key="blog">
             <Button
-              size="3"
+              size={{ initial: '2', sm: '3' }}
               variant="solid"
               className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
             >
@@ -77,7 +71,7 @@ export default function Header() {
 
         {!isArticlesPage && <ContactButtonWithDialog />}
         {/* {!isArticlesPage && !isBlogPage && !isLegalPage && <LanguageToggle />} */}
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 }

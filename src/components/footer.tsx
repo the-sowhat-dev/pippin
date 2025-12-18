@@ -2,15 +2,17 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/i18n/LanguageProvider';
+import { formatDateFrench, getYesterdayDate } from '../../lib/utils';
 
 export function Footer() {
   const { messages } = useLanguage();
 
   return (
-    <div className="w-full bg-black flex flex-col sm:flex-row gap-12 justify-between text-white items-center p-8 sm:px-16">
+    <footer className="w-full bg-black flex flex-col sm:flex-row gap-12 justify-between text-white items-center p-8 sm:px-16">
       <Link href={'/legal'} target="_blank" rel="noopener noreferrer" className="text-sm underline">
         {messages.footer.legal}
       </Link>
-    </div>
+      <p className="text-sm text-gray-400">Mise à jour le {formatDateFrench(getYesterdayDate())}</p>
+    </footer>
   );
 }

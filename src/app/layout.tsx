@@ -10,9 +10,14 @@ import { LanguageProvider } from '@/i18n/LanguageProvider';
 import { MetricoolAnalytics } from '@/components/analytics/MetricoolAnalytics';
 import { Footer } from '@/components/footer';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
+import { getYesterdayDate } from '../../lib/utils';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://invstore.fr'),
+  other: {
+    date: getYesterdayDate().toISOString(),
+    'last-modified': getYesterdayDate().toISOString(),
+  },
   alternates: { canonical: '/' },
   title: `Invstore : Epargne IA Matching`,
   description:

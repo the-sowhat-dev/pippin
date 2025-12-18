@@ -5,10 +5,10 @@ interface Props {
 
 export function Title({ text, centered = true }: Props) {
   return (
-    <p
+    <h2
       className={`font-opensans font-bold text-[#203649] text-2xl sm:text-4xl ${centered ? 'text-center' : ''} `}
     >
       {text}
-    </p>
+    </h2>
   );
 }

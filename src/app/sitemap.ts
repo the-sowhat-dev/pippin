@@ -1,40 +1,68 @@
-import { promises as fs } from 'fs';
 import { MetadataRoute } from 'next';
-import path from 'path';
+import { getArticles } from '@/utils/getArticles';
 
-async function getNoteSlugs(dir: string) {
-  const entries = await fs.readdir(dir, {
-    recursive: true,
-    withFileTypes: true,
-  });
-  return entries
-    .filter((entry) => entry.isFile() && entry.name === 'page.mdx')
-    .map((entry) => {
-      // Get the full path by joining the directory path with the entry path
-      const fullPath = path.join(entry.path, entry.name);
-      const relativePath = path.relative(dir, fullPath);
-      return path.dirname(relativePath);
-    })
-    .map((slug) => slug.replace(/\\/g, '/'));
-}
+const BASE_URL = 'https://invstore.fr';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const notesDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'a');
-  const slugs = await getNoteSlugs(notesDirectory);
+  const articles = getArticles();
 
-  const notes = slugs.map((slug) => ({
-    url: `https://invstore.fr/a/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'yearly' as const,
-    priority: 1,
-  }));
+  const blogEntries: MetadataRoute.Sitemap = articles.map((article) => {
+    // Parse date DD/MM/YYYY to Date object
+    const [day, month, year] = article.date.split('/');
+    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 
-  const routes = ['', '/work'].map((route) => ({
-    url: `https://invstore.fr${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+    return {
+      url: `${BASE_URL}/blog/a/${article.slug}`,
+      lastModified: date,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    };
+  });
 
-  return [...routes, ...notes];
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: `${BASE_URL}/app`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${BASE_URL}/pro`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/legal`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/app/legal/pp`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/app/legal/tos`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ];
+
+  return [...staticRoutes, ...blogEntries];
 }

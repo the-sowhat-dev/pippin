@@ -37,9 +37,9 @@ export default function DescriptionStrategy() {
               sx={{ fontSize: 100 }}
               className="absolute -top-10 -left-6 text-[#35c055] opacity-30 rotate-180"
             />
-            <p className="text-2xl font-bold relative z-10 text-center md:text-left text-[#1a5d2a] leading-relaxed">
+            <h2 className="text-2xl font-bold relative text-center md:text-left text-[#1a5d2a] leading-relaxed">
               Moins de 5 minutes pour une analyse IA gratuite de ma situation financière ?
-            </p>
+            </h2>
             <FormatQuoteIcon
               sx={{ fontSize: 100 }}
               className="absolute -bottom-10 -right-6 text-[#35c055] opacity-30"
@@ -48,10 +48,9 @@ export default function DescriptionStrategy() {
 
           <div className="bg-[#35c055] rounded-lg overflow-hidden flex-shrink-0 shadow-xl transform rotate-1 transition-transform hover:rotate-0">
             <Image
-              src={'/images/woman-bed-notify-min.png'}
+              src={'/images/woman_in_bed.png'}
               alt="Five minutes to analyze your financial situation"
-              style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-              className="max-w-[500px]"
+              style={{ maxHeight: '500px', objectFit: 'contain' }}
               width={1280}
               height={853}
             />

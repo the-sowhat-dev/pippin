@@ -37,9 +37,9 @@ export default function DescriptionProStrategy() {
             sx={{ fontSize: 100 }}
             className="absolute -top-10 -left-6 text-white opacity-30 rotate-180"
           />
-          <p className="text-2xl font-bold relative z-10 text-center md:text-left leading-relaxed">
+          <h2 className="text-2xl font-bold relative text-center md:text-left leading-relaxed">
             Un projet pensé et conçu au cœur de l&apos;écosystème fintech français.
-          </p>
+          </h2>
           <FormatQuoteIcon
             sx={{ fontSize: 100 }}
             className="absolute -bottom-10 -right-6 text-white opacity-30"
