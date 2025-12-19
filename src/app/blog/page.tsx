@@ -16,7 +16,7 @@ export default function Page() {
       })
       .then((data) => {
         // Parse dates from JSON strings to Date objects
-        const parsedData = data.map((article: any) => ({
+        const parsedData = data.map((article: Article) => ({
           ...article,
           published_at: new Date(article.published_at),
           updated_at: article.updated_at ? new Date(article.updated_at) : null,
