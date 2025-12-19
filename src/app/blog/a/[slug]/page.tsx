@@ -69,7 +69,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <figure className="mb-10 w-full">
           <div className="relative w-full aspect-video sm:h-[400px]">
             <Image
-              src={article.cover_image}
+              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${article.cover_image}.webp`}
               alt={article.title}
               fill
               className="object-cover rounded-lg"

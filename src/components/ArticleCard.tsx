@@ -23,20 +23,6 @@ export default function ArticleCard({
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   const timeAgoString = timeAgo(dateObj);
 
-  // Dynamic import for the splash image logic fallback
-  let SplashImage;
-  if (coverImage) {
-    SplashImage = coverImage;
-  } else {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      SplashImage = require(`@/app/blog/a/${slug}/splash.webp`).default;
-    } catch (e) {
-      console.warn(`Image not found for slug: ${slug}`, e);
-      SplashImage = null;
-    }
-  }
-
   return (
     <a href={`/blog/a/${slug}`} className="block w-full group">
       <article
@@ -47,9 +33,9 @@ export default function ArticleCard({
         {/* Image Container - Fixed width on desktop, 3:2 aspect ratio */}
         <div className="relative w-full sm:w-[300px] shrink-0 aspect-[3/2]">
           <div className="w-full h-full rounded-lg shadow-md overflow-hidden relative bg-gray-200">
-            {SplashImage ? (
+            {coverImage ? (
               <Image
-                src={SplashImage}
+                src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${coverImage}.webp`}
                 alt={title}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 fill
