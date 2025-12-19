@@ -7,12 +7,29 @@ interface ArticleCardProps {
   slug: string;
   date: string;
   collaboration?: string;
+  coverImage?: string | null;
 }
 
-export default function ArticleCard({ title, slug, date, collaboration }: ArticleCardProps) {
+export default function ArticleCard({
+  title,
+  slug,
+  date,
+  collaboration,
+  coverImage,
+}: ArticleCardProps) {
   // Dynamic import for the splash image
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const SplashImage = require(`@/app/blog/a/${slug}/splash.webp`).default;
+  let SplashImage;
+  if (coverImage) {
+    SplashImage = coverImage;
+  } else {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      SplashImage = require(`@/app/blog/a/${slug}/splash.webp`).default;
+    } catch (e) {
+      console.warn(`Image not found for slug: ${slug}`, e);
+      SplashImage = null;
+    }
+  }
 
   // Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top...
   return (
@@ -23,15 +40,17 @@ export default function ArticleCard({ title, slug, date, collaboration }: Articl
         className="relative aspect-[3/4] max-w-[250px] sm:max-w-[300px] hover:shadow-md group"
       >
         {/* Image Container - Square aspect ratio with hover transition */}
-        <div className="overflow-hidden aspect-square flex">
-          <div className="overflow-hidden">
-            <Image
-              src={SplashImage}
-              alt={title}
-              className={`w-full h-full object-cover duration-300 group-hover:scale-105`}
-              width={1000}
-              height={700}
-            />
+        <div className="overflow-hidden aspect-square flex bg-gray-200">
+          <div className="overflow-hidden w-full h-full">
+            {SplashImage && (
+              <Image
+                src={SplashImage}
+                alt={title}
+                className={`w-full h-full object-cover duration-300 group-hover:scale-105`}
+                width={1000}
+                height={700}
+              />
+            )}
           </div>
         </div>
 
