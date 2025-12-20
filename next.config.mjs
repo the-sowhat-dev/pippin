@@ -8,11 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'avenuedesinvestisseurs.fr',
-      },
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
+        hostname: 'abkqohkbpzpaafojdzqg.supabase.co',
       },
     ],
   },
