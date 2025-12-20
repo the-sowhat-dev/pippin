@@ -1,5 +1,12 @@
 import createMDX from '@next/mdx';
 
+if (!process.env.NEXT_PUBLIC_STORAGE_URL) {
+  console.warn(
+    '\x1b[33m%s\x1b[0m',
+    'warn  - NEXT_PUBLIC_STORAGE_URL is not defined in the environment variables. Images will not load correctly.'
+  );
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files

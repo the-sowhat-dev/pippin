@@ -23,19 +23,19 @@ type ImageWithCaptionProps = {
 const components = {
   h1: (props: HeadingProps) => (
     <h1
-      className={`text-2xl sm:text-4xl pt-8 pb-16 mb-0 fade-in text-center ${OpenSans.className}`}
+      className={`text-2xl sm:text-4xl pt-6 sm:pt-8 pb-12 sm:pb-16 mb-0 fade-in text-center ${OpenSans.className}`}
       {...props}
     />
   ),
   h2: (props: HeadingProps) => (
     <h2
-      className={`text-xl sm:text-2xl pt-8 text-gray-800 font-medium mt-8 mb-3 ${OpenSans.className}`}
+      className={`text-xl sm:text-2xl text-gray-800 font-medium mt-8 sm:mt-12 mb-2 sm:mb-3 ${OpenSans.className}`}
       {...props}
     />
   ),
   h3: (props: HeadingProps) => (
     <h3
-      className={`text-lg text-gray-800 font-medium mt-8 mb-3 ${OpenSans.className}`}
+      className={`text-lg text-gray-800 font-medium mt-6 sm:mt-8 mb-2 sm:mb-3 ${OpenSans.className}`}
       {...props}
     />
   ),
