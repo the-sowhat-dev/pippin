@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Slider } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Apple, Android } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';
 import {
@@ -12,8 +11,8 @@ import {
   ProjectStep2Options,
   ProjectStep2BisOptions,
 } from '../../../lib/project.utils';
-import { PrimaryLink } from '../PrimaryLink';
-import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
+import { AppleAppStoreButton } from '../AppleAppStoreButton';
+import { PlayStoreButton } from '../PlayStoreButton';
 import { Messages } from 'next-intl';
 
 export default function FiveMinutesStrategy() {
@@ -213,19 +212,12 @@ export default function FiveMinutesStrategy() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
-                <div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
                   {/* APPLE DOWNLOAD BUTTON */}
-                  <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
-                    <Apple fontSize="medium" />
-                  </PrimaryLink>
+                  <AppleAppStoreButton />
 
                   {/* ANDROID DOWNLOAD BUTTON */}
-                  <PrimaryLink
-                    title={messages.home.hero.download.android}
-                    link={AndroidAppStoreLink}
-                  >
-                    <Android fontSize="medium" />
-                  </PrimaryLink>
+                  <PlayStoreButton />
                 </div>
               </motion.div>
             </div>

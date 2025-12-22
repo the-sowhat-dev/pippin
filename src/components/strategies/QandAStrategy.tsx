@@ -335,7 +335,7 @@ export default function QandAStrategy() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex flex-col w-full max-w-3xl p-6 md:p-8 gap-10 sm:gap-16">
-        <Title text="Questions fréquentes" />
+        <Title id="faq" text="Questions fréquentes" />
 
         <Accordion type="single" collapsible className="w-full">
           {questions.map((item, index) => (

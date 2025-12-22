@@ -1,10 +1,9 @@
 'use client';
 
-import { Android, Apple } from '@mui/icons-material';
 import Image from 'next/image';
-import { PrimaryLink } from '../PrimaryLink';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
+import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
+import { PlayStoreButton } from '@/components/PlayStoreButton';
 
 const Actions = [
   {
@@ -60,12 +59,8 @@ export default function ActionsStrategy() {
         </p>
 
         <div className="flex flex-col md:flex-row items-center gap-4">
-          <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
-            <Apple fontSize="medium" />
-          </PrimaryLink>
-          <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
-            <Android fontSize="medium" />
-          </PrimaryLink>
+          <AppleAppStoreButton />
+          <PlayStoreButton />
         </div>
       </div>
     </section>

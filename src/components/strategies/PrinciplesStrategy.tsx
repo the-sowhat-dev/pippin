@@ -20,7 +20,7 @@ export default function PrinciplesStrategy() {
 
   return (
     <section className="flex flex-col gap-16 sm:gap-12 items-center p-8 py-12 sm:px-16 sm:py-24 bg-[#c6f0d0]">
-      <Title text={messages.home.principles.title} />
+      <Title id="principles" text={messages.home.principles.title} />
 
       {/* WHEN ON MOBILE */}
       <div className="lg:hidden w-full flex flex-col">

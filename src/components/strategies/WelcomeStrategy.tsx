@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 
-import { Android, Apple } from '@mui/icons-material';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { PrimaryLink } from '@/components/PrimaryLink';
 import { WordsCarousel } from '@/components/WordsCarousel';
-import { AndroidAppStoreLink, AppleAppStoreLink } from '../../../lib/utils';
+import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
+import { PlayStoreButton } from '@/components/PlayStoreButton';
 
 export default function WelcomeStrategy() {
   const { messages } = useLanguage();
@@ -35,13 +34,9 @@ export default function WelcomeStrategy() {
             meilleurs experts et opportunités
           </h1>
           {/* APPLE DOWNLOAD BUTTON */}
-          <PrimaryLink title={messages.home.hero.download.ios} link={AppleAppStoreLink}>
-            <Apple fontSize="medium" />
-          </PrimaryLink>
+          <AppleAppStoreButton className="mx-auto" />
           {/* ANDROID DOWNLOAD BUTTON */}
-          <PrimaryLink title={messages.home.hero.download.android} link={AndroidAppStoreLink}>
-            <Android fontSize="medium" />
-          </PrimaryLink>
+          <PlayStoreButton className="mx-auto" />
         </div>
 
         <div className="flex basis-1/2 self-center justify-center items-center sm:items-end">

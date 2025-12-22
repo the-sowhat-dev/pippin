@@ -1,3 +1,5 @@
+'use client';
+
 import { HeroPro } from '@/components/HeroPro';
 import ActionsStrategy from '@/components/strategies/ActionsStrategy';
 import SocialsProStrategy from '@/components/strategies/SocialsProStrategy';
