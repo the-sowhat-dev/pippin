@@ -20,20 +20,20 @@ export const metadata: Metadata = {
     'last-modified': getYesterdayDate().toISOString(),
   },
   alternates: { canonical: '/' },
-  title: `Invstore : Epargne IA Matching`,
+  title: "Invstore - une nouvelle expérience de l'épargne",
   description:
-    "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
+    'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
   openGraph: {
-    title: `Invstore : Epargne IA Matching`,
+    title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
+      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
     images: { url: `../../public/favicon.ico` },
-    url: `https://invstore.fr`,
+    url: 'https://invstore.fr/app',
   },
   twitter: {
-    title: `Invstore : Epargne IA Matching`,
+    title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
+      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
     images: { url: `../../public/favicon.ico` },
   },
 };

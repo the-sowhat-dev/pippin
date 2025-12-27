@@ -28,8 +28,8 @@ export function ContactButtonWithDialog() {
           variant="solid"
           className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
         >
-          <span className="hidden md:inline">{messages.header.contact}</span>
-          <span className="inline md:hidden">contact</span>
+          <span className="hidden md:inline">Nous contacter</span>
+          <span className="inline md:hidden">Contact</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

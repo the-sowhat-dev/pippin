@@ -47,7 +47,7 @@ export default function Header() {
               className="bg-white text-green-700 hover:bg-white/85"
             >
               <span className="hidden md:inline">Vous êtes un professionnel ?</span>
-              <span className="inline md:hidden">professionnel</span>
+              <span className="inline md:hidden">Professionnel</span>
             </Button>
           </a>
         )}
@@ -60,7 +60,7 @@ export default function Header() {
               variant="solid"
               className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
             >
-              {messages.header.articles}
+              Articles
             </Button>
           </a>
         )}
