@@ -21,7 +21,7 @@ export default function Page() {
       <PrinciplesStrategy />
 
       {/* DOWNLOAD BUTTON */}
-      <div className="flex flex-col sm:flex-row bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8 gap-4 justify-center">
+      <div className="flex flex-col sm:flex-row items-center bg-gradient-to-b from-[#203649] to-[#405e79] p-4 py-8 md:p-8 gap-4 justify-center">
         {/* APPLE DOWNLOAD BUTTON */}
         <AppleAppStoreButton />
         {/* ANDROID DOWNLOAD BUTTON */}
