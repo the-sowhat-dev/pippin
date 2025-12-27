@@ -1,6 +1,8 @@
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '../../../components/ui/button';
 
 export default function TribuneProStrategy() {
   return (
@@ -103,6 +105,17 @@ export default function TribuneProStrategy() {
           <p className="text-lg font-bold">Raphaël METROP</p>
           <p>Co-founder & CEO</p>
         </div>
+      </div>
+
+      <div className="flex justify-center mt-16">
+        <Link href="/pro/form">
+          <Button
+            size="lg"
+            className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:bg-green-500/80"
+          >
+            Nous rejoindre
+          </Button>
+        </Link>
       </div>
     </section>
   );

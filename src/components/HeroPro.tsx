@@ -1,5 +1,7 @@
 import { OpenSans } from '@/utils/fonts';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '../../components/ui/button';
 
 export const HeroPro = () => {
   return (
@@ -13,6 +15,16 @@ export const HeroPro = () => {
         <p className="text-center text-lg sm:text-2xl text-pretty w-[60%] mx-auto opacity-80">
           Vous distribuez des produits d&apos;épargne ? <br /> Obtenez de nouveaux clients !
         </p>
+        <div className="flex justify-center">
+          <Link href="/pro/form">
+            <Button
+              size="lg"
+              className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:bg-green-500/80"
+            >
+              Nous rejoindre
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <div className="items-center justify-center w-[70%] max-w-5xl mx-auto rounded-lg overflow-hidden xl:mt-12 border-2 border-gray-200 shadow-sm  md:shadow-lg rotate-1">

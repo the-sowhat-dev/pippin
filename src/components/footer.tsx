@@ -3,9 +3,14 @@
 import Link from 'next/link';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { formatDateFrench, getYesterdayDate } from '../../lib/utils';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
+  const pathname = usePathname();
+  const isProFormPage = pathname === '/pro/form';
   const { messages } = useLanguage();
+
+  if (isProFormPage) return null;
 
   return (
     <footer className="w-full bg-black flex flex-col sm:flex-row gap-12 justify-between text-white items-center p-8 sm:px-16">

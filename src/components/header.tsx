@@ -17,8 +17,9 @@ export default function Header() {
   const { messages } = useLanguage();
   const isProPage = pathname === '/pro';
   const isFAQPage = pathname === '/app/faq';
+  const isProFormPage = pathname === '/pro/form';
 
-  if (isAdvicePage) return null;
+  if (isAdvicePage || isProFormPage) return null;
 
   const showLogo =
     isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage || isFAQPage;

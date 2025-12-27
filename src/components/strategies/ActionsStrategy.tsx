@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
+import Link from 'next/link';
+import { Button } from '../../../components/ui/button';
 
 const Actions = [
   {
@@ -47,6 +49,17 @@ export default function ActionsStrategy() {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-center mb-16">
+        <Link href="/pro/form">
+          <Button
+            size="lg"
+            className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:bg-green-500/80"
+          >
+            Nous rejoindre
+          </Button>
+        </Link>
       </div>
 
       <div className="flex flex-col items-center gap-8 md:gap-16 bg-[#c2e7ff] p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl">
