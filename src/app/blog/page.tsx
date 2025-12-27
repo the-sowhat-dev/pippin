@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import ArticleCard from '@/components/ArticleCard';
 import { Article } from '../../../lib/db';
+import { LexendFont } from '@/utils/fonts';
 
 export default function Page() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -32,9 +33,13 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#C2E7FF] pt-24 px-8 text-[#203649]">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center">Blog</h1>
+    <main className="min-h-screen  pt-24 px-8 text-[#203649]">
+      <div className="max-w-4xl mx-auto pb-64">
+        <h1
+          className={`text-3xl sm:text-5xl text-green-900 mb-12 sm:mb-24 text-center ${LexendFont.className}`}
+        >
+          Blog
+        </h1>
         {loading ? (
           <div className="text-center">Chargement...</div>
         ) : (

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { OpenSans } from '../utils/fonts';
+import { RobotoFont, LexendFont } from '@/utils/fonts';
 import { timeAgo } from '../utils/date';
 
 interface ArticleCardProps {
@@ -32,7 +32,7 @@ export default function ArticleCard({
       >
         {/* Image Container - Fixed width on desktop, 3:2 aspect ratio */}
         <div className="relative w-full sm:w-[300px] shrink-0 aspect-[3/2]">
-          <div className="w-full h-full rounded-lg shadow-md overflow-hidden relative bg-gray-200">
+          <div className="w-full h-full rounded-lg overflow-hidden relative bg-gray-200 border-2 group-hover:border-gray-200 border-gray-100">
             {coverImage ? (
               <Image
                 src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${coverImage}.webp`}
@@ -45,7 +45,7 @@ export default function ArticleCard({
               <div className="w-full h-full flex items-center justify-center text-gray-500"></div>
             )}
             {collaboration && (
-              <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10">
+              <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded z-10">
                 {collaboration}
               </div>
             )}
@@ -53,11 +53,13 @@ export default function ArticleCard({
         </div>
 
         {/* Content Container */}
-        <div className="flex flex-col gap-2 pb-4 border-b border-blue-200">
+        <div
+          className={`flex flex-col gap-2 pb-4 border-b group-hover:border-gray-200 border-gray-100 ${RobotoFont.className}`}
+        >
           <time className="text-xs text-gray-400 font-medium text-pretty">{timeAgoString}</time>
 
           <h2
-            className={`text-lg sm:text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors ${OpenSans.className}`}
+            className={`text-lg sm:text-xl font-bold text-gray-900 group-hover:text-green-800 transition-colors ${LexendFont.className}`}
           >
             {title}
           </h2>

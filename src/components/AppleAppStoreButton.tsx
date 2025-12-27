@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AppleAppStoreLink } from '../../lib/utils';
 import { cn } from '../../lib/utils';
-import { OpenSans } from '@/utils/fonts';
 
 interface AppleAppStoreButtonProps {
   className?: string;

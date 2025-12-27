@@ -6,13 +6,10 @@ import DescriptionStrategy from '@/components/strategies/DescriptionStrategy';
 import QandAStrategy from '@/components/strategies/QandAStrategy';
 import FiveMinutesStrategy from '@/components/strategies/FiveMinutesStrategy';
 import InvstoreStrategy from '@/components/strategies/InvstoreStrategy';
-import { useLanguage } from '@/i18n/LanguageProvider';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
 
 export default function Page() {
-  const { messages } = useLanguage();
-
   return (
     <main>
       <WelcomeStrategy />

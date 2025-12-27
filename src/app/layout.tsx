@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     title: `Invstore : Epargne IA Matching`,
     description:
       "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
-    images: { url: `../../public/images/inv.svg` },
+    images: { url: `../../public/favicon.ico` },
     url: `https://invstore.fr`,
   },
   twitter: {
     title: `Invstore : Epargne IA Matching`,
     description:
       "Gagner mieux sans effort. Invstore®, est une application française qui aide à optimiser l'épargne, simplement et sans effort.",
-    images: { url: `../../public/images/inv.svg` },
+    images: { url: `../../public/favicon.ico` },
   },
 };
 

@@ -2,14 +2,11 @@
 
 import Image from 'next/image';
 
-import { useLanguage } from '@/i18n/LanguageProvider';
 import { WordsCarousel } from '@/components/WordsCarousel';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
 
 export default function WelcomeStrategy() {
-  const { messages } = useLanguage();
-
   return (
     <section className="bg-[#35c055]">
       <div className="flex items-center justify-center py-12 pt-16 sm:py-12">

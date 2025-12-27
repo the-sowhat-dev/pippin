@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import pool from '../../../../../lib/db';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
-import { OpenSans } from '@/utils/fonts';
+import { LexendFont, RobotoFont } from '@/utils/fonts';
 
 // Helper to fetch article
 async function getArticle(slug: string) {
@@ -54,9 +54,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={`flex flex-col gap-4 ${RobotoFont.className}`}>
       <h1
-        className={`text-2xl sm:text-4xl pt-8 pb-16 mb-0 fade-in text-center ${OpenSans.className}`}
+        className={`text-2xl sm:text-4xl pt-8 pb-16 mb-0 fade-in text-center ${LexendFont.className} text-green-800`}
       >
         {article.title}
       </h1>
@@ -72,7 +72,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${article.cover_image}.webp`}
               alt={article.title}
               fill
-              className="object-cover rounded-lg"
+              className="object-cover rounded-lg max-w-[600px] mx-auto"
             />
           </div>
         </figure>

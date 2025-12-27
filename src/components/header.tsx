@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@radix-ui/themes';
 
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { ContactButtonWithDialog } from '@/components/ContactButtonWithDialog';
+import { InvLogo } from '@/components/InvLogo';
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,26 +16,21 @@ export default function Header() {
   const isLegalPage = pathname.startsWith('/app/legal') || pathname === '/legal';
   const { messages } = useLanguage();
   const isProPage = pathname === '/pro';
+  const isFAQPage = pathname === '/app/faq';
 
   if (isAdvicePage) return null;
 
-  const showLogo = isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage;
+  const showLogo =
+    isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage || isFAQPage;
+  const brightBackground = isArticlesPage || isBlogPage || isFAQPage;
 
   return (
     <header className="fixed px-4 sm:px-16 text-sm justify-between sm:text-base p-4 gap-4 sm:gap-8 top-0 w-full flex bg-white/05 backdrop-blur-sm z-10">
       {/* Show logo on articles, blog, and app pages */}
       {showLogo && (
         <a href={'/app'} key="logo" className="hidden sm:block">
-          <Image
-            src={'/images/inv.svg'}
-            alt="Logo"
-            style={{
-              width: 'auto',
-              objectFit: 'contain',
-            }}
-            className="max-h-[30px] sm:max-h-[30px]"
-            width={546}
-            height={275}
+          <InvLogo
+            className={`max-h-[30px] sm:max-h-[30px] w-auto ${brightBackground ? 'text-green-500' : 'text-white'}`}
           />
         </a>
       )}

@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useLanguage } from '@/i18n/LanguageProvider';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
 
@@ -26,8 +25,6 @@ const Actions = [
 ];
 
 export default function ActionsStrategy() {
-  const { messages } = useLanguage();
-
   return (
     <section>
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-16 p-8 px-16  py-16 sm:py-24 m-2 sm:m-8 sm:mx-auto max-w-6xl">
