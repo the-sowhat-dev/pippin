@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import { Button } from '@radix-ui/themes';
 
-import { useLanguage } from '@/i18n/LanguageProvider';
 import { ContactButtonWithDialog } from '@/components/ContactButtonWithDialog';
 import { InvLogo } from '@/components/InvLogo';
 
@@ -14,7 +13,6 @@ export default function Header() {
   const isAppPage = pathname.startsWith('/app');
   const isAdvicePage = pathname === '/advices';
   const isLegalPage = pathname.startsWith('/app/legal') || pathname === '/legal';
-  const { messages } = useLanguage();
   const isProPage = pathname === '/pro';
   const isFAQPage = pathname === '/app/faq';
   const isProFormPage = pathname === '/pro/form';

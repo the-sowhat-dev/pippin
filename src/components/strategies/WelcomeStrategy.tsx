@@ -30,10 +30,13 @@ export default function WelcomeStrategy() {
             Notre <span className="font-bold">IA fait matcher chaque profil</span> avec les
             meilleurs experts et opportunités
           </h1>
-          {/* APPLE DOWNLOAD BUTTON */}
-          <AppleAppStoreButton className="mx-auto" />
-          {/* ANDROID DOWNLOAD BUTTON */}
-          <PlayStoreButton className="mx-auto" />
+
+          <div className="mx-auto flex flex-col gap-4">
+            {/* APPLE DOWNLOAD BUTTON */}
+            <AppleAppStoreButton />
+            {/* ANDROID DOWNLOAD BUTTON */}
+            <PlayStoreButton />
+          </div>
         </div>
 
         <div className="flex basis-1/2 self-center justify-center items-center sm:items-end">
