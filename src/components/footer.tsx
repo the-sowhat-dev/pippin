@@ -8,9 +8,10 @@ import { usePathname } from 'next/navigation';
 export function Footer() {
   const pathname = usePathname();
   const isProFormPage = pathname === '/pro/form';
+  const isDashboardPage = pathname.startsWith('/dashboard');
   const { messages } = useLanguage();
 
-  if (isProFormPage) return null;
+  if (isProFormPage || isDashboardPage) return null;
 
   return (
     <footer className="w-full bg-black flex flex-col sm:flex-row gap-12 justify-between text-white items-center p-8 sm:px-16">
