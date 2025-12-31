@@ -17,7 +17,9 @@ export default function Header() {
   const isFAQPage = pathname === '/app/faq';
   const isProFormPage = pathname === '/pro/form';
 
-  if (isAdvicePage || isProFormPage) return null;
+  const isDashboardPage = pathname.startsWith('/dashboard');
+
+  if (isAdvicePage || isProFormPage || isDashboardPage) return null;
 
   const showLogo =
     isArticlesPage || isBlogPage || isAppPage || isLegalPage || isProPage || isFAQPage;
