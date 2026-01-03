@@ -12,7 +12,7 @@ export default async function OnboardingPage() {
   const proData = token ? await getPro(token) : null;
 
   if (user?.unsafeMetadata?.hasDoneTheOnboarding) {
-    redirect('/dashboard');
+    redirect('/dashboard/profile');
   }
 
   return (
