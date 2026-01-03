@@ -2,9 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, User, BarChart3, ChevronLeft, ChevronRight, LogOut } from 'lucide-react';
+import {
+  LayoutDashboard,
+  User,
+  ChevronLeft,
+  ChevronRight,
+  LogOut,
+  ShieldCheck,
+  Handshake,
+  Eye,
+} from 'lucide-react';
 import { cn } from '../../../lib/utils';
 import { SignOutButton } from '@clerk/nextjs';
 import { motion } from 'framer-motion';
@@ -12,19 +20,29 @@ import { InvLogo } from '../InvLogo';
 
 const sidebarItems = [
   {
-    label: 'Tableau de bord',
-    href: '/dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    label: 'Profil',
+    label: 'Compte',
     href: '/dashboard/profile',
     icon: User,
   },
   {
-    label: 'Statistiques',
-    href: '/dashboard/stats',
-    icon: BarChart3,
+    label: 'Alertes',
+    href: '/dashboard/alerts',
+    icon: LayoutDashboard,
+  },
+  {
+    label: 'Screening',
+    href: '/dashboard/screening',
+    icon: ShieldCheck,
+  },
+  {
+    label: 'Match',
+    href: '/dashboard/match',
+    icon: Handshake,
+  },
+  {
+    label: 'Monitoring',
+    href: '/dashboard/monitoring',
+    icon: Eye,
   },
 ];
 
