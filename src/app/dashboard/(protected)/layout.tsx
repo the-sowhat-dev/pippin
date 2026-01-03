@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server';
+import { auth, currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { Sidebar } from '@/components/dashboard/Sidebar';
 
@@ -7,6 +7,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   if (!userId) {
     redirect('/dashboard/login');
+  }
+
+  const user = await currentUser();
+  if (!user?.unsafeMetadata?.hasDoneTheOnboarding) {
+    redirect('/dashboard/onboarding');
   }
 
   return (
