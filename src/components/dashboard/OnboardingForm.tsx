@@ -7,6 +7,7 @@ import { ProResponse, UpdateProInput } from 'sowhat-types';
 import { updatePro, uploadImage } from '../../../lib/api';
 import { markOnboardingAsCompleted } from '../../../lib/markOnboardingAsCompleted';
 import { LexendFont } from '@/utils/fonts';
+import { Loader2 } from 'lucide-react';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -347,9 +348,16 @@ export default function OnboardingForm({
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer"
+          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer flex items-center justify-center gap-2"
         >
-          {isLoading ? 'Completion...' : 'Compléter la configuration'}
+          {isLoading ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" />
+              Enregistrement...
+            </>
+          ) : (
+            'Compléter la configuration'
+          )}
         </button>
       </div>
     </form>
