@@ -1,102 +1,89 @@
-import { LeadResponse } from 'sowhat-types';
-
-// Simple Badge component if not available, or just use Tailwind classes
-const SimpleBadge = ({
-  children,
-  className,
-  title,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  title?: string;
-}) => (
-  <span
-    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${className}`}
-    title={title}
-  >
-    {children}
-  </span>
-);
+import {
+  getFinancialProductLabel,
+  getProfessionLabel,
+  getProjectNeedProLabel,
+  LeadResponse,
+} from 'sowhat-types';
+import { SimpleBadge } from '../SimpleBadge';
+import { formatAmount } from '@/utils/formatAmount';
+import { Info } from 'lucide-react';
 
 export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
-  const amountFormatter = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  });
-
   const calculateAge = (birthYear: number) => {
     return new Date().getFullYear() - birthYear;
   };
 
+  const formatInscriptionDate = (createdAt: Date | string) => {
+    const formattedDate = new Date(createdAt);
+    const daysAgo = Math.floor(
+      (new Date().getTime() - formattedDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    return `Inscrit il y a ${daysAgo} jours`;
+  };
+
   return (
-    <div className="group bg-white rounded-lg border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all duration-200 p-4 mb-3">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        {/* Left: User Info */}
-        <div className="flex items-center gap-4 min-w-[200px]">
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900">{lead.userId.slice(0, 5)}</h3>
-            <div className="flex items-center text-xs text-gray-500 mt-1 gap-2">
-              {lead.birthYear && <span>{calculateAge(lead.birthYear)} ans</span>}
-              {lead.profession && (
-                <>
-                  <span className="w-1 h-1 rounded-full bg-gray-300" />
-                  <span>{lead.profession}</span>
-                </>
-              )}
-            </div>
-          </div>
+    <div className="group bg-white rounded-lg border border-gray-100 hover:border-green-200 hover:shadow-sm transition-all duration-200 p-4 mb-3">
+      <span className="text-xs text-gray-400 flex justify-end mb-2">
+        {formatInscriptionDate(lead.createdAt)}
+      </span>
+
+      {/* Middle: Details */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 items-start gap-4 sm:gap-8 flex-1">
+        {/* Amount */}
+        <div className="flex flex-col">
+          <span className="text-gray-400">Montant initial à investir</span>
+          <span className="font-bold text-green-900">{formatAmount(lead.initialAmount)}</span>
         </div>
 
-        {/* Middle: Details */}
-        <div className="flex flex-wrap items-center gap-4 sm:gap-8 flex-1">
-          {/* Amount */}
-          <div className="flex flex-col">
-            <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">
-              Montant
-            </span>
-            <span className="text-sm font-bold text-gray-900">
-              {amountFormatter.format(lead.initialAmount)}
-            </span>
-          </div>
+        {/* Need */}
+        <div className="flex flex-col">
+          <span className="text-gray-400 mb-1">Besoin principal</span>
+          <SimpleBadge
+            className={`${lead.need ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-gray-700'} w-fit max-w-[350px] truncate`}
+            title={lead.need ? getProjectNeedProLabel(lead.need) : 'Non renseigné'}
+          >
+            {lead.need ? getProjectNeedProLabel(lead.need) : 'Non renseigné'}
+          </SimpleBadge>
+        </div>
 
-          {/* Need */}
-          <div className="flex flex-col">
-            <span className="text-xs text-gray-400 uppercase tracking-wider font-medium mb-1">
-              Besoin
-            </span>
-            <SimpleBadge
-              className="bg-purple-50 text-purple-700 w-fit max-w-[200px] truncate"
-              title={lead.need}
-            >
-              {lead.need}
-            </SimpleBadge>
-          </div>
+        {/* Product */}
+        <div className="flex flex-col">
+          <span className="text-gray-400">Produit recherché</span>
+          <SimpleBadge
+            className={`${lead.financialProduct ? 'bg-blue-50 text-blue-700' : 'bg-gray-50 text-gray-700'} w-fit max-w-[200px] truncate`}
+            title={
+              lead.financialProduct
+                ? getFinancialProductLabel(lead.financialProduct)
+                : 'Non renseigné'
+            }
+          >
+            {lead.financialProduct
+              ? getFinancialProductLabel(lead.financialProduct)
+              : 'Non renseigné'}
+          </SimpleBadge>
+        </div>
+      </div>
 
-          {/* Product */}
-          <div className="flex flex-col">
-            <span className="text-xs text-gray-400 uppercase tracking-wider font-medium mb-1">
-              Produit actuel
-            </span>
-            {lead.financialProduct ? (
-              <SimpleBadge
-                className="bg-green-50 text-green-700 w-fit max-w-[200px] truncate"
-                title={lead.financialProduct}
-              >
-                {lead.financialProduct}
-              </SimpleBadge>
-            ) : (
-              <span className="text-sm text-gray-400 italic">Non renseigné</span>
-            )}
-          </div>
+      {/* Metadata and user Info */}
+      <div className="flex gap-4 text-xs bg-gray-50 px-2 rounded-lg mt-4">
+        <div className=" text-gray-400 flex items-center gap-1">
+          <Info className="w-3 h-3" />
+          {lead.userId.slice(0, 7).toUpperCase()}
+        </div>
+        <div className="flex items-center text-gray-500 gap-2">
+          {lead.birthYear && <span>{calculateAge(lead.birthYear)} ans</span>}
+          {lead.profession && (
+            <>
+              <span className="w-1 h-1 rounded-full bg-gray-300" />
+              <span>{getProfessionLabel(lead.profession)}</span>
+            </>
+          )}
         </div>
 
         {/* Right: Action/Date */}
-        <div className="text-right flex flex-col items-end gap-1 min-w-[100px]">
-          <span className="text-xs text-gray-400">
-            {new Date(lead.createdAt).toLocaleDateString('fr-FR')}
-          </span>
-          <button className="text-sm text-blue-600 hover:text-blue-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="min-w-[100px] flex flex-1 justify-end py-2">
+          <button className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
             Voir le détail &rarr;
           </button>
         </div>
