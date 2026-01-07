@@ -1,4 +1,5 @@
 import {
+  FullLeadResponse,
   getFinancialProductKey,
   getProjectNeedKey,
   LeadsResponse,
@@ -157,6 +158,18 @@ export async function getLeads(
     return result;
   } catch (error) {
     console.error('Error fetching leads:', error);
+    throw error;
+  }
+}
+
+/**
+ * Get the full details of a specific lead
+ */
+export async function getLead(id: string, token: string | null): Promise<FullLeadResponse | null> {
+  try {
+    return fetchWithAuth<FullLeadResponse | null>(`/pro/lead/${id}`, token, { method: 'GET' });
+  } catch (error) {
+    console.error(`Error fetching lead details for ${id}:`, error);
     throw error;
   }
 }

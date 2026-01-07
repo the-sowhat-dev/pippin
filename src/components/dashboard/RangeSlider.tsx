@@ -13,7 +13,7 @@ export const RangeSlider = ({ min, max, value, onValueChange }: RangeSliderProps
     value={value}
     max={max}
     min={min}
-    step={1000}
+    step={10_000}
     onValueChange={onValueChange}
   >
     <SliderPrimitive.Track className="bg-gray-200 relative grow rounded-full h-[3px]">

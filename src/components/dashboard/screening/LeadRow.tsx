@@ -7,6 +7,7 @@ import {
 import { SimpleBadge } from '../SimpleBadge';
 import { formatAmount } from '@/utils/formatAmount';
 import { Info } from 'lucide-react';
+import { LeadDetailsSheet } from './LeadDetailsSheet';
 
 export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
   const calculateAge = (birthYear: number) => {
@@ -83,9 +84,14 @@ export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
 
         {/* Right: Action/Date */}
         <div className="min-w-[100px] flex flex-1 justify-end py-2">
-          <button className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-            Voir le détail &rarr;
-          </button>
+          <LeadDetailsSheet
+            leadId={lead.userId}
+            trigger={
+              <button className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                Voir le détail &rarr;
+              </button>
+            }
+          />
         </div>
       </div>
     </div>

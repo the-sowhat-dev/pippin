@@ -28,7 +28,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
           </div>
           <RangeSlider
             min={0}
-            max={1000000}
+            max={700_000}
             value={[filters.minInitialAmount, filters.maxInitialAmount]}
             onValueChange={([min, max]) =>
               onChange({ ...filters, minInitialAmount: min, maxInitialAmount: max })
