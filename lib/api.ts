@@ -8,6 +8,7 @@ import {
   CreateCommercialOfferInput,
   UpdateCommercialOfferInput,
   ProCommercialOfferResponse,
+  MatchingLeadsResponse,
 } from 'sowhat-types';
 
 import { LeadsFilters } from '@/utils/filters';
@@ -242,4 +243,19 @@ export async function toggleLikeUser(
   await fetchWithAuth<void>(`/pro/like/user/${id}?like=${like}`, token, {
     method: 'PUT',
   });
+}
+
+/**
+ * Get matching leads (offered and liked)
+ */
+export async function getMatchingLeads(token: string | null): Promise<MatchingLeadsResponse> {
+  const result = await fetchWithAuth<MatchingLeadsResponse | null>('/pro/match', token, {
+    method: 'GET',
+  });
+
+  if (!result) {
+    throw new Error('Failed to fetch matching leads');
+  }
+
+  return result;
 }

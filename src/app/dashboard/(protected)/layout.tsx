@@ -7,8 +7,6 @@ import { initPro } from '../../../../lib/api';
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { userId, getToken } = await auth();
 
-  console.log('userId', userId);
-
   if (!userId) {
     redirect('/dashboard/login');
   }
