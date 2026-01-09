@@ -2,12 +2,23 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { Sidebar } from '@/components/dashboard/Sidebar';
 import QueryProvider from '@/components/providers/QueryProvider';
+import { initPro } from '../../../../lib/api';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { userId } = await auth();
+  const { userId, getToken } = await auth();
+
+  console.log('userId', userId);
 
   if (!userId) {
     redirect('/dashboard/login');
+  }
+
+  try {
+    console.log('Initializing pro account...');
+    const token = await getToken();
+    await initPro(token);
+  } catch (error) {
+    console.error('Failed to initialize pro account:', error);
   }
 
   const user = await currentUser();

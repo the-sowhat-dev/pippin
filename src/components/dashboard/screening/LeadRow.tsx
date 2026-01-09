@@ -6,7 +6,7 @@ import {
 } from 'sowhat-types';
 import { SimpleBadge } from '../SimpleBadge';
 import { formatAmount } from '@/utils/formatAmount';
-import { Info } from 'lucide-react';
+import { Heart, Info, Send } from 'lucide-react';
 import { LeadDetailsSheet } from './LeadDetailsSheet';
 
 export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
@@ -27,7 +27,7 @@ export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
   return (
     <div className="group bg-white rounded-lg border border-gray-100 hover:border-green-200 hover:shadow-sm transition-all duration-200 p-4 mb-3">
       <span className="text-xs text-gray-400 flex justify-end mb-2">
-        {/* {formatInscriptionDate(lead.createdAt)} */}
+        {formatInscriptionDate(lead.createdAt)}
       </span>
 
       {/* Middle: Details */}
@@ -88,7 +88,17 @@ export const LeadRow = ({ lead }: { lead: LeadResponse }) => {
         </div>
 
         {/* Right: Action/Date */}
-        <div className="min-w-[100px] flex flex-1 justify-end py-2">
+        <div className="min-w-[100px] flex flex-1 justify-end items-center gap-3 py-2">
+          {lead.likedAt && (
+            <div className="flex items-center gap-1 p-1.5 bg-green-50 rounded-md border border-green-400">
+              <Heart className="w-4 h-4 text-green-400 fill-green-400" />
+            </div>
+          )}
+          {lead.hasBeenOfferedAt && (
+            <div className="flex items-center gap-1 p-1.5 bg-blue-50 rounded-md border border-blue-400">
+              <Send className="w-4 h-4 text-blue-400" />
+            </div>
+          )}
           <LeadDetailsSheet
             leadId={lead.userId}
             trigger={
