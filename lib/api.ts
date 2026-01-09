@@ -8,8 +8,18 @@ import {
   CreateCommercialOfferInput,
   UpdateCommercialOfferInput,
   ProCommercialOfferResponse,
-  MatchingLeadsResponse,
+  LeadResponse,
 } from 'sowhat-types';
+
+export interface MatchingLeadsResponse {
+  offers: {
+    offer: ProCommercialOfferResponse;
+    lead: FullLeadResponse;
+  }[];
+  likes: {
+    lead: LeadResponse;
+  }[];
+}
 
 import { LeadsFilters } from '@/utils/filters';
 

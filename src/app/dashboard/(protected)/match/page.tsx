@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { useQuery } from '@tanstack/react-query';
-import { Heart, Send, Eye, Loader2, RefreshCw } from 'lucide-react';
+import { Loader2, RefreshCw } from 'lucide-react';
 import { ProCommercialOfferResponse, OfferStatusEnum } from 'sowhat-types';
 
 import {

@@ -1,41 +1,45 @@
 'use client';
 
-import { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetDescription,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
-import { Loader2, ChevronDown, ChevronUp, Heart, Info } from 'lucide-react';
-import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../../lib/api';
-import { SimpleBadge } from '../SimpleBadge';
-import { formatAmount } from '@/utils/formatAmount';
-import {
-  getMaritalStatusLabel,
+  LeadsResponse,
+  FullLeadResponse,
   getProfessionLabel,
-  getProfessionStatusLabel,
-  getPersonalSalaryRangeLabel,
-  getHouseholdSalaryRangeLabel,
-  getPersonalNetWorthRangeLabel,
+  getMaritalStatusLabel,
   getProjectNeedProLabel,
   getFinancialProductLabel,
+  getProfessionStatusLabel,
+  getHouseholdSalaryRangeLabel,
+  getPersonalNetWorthRangeLabel,
+  getPersonalSalaryRangeLabel,
 } from 'sowhat-types';
+import { useState } from 'react';
+import { useAuth } from '@clerk/nextjs';
+import { Button } from '@/components/ui/button';
+import { Loader2, ChevronDown, ChevronUp, Heart, Info } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient, InfiniteData } from '@tanstack/react-query';
+
+import {
+  Sheet,
+  SheetTitle,
+  SheetHeader,
+  SheetContent,
+  SheetTrigger,
+  SheetDescription,
+} from '@/components/ui/sheet';
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
+  DialogTitle,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogContent,
+  DialogDescription,
 } from '@/components/ui/dialog';
+import { SimpleBadge } from '../SimpleBadge';
 import { Label } from '@/components/ui/label';
+import { SectionTitle } from './SheetSectionTitle';
+import { formatAmount } from '@/utils/formatAmount';
 import { Textarea } from '@/components/ui/textarea';
+import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../../lib/api';
 
 interface LeadDetailsSheetProps {
   leadId: string;
@@ -135,7 +139,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     mutationFn: async () => {
       const token = await getToken();
       if (!lead) throw new Error('Lead not loaded');
-      const newLikedState = !(lead as any).likedAt;
+      const newLikedState = !lead.likedAt;
       await toggleLikeUser(lead.userId, token, newLikedState);
       return newLikedState;
     },
@@ -143,33 +147,36 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
       const newLikedAt = newLikedState ? new Date().toISOString() : null;
 
       // Update individual lead query
-      queryClient.setQueryData(['lead', leadId], (oldLead: any) => {
+      queryClient.setQueryData(['lead', leadId], (oldLead: FullLeadResponse | undefined) => {
         if (!oldLead) return oldLead;
         return {
           ...oldLead,
-          likedAt: newLikedAt,
+          likedAt: newLikedAt ? new Date(newLikedAt) : null,
         };
       });
 
       // Update list query
-      queryClient.setQueriesData({ queryKey: ['pro-leads'] }, (oldData: any) => {
-        if (!oldData) return oldData;
-        return {
-          ...oldData,
-          pages: oldData.pages.map((page: any) => ({
-            ...page,
-            items: page.items.map((item: any) => {
-              if (item.userId === leadId) {
-                return {
-                  ...item,
-                  likedAt: newLikedAt,
-                };
-              }
-              return item;
-            }),
-          })),
-        };
-      });
+      queryClient.setQueriesData<InfiniteData<LeadsResponse>>(
+        { queryKey: ['pro-leads'] },
+        (oldData) => {
+          if (!oldData) return oldData;
+          return {
+            ...oldData,
+            pages: oldData.pages.map((page) => ({
+              ...page,
+              items: page.items.map((item) => {
+                if (item.userId === leadId) {
+                  return {
+                    ...item,
+                    likedAt: newLikedAt ? new Date(newLikedAt) : null,
+                  };
+                }
+                return item;
+              }),
+            })),
+          };
+        }
+      );
     },
   });
 
@@ -191,12 +198,6 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
   };
 
   const isSubmitting = createMutation.isPending || updateMutation.isPending;
-
-  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-lg font-semibold text-green-900 border-b pb-2 mb-4 mt-8 first:mt-0">
-      {children}
-    </h3>
-  );
 
   return (
     <>
@@ -587,9 +588,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                     {likeMutation.isPending ? (
                       <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
-                      <Heart
-                        className={`h-5 w-5 ${(lead as any)?.likedAt ? 'fill-current' : ''}`}
-                      />
+                      <Heart className={`h-5 w-5 ${lead?.likedAt ? 'fill-current' : ''}`} />
                     )}
                   </Button>
                   <Button

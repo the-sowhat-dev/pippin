@@ -8,6 +8,7 @@ import { updatePro, uploadImage } from '../../../lib/api';
 import { markOnboardingAsCompleted } from '../../../lib/markOnboardingAsCompleted';
 import { LexendFont } from '@/utils/fonts';
 import { Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -138,11 +139,13 @@ export default function OnboardingForm({
           </div>
 
           <div className="mt-2 flex items-center space-x-4">
-            {(profileImagePreview || user?.imageUrl) && (
-              <img
-                src={profileImagePreview || user?.imageUrl}
+            {(profileImagePreview || (user && user.imageUrl)) && (
+              <Image
+                width={80}
+                height={80}
+                src={!profileImagePreview ? user!.imageUrl : profileImagePreview}
                 alt="Profile"
-                className="h-20 w-20 rounded-full object-cover"
+                className="rounded-full object-cover"
               />
             )}
             <input
@@ -244,11 +247,13 @@ export default function OnboardingForm({
             Ratio recommandé 1:1, jusqu&apos;à 2MB
           </p>
         </div>
-        {(companyImagePreview || initialData?.companyImage) && (
-          <img
-            src={companyImagePreview || initialData?.companyImage || ''}
+        {(companyImagePreview || (initialData && initialData.companyImage)) && (
+          <Image
+            width={80}
+            height={80}
+            src={!companyImagePreview ? initialData!.companyImage! : companyImagePreview}
             alt="Company Logo"
-            className="h-20 w-20 rounded-full object-cover mb-2"
+            className="object-cover"
           />
         )}
         <input

@@ -3,6 +3,7 @@ import { User, Mail, Building2, Briefcase, FileText, Fingerprint, PenLine } from
 import { getPro } from '../../../../../lib/api';
 import { UpdateProSheet } from '@/components/dashboard/UpdateProSheet';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export default async function Page() {
   const user = await currentUser();
@@ -38,7 +39,13 @@ export default async function Page() {
           <div className="relative">
             <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center text-4xl overflow-hidden ring-4 ring-white shadow-md">
               {user?.imageUrl ? (
-                <img src={user.imageUrl} alt="Profile" className="w-full h-full object-cover" />
+                <Image
+                  src={user.imageUrl}
+                  alt="Profile"
+                  className="object-cover"
+                  width={128}
+                  height={128}
+                />
               ) : (
                 <span className="text-gray-400">{user?.firstName?.[0]}</span>
               )}
@@ -90,10 +97,12 @@ export default async function Page() {
               <div className="flex items-start gap-6 mb-6">
                 <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center overflow-hidden shrink-0">
                   {proData?.companyImage ? (
-                    <img
+                    <Image
                       src={proData?.companyImage}
                       alt={proData?.companyName || 'Company'}
-                      className="w-full h-full object-contain p-2"
+                      className="object-cover"
+                      width={128}
+                      height={128}
                     />
                   ) : (
                     <Building2 className="text-gray-300" size={32} />

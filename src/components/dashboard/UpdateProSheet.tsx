@@ -20,6 +20,7 @@ import {
   SheetClose,
 } from '@/components/ui/sheet';
 import { Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -145,11 +146,13 @@ export function UpdateProSheet({
             <div className="flex flex-col gap-2">
               <Label htmlFor="profileImage">Photo de profil</Label>
               <div className="flex items-center gap-4">
-                {(profileImagePreview || user?.imageUrl) && (
-                  <img
-                    src={profileImagePreview || user?.imageUrl}
+                {(profileImagePreview || (user && user.imageUrl)) && (
+                  <Image
+                    src={!profileImagePreview ? user!.imageUrl! : profileImagePreview}
+                    width={80}
+                    height={80}
                     alt="Profile"
-                    className="h-16 w-16 rounded-full object-cover border border-gray-200"
+                    className="object-cover"
                   />
                 )}
                 <Input
@@ -217,11 +220,13 @@ export function UpdateProSheet({
             <div className="flex flex-col gap-2">
               <Label htmlFor="companyImage">Logo de l'entreprise</Label>
               <div className="flex items-center gap-4">
-                {(companyImagePreview || initialData?.companyImage) && (
-                  <img
-                    src={companyImagePreview || initialData?.companyImage || ''}
+                {(companyImagePreview || (initialData && initialData.companyImage)) && (
+                  <Image
+                    width={80}
+                    height={80}
+                    src={!companyImagePreview ? initialData!.companyImage! : companyImagePreview}
                     alt="Company Logo"
-                    className="h-16 w-16 rounded-lg object-contain border border-gray-200 bg-gray-50 p-1"
+                    className="object-cover"
                   />
                 )}
                 <Input
