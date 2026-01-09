@@ -5,6 +5,10 @@ import {
   LeadsResponse,
   ProResponse,
   UpdateProInput,
+  CreateCommercialOfferInput,
+  UpdateCommercialOfferInput,
+  ProCommercialOfferResponse,
+  MatchingLeadsResponse,
 } from 'sowhat-types';
 
 import { LeadsFilters } from '@/utils/filters';
@@ -81,6 +85,21 @@ export async function updatePro(data: UpdateProInput, token: string | null): Pro
 
   if (!result) {
     throw new Error('Failed to update pro profile');
+  }
+
+  return result;
+}
+
+/**
+ * Initialize the Pro profile
+ */
+export async function initPro(token: string | null): Promise<ProResponse> {
+  const result = await fetchWithAuth<ProResponse | null>('/pro/init', token, {
+    method: 'POST',
+  });
+
+  if (!result) {
+    throw new Error('Failed to initialize pro profile');
   }
 
   return result;
@@ -172,4 +191,71 @@ export async function getLead(id: string, token: string | null): Promise<FullLea
     console.error(`Error fetching lead details for ${id}:`, error);
     throw error;
   }
+}
+
+/**
+ * Create a commercial offer for a lead
+ */
+export async function createOffer(
+  data: CreateCommercialOfferInput,
+  token: string | null
+): Promise<ProCommercialOfferResponse> {
+  const result = await fetchWithAuth<ProCommercialOfferResponse | null>('/pro/offer', token, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+
+  if (!result) {
+    throw new Error('Failed to create offer');
+  }
+
+  return result;
+}
+
+/**
+ * Update a commercial offer
+ */
+export async function updateOffer(
+  id: string,
+  data: UpdateCommercialOfferInput,
+  token: string | null
+): Promise<ProCommercialOfferResponse> {
+  const result = await fetchWithAuth<ProCommercialOfferResponse | null>(`/pro/offer/${id}`, token, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+
+  if (!result) {
+    throw new Error('Failed to update offer');
+  }
+
+  return result;
+}
+
+/**
+ * Toggle like for a user
+ */
+export async function toggleLikeUser(
+  id: string,
+  token: string | null,
+  like: boolean
+): Promise<void> {
+  await fetchWithAuth<void>(`/pro/like/user/${id}?like=${like}`, token, {
+    method: 'PUT',
+  });
+}
+
+/**
+ * Get matching leads (offered and liked)
+ */
+export async function getMatchingLeads(token: string | null): Promise<MatchingLeadsResponse> {
+  const result = await fetchWithAuth<MatchingLeadsResponse | null>('/pro/match', token, {
+    method: 'GET',
+  });
+
+  if (!result) {
+    throw new Error('Failed to fetch matching leads');
+  }
+
+  return result;
 }

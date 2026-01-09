@@ -1,5 +1,4 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
 import OnboardingForm from '../../../components/dashboard/OnboardingForm';
 import { LexendFont } from '@/utils/fonts';
 import { getPro } from '../../../../lib/api';
@@ -10,10 +9,6 @@ export default async function OnboardingPage() {
   const token = await getToken();
 
   const proData = token ? await getPro(token) : null;
-
-  if (user?.unsafeMetadata?.hasDoneTheOnboarding) {
-    redirect('/dashboard/profile');
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 sm:px-6 lg:px-8 ">

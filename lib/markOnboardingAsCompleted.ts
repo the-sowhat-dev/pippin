@@ -10,12 +10,7 @@ export async function markOnboardingAsCompleted() {
   }
 
   const client = await clerkClient();
-
-  await client.users.updateUser(userId, {
-    unsafeMetadata: {
-      hasDoneTheOnboarding: true,
-    },
-  });
+  await client.users.updateUser(userId, { unsafeMetadata: { hasDoneTheOnboarding: true } });
 
   return { success: true };
 }

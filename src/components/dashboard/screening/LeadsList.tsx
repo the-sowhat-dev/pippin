@@ -1,7 +1,10 @@
 import { Loader2 } from 'lucide-react';
 import { LeadResponse } from 'sowhat-types';
 
-import { LeadRow } from './LeadRow';
+import { SendIcon } from '../SendIcon';
+import { HeartIcon } from '../HeartIcon';
+import { LeadDetailsSheet } from './LeadDetailsSheet';
+import { formatInscriptionDate, LeadRow } from './LeadRow';
 
 interface LeadsListProps {
   leads: LeadResponse[];
@@ -79,7 +82,30 @@ export const LeadsList = ({
 
       <div className="space-y-3">
         {leads.map((lead) => (
-          <LeadRow key={lead.userId} lead={lead} />
+          <LeadRow key={lead.userId}>
+            <LeadRow.Header>
+              <div className="flex justify-between items-center w-full">
+                <div className="flex items-center gap-2">
+                  {lead.likedAt && <HeartIcon />}
+                  {lead.hasBeenOfferedAt && <SendIcon />}
+                </div>
+                <span>{formatInscriptionDate(lead.createdAt)}</span>
+              </div>
+            </LeadRow.Header>
+            <LeadRow.Content lead={lead} />
+            <LeadRow.Footer lead={lead}>
+              <LeadRow.Footer.Action>
+                <LeadDetailsSheet
+                  leadId={lead.userId}
+                  trigger={
+                    <button className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                      Voir le détail &rarr;
+                    </button>
+                  }
+                />
+              </LeadRow.Footer.Action>
+            </LeadRow.Footer>
+          </LeadRow>
         ))}
       </div>
 

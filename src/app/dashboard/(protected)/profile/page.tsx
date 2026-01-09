@@ -3,7 +3,6 @@ import { User, Mail, Building2, Briefcase, FileText, Fingerprint, PenLine } from
 import { getPro } from '../../../../../lib/api';
 import { UpdateProSheet } from '@/components/dashboard/UpdateProSheet';
 import { Button } from '@/components/ui/button';
-import { redirect } from 'next/navigation';
 
 export default async function Page() {
   const user = await currentUser();
@@ -11,10 +10,6 @@ export default async function Page() {
   const token = await getToken();
 
   const proData = token ? await getPro(token) : null;
-
-  if (!user?.unsafeMetadata?.hasDoneTheOnboarding) {
-    redirect('/dashboard/onboarding');
-  }
 
   return (
     <div className="p-8 max-w-5xl mx-auto space-y-8">
