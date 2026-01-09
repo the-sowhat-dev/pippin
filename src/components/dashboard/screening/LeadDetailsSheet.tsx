@@ -186,6 +186,9 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     } else {
       createMutation.mutate(offerMessage);
     }
+
+    // refetch the lead
+    queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
   };
 
   const openOfferDialog = () => {

@@ -124,7 +124,7 @@ export default function MatchPage() {
                 <div className="w-full flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     {offeredLead.lead.likedAt && <HeartIcon />}
-                    {offeredLead.lead.hasBeenOfferedAt && <SendIcon />}
+                    {offeredLead.offer.sentAt && <SendIcon />}
                   </div>
 
                   {offeredLead.offer && (

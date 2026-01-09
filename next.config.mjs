@@ -17,6 +17,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'abkqohkbpzpaafojdzqg.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'kbnnhcdaywuuunjxxufp.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
     ],
   },
 };
