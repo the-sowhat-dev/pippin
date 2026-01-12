@@ -24,12 +24,12 @@ export default function WelcomeStrategy() {
         />
       </div>
 
-      <div className="w-full flex flex-1 p-8 pb-0 gap-8 flex-col sm:flex-row">
+      <div className="w-full flex flex-1 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
-          <h1 className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
+          {/* <h1 className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
             Notre <span className="font-bold">IA fait matcher chaque profil</span> avec les
             meilleurs experts et opportunités
-          </h1>
+          </h1> */}
 
           <div className="mx-auto flex flex-col gap-4">
             {/* APPLE DOWNLOAD BUTTON */}

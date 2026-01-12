@@ -5,7 +5,7 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 export default function DescriptionStrategy() {
   return (
-    <section className="flex flex-col md:flex-row items-center gap-16 md:gap-8 bg-[#C2E7FF] p-12 sm:p-16">
+    <section className="flex flex-col md:flex-row items-center gap-16 md:gap-8 bg-[#C2E7FF] p-12 sm:p-16 sm:pb-24 ">
       <div className="flex-1">
         <Image
           src={'/images/description.svg'}

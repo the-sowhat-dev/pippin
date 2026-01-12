@@ -16,9 +16,9 @@ export default function Page() {
 
       <DescriptionStrategy />
 
-      <FiveMinutesStrategy />
-
       <PrinciplesStrategy />
+
+      <FiveMinutesStrategy />
 
       {/* DOWNLOAD BUTTON */}
       <div className="flex flex-col sm:flex-row items-center bg-gradient-to-b from-[#203649] to-[#405e79] p-4 py-8 md:p-8 gap-4 justify-center">

@@ -11,9 +11,8 @@ import {
   ProjectStep2Options,
   ProjectStep2BisOptions,
 } from '../../../lib/project.utils';
-import { AppleAppStoreButton } from '../AppleAppStoreButton';
-import { PlayStoreButton } from '../PlayStoreButton';
 import { Messages } from 'next-intl';
+import { LexendFont } from '@/utils/fonts';
 
 export default function FiveMinutesStrategy() {
   const { messages } = useLanguage();
@@ -45,18 +44,7 @@ export default function FiveMinutesStrategy() {
 
   return (
     <section className=" bg-[#c6f0d0]">
-      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8">
-        <p className="text-base sm:text-lg mx-auto text-center text-white">
-          Quelle que soit votre définition de &quot;gagner mieux&quot;, nous avons la solution
-        </p>
-      </div>
       <div className="max-w-4xl mx-auto p-12 sm:p-16">
-        {/* <div className="flex flex-col items-center justify-center p-4 md:p-8">
-          <p className="text-2xl font-bold mx-auto text-center text-white">
-            Quelque soit votre définition de &quot;gagner mieux&quot;, nous pouvons vous aider
-          </p>
-        </div> */}
-
         <AnimatePresence mode="wait">
           {step === 1 && (
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-8 shadow-lg gap-8 flex flex-col">
@@ -196,30 +184,18 @@ export default function FiveMinutesStrategy() {
           )}
 
           {step === 4 && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-8 shadow-lg gap-8 flex items-center flex-col">
-              <div className="text-2xl text-[#1a5d2a] items-center flex flex-col gap-2">
-                <p className="font-semibold text-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-8 shadow-md gap-8 flex flex-col">
+              <div className={`flex flex-col gap-2`}>
+                <p
+                  className={`text-xl sm:text-2xl ${LexendFont.className} text-green-800 leading-tight`}
+                >
                   Félicitations, vous avez fait le plus dur !
                 </p>
-                <div className="text-green-500 text-center mx-2 sm:mx-8">
+                <div className="text-green-600 leading-snug">
                   <p>Prenez quelques minutes pour télécharger invstore®</p>
                   <p> et aller au bout de l&apos;expérience.</p>
                 </div>
               </div>
-
-              <motion.div
-                key="step4"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-              >
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
-                  {/* APPLE DOWNLOAD BUTTON */}
-                  <AppleAppStoreButton />
-
-                  {/* ANDROID DOWNLOAD BUTTON */}
-                  <PlayStoreButton />
-                </div>
-              </motion.div>
             </div>
           )}
         </AnimatePresence>
