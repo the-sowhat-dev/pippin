@@ -8,20 +8,14 @@ import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
 import { LeadsList } from './LeadsList';
 import { getLeads } from '@/../lib/api';
 import { FiltersPanel } from './FiltersPanel';
-import { LeadsFilters } from '@/utils/filters';
-
-const INITIAL_FILTERS: LeadsFilters = {
-  minInitialAmount: 0,
-  maxInitialAmount: 1000000,
-  needs: [],
-  financialProducts: [],
-  onlyWithoutProduct: false,
-};
+import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
 
 export default function ProLeadsDashboardClient() {
   const { getToken } = useAuth();
-  const [filters, setFilters] = useState<LeadsFilters>(INITIAL_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFilters>(INITIAL_FILTERS);
+  const [filters, setFilters] = useState<LeadsFiltersAndSorting>(InitialLeadsFiltersAndSorting);
+  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(
+    InitialLeadsFiltersAndSorting
+  );
 
   // Debounce logic
   useEffect(() => {
