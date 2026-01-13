@@ -16,9 +16,7 @@ import {
 import { getMatchingLeads } from '@/../lib/api';
 import { LeadDetailsSheet } from '@/components/dashboard/screening/LeadDetailsSheet';
 import { SimpleBadge } from '@/components/dashboard/SimpleBadge';
-import { LeadRow, formatInscriptionDate } from '@/components/dashboard/screening/LeadRow';
-import { SendIcon } from '@/components/dashboard/SendIcon';
-import { HeartIcon } from '@/components/dashboard/HeartIcon';
+import { LeadRow } from '@/components/dashboard/screening/LeadRow';
 import { LexendFont } from '@/utils/fonts';
 
 export const formatSendDate = (createdAt: Date | string) => {
@@ -119,50 +117,44 @@ export default function MatchPage() {
             <p className="text-gray-500 italic">Aucune offre envoyée.</p>
           )}
           {offeredLeads.map((offeredLead) => (
-            <LeadRow key={offeredLead.lead.userId}>
-              <LeadRow.Header>
-                <div className="w-full flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    {offeredLead.lead.likedAt && <HeartIcon />}
-                    {offeredLead.offer.sentAt && <SendIcon />}
+            <LeadRow
+              key={offeredLead.lead.userId}
+              lead={offeredLead.lead as any}
+              extraHeaderContent={
+                offeredLead.offer && (
+                  <div className="flex items-center gap-2 text-xs flex-wrap">
+                    <SimpleBadge className={getStatusBadgeClass(offeredLead.offer.status)}>
+                      {getStatusLabel(offeredLead.offer.status)}
+                    </SimpleBadge>
+                    <span className="text-gray-300">•</span>
+                    <SimpleBadge
+                      className={
+                        offeredLead.offer.seenByUser
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }
+                    >
+                      {offeredLead.offer.seenByUser
+                        ? "Vu par l'utilisateur"
+                        : "Non vu par l'utilisateur"}
+                    </SimpleBadge>
+                    <span className="text-gray-300">•</span>
+                    <span className="text-gray-500">
+                      {formatSendDate(offeredLead.offer.sentAt)}
+                    </span>
                   </div>
-
-                  {offeredLead.offer && (
-                    <div className="flex items-center gap-2">
-                      <SimpleBadge className={getStatusBadgeClass(offeredLead.offer.status)}>
-                        {getStatusLabel(offeredLead.offer.status)}
-                      </SimpleBadge>
-                      <span className="mx-2">•</span>
-                      <SimpleBadge
-                        className={
-                          offeredLead.offer.seenByUser
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800'
-                        }
-                      >
-                        {offeredLead.offer.seenByUser
-                          ? "Vu par l'utilisateur"
-                          : "Non vu par l'utilisateur"}
-                      </SimpleBadge>
-                      <span className="mx-2">•</span>
-                      <span>{formatSendDate(offeredLead.offer.sentAt)}</span>
-                    </div>
-                  )}
-                </div>
-              </LeadRow.Header>
-              <LeadRow.Content lead={offeredLead.lead} />
-              <LeadRow.Footer lead={offeredLead.lead}>
-                <LeadRow.Footer.Action>
-                  <button
-                    className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-                    title="Consulter le message"
-                    onClick={() => setSelectedOffer(offeredLead.offer)}
-                  >
-                    Consulter le message &rarr;
-                  </button>
-                </LeadRow.Footer.Action>
-              </LeadRow.Footer>
-            </LeadRow>
+                )
+              }
+              action={
+                <button
+                  className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+                  title="Consulter le message"
+                  onClick={() => setSelectedOffer(offeredLead.offer)}
+                >
+                  Consulter le message &rarr;
+                </button>
+              }
+            />
           ))}
         </div>
       </section>
@@ -173,30 +165,20 @@ export default function MatchPage() {
         <div className="space-y-3">
           {likedLeads.length === 0 && <p className="text-gray-500 italic">Aucun favori.</p>}
           {likedLeads.map((likedLead) => (
-            <LeadRow key={likedLead.lead.userId}>
-              <LeadRow.Header>
-                <div className="flex justify-between items-center w-full">
-                  <div className="flex items-center gap-2">
-                    <HeartIcon />
-                    {likedLead.lead.hasBeenOfferedAt && <SendIcon />}
-                  </div>
-                  <span>{formatInscriptionDate(likedLead.lead.createdAt)}</span>
-                </div>
-              </LeadRow.Header>
-              <LeadRow.Content lead={likedLead.lead} />
-              <LeadRow.Footer lead={likedLead.lead}>
-                <LeadRow.Footer.Action>
-                  <LeadDetailsSheet
-                    leadId={likedLead.lead.userId}
-                    trigger={
-                      <button className="text-sm text-green-600 hover:text-green-800 font-medium ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Voir le détail &rarr;
-                      </button>
-                    }
-                  />
-                </LeadRow.Footer.Action>
-              </LeadRow.Footer>
-            </LeadRow>
+            <LeadRow
+              key={likedLead.lead.userId}
+              lead={likedLead.lead as any}
+              action={
+                <LeadDetailsSheet
+                  leadId={likedLead.lead.userId}
+                  trigger={
+                    <button className="text-sm text-green-600 hover:text-green-800 font-medium ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Voir le détail &rarr;
+                    </button>
+                  }
+                />
+              }
+            />
           ))}
         </div>
       </section>

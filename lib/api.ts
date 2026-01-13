@@ -21,7 +21,7 @@ export interface MatchingLeadsResponse {
   }[];
 }
 
-import { LeadsFilters } from '@/utils/filters';
+import { LeadsFiltersAndSorting } from '@/utils/filters';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -137,7 +137,7 @@ export async function uploadImage(
  * Fetch filtered leads
  */
 export async function getLeads(
-  filters: LeadsFilters,
+  filters: LeadsFiltersAndSorting,
   cursor: string | null, // encoded { initialAmount: number, id: string }
   token: string | null
 ): Promise<LeadsResponse> {
@@ -148,6 +148,22 @@ export async function getLeads(
 
   if (filters.onlyWithoutProduct) {
     params.append('onlyWithoutProduct', 'true');
+  }
+
+  if (filters.onlyOutsideFrance) {
+    params.append('onlyOutsideFrance', 'true');
+  }
+
+  filters.postalCodes.forEach((code) => {
+    params.append('postalCodes[]', code);
+  });
+
+  if (filters.sortBy) {
+    params.append('sortBy', filters.sortBy);
+  }
+
+  if (filters.sortOrder) {
+    params.append('sortOrder', filters.sortOrder);
   }
 
   if (cursor) {

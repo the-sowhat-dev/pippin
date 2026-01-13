@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { Sidebar } from '@/components/dashboard/Sidebar';
 import QueryProvider from '@/components/providers/QueryProvider';
 import { initPro } from '../../../../lib/api';
+import { Toaster } from 'sonner';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { userId, getToken } = await auth();
@@ -28,7 +29,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <QueryProvider>
       <div className="flex h-screen bg-gray-50 overflow-hidden">
         <Sidebar />
-        <main className="flex-1 overflow-y-auto w-full">{children}</main>
+        <main className="flex-1 overflow-y-auto w-full">
+          <Toaster />
+          {children}
+        </main>
       </div>
     </QueryProvider>
   );

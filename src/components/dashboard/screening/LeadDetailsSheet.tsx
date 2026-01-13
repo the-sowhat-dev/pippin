@@ -12,6 +12,7 @@ import {
   getPersonalNetWorthRangeLabel,
   getPersonalSalaryRangeLabel,
 } from 'sowhat-types';
+import { toast } from 'sonner';
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
@@ -40,6 +41,8 @@ import { SectionTitle } from './SheetSectionTitle';
 import { formatAmount } from '@/utils/formatAmount';
 import { Textarea } from '@/components/ui/textarea';
 import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../../lib/api';
+import { LexendFont } from '@/utils/fonts';
+import { formatPostalCode } from '@/utils/formatPostalCode';
 
 interface LeadDetailsSheetProps {
   leadId: string;
@@ -113,6 +116,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
       setIsOfferDialogOpen(false);
+      toast.success('Offre créée avec succès');
     },
   });
 
@@ -132,6 +136,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
       setIsOfferDialogOpen(false);
+      toast.success('Offre mise à jour avec succès');
     },
   });
 
@@ -186,9 +191,6 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     } else {
       createMutation.mutate(offerMessage);
     }
-
-    // refetch the lead
-    queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
   };
 
   const openOfferDialog = () => {
@@ -209,7 +211,9 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
         <SheetContent className="w-full sm:max-w-none sm:w-1/2 flex flex-col h-full p-0 gap-0">
           <div className="flex-1 overflow-y-auto p-6">
             <SheetHeader>
-              <SheetTitle className="text-green-900 text-2xl">Détail du prospect</SheetTitle>
+              <SheetTitle className={`${LexendFont.className} text-green-900 text-2xl`}>
+                Détail du prospect
+              </SheetTitle>
               <SheetDescription>
                 Consultez les informations détaillées fournies par le prospect.
               </SheetDescription>
@@ -225,6 +229,49 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
               </div>
             ) : lead ? (
               <div className="mt-6 pb-20 space-y-6">
+                {/* Activity Section  */}
+                <section>
+                  <SectionTitle>Activité</SectionTitle>
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    <DetailItem
+                      label="Montant initial d'investissement"
+                      value={lead.initialAmount ? formatAmount(lead.initialAmount) : null}
+                    />
+                    <DetailItem
+                      label="Capacité mensuelle d'investissement"
+                      value={
+                        lead.monthlyAmount ? `${formatAmount(lead.monthlyAmount)} / mois` : null
+                      }
+                    />
+                    <div className="col-span-1 xl:col-span-2">
+                      <DetailItem
+                        label="Besoin principal"
+                        value={lead.need ? getProjectNeedProLabel(lead.need) : null}
+                        badge
+                      />
+                    </div>
+                    <DetailItem
+                      label="Produit recherché"
+                      value={
+                        lead.financialProduct
+                          ? getFinancialProductLabel(lead.financialProduct)
+                          : null
+                      }
+                      badge
+                    />
+                    <DetailItem
+                      label="Dernière activité"
+                      value={lead.updatedAt ? new Date(lead.updatedAt).toLocaleDateString() : null}
+                    />
+                    <DetailItem label="Nombre d'offres reçues" value={lead.totalOffersReceived} />
+                    <DetailItem
+                      label="Nombre d'offres acceptées"
+                      value={lead.totalOffersAccepted}
+                    />
+
+                    <div className="col-span-1 xl:col-span-2"></div>
+                  </div>
+                </section>
                 {/* Personal Section */}
                 <section>
                   <SectionTitle>Personnel</SectionTitle>
@@ -284,7 +331,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                       }
                       badge
                     />
-                    <DetailItem label="Code postal" value={lead.postalCode} />
+                    <DetailItem label="Code postal" value={formatPostalCode(lead.postalCode)} />
                     <DetailItem
                       label="Propriétaire résidence principale"
                       value={
@@ -310,32 +357,6 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                 <section>
                   <SectionTitle>Financier</SectionTitle>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    <DetailItem
-                      label="Montant initial"
-                      value={lead.initialAmount ? formatAmount(lead.initialAmount) : null}
-                    />
-                    <DetailItem
-                      label="Capacité mensuelle"
-                      value={lead.monthlyAmount ? formatAmount(lead.monthlyAmount) : null}
-                    />
-                    <DetailItem
-                      label="Besoin principal"
-                      value={lead.need ? getProjectNeedProLabel(lead.need) : null}
-                      badge
-                    />
-                    <DetailItem
-                      label="Produit recherché"
-                      value={
-                        lead.financialProduct
-                          ? getFinancialProductLabel(lead.financialProduct)
-                          : null
-                      }
-                      badge
-                    />
-                    <div className="col-span-1 xl:col-span-2">
-                      <DetailItem label="Note" value={lead.note} />
-                    </div>
-
                     <DetailItem
                       label="Mensualités crédits"
                       value={lead.loanMonthlyPayment ? formatAmount(lead.loanMonthlyPayment) : null}
@@ -381,8 +402,9 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
 
                     <DetailItem
                       label="Comptes Épargne (Nombre)"
-                      value={lead.totalSavingsBankAccounts}
+                      value={!lead.totalSavingsBankAccounts ? '--' : lead.totalSavingsBankAccounts}
                     />
+
                     <DetailItem
                       label="Comptes Épargne (Solde)"
                       value={
@@ -394,7 +416,9 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
 
                     <DetailItem
                       label="Comptes Courants (Nombre)"
-                      value={lead.totalCheckingBankAccounts}
+                      value={
+                        !lead.totalCheckingBankAccounts ? '--' : lead.totalCheckingBankAccounts
+                      }
                     />
                     <DetailItem
                       label="Comptes Courants (Solde)"
@@ -405,7 +429,11 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                       }
                     />
 
-                    <DetailItem label="Crédits (Nombre)" value={lead.totalLoansBankAccounts} />
+                    <DetailItem
+                      label="Crédits (Nombre)"
+                      value={!lead.totalLoansBankAccounts ? '--' : lead.totalLoansBankAccounts}
+                    />
+
                     <DetailItem
                       label="Crédits (Solde restant)"
                       value={
@@ -427,137 +455,99 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                 </section>
 
                 {/* AI Summary Section */}
-                {lead.aiSummary && (
+                {lead.aiSummary && lead.aiSummary.fullResponse && (
                   <section>
-                    <SectionTitle>Synthèse IA</SectionTitle>
-                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                      <div className="flex justify-between items-center mb-4">
-                        <div>
-                          <span className="text-sm text-gray-500 block">Statut</span>
-                          <span
-                            className={`font-medium ${lead.aiSummary.status === 'risk_detected' ? 'text-red-600' : 'text-green-600'}`}
-                          >
-                            {lead.aiSummary.status === 'risk_detected'
-                              ? 'Risque détecté'
-                              : 'Normal'}
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-sm text-gray-500 block">Version</span>
-                          <span className="font-medium text-gray-900">
-                            {lead.aiSummary.version}
-                          </span>
-                        </div>
-                      </div>
-
-                      {lead.aiSummary.fullResponse && (
-                        <div className="mt-4">
-                          <Button
-                            variant="outline"
-                            onClick={() => setShowAiDetails(!showAiDetails)}
-                            className="w-full flex justify-between items-center"
-                          >
-                            {showAiDetails ? 'Masquer le détail' : 'Voir le détail complet'}
-                            {showAiDetails ? (
-                              <ChevronUp className="h-4 w-4" />
-                            ) : (
-                              <ChevronDown className="h-4 w-4" />
-                            )}
-                          </Button>
-
-                          {showAiDetails && (
-                            <div className="mt-4 space-y-4 animate-in fade-in slide-in-from-top-2">
-                              {lead.aiSummary.fullResponse.message && (
-                                <div className="bg-white p-3 rounded border border-gray-100">
-                                  <h4 className="font-semibold text-sm text-gray-700 mb-1">
-                                    Message
-                                  </h4>
-                                  <p className="text-sm text-gray-600">
-                                    {lead.aiSummary.fullResponse.message}
-                                  </p>
-                                </div>
-                              )}
-
-                              {lead.aiSummary.fullResponse.synthese && (
-                                <div className="bg-white p-3 rounded border border-gray-100">
-                                  <h4 className="font-semibold text-sm text-gray-700 mb-2">
-                                    Synthèse
-                                  </h4>
-                                  <div className="grid grid-cols-3 gap-2 text-center">
-                                    <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                                      <span className="block text-xs text-gray-500">Note</span>
-                                      <span className="font-bold text-green-700">
-                                        {lead.aiSummary.fullResponse.synthese.note}/10
-                                      </span>
-                                    </div>
-                                    <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                                      <span className="block text-xs text-gray-500">
-                                        Optimisation
-                                      </span>
-                                      <span className="font-bold text-blue-700">
-                                        {lead.aiSummary.fullResponse.synthese.optimisationLevel}%
-                                      </span>
-                                    </div>
-                                    <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                                      <span className="block text-xs text-gray-500">Produit</span>
-                                      <span
-                                        className="font-bold text-purple-700 text-xs break-words"
-                                        title={lead.aiSummary.fullResponse.synthese.product}
-                                      >
-                                        {lead.aiSummary.fullResponse.synthese.product}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-
-                              {lead.aiSummary.fullResponse.analyse &&
-                                lead.aiSummary.fullResponse.analyse.length > 0 && (
-                                  <div className="bg-white p-3 rounded border border-gray-100">
-                                    <h4 className="font-semibold text-sm text-gray-700 mb-2">
-                                      Analyse
-                                    </h4>
-                                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                      {lead.aiSummary.fullResponse.analyse.map((item, i) => (
-                                        <li key={i}>{item}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {lead.aiSummary.fullResponse.recommandations &&
-                                lead.aiSummary.fullResponse.recommandations.length > 0 && (
-                                  <div className="bg-white p-3 rounded border border-gray-100">
-                                    <h4 className="font-semibold text-sm text-gray-700 mb-2">
-                                      Recommandations
-                                    </h4>
-                                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                      {lead.aiSummary.fullResponse.recommandations.map(
-                                        (item, i) => (
-                                          <li key={i}>{item}</li>
-                                        )
-                                      )}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {lead.aiSummary.fullResponse.concretement &&
-                                lead.aiSummary.fullResponse.concretement.length > 0 && (
-                                  <div className="bg-white p-3 rounded border border-gray-100">
-                                    <h4 className="font-semibold text-sm text-gray-700 mb-2">
-                                      Concrètement
-                                    </h4>
-                                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                                      {lead.aiSummary.fullResponse.concretement.map((item, i) => (
-                                        <li key={i}>{item}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                            </div>
-                          )}
+                    <SectionTitle>Rapport IA</SectionTitle>
+                    <div className="mt-4 space-y-4 animate-in fade-in slide-in-from-top-2">
+                      {lead.aiSummary.fullResponse.message && (
+                        <div className="py-4">
+                          <h4 className={`${LexendFont.className} text-green-900/70 text-sm mb-1`}>
+                            Message
+                          </h4>
+                          <p className="text-sm text-gray-600">
+                            {lead.aiSummary.fullResponse.message}
+                          </p>
                         </div>
                       )}
+
+                      {lead.aiSummary.fullResponse.synthese && (
+                        <div className="py-4">
+                          <h4 className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
+                            Synthèse
+                          </h4>
+                          <div className="grid grid-cols-3 gap-2 text-center">
+                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
+                              <span className="block text-xs text-gray-500">Note</span>
+                              <span className="font-bold text-green-700">
+                                {lead.aiSummary.fullResponse.synthese.note}/5
+                              </span>
+                            </div>
+                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
+                              <span className="block text-xs text-gray-500">Optimisation</span>
+                              <span className="font-bold text-blue-700">
+                                {lead.aiSummary.fullResponse.synthese.optimisationLevel}%
+                              </span>
+                            </div>
+                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
+                              <span className="block text-xs text-gray-500">Produit</span>
+                              <span
+                                className="font-bold text-purple-700 text-xs break-words"
+                                title={lead.aiSummary.fullResponse.synthese.product}
+                              >
+                                {lead.aiSummary.fullResponse.synthese.product}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {lead.aiSummary.fullResponse.analyse &&
+                        lead.aiSummary.fullResponse.analyse.length > 0 && (
+                          <div className="py-4">
+                            <h4
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
+                            >
+                              Analyse
+                            </h4>
+                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                              {lead.aiSummary.fullResponse.analyse.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                      {lead.aiSummary.fullResponse.recommandations &&
+                        lead.aiSummary.fullResponse.recommandations.length > 0 && (
+                          <div className="py-4">
+                            <h4
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
+                            >
+                              Recommandations
+                            </h4>
+                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                              {lead.aiSummary.fullResponse.recommandations.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                      {lead.aiSummary.fullResponse.concretement &&
+                        lead.aiSummary.fullResponse.concretement.length > 0 && (
+                          <div className="py-4">
+                            <h4
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
+                            >
+                              Concrètement
+                            </h4>
+                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                              {lead.aiSummary.fullResponse.concretement.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                     </div>
                   </section>
                 )}
