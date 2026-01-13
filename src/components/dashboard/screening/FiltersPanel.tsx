@@ -94,7 +94,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
 
         {/* Products */}
         <div className="border-b border-gray-100 pb-4">
-          <div className="space-y-2 mb-8">
+          <div className="space-y-2">
             <span className="text-sm font-medium text-gray-800/60">
               Produits financiers recherchés
             </span>
@@ -140,7 +140,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
           </div>
 
           {/* Only Without Product */}
-          <div className="flex items-center space-x-2 mb-2">
+          {/* <div className="flex items-center space-x-2 mb-2">
             <CheckboxPrimitive.Root
               id="without-product"
               checked={filters.onlyWithoutProduct}
@@ -163,7 +163,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
             >
               Uniquement sans produit
             </label>
-          </div>
+          </div> */}
         </div>
 
         {/* Postal Codes */}
@@ -202,7 +202,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
         </div>
 
         {/* Only Outside France */}
-        <div className="flex items-center space-x-2">
+        {/* <div className="flex items-center space-x-2">
           <CheckboxPrimitive.Root
             id="outside-france"
             checked={filters.onlyOutsideFrance}
@@ -225,7 +225,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
           >
             Uniquement les non résident Français
           </label>
-        </div>
+        </div> */}
       </div>
 
       {/* Sorting */}

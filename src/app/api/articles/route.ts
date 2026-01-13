@@ -9,7 +9,7 @@ export async function GET() {
         SELECT *
         FROM articles
         WHERE is_published = true
-        ORDER BY published_at DESC
+        ORDER BY id DESC
       `;
       const result = await client.query(query);
       return NextResponse.json(result.rows);

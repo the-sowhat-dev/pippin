@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { RobotoFont, LexendFont } from '@/utils/fonts';
 import { timeAgo } from '../utils/date';
+import { InstagramPostCarousel } from './InstagramPostCarousel';
 
 interface ArticleCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface ArticleCardProps {
   date: Date | string;
   collaboration?: string;
   coverImage?: string | null;
+  readingTime: number;
 }
 
 export default function ArticleCard({
@@ -18,10 +20,15 @@ export default function ArticleCard({
   date,
   collaboration,
   coverImage,
+  readingTime,
 }: ArticleCardProps) {
   // Parse date if it's a string
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   const timeAgoString = timeAgo(dateObj);
+
+  if (coverImage === 'insta-carousel') {
+    return <InstagramPostCarousel slug={slug} slideCount={readingTime} title={title} />;
+  }
 
   return (
     <a href={`/blog/a/${slug}`} className="block w-full group">

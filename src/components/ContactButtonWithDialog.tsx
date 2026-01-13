@@ -16,7 +16,7 @@ import { AvatarProfile } from './AvatarProfile';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';
 
-const EMAIL = 'contact@sowhat-app.com';
+const EMAIL = 'contact@invstore.fr';
 
 interface ProfileContactDialogProps {
   person: 'raph' | 'hugo';

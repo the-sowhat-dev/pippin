@@ -26,11 +26,20 @@ const ImagesPro = [
     y: -18,
     href: 'https://www.hub612.com/',
   },
+  {
+    src: '/images/powens.png',
+    delay: 0.8,
+    duration: 3.5,
+    y: -18,
+    href: 'https://www.powens.com/',
+  },
 ];
 
-export default function DescriptionProStrategy() {
+export default function DescriptionProStrategy({ theme = 'green' }: { theme?: 'green' | 'blue' }) {
   return (
-    <section className="flex flex-col items-center bg-[#35C055] gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white">
+    <section
+      className={`flex flex-col items-center ${theme === 'green' ? 'bg-[#35C055]' : 'bg-sky-400'} gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white`}
+    >
       <div className="flex flex-col items-center gap-16">
         <div className="relative max-w-xl mx-auto my-8">
           <FormatQuoteIcon

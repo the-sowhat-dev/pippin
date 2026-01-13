@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import { LexendFont } from '@/utils/fonts';
 
 export default function DescriptionStrategy() {
   return (
@@ -37,7 +38,9 @@ export default function DescriptionStrategy() {
               sx={{ fontSize: 100 }}
               className="absolute -top-10 -left-6 text-[#35c055] opacity-30 rotate-180"
             />
-            <h2 className="text-2xl font-bold relative text-center md:text-left text-[#1a5d2a] leading-relaxed">
+            <h2
+              className={` ${LexendFont.className} text-2xl font-bold relative text-center md:text-left text-[#1a5d2a]`}
+            >
               Moins de 5 minutes pour une analyse IA gratuite de ma situation financière ?
             </h2>
             <FormatQuoteIcon
@@ -50,7 +53,7 @@ export default function DescriptionStrategy() {
             <Image
               src={'/images/woman_in_bed.png'}
               alt="Five minutes to analyze your financial situation"
-              style={{ maxHeight: '500px', objectFit: 'contain' }}
+              style={{ maxWidth: '500px', objectFit: 'contain' }}
               width={1280}
               height={853}
             />

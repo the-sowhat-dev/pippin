@@ -52,6 +52,7 @@ export default function Page() {
                 slug={article.slug}
                 date={article.published_at}
                 coverImage={article.cover_image}
+                readingTime={article.reading_time!}
               />
             ))}
           </div>
