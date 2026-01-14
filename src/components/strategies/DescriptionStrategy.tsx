@@ -39,7 +39,7 @@ export default function DescriptionStrategy() {
               className="absolute -top-10 -left-6 text-[#35c055] opacity-30 rotate-180"
             />
             <h2
-              className={` ${LexendFont.className} text-2xl font-bold relative text-center md:text-left text-[#1a5d2a]`}
+              className={` ${LexendFont.className} text-xl sm:text-2xl leading-tight sm:leading-normal font-bold relative text-center md:text-left text-[#1a5d2a]`}
             >
               Moins de 5 minutes pour une analyse IA gratuite de ma situation financière ?
             </h2>
@@ -49,11 +49,11 @@ export default function DescriptionStrategy() {
             />
           </div>
 
-          <div className="bg-[#35c055] rounded-lg overflow-hidden flex-shrink-0 shadow-xl transform rotate-1 transition-transform hover:rotate-0">
+          <div className="bg-[#35c055] rounded-lg overflow-hidden flex-shrink-0 shadow-xl transform rotate-1 transition-transform hover:rotate-0 max-w-[500px]">
             <Image
               src={'/images/woman_in_bed.png'}
               alt="Five minutes to analyze your financial situation"
-              style={{ maxWidth: '500px', objectFit: 'contain' }}
+              style={{ objectFit: 'contain' }}
               width={1280}
               height={853}
             />
