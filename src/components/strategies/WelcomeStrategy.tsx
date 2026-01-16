@@ -9,7 +9,7 @@ import { PlayStoreButton } from '@/components/PlayStoreButton';
 export default function WelcomeStrategy() {
   return (
     <section className="bg-[#35c055]">
-      <div className="flex items-center justify-center py-12 pt-16 sm:py-12">
+      <div className="flex items-center justify-center py-12 lg:pb-0 xl:pb-16 pt-16 max-w-2xl mx-auto">
         <Image
           priority
           width={1000}
@@ -26,12 +26,7 @@ export default function WelcomeStrategy() {
 
       <div className="w-full flex flex-1 pb-0 gap-8 flex-col sm:flex-row">
         <div className="flex flex-col gap-4 basis-1/2 justify-center">
-          {/* <h1 className="w-[60%] text-center self-center pb-8 sm:text-xl text-pretty text-white">
-            Notre <span className="font-bold">IA fait matcher chaque profil</span> avec les
-            meilleurs experts et opportunités
-          </h1> */}
-
-          <div className="mx-auto flex flex-col gap-4">
+          <div className="mx-auto flex xl:flex-row flex-col gap-4">
             {/* APPLE DOWNLOAD BUTTON */}
             <AppleAppStoreButton />
             {/* ANDROID DOWNLOAD BUTTON */}
