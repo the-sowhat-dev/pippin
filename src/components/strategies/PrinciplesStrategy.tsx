@@ -22,11 +22,11 @@ export default function PrinciplesStrategy() {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8">
+      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8 flex flex-col gap-4 items-center">
         <p className="text-base sm:text-lg mx-auto text-center text-white">
           Quelle que soit votre définition de{' '}
           <span className={`${LexendFont.className} text-green-100`}>&quot;gagner mieux&quot;</span>
-          , nous avons la solution
+          , nous avons la solution.
         </p>
       </div>
 
