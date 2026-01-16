@@ -23,13 +23,25 @@ export default function DescriptionStrategy() {
 
       <div className="flex flex-1 flex-col gap-14 items-center">
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
-          <span className="font-bold">L&apos;application française invstore®</span> analyse votre
-          situation financière <span className="font-bold">en moins de 5 minutes grâce à l’IA</span>
-          , puis vous <span className="font-bold">connecte de manière anonyme</span> avec des
-          experts financiers agréés (banquiers et conseillers en gestion de patrimoine
-          indépendants), qui sont <span className="font-bold">mis en compétition</span> pour vous
-          proposer les{' '}
-          <span className="font-bold">solutions d’épargne les plus adaptées à votre besoin</span>.
+          <span className="font-bold">L&apos;application française invstore®</span> facilite
+          l&apos;
+          <span className="font-bold">
+            accès des particuliers aux conseillers financiers spécialisés
+          </span>
+          . Son objectif est de{' '}
+          <span className="font-bold">
+            transformer l&apos;expérience d&apos;achat des produits d&apos;investissement
+          </span>{' '}
+          en réduisant la charge mentale et administrative qui freine encore de nombreux épargnants.
+        </div>
+
+        <div className="flex-1 max-w-[500px] text-pretty text-justify">
+          <span className="font-bold">Concrêtement</span>, elle analyse votre situation financière{' '}
+          <span className="font-bold">en moins de 5 minutes grâce à l'IA</span>, puis vous{' '}
+          <span className="font-bold">connecte de manière anonyme</span> avec des experts financiers
+          agréés (banquiers et conseillers en gestion de patrimoine indépendants), qui sont{' '}
+          <span className="font-bold">mis en compétition</span> pour vous proposer les{' '}
+          <span className="font-bold">solutions d'épargne les plus adaptées à votre besoin</span>.
         </div>
 
         <div className="flex flex-col items-center gap-16 md:gap-8 mb-16">

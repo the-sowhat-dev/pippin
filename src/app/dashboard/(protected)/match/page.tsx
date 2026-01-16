@@ -69,8 +69,10 @@ export default function MatchPage() {
   const getStatusLabel = (status: OfferStatusEnum) => {
     switch (status) {
       case OfferStatusEnum.ACCEPTED:
+      case OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER:
         return 'Acceptée';
       case OfferStatusEnum.REJECTED:
+      case OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER:
         return 'Refusée';
       case OfferStatusEnum.PENDING:
       default:
@@ -81,8 +83,10 @@ export default function MatchPage() {
   const getStatusBadgeClass = (status: OfferStatusEnum) => {
     switch (status) {
       case OfferStatusEnum.ACCEPTED:
+      case OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER:
         return 'bg-green-100 text-green-800';
       case OfferStatusEnum.REJECTED:
+      case OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER:
         return 'bg-red-100 text-red-800';
       case OfferStatusEnum.PENDING:
       default:

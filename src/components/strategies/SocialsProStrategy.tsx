@@ -6,7 +6,7 @@ export default function SocialsProStrategy() {
   return (
     <div className="flex flex-col gap-8 items-center">
       <p className="text-center mx-8 text-xl sm:text-2xl font-medium text-gray-800">
-        Suivez-nous sur les réseaux pour plus d&apos;informations
+        Suivez-nous sur les réseaux pour plus d&apos;informations.
       </p>
       <div className="flex gap-4">
         <Link
