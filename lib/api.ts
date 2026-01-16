@@ -242,14 +242,17 @@ export async function createOffer(
  * Update a commercial offer
  */
 export async function updateOffer(
-  id: string,
   data: UpdateCommercialOfferInput,
   token: string | null
 ): Promise<ProCommercialOfferResponse> {
-  const result = await fetchWithAuth<ProCommercialOfferResponse | null>(`/pro/offer/${id}`, token, {
-    method: 'PUT',
-    body: JSON.stringify(data),
-  });
+  const result = await fetchWithAuth<ProCommercialOfferResponse | null>(
+    `/pro/offer/${data.id}`,
+    token,
+    {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!result) {
     throw new Error('Failed to update offer');

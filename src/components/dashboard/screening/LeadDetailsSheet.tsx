@@ -16,7 +16,7 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
-import { Loader2, ChevronDown, ChevronUp, Heart, Info } from 'lucide-react';
+import { Loader2, Heart, Info } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient, InfiniteData } from '@tanstack/react-query';
 
 import {
@@ -124,14 +124,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     mutationFn: async (message: string) => {
       const token = await getToken();
       if (!lead?.offer) throw new Error('No offer to update');
-      return updateOffer(
-        lead.offer.id,
-        {
-          message,
-          // We assume updating the message doesn't change status unless specified otherwise
-        },
-        token
-      );
+      return updateOffer({ id: lead.offer.id, message }, token);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['lead', leadId] });

@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 
-import { WordsCarousel } from '@/components/WordsCarousel';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
+import TrustUs from '../TrustUs';
 
 export default function WelcomeStrategy() {
   return (
@@ -12,15 +12,10 @@ export default function WelcomeStrategy() {
       <div className="flex items-center justify-center py-12 lg:pb-0 xl:pb-16 pt-16 max-w-2xl mx-auto">
         <Image
           priority
-          width={1000}
-          height={1000}
-          style={{
-            width: '60%',
-            height: 'auto',
-            objectFit: 'contain',
-          }}
+          width={1288}
+          height={500}
           src="/images/invstore.png"
-          alt="Font Logo"
+          alt="Logo d'invstore®"
         />
       </div>
 
@@ -38,7 +33,7 @@ export default function WelcomeStrategy() {
           <Image
             src={'/images/mockup_welcome.png'}
             alt="Strategy Image"
-            style={{ maxHeight: '500px', objectFit: 'contain' }}
+            style={{ maxHeight: '550px', objectFit: 'contain' }}
             width={419}
             height={600}
             fetchPriority="high"
@@ -46,7 +41,7 @@ export default function WelcomeStrategy() {
         </div>
       </div>
 
-      <WordsCarousel />
+      <TrustUs />
     </section>
   );
 }

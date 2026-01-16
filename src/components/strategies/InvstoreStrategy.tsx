@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -26,7 +25,7 @@ const items = [
     Icon: Speed,
   },
   {
-    text: 'Préparer lavenir et développer mon patrimoine est enfin devenu simple',
+    text: "Préparer l'avenir et développer mon patrimoine est enfin devenu simple",
     Icon: TrendingUp,
   },
   {
@@ -93,7 +92,7 @@ export default function InvstoreStrategy() {
           <p className="text-base sm:text-lg text-center text-white">
             Suivez-nous sur{' '}
             <span className={`${LexendFont.className} text-green-100`}>les réseaux</span> pour plus
-            d&apos;informations
+            d&apos;informations.
           </p>
           <div className="flex gap-4">
             <Link
