@@ -23,18 +23,18 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   title: "Invstore - une nouvelle expérience de l'épargne",
   description:
-    'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
+    "L'application française qui réduit la charge mentale et administrative des épargnants.",
   openGraph: {
     title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
+      "L'application française qui réduit la charge mentale et administrative des épargnants.",
     images: { url: '/images/invstore.png' },
     url: 'https://invstore.fr/app',
   },
   twitter: {
     title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
+      "L'application française qui réduit la charge mentale et administrative des épargnants.",
     images: { url: '/images/invstore.png' },
   },
   icons: {
