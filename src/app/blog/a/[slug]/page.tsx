@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   return (
     <div className={`flex flex-col gap-4 ${RobotoFont.className}`}>
       <h1
-        className={`text-2xl sm:text-4xl pt-8 pb-16 mb-0 fade-in text-center ${LexendFont.className} text-green-800`}
+        className={`text-2xl sm:text-3xl pt-8 pb-16 mb-0 fade-in text-center ${LexendFont.className} text-green-800`}
       >
         {article.title}
       </h1>

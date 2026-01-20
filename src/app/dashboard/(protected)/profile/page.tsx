@@ -37,7 +37,7 @@ export default async function Page() {
         {/* User Card */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center space-y-4 h-fit">
           <div className="relative">
-            <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center text-4xl overflow-hidden ring-4 ring-white shadow-md">
+            <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center text-3xl overflow-hidden ring-4 ring-white shadow-md">
               {user?.imageUrl ? (
                 <Image
                   src={user.imageUrl}

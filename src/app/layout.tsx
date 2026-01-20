@@ -23,19 +23,29 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   title: "Invstore - une nouvelle expérience de l'épargne",
   description:
-    'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
+    "L'application française qui réduit la charge mentale et administrative des épargnants.",
   openGraph: {
     title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
-    images: { url: `../../public/favicon.ico` },
+      "L'application française qui réduit la charge mentale et administrative des épargnants.",
+    images: { url: '/images/invstore.png' },
     url: 'https://invstore.fr/app',
   },
   twitter: {
     title: "Invstore - une nouvelle expérience de l'épargne",
     description:
-      'Analyse IA de votre situation financière puis connexion anonyme avec des conseillers spécialisés, qui sont mis en compétition pour vous proposer les meilleurs placements (application française gratuite)',
-    images: { url: `../../public/favicon.ico` },
+      "L'application française qui réduit la charge mentale et administrative des épargnants.",
+    images: { url: '/images/invstore.png' },
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icons/apple-icon.svg', type: 'image/svg+xml' },
+    ],
   },
 };
 
@@ -48,9 +58,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="fr">
         <head>
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <MetricoolAnalytics />
           <GoogleAnalytics />
         </head>

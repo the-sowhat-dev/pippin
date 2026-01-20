@@ -23,7 +23,7 @@ type ImageWithCaptionProps = {
 const components = {
   h1: (props: HeadingProps) => (
     <h1
-      className={`text-2xl sm:text-4xl pt-6 sm:pt-8 pb-12 sm:pb-16 mb-0 fade-in text-center ${OpenSans.className}`}
+      className={`text-2xl sm:text-3xl pt-6 sm:pt-8 pb-12 sm:pb-16 mb-0 fade-in text-center ${OpenSans.className}`}
       {...props}
     />
   ),
