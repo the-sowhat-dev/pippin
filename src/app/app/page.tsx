@@ -8,11 +8,14 @@ import FiveMinutesStrategy from '@/components/strategies/FiveMinutesStrategy';
 import InvstoreStrategy from '@/components/strategies/InvstoreStrategy';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
+import TrustUs from '@/components/TrustUs';
 
 export default function Page() {
   return (
     <main>
       <WelcomeStrategy />
+
+      <TrustUs />
 
       <DescriptionStrategy />
 

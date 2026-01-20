@@ -8,7 +8,7 @@ export const HeroPro = () => {
     <section className="py-12 pt-16 text-green-900 min-h-screen flex flex-col justify-between gap-8">
       <div className="max-w-6xl mx-auto flex flex-col gap-16 pt-8 sm:pt-16">
         <h1
-          className={`text-4xl sm:text-6xl leading-tight text-center w-[80%] mx-auto ${OpenSans.className}`}
+          className={`text-3xl sm:text-6xl leading-tight text-center w-[80%] mx-auto ${OpenSans.className}`}
         >
           Faire progresser l&apos;épargne par l&apos;expérience d&apos;achat
         </h1>
