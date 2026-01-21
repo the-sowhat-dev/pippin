@@ -1,11 +1,10 @@
-import { Check, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { ProjectNeeds, FinancialProducts, DepartmentsList } from 'sowhat-types';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
 import { RangeSlider } from '../RangeSlider';
 import { MultiSelect } from '../MultiSelect';
-import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
 import { formatAmount } from '@/utils/formatAmount';
+import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
 
 const NEEDS_OPTIONS = ProjectNeeds.map((n) => n.proLabel);
 const PRODUCTS_OPTIONS = FinancialProducts.map((p) => p.label);
@@ -138,32 +137,6 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
               </div>
             )}
           </div>
-
-          {/* Only Without Product */}
-          {/* <div className="flex items-center space-x-2 mb-2">
-            <CheckboxPrimitive.Root
-              id="without-product"
-              checked={filters.onlyWithoutProduct}
-              onCheckedChange={(checked) =>
-                onChange({
-                  ...filters,
-                  onlyWithoutProduct: checked === true,
-                  financialProducts: checked === true ? [] : filters.financialProducts,
-                })
-              }
-              className="flex h-5 w-5 appearance-none items-center justify-center rounded border border-gray-300 bg-white outline-none focus:ring-2 focus:ring-blue-500/20 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
-            >
-              <CheckboxPrimitive.Indicator className="text-white">
-                <Check className="h-3.5 w-3.5" />
-              </CheckboxPrimitive.Indicator>
-            </CheckboxPrimitive.Root>
-            <label
-              htmlFor="without-product"
-              className="text-sm font-medium text-gray-700 cursor-pointer select-none"
-            >
-              Uniquement sans produit
-            </label>
-          </div> */}
         </div>
 
         {/* Postal Codes */}

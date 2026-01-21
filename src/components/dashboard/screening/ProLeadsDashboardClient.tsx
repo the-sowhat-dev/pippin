@@ -2,20 +2,28 @@
 
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '@clerk/nextjs';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { LeadsList } from './LeadsList';
 import { getLeads } from '@/../lib/api';
 import { FiltersPanel } from './FiltersPanel';
-import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
+import { LeadsFiltersAndSorting } from '@/utils/filters';
+import { filtersToSearchParams, searchParamsToFilters } from '@/utils/urlParams';
 
-export default function ProLeadsDashboardClient() {
+function ProLeadsDashboardContent() {
   const { getToken } = useAuth();
-  const [filters, setFilters] = useState<LeadsFiltersAndSorting>(InitialLeadsFiltersAndSorting);
-  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(
-    InitialLeadsFiltersAndSorting
-  );
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [filters, setFilters] = useState<LeadsFiltersAndSorting>(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    return searchParamsToFilters(params);
+  });
+
+  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(filters);
 
   // Debounce logic
   useEffect(() => {
@@ -25,6 +33,13 @@ export default function ProLeadsDashboardClient() {
 
     return () => clearTimeout(handler);
   }, [filters]);
+
+  // Sync URL with filters
+  useEffect(() => {
+    const params = filtersToSearchParams(debouncedFilters);
+    const queryString = params.toString();
+    router.replace(`${pathname}?${queryString}`, { scroll: false });
+  }, [debouncedFilters, pathname, router]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isFetching } =
     useInfiniteQuery({
@@ -76,5 +91,17 @@ export default function ProLeadsDashboardClient() {
         />
       </section>
     </div>
+  );
+}
+
+export default function ProLeadsDashboardClient() {
+  return (
+    <Suspense fallback={
+      <div className="flex justify-center p-8">
+        <Loader2 className="w-8 h-8 animate-spin text-gray-300" />
+      </div>
+    }>
+      <ProLeadsDashboardContent />
+    </Suspense>
   );
 }

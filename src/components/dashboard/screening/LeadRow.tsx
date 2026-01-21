@@ -165,21 +165,21 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
           {(lead.likedAt || lead.hasBeenOfferedAt || lead.totalOffersReceived >= 0) && (
             <div className="flex items-center gap-2">
               {lead.likedAt && (
-                <div className="bg-red-50 p-1.5 rounded-md border border-red-100" title="Lead liké">
+                <div className="bg-red-50 p-1.5 rounded-md border border-red-100" title="Vous avez mis ce lead en favori">
                   <Heart className="w-4 h-4 text-red-500 fill-current" />
                 </div>
               )}
               {lead.hasBeenOfferedAt && (
                 <div
                   className="bg-blue-50 p-1.5 rounded-md border border-blue-100"
-                  title="Offre envoyée"
+                  title="Vous avez envoyé une offre à ce lead"
                 >
                   <Send className="w-4 h-4 text-blue-500" />
                 </div>
               )}
               <div
                 className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-md text-sm font-medium border border-amber-100"
-                title="Offres reçues"
+                title="Nombre d'offres reçues par le lead"
               >
                 <Badge className="w-3.5 h-3.5" />
                 <span>{lead.totalOffersReceived}</span>
