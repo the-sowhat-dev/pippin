@@ -1,38 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { toast } from 'sonner';
 import { useAuth } from '@clerk/nextjs';
-import { useQuery } from '@tanstack/react-query';
+import { OfferStatusEnum } from 'sowhat-types';
 import { Loader2, RefreshCw } from 'lucide-react';
-import { ProCommercialOfferResponse, OfferStatusEnum } from 'sowhat-types';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
-import {
-  Dialog,
-  DialogTitle,
-  DialogHeader,
-  DialogContent,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { getMatchingLeads } from '@/../lib/api';
-import { LeadDetailsSheet } from '@/components/dashboard/screening/LeadDetailsSheet';
-import { SimpleBadge } from '@/components/dashboard/SimpleBadge';
-import { LeadRow } from '@/components/dashboard/screening/LeadRow';
 import { LexendFont } from '@/utils/fonts';
-
-export const formatSendDate = (createdAt: Date | string) => {
-  const date = new Date(createdAt);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString().slice(-2);
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-
-  return `Offre envoyée le ${day}/${month}/${year} à ${hours}:${minutes}`;
-};
+import { sortOffersByStatus } from '@/utils/sortOffers';
+import { getMatchingLeads, updateOffer } from '@/../lib/api';
+import { OfferSection } from '@/components/dashboard/match/OfferSection';
+import { LikedLeadCard } from '@/components/dashboard/screening/LikedLeadCard';
+import { LeadDetailsSheet } from '@/components/dashboard/screening/LeadDetailsSheet';
 
 export default function MatchPage() {
   const { getToken } = useAuth();
-  const [selectedOffer, setSelectedOffer] = useState<ProCommercialOfferResponse | null>(null);
+  const queryClient = useQueryClient();
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ['matching-leads'],
@@ -42,9 +26,35 @@ export default function MatchPage() {
     },
   });
 
+  const archiveMutation = useMutation({
+    mutationFn: async ({ offerId }: { offerId: string }) => {
+      const token = await getToken();
+      return updateOffer(
+        {
+          id: offerId,
+          status: OfferStatusEnum.ARCHIVED_BY_PRO,
+        },
+        token
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['matching-leads'] });
+      toast.success('Lead archivé avec succès');
+    },
+    onError: () => {
+      toast.error("Erreur lors de l'archivage du lead");
+    },
+  });
+
+  // Pre-sort offers by status
+  const { acceptedLeads, pendingLeads, rejectedLeads, archivedLeads, likedLeads } = useMemo(
+    () => sortOffersByStatus(data),
+    [data]
+  );
+
   if (isLoading) {
     return (
-      <div className="p-8 max-w-5xl mx-auto flex justify-center items-center min-h-[50vh]">
+      <div className="p-8 max-w-7xl mx-auto flex justify-center items-center min-h-[50vh]">
         <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
       </div>
     );
@@ -52,50 +62,14 @@ export default function MatchPage() {
 
   if (isError) {
     return (
-      <div className="p-8 max-w-5xl mx-auto text-center text-red-500">
+      <div className="p-8 max-w-7xl mx-auto text-center text-red-500">
         Une erreur est survenue lors du chargement des leads.
       </div>
     );
   }
 
-  const offeredLeads =
-    data?.offers.sort((a, b) => {
-      if (!a.offer || !b.offer) return 0;
-      return new Date(b.offer.sentAt).getTime() - new Date(a.offer.sentAt).getTime();
-    }) || [];
-
-  const likedLeads = data?.likes || [];
-
-  const getStatusLabel = (status: OfferStatusEnum) => {
-    switch (status) {
-      case OfferStatusEnum.ACCEPTED:
-      case OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER:
-        return 'Acceptée';
-      case OfferStatusEnum.REJECTED:
-      case OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER:
-        return 'Refusée';
-      case OfferStatusEnum.PENDING:
-      default:
-        return 'En attente de réponse';
-    }
-  };
-
-  const getStatusBadgeClass = (status: OfferStatusEnum) => {
-    switch (status) {
-      case OfferStatusEnum.ACCEPTED:
-      case OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER:
-        return 'bg-green-100 text-green-800';
-      case OfferStatusEnum.REJECTED:
-      case OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER:
-        return 'bg-red-100 text-red-800';
-      case OfferStatusEnum.PENDING:
-      default:
-        return 'bg-blue-100 text-blue-800';
-    }
-  };
-
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-12">
+    <div className="p-8 max-w-7xl mx-auto space-y-8">
       <header className="flex justify-between items-start">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Match</h1>
@@ -111,95 +85,71 @@ export default function MatchPage() {
         </button>
       </header>
 
-      {/* Section 1: Commercial Offered Leads */}
-      <section>
-        <h2 className={`${LexendFont.className} text-2xl mb-4 text-green-800`}>
-          Offres commerciales envoyées
-        </h2>
-        <div className="space-y-3">
-          {offeredLeads.length === 0 && (
-            <p className="text-gray-500 italic">Aucune offre envoyée.</p>
-          )}
-          {offeredLeads.map((offeredLead) => (
-            <LeadRow
-              key={offeredLead.lead.userId}
-              lead={offeredLead.lead as any}
-              extraHeaderContent={
-                offeredLead.offer && (
-                  <div className="flex items-center gap-2 text-xs flex-wrap">
-                    <SimpleBadge className={getStatusBadgeClass(offeredLead.offer.status)}>
-                      {getStatusLabel(offeredLead.offer.status)}
-                    </SimpleBadge>
-                    <span className="text-gray-300">•</span>
-                    <SimpleBadge
-                      className={
-                        offeredLead.offer.seenByUser
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-gray-100 text-gray-800'
-                      }
-                    >
-                      {offeredLead.offer.seenByUser
-                        ? "Vu par l'utilisateur"
-                        : "Non vu par l'utilisateur"}
-                    </SimpleBadge>
-                    <span className="text-gray-300">•</span>
-                    <span className="text-gray-500">
-                      {formatSendDate(offeredLead.offer.sentAt)}
-                    </span>
-                  </div>
-                )
-              }
-              action={
-                <button
-                  className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-                  title="Consulter le message"
-                  onClick={() => setSelectedOffer(offeredLead.offer)}
-                >
-                  Consulter le message &rarr;
-                </button>
-              }
-            />
-          ))}
-        </div>
-      </section>
+      {/* Accepted Offers Section */}
+      <OfferSection
+        title="Offres acceptées"
+        subtitle="Les utilisateurs ont accepté votre offre - contactez-les rapidement"
+        leads={acceptedLeads}
+        archiveMutation={archiveMutation}
+        color="green"
+      />
 
-      {/* Section 2: Likes */}
-      <section>
-        <h2 className={`${LexendFont.className} text-2xl mb-4 text-green-800`}>Leads favoris</h2>
-        <div className="space-y-3">
-          {likedLeads.length === 0 && <p className="text-gray-500 italic">Aucun favori.</p>}
-          {likedLeads.map((likedLead) => (
-            <LeadRow
-              key={likedLead.lead.userId}
-              lead={likedLead.lead as any}
-              action={
-                <LeadDetailsSheet
-                  leadId={likedLead.lead.userId}
-                  trigger={
-                    <button className="text-sm text-green-600 hover:text-green-800 font-medium ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Voir le détail &rarr;
-                    </button>
-                  }
-                />
-              }
-            />
-          ))}
-        </div>
-      </section>
+      {/* Pending Offers Section */}
+      <OfferSection
+        title="Offres en attente"
+        subtitle="En attente de réponse des utilisateurs"
+        leads={pendingLeads}
+        archiveMutation={archiveMutation}
+        color="blue"
+      />
 
-      <Dialog open={!!selectedOffer} onOpenChange={(open) => !open && setSelectedOffer(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Message de l'offre</DialogTitle>
-            <DialogDescription>
-              {selectedOffer?.sentAt && formatSendDate(selectedOffer.sentAt)}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="mt-4 p-4 bg-gray-50 rounded-md text-sm whitespace-pre-wrap text-gray-700">
-            {selectedOffer?.message}
+      {/* Rejected Offers Section */}
+      <OfferSection
+        title="Offres refusées"
+        subtitle="Les utilisateurs ont décliné votre offre"
+        leads={rejectedLeads}
+        archiveMutation={archiveMutation}
+        color="red"
+      />
+
+      {/* Archived Offers Section */}
+      <OfferSection
+        title="Offres archivées"
+        subtitle="Offres que vous avez archivées"
+        leads={archivedLeads}
+        archiveMutation={archiveMutation}
+        color="gray"
+      />
+
+      <div className="h-px bg-green-700/20" />
+
+      {/* Liked Leads Section */}
+      <section>
+        <h2 className={`${LexendFont.className} text-2xl mb-2 text-green-800`}>Leads favoris</h2>
+        <p className="text-sm text-gray-500 mb-4">
+          Les leads que vous avez ajoutés à vos favoris
+        </p>
+        {likedLeads.length === 0 ? (
+          <p className="text-gray-500 italic">Aucun favori.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {likedLeads.map((likedLead, index) => (
+              <LikedLeadCard lead={likedLead.lead} action={<LeadDetailsSheet
+                key={`user_${index}`}
+                leadId={likedLead.lead.userId}
+                trigger={
+                  <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
+                    Voir le détail <span aria-hidden="true">&rarr;</span>
+                  </button>
+                }
+              />} />
+
+            ))}
           </div>
-        </DialogContent>
-      </Dialog>
+        )}
+      </section>
     </div>
   );
 }
+
+

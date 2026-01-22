@@ -8,6 +8,7 @@ import {
 } from 'sowhat-types';
 import { SimpleBadge } from '../SimpleBadge';
 import { formatAmount } from '@/utils/formatAmount';
+import { calculateAge, formatInscriptionDate } from '@/utils/date';
 import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from 'lucide-react';
 import { ReactNode } from 'react';
 
@@ -27,18 +28,6 @@ export interface LeadResponse {
   updatedAt: Date;
   createdAt: Date;
 }
-
-// Helper functions
-const calculateAge = (birthYear: number) => {
-  return new Date().getFullYear() - birthYear;
-};
-
-export const formatInscriptionDate = (createdAt: Date | string) => {
-  const old = new Date(createdAt);
-  const today = new Date();
-  const daysAgo = Math.floor((today.getTime() - old.getTime()) / 1000 / 60 / 60 / 24);
-  return `Inscrit il y a ${daysAgo} jours`;
-};
 
 interface LeadRowProps {
   lead: LeadResponse;

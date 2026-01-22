@@ -29,3 +29,28 @@ export function timeAgo(date: Date): string {
   const diffInYears = Math.floor(diffInDays / 365);
   return `il y a ${diffInYears} an${diffInYears > 1 ? 's' : ''}`;
 }
+
+/**
+ * Calculate age from birth year
+ */
+export const calculateAge = (birthYear: number): number => {
+  return new Date().getFullYear() - birthYear;
+};
+
+/**
+ * Calculate the number of days since inscription
+ */
+export const calculateDaysSinceInscription = (createdAt: Date | string): number => {
+  const old = new Date(createdAt);
+  const today = new Date();
+  const daysAgo = Math.floor((today.getTime() - old.getTime()) / 1000 / 60 / 60 / 24);
+  return daysAgo;
+};
+
+/**
+ * Format inscription date as a human-readable string
+ */
+export const formatInscriptionDate = (createdAt: Date | string): string => {
+  const daysAgo = calculateDaysSinceInscription(createdAt);
+  return `Inscrit il y a ${daysAgo} jours`;
+};

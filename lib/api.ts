@@ -8,18 +8,8 @@ import {
   CreateCommercialOfferInput,
   UpdateCommercialOfferInput,
   ProCommercialOfferResponse,
-  LeadResponse,
+  MatchingLeadsResponse,
 } from 'sowhat-types';
-
-export interface MatchingLeadsResponse {
-  offers: {
-    offer: ProCommercialOfferResponse;
-    lead: FullLeadResponse;
-  }[];
-  likes: {
-    lead: LeadResponse;
-  }[];
-}
 
 import { LeadsFiltersAndSorting } from '@/utils/filters';
 
@@ -278,7 +268,7 @@ export async function toggleLikeUser(
  * Get matching leads (offered and liked)
  */
 export async function getMatchingLeads(token: string | null): Promise<MatchingLeadsResponse> {
-  const result = await fetchWithAuth<MatchingLeadsResponse | null>('/pro/match', token, {
+  const result = await fetchWithAuth<MatchingLeadsResponse>('/pro/match', token, {
     method: 'GET',
   });
 
