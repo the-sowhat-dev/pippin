@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Slider } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';
@@ -13,12 +12,12 @@ import {
 } from '../../../lib/project.utils';
 import { Messages } from 'next-intl';
 import { LexendFont } from '@/utils/fonts';
+import { AmountSlider } from './AmountSlider';
 
 export default function FiveMinutesStrategy() {
   const { messages } = useLanguage();
   const [step, setStep] = useState(1);
   const [step1Selection, setStep1Selection] = useState<string | null>(null);
-  const [amount, setAmount] = useState<number>(1000);
 
   const resolveMessage = (key: string): string => {
     // keys in utils: 'project.step1.option1'
@@ -154,22 +153,8 @@ export default function FiveMinutesStrategy() {
                 exit={{ opacity: 0, y: -20 }}
                 className="text-center"
               >
-                <div className="px-8 mb-12 py-8">
-                  <Slider
-                    value={amount}
-                    onChange={(_, value) => setAmount(value as number)}
-                    min={100}
-                    max={10000}
-                    step={100}
-                    valueLabelDisplay="on"
-                    valueLabelFormat={(value) => `${value} €`}
-                    sx={{
-                      color: '#35c055',
-                      '& .MuiSlider-valueLabel': {
-                        backgroundColor: '#1a5d2a',
-                      },
-                    }}
-                  />
+                <div className="mb-12 py-8">
+                  <AmountSlider />
                 </div>
                 <Button
                   size="4"
