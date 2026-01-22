@@ -64,11 +64,6 @@ export default async function Page() {
               <Mail size={16} />
               <span className="text-sm truncate">{user?.emailAddresses[0]?.emailAddress}</span>
             </div>
-            {/* Phone is not in ProResponse yet, placeholder if needed */}
-            {/* <div className="flex items-center gap-3 text-gray-600">
-                  <Phone size={16} />
-                  <span className="text-sm">Non renseigné</span>
-              </div> */}
           </div>
         </div>
 
@@ -81,7 +76,7 @@ export default async function Page() {
               <h3 className="font-semibold text-gray-900">Présentation</h3>
             </div>
             <div className="p-6">
-              <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+              <p className="text-gray-600 whitespace-pre-wrap">
                 {proData?.presentation || 'Aucune présentation renseignée.'}
               </p>
             </div>
@@ -97,8 +92,9 @@ export default async function Page() {
               <div className="flex items-start gap-6 mb-6">
                 <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center overflow-hidden shrink-0">
                   {proData?.companyImage ? (
+                    // For cache busting
                     <Image
-                      src={proData?.companyImage}
+                      src={`${proData.companyImage}${proData.companyImage.includes('?') ? '&' : '?'}v=${new Date(proData.updatedAt).getTime()}`}
                       alt={proData?.companyName || 'Company'}
                       className="object-cover"
                       width={128}
@@ -112,7 +108,7 @@ export default async function Page() {
                   <h4 className="text-lg font-bold text-gray-900">
                     {proData?.companyName || "Nom de l'entreprise"}
                   </h4>
-                  <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                  <p className="text-gray-600 mt-2 text-sm whitespace-pre-wrap">
                     {proData?.companyDescription || "Aucune description de l'entreprise."}
                   </p>
                 </div>

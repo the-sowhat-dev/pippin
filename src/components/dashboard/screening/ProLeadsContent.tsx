@@ -3,19 +3,27 @@
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
 
 import { LeadsList } from './LeadsList';
 import { getLeads } from '@/../lib/api';
 import { FiltersPanel } from './FiltersPanel';
-import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
+import { LeadsFiltersAndSorting } from '@/utils/filters';
+import { filtersToSearchParams, searchParamsToFilters } from '@/utils/urlParams';
 
-export default function ProLeadsDashboardClient() {
+export const ProLeadsContent = () => {
+  const router = useRouter();
   const { getToken } = useAuth();
-  const [filters, setFilters] = useState<LeadsFiltersAndSorting>(InitialLeadsFiltersAndSorting);
-  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(
-    InitialLeadsFiltersAndSorting
-  );
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [filters, setFilters] = useState<LeadsFiltersAndSorting>(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    return searchParamsToFilters(params);
+  });
+
+  const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(filters);
 
   // Debounce logic
   useEffect(() => {
@@ -25,6 +33,13 @@ export default function ProLeadsDashboardClient() {
 
     return () => clearTimeout(handler);
   }, [filters]);
+
+  // Sync URL with filters
+  useEffect(() => {
+    const params = filtersToSearchParams(debouncedFilters);
+    const queryString = params.toString();
+    router.replace(`${pathname}?${queryString}`, { scroll: false });
+  }, [debouncedFilters, pathname, router]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isFetching } =
     useInfiniteQuery({

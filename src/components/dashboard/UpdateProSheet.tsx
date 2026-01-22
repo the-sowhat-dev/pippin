@@ -5,6 +5,7 @@ import { useUser, useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { ProResponse, UpdateProInput } from 'sowhat-types';
 import { updatePro, uploadImage } from '../../../lib/api';
+import { sanitizeText } from '@/utils/sanitize';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -78,6 +79,7 @@ export function UpdateProSheet({
         alert('Image trop volumineuse. La taille maximum est de 2MB.');
         return;
       }
+
       setCompanyImageFile(file);
       const objectUrl = URL.createObjectURL(file);
       setCompanyImagePreview(objectUrl);
@@ -98,9 +100,9 @@ export function UpdateProSheet({
         firstName: formData.firstName || null,
         lastName: formData.lastName || null,
         role: formData.role || null,
-        presentation: formData.presentation || null,
+        presentation: sanitizeText(formData.presentation) || null,
         companyName: formData.companyName || null,
-        companyDescription: formData.companyDescription || null,
+        companyDescription: sanitizeText(formData.companyDescription) || null,
         sirenId: formData.sirenId || null,
         amfId: formData.amfId || null,
         oriasId: formData.oriasId || null,

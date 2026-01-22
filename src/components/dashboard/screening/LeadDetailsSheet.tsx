@@ -16,7 +16,7 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
-import { Loader2, Heart, Info } from 'lucide-react';
+import { Loader2, Heart, Info, CheckCircle2 } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient, InfiniteData } from '@tanstack/react-query';
 
 import {
@@ -35,7 +35,6 @@ import {
   DialogContent,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { SimpleBadge } from '../SimpleBadge';
 import { Label } from '@/components/ui/label';
 import { SectionTitle } from './SheetSectionTitle';
 import { formatAmount } from '@/utils/formatAmount';
@@ -43,46 +42,18 @@ import { Textarea } from '@/components/ui/textarea';
 import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../../lib/api';
 import { LexendFont } from '@/utils/fonts';
 import { formatPostalCode } from '@/utils/formatPostalCode';
+import { sanitizeText } from '@/utils/sanitize';
+import { DetailItem } from './DetailItem';
 
 interface LeadDetailsSheetProps {
   leadId: string;
   trigger: React.ReactNode;
 }
 
-const DetailItem = ({
-  label,
-  value,
-  badge = false,
-}: {
-  label: string;
-  value: React.ReactNode | null | undefined;
-  badge?: boolean;
-}) => {
-  if (value === null || value === undefined) {
-    return (
-      <div className="flex flex-col gap-1">
-        <span className="text-sm text-gray-500">{label}</span>
-        <span className="font-medium text-gray-900">--</span>
-      </div>
-    );
-  }
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="text-sm text-gray-500">{label}</span>
-      {badge ? (
-        <SimpleBadge className="bg-gray-100 text-gray-800 w-fit">{value}</SimpleBadge>
-      ) : (
-        <span className="font-medium text-gray-900 text-pretty break-words">{value}</span>
-      )}
-    </div>
-  );
-};
-
 export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
   const { getToken } = useAuth();
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
-  const [showAiDetails, setShowAiDetails] = useState(false);
   const [isOfferDialogOpen, setIsOfferDialogOpen] = useState(false);
   const [offerMessage, setOfferMessage] = useState('');
 
@@ -107,7 +78,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
       return createOffer(
         {
           leadUserId: lead.userId,
-          message,
+          message: sanitizeText(message),
           sentAt: new Date(),
         },
         token
@@ -124,7 +95,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
     mutationFn: async (message: string) => {
       const token = await getToken();
       if (!lead?.offer) throw new Error('No offer to update');
-      return updateOffer({ id: lead.offer.id, message }, token);
+      return updateOffer({ id: lead.offer.id, message: sanitizeText(message) }, token);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
@@ -222,6 +193,35 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
               </div>
             ) : lead ? (
               <div className="mt-6 pb-20 space-y-6">
+                {/* Identity Section */}
+                {(lead.offer?.status === 'ACCEPTED' ||
+                  lead.offer?.status === 'ACCEPTED_THEN_ARCHIVED_BY_USER') && (
+                    <section className="bg-green-50/50 -mx-6 px-6 py-4 border-b border-green-100 mb-6">
+                      <div className="px-0">
+                        <SectionTitle>Identité</SectionTitle>
+                      </div>
+                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-4">
+                        <DetailItem label="Prénom" value={lead.firstName} />
+                        <DetailItem label="Nom" value={lead.lastName} />
+                        <DetailItem label="Email" value={<span className="flex items-center gap-2">{lead.email}
+                          <CheckCircle2 className="w-4 h-4 text-green-500" />
+                        </span>} />
+                        <DetailItem
+                          label="Téléphone"
+                          value={
+                            lead.phoneNumber ? (
+                              <span className="flex items-center gap-2">
+                                {lead.phoneNumber}
+                                {lead.phoneNumberVerifiedAt && (
+                                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                )}
+                              </span>
+                            ) : null
+                          }
+                        />
+                      </div>
+                    </section>
+                  )}
                 {/* Activity Section  */}
                 <section>
                   <SectionTitle>Activité</SectionTitle>
@@ -270,7 +270,14 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                   <SectionTitle>Personnel</SectionTitle>
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     <DetailItem label="ID Utilisateur" value={lead.userId} />
-                    <DetailItem label="Année de naissance" value={lead.birthYear} />
+                    <DetailItem
+                      label="Année de naissance"
+                      value={
+                        lead.birthYear && typeof lead.birthYear === 'number'
+                          ? `${lead.birthYear} (${new Date().getFullYear() - lead.birthYear} ans)`
+                          : null
+                      }
+                    />
                     <DetailItem
                       label="Situation maritale"
                       value={lead.maritalStatus ? getMaritalStatusLabel(lead.maritalStatus) : null}
@@ -552,22 +559,45 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
             {/* Floating Footer Overlay */}
             <div className="sticky bottom-0 p-0.5">
               <div className="p-3 bg-gray-800 border-2 border-gray-500 rounded-xl shadow-sm shadow-gray-900/50 text-white flex justify-between items-center shrink-0 z-50">
-                <div className="flex gap-2 items-center">
-                  <Info className="w-4 h-4" />
-                  <span className="text-sm hidden sm:inline">
-                    {lead?.offer
-                      ? 'Vous avez fait une offre'
-                      : "Vous n'avez pas encore fait d'offre à ce particulier"}
+                <div className="flex gap-2 items-center flex-1 mr-4">
+                  <Info className="w-4 h-4 shrink-0" />
+                  <span className="text-sm">
+                    {!lead?.offer ? (
+                      "Vous n'avez pas encore fait d'offre à ce particulier"
+                    ) : (
+                      <>
+                        {(lead.offer.status === 'REJECTED' ||
+                          lead.offer.status === 'REJECTED_THEN_ARCHIVED_BY_USER') &&
+                          'Offre rejetée par le particulier.'}
+                        {(lead.offer.status === 'ACCEPTED' ||
+                          lead.offer.status === 'ACCEPTED_THEN_ARCHIVED_BY_USER') && (
+                            <>
+                              Mise en relation acceptée par le particulier.<br />
+                              Contactez-le au plus vite
+                              {lead.phoneNumber && ` au ${lead.phoneNumber}`}
+                              {lead.email && ` ou par email ${lead.email}`}
+                            </>
+                          )}
+                        {lead.offer.status === 'PENDING' && (
+                          <>
+                            En attente de réponse par le particulier
+                            {lead.offer.seenByUser &&
+                              ` (Vu le ${new Date(lead.offer.seenByUser).toLocaleDateString()})`}
+                          </>
+                        )}
+                        {lead.offer.status === 'ARCHIVED_BY_PRO' &&
+                          "Vous avez archivé ce lead et l'offre correspondante, l'utilisateur ne verra pas votre offre si vous en avez fait une."}
+                      </>
+                    )}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 ml-auto">
+                <div className="flex items-center gap-3 ml-auto shrink-0">
                   <Button
                     variant="outline"
-                    className={`transition-colors ${
-                      lead?.likedAt
-                        ? 'bg-green-500/20 border-green-400 text-green-500 hover:bg-transparent hover:border-white hover:text-green-500/20'
-                        : 'bg-transparent text-white hover:bg-green-500/20 hover:border-green-400 hover:text-green-500/20'
-                    }`}
+                    className={`transition-colors ${lead?.likedAt
+                      ? 'bg-green-500/20 border-green-400 text-green-500 hover:bg-transparent hover:border-white hover:text-green-500/20'
+                      : 'bg-transparent text-white hover:bg-green-500/20 hover:border-green-400 hover:text-green-500/20'
+                      }`}
                     onClick={() => likeMutation.mutate()}
                     disabled={likeMutation.isPending || !lead}
                   >
@@ -577,13 +607,15 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                       <Heart className={`h-5 w-5 ${lead?.likedAt ? 'fill-current' : ''}`} />
                     )}
                   </Button>
-                  <Button
-                    className="bg-green-600 hover:bg-green-600/80 text-white font-semibold"
-                    onClick={openOfferDialog}
-                    disabled={!lead}
-                  >
-                    {lead?.offer ? "Modifier l'offre" : 'Faire une offre'}
-                  </Button>
+                  {(!lead?.offer || lead?.offer?.status === 'PENDING') && (
+                    <Button
+                      className="bg-green-600 hover:bg-green-600/80 text-white font-semibold"
+                      onClick={openOfferDialog}
+                      disabled={!lead}
+                    >
+                      {lead?.offer ? "Modifier l'offre" : 'Faire une offre'}
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

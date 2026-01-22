@@ -7,6 +7,7 @@ import { ProResponse, UpdateProInput } from 'sowhat-types';
 import { updatePro, uploadImage } from '../../../lib/api';
 import { markOnboardingAsCompleted } from '../../../lib/markOnboardingAsCompleted';
 import { LexendFont } from '@/utils/fonts';
+import { sanitizeText } from '@/utils/sanitize';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -93,9 +94,9 @@ export default function OnboardingForm({
         firstName: formData.firstName || null,
         lastName: formData.lastName || null,
         role: formData.role || null,
-        presentation: formData.presentation || null,
+        presentation: sanitizeText(formData.presentation) || null,
         companyName: formData.companyName || null,
-        companyDescription: formData.companyDescription || null,
+        companyDescription: sanitizeText(formData.companyDescription) || null,
         sirenId: formData.sirenId || null,
         amfId: formData.amfId || null,
         oriasId: formData.oriasId || null,
