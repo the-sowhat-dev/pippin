@@ -7,7 +7,7 @@ import { LexendFont } from '@/utils/fonts';
 import { LeadCard } from '../screening/LeadCard';
 import { UseMutationResult } from '@tanstack/react-query';
 import { LeadDetailsSheet } from '../screening/LeadDetailsSheet';
-import { MatchingLeadsResponse, ProCommercialOfferLeadResponse, ProCommercialOfferResponse } from 'sowhat-types';
+import { ProCommercialOfferLeadResponse, ProCommercialOfferResponse } from 'sowhat-types';
 
 interface OfferSectionProps {
   title: string;

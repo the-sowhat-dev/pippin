@@ -134,15 +134,18 @@ export default function MatchPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {likedLeads.map((likedLead, index) => (
-              <LikedLeadCard lead={likedLead.lead} action={<LeadDetailsSheet
-                key={`user_${index}`}
-                leadId={likedLead.lead.userId}
-                trigger={
-                  <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
-                    Voir le détail <span aria-hidden="true">&rarr;</span>
-                  </button>
-                }
-              />} />
+              <LikedLeadCard
+                key={`liked_lead_card_${index}`}
+                lead={likedLead.lead}
+                action={<LeadDetailsSheet
+                  key={`user_lead_details_sheet_${index}`}
+                  leadId={likedLead.lead.userId}
+                  trigger={
+                    <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
+                      Voir le détail <span aria-hidden="true">&rarr;</span>
+                    </button>
+                  }
+                />} />
 
             ))}
           </div>
