@@ -3,7 +3,7 @@ import { SimpleBadge } from '../SimpleBadge';
 
 interface DetailItemProps {
   label: string;
-  value: string | null | undefined | number | ReactNode;
+  value: ReactNode;
   badge?: boolean;
 }
 

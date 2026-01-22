@@ -47,7 +47,7 @@ import { DetailItem } from './DetailItem';
 
 interface LeadDetailsSheetProps {
   leadId: string;
-  trigger: string | null | undefined | number | React.ReactNode;
+  trigger: React.ReactNode;
 }
 
 export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {

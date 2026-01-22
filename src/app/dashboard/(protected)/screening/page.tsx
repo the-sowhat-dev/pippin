@@ -1,4 +1,4 @@
-import ProLeadsDashboardClient from '@/components/dashboard/screening/ProLeadsDashboardClient';
+import { ProLeadsClient } from '@/components/dashboard/screening/ProLeadsClient';
 
 export default async function Page() {
   return (
@@ -10,7 +10,7 @@ export default async function Page() {
         </p>
       </header>
 
-      <ProLeadsDashboardClient />
+      <ProLeadsClient />
     </div>
   );
 }

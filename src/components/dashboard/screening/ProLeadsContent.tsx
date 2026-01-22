@@ -2,9 +2,9 @@
 
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '@clerk/nextjs';
-import { useState, useEffect, Suspense } from 'react';
-import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
 
 import { LeadsList } from './LeadsList';
 import { getLeads } from '@/../lib/api';
@@ -12,11 +12,11 @@ import { FiltersPanel } from './FiltersPanel';
 import { LeadsFiltersAndSorting } from '@/utils/filters';
 import { filtersToSearchParams, searchParamsToFilters } from '@/utils/urlParams';
 
-function ProLeadsDashboardContent() {
-  const { getToken } = useAuth();
-  const searchParams = useSearchParams();
+export const ProLeadsContent = () => {
   const router = useRouter();
+  const { getToken } = useAuth();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const [filters, setFilters] = useState<LeadsFiltersAndSorting>(() => {
     const params = new URLSearchParams(searchParams.toString());
@@ -91,17 +91,5 @@ function ProLeadsDashboardContent() {
         />
       </section>
     </div>
-  );
-}
-
-export default function ProLeadsDashboardClient() {
-  return (
-    <Suspense fallback={
-      <div className="flex justify-center p-8">
-        <Loader2 className="w-8 h-8 animate-spin text-gray-300" />
-      </div>
-    }>
-      <ProLeadsDashboardContent />
-    </Suspense>
   );
 }
