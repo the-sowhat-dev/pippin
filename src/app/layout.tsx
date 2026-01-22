@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     date: getYesterdayDate().toISOString(),
     'last-modified': getYesterdayDate().toISOString(),
   },
-  alternates: { canonical: '/' },
   title: "Invstore - une nouvelle expérience de l'épargne",
   description:
     "L'application française qui réduit la charge mentale et administrative des épargnants.",
