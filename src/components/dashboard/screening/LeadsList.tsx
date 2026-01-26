@@ -1,8 +1,8 @@
 import { Loader2 } from 'lucide-react';
-import { LeadResponse } from './LeadRow'; // Updated import
+import { LeadResponse } from 'sowhat-types';
 
-import { LeadDetailsSheet } from './LeadDetailsSheet';
 import { LeadRow } from './LeadRow';
+import { LeadDetailsSheet } from './LeadDetailsSheet';
 
 interface LeadsListProps {
   leads: LeadResponse[];
