@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ArticleCard from '@/components/ArticleCard';
-import { Article } from '../../../lib/db';
+import { Article } from '../../lib/db';
 import { LexendFont } from '@/utils/fonts';
 
 export default function Page() {

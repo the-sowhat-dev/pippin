@@ -23,6 +23,9 @@ export const filtersToSearchParams = (filters: LeadsFiltersAndSorting): URLSearc
     params.set('onlyOutsideFrance', filters.onlyOutsideFrance.toString());
   }
 
+  filters.personalNetWorthRanges.forEach((range) => params.append('personalNetWorthRanges', range));
+  filters.personalSalaryRanges.forEach((range) => params.append('personalSalaryRanges', range));
+
   if (filters.sortBy !== InitialLeadsFiltersAndSorting.sortBy) {
     params.set('sortBy', filters.sortBy);
   }
@@ -57,6 +60,12 @@ export const searchParamsToFilters = (searchParams: URLSearchParams): LeadsFilte
 
   const onlyOutsideFrance = searchParams.get('onlyOutsideFrance');
   if (onlyOutsideFrance) filters.onlyOutsideFrance = onlyOutsideFrance === 'true';
+
+  const personalNetWorthRanges = searchParams.getAll('personalNetWorthRanges');
+  if (personalNetWorthRanges.length > 0) filters.personalNetWorthRanges = personalNetWorthRanges;
+
+  const personalSalaryRanges = searchParams.getAll('personalSalaryRanges');
+  if (personalSalaryRanges.length > 0) filters.personalSalaryRanges = personalSalaryRanges;
 
   const sortBy = searchParams.get('sortBy');
   if (sortBy && (sortBy === 'user_created_at' || sortBy === 'initial_amount')) {

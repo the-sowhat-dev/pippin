@@ -1,33 +1,15 @@
 import {
+  LeadResponse,
+  getProjectNeedProLabel,
   getFinancialProductLabel,
   getProfessionStatusLabel,
-  getProjectNeedProLabel,
-  ProjectNeedEnum,
-  FinancialProductEnum,
-  ProfessionStatusEnum,
 } from 'sowhat-types';
+import { ReactNode } from 'react';
+import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from 'lucide-react';
+
 import { SimpleBadge } from '../SimpleBadge';
 import { formatAmount } from '@/utils/formatAmount';
 import { calculateAge, formatInscriptionDate } from '@/utils/date';
-import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from 'lucide-react';
-import { ReactNode } from 'react';
-
-// Define the interface as requested
-export interface LeadResponse {
-  userId: string;
-  initialAmount: number;
-  need: ProjectNeedEnum;
-  financialProduct: FinancialProductEnum | null;
-  financialProductsOwned: FinancialProductEnum[] | null;
-  postalCode: string | null;
-  totalOffersReceived: number;
-  professionStatus: ProfessionStatusEnum | null;
-  birthYear: number | null;
-  likedAt: Date | null;
-  hasBeenOfferedAt: Date | null;
-  updatedAt: Date;
-  createdAt: Date;
-}
 
 interface LeadRowProps {
   lead: LeadResponse;

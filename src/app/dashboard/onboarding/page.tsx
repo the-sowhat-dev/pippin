@@ -1,7 +1,7 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
 import OnboardingForm from '../../../components/dashboard/OnboardingForm';
 import { LexendFont } from '@/utils/fonts';
-import { getPro } from '../../../../lib/api';
+import { getPro } from '../../../lib/api';
 
 export default async function OnboardingPage() {
   const user = await currentUser();

@@ -9,6 +9,8 @@ import {
   UpdateCommercialOfferInput,
   ProCommercialOfferResponse,
   MatchingLeadsResponse,
+  getPersonalSalaryRangeKey,
+  getPersonalNetWorthRangeKey,
 } from 'sowhat-types';
 
 import { LeadsFiltersAndSorting } from '@/utils/filters';
@@ -173,6 +175,22 @@ export async function getLeads(
     const key = getFinancialProductKey(p);
     if (key) {
       params.append('financialProducts[]', key);
+    }
+  });
+
+  // Convert the label into keys
+  filters.personalNetWorthRanges.forEach((r) => {
+    const key = getPersonalNetWorthRangeKey(r);
+    if (key) {
+      params.append('personalNetWorthRanges[]', key);
+    }
+  });
+
+  // Convert the label into keys
+  filters.personalSalaryRanges.forEach((r) => {
+    const key = getPersonalSalaryRangeKey(r);
+    if (key) {
+      params.append('personalSalaryRanges[]', key);
     }
   });
 

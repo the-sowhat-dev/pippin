@@ -7,8 +7,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '../../../components/ui/accordion';
-import { Button } from '../../../components/ui/button';
+} from '../ui/accordion';
+import { Button } from '../ui/button';
 import { Title } from '../Title';
 
 export default function QandAStrategy() {

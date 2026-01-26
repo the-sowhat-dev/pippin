@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import pool from '../../../../../lib/db';
+import pool from '../../../../lib/db';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { LexendFont, RobotoFont } from '@/utils/fonts';
 

@@ -54,3 +54,17 @@ export const formatInscriptionDate = (createdAt: Date | string): string => {
   const daysAgo = calculateDaysSinceInscription(createdAt);
   return `Inscrit il y a ${daysAgo} jours`;
 };
+
+export function getYesterdayDate(): Date {
+  const date = new Date();
+  date.setDate(date.getDate() - 1);
+  return date;
+}
+
+export function formatDateFrench(date: Date): string {
+  return new Intl.DateTimeFormat('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+}

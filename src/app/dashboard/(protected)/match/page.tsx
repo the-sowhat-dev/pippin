@@ -9,7 +9,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { LexendFont } from '@/utils/fonts';
 import { sortOffersByStatus } from '@/utils/sortOffers';
-import { getMatchingLeads, updateOffer } from '@/../lib/api';
+import { getMatchingLeads, updateOffer } from '@/lib/api';
 import { OfferSection } from '@/components/dashboard/match/OfferSection';
 import { LikedLeadCard } from '@/components/dashboard/screening/LikedLeadCard';
 import { LeadDetailsSheet } from '@/components/dashboard/screening/LeadDetailsSheet';

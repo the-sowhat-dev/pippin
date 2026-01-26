@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { formatDateFrench, getYesterdayDate } from '../../lib/utils';
+import { formatDateFrench, getYesterdayDate } from '../utils/date';
 import { usePathname } from 'next/navigation';
 
 export function Footer() {

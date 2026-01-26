@@ -1,5 +1,11 @@
 import { X } from 'lucide-react';
-import { ProjectNeeds, FinancialProducts, DepartmentsList } from 'sowhat-types';
+import {
+  ProjectNeeds,
+  FinancialProducts,
+  DepartmentsList,
+  PersonalSalaryRanges,
+  PersonalNetWorthRanges,
+} from 'sowhat-types';
 
 import { RangeSlider } from '../RangeSlider';
 import { MultiSelect } from '../MultiSelect';
@@ -8,6 +14,8 @@ import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/f
 
 const NEEDS_OPTIONS = ProjectNeeds.map((n) => n.proLabel);
 const PRODUCTS_OPTIONS = FinancialProducts.map((p) => p.label);
+const SALARY_OPTIONS = PersonalSalaryRanges.map((p) => p.label);
+const NET_WORTH_OPTIONS = PersonalNetWorthRanges.map((p) => p.label);
 const DEPARTMENT_OPTIONS = DepartmentsList.map((d) => `${d.code} - ${d.departmentName}`);
 
 interface FiltersPanelProps {
@@ -129,6 +137,88 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
                         })
                       }
                       className="ml-1 hover:text-green-900 flex-shrink-0"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Salary Ranges */}
+        <div className="border-b border-gray-100 pb-4">
+          <div className="space-y-2">
+            <span className="text-sm font-medium text-gray-800/60">Revenus personnels déclarés</span>
+            <MultiSelect
+              label="Sélectionner les revenus personnels"
+              options={SALARY_OPTIONS}
+              value={filters.personalSalaryRanges}
+              onChange={(personalSalaryRanges) =>
+                onChange({ ...filters, personalSalaryRanges })
+              }
+            />
+            {filters.personalSalaryRanges.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-2">
+                {filters.personalSalaryRanges.map((range) => (
+                  <span
+                    key={range}
+                    className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-50 text-orange-700 max-w-full"
+                    title={range}
+                  >
+                    <span className="truncate max-w-[200px]">{range}</span>
+                    <button
+                      onClick={() =>
+                        onChange({
+                          ...filters,
+                          personalSalaryRanges: filters.personalSalaryRanges.filter(
+                            (x) => x !== range
+                          ),
+                        })
+                      }
+                      className="ml-1 hover:text-orange-900 flex-shrink-0"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Net Worth Ranges */}
+        <div className="border-b border-gray-100 pb-4">
+          <div className="space-y-2">
+            <span className="text-sm font-medium text-gray-800/60">Patrimoines personnels déclarés</span>
+            <MultiSelect
+              label="Sélectionner les patrimoines personnels"
+              options={NET_WORTH_OPTIONS}
+              value={filters.personalNetWorthRanges}
+              onChange={(personalNetWorthRanges) =>
+                onChange({ ...filters, personalNetWorthRanges })
+              }
+            />
+            {filters.personalNetWorthRanges.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-2">
+                {filters.personalNetWorthRanges.map((range) => (
+                  <span
+                    key={range}
+                    className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-teal-50 text-teal-700 max-w-full"
+                    title={range}
+                  >
+                    <span className="truncate max-w-[200px]">{range}</span>
+                    <button
+                      onClick={() =>
+                        onChange({
+                          ...filters,
+                          personalNetWorthRanges: filters.personalNetWorthRanges.filter(
+                            (x) => x !== range
+                          ),
+                        })
+                      }
+                      className="ml-1 hover:text-teal-900 flex-shrink-0"
                     >
                       <X className="w-3 h-3" />
                     </button>

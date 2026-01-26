@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
 import Link from 'next/link';
-import { Button } from '../../../components/ui/button';
+import { Button } from '../ui/button';
 
 const Actions = [
   {

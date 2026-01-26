@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { useUser, useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import { ProResponse, UpdateProInput } from 'sowhat-types';
-import { updatePro, uploadImage } from '../../../lib/api';
-import { markOnboardingAsCompleted } from '../../../lib/markOnboardingAsCompleted';
+import { ProResponse, UpdateProInput, ProCertificationEnum } from 'sowhat-types';
+import { updatePro, uploadImage } from '../../lib/api';
+import { markOnboardingAsCompleted } from '../../utils/markOnboardingAsCompleted';
 import { LexendFont } from '@/utils/fonts';
 import { sanitizeText } from '@/utils/sanitize';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { CertificationsChips } from './CertificationsChips';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -33,6 +34,12 @@ export default function OnboardingForm({
   const [companyImageFile, setCompanyImageFile] = useState<File | null>(null);
   const [companyImagePreview, setCompanyImagePreview] = useState<string | null>(null);
 
+  // Ensure AMF is always included in initial certifications
+  const initialCertifications = initialData?.certifications || [];
+  if (!initialCertifications.includes(ProCertificationEnum.AMF)) {
+    initialCertifications.push(ProCertificationEnum.AMF);
+  }
+
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
     firstName: initialData?.firstName || initialFirstName,
     lastName: initialData?.lastName || initialLastName,
@@ -40,9 +47,9 @@ export default function OnboardingForm({
     presentation: initialData?.presentation || '',
     companyName: initialData?.companyName || '',
     sirenId: initialData?.sirenId || '',
-    amfId: initialData?.amfId || '',
     oriasId: initialData?.oriasId || '',
     companyDescription: initialData?.companyDescription || '',
+    certifications: initialCertifications,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -89,6 +96,12 @@ export default function OnboardingForm({
     try {
       const token = await getToken();
 
+      // Ensure AMF is always included in certifications
+      const certifications = formData.certifications || [];
+      if (!certifications.includes(ProCertificationEnum.AMF)) {
+        certifications.push(ProCertificationEnum.AMF);
+      }
+
       const payload: UpdateProInput = {
         clerkId: user.id,
         firstName: formData.firstName || null,
@@ -98,8 +111,8 @@ export default function OnboardingForm({
         companyName: formData.companyName || null,
         companyDescription: sanitizeText(formData.companyDescription) || null,
         sirenId: formData.sirenId || null,
-        amfId: formData.amfId || null,
         oriasId: formData.oriasId || null,
+        certifications,
       };
 
       await updatePro(payload, token);
@@ -297,18 +310,12 @@ export default function OnboardingForm({
       </div>
 
       <div>
-        <label htmlFor="amfId" className="block font-medium text-gray-700">
-          Numéro AMF
-        </label>
-        <input
-          type="text"
-          name="amfId"
-          id="amfId"
-          required
-          placeholder="Numéro AMF de l'entreprise"
-          value={formData.amfId || ''}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
+        <label className="block font-medium text-gray-700 mb-2">Certifications</label>
+        <CertificationsChips
+          selectedCertifications={formData.certifications || []}
+          onChange={(certifications: ProCertificationEnum[]) =>
+            setFormData((prev) => ({ ...prev, certifications }))
+          }
         />
       </div>
 

@@ -7,7 +7,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
 
 import { LeadsList } from './LeadsList';
-import { getLeads } from '@/../lib/api';
+import { getLeads } from '@/lib/api';
 import { FiltersPanel } from './FiltersPanel';
 import { LeadsFiltersAndSorting } from '@/utils/filters';
 import { filtersToSearchParams, searchParamsToFilters } from '@/utils/urlParams';

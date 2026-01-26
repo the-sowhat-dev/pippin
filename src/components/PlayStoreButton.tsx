@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { AndroidAppStoreLink } from '../../lib/utils';
+import { AndroidAppStoreLink } from '../utils/stores';
 
 export function PlayStoreButton() {
   const handleClick = () => {

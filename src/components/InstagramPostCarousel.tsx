@@ -7,8 +7,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '../../components/ui/carousel';
-import { Card, CardContent } from '../../components/ui/card';
+} from './ui/carousel';
+import { Card, CardContent } from './ui/card';
 import { LexendFont } from '@/utils/fonts';
 
 interface InstagramPostCarouselProps {
