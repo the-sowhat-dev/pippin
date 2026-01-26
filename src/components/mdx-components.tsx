@@ -1,9 +1,9 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import { highlight } from 'sugar-high';
-import { OpenSans } from './utils/fonts';
+import { OpenSans } from '../utils/fonts';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CollaborationBlock } from './components/CollaborationBlock';
+import { CollaborationBlock } from './CollaborationBlock';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;

@@ -1,7 +1,7 @@
 'use client';
 
 import ReactMarkdown from 'react-markdown';
-import { useMDXComponents } from '@/mdx-components';
+import { useMDXComponents } from '@/components/mdx-components';
 
 interface MarkdownRendererProps {
   content: string;

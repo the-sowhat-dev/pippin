@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionContent,
   AccordionTrigger,
-} from '../../../components/ui/accordion';
+} from '../ui/accordion';
 import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { LexendFont } from '@/utils/fonts';
@@ -39,18 +39,16 @@ export default function PrinciplesStrategy() {
           <div className="relative w-full px-2">
             {/* Left Arrow */}
             <div
-              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none transition-opacity duration-300 ${
-                activeStep === 0 ? 'opacity-0' : 'opacity-30'
-              }`}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none transition-opacity duration-300 ${activeStep === 0 ? 'opacity-0' : 'opacity-30'
+                }`}
             >
               <ChevronLeft size={32} />
             </div>
 
             {/* Right Arrow */}
             <div
-              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none transition-opacity duration-300 ${
-                activeStep === steps.length - 1 ? 'opacity-0' : 'opacity-30'
-              }`}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none transition-opacity duration-300 ${activeStep === steps.length - 1 ? 'opacity-0' : 'opacity-30'
+                }`}
             >
               <ChevronRight size={32} />
             </div>
@@ -62,11 +60,10 @@ export default function PrinciplesStrategy() {
                     key={step.index}
                     onClick={() => setActiveStep(step.index)}
                     className={`p-2 px-4 sm:p-4 gap-2 sm:gap-4 text-base sm:text-lg text-green-900 font-medium flex items-center rounded-md transition-colors whitespace-nowrap
-                  ${
-                    activeStep === step.index
-                      ? 'bg-green-500 border-green-700 text-white'
-                      : 'bg-white border-white hover:border-gray-100 hover:bg-gray-100'
-                  } border-[1.5px]`}
+                  ${activeStep === step.index
+                        ? 'bg-green-500 border-green-700 text-white'
+                        : 'bg-white border-white hover:border-gray-100 hover:bg-gray-100'
+                      } border-[1.5px]`}
                   >
                     <div>{step.index + 1}.</div>
                     <div>{step.tag}</div>

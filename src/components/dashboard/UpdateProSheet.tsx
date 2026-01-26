@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import { useUser, useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import { ProResponse, UpdateProInput } from 'sowhat-types';
-import { updatePro, uploadImage } from '../../../lib/api';
+import { ProResponse, UpdateProInput, ProCertificationEnum } from 'sowhat-types';
+import { updatePro, uploadImage } from '../../lib/api';
 import { sanitizeText } from '@/utils/sanitize';
+import { CertificationsChips } from './CertificationsChips';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -38,6 +39,12 @@ export function UpdateProSheet({
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  // Ensure AMF is always included in initial certifications
+  const initialCertifications = initialData?.certifications || [];
+  if (!initialCertifications.includes(ProCertificationEnum.AMF)) {
+    initialCertifications.push(ProCertificationEnum.AMF);
+  }
+
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
     firstName: initialData?.firstName || user?.firstName || '',
     lastName: initialData?.lastName || user?.lastName || '',
@@ -45,9 +52,9 @@ export function UpdateProSheet({
     presentation: initialData?.presentation || '',
     companyName: initialData?.companyName || '',
     sirenId: initialData?.sirenId || '',
-    amfId: initialData?.amfId || '',
     oriasId: initialData?.oriasId || '',
     companyDescription: initialData?.companyDescription || '',
+    certifications: initialCertifications,
   });
 
   const [profileImageFile, setProfileImageFile] = useState<File | null>(null);
@@ -95,6 +102,12 @@ export function UpdateProSheet({
     try {
       const token = await getToken();
 
+      // Ensure AMF is always included in certifications
+      const certifications = formData.certifications || [];
+      if (!certifications.includes(ProCertificationEnum.AMF)) {
+        certifications.push(ProCertificationEnum.AMF);
+      }
+
       const payload: UpdateProInput = {
         clerkId: user.id,
         firstName: formData.firstName || null,
@@ -104,8 +117,8 @@ export function UpdateProSheet({
         companyName: formData.companyName || null,
         companyDescription: sanitizeText(formData.companyDescription) || null,
         sirenId: formData.sirenId || null,
-        amfId: formData.amfId || null,
         oriasId: formData.oriasId || null,
+        certifications,
       };
 
       await updatePro(payload, token);
@@ -262,27 +275,25 @@ export function UpdateProSheet({
                 required
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="amfId">AMF</Label>
-                <Input
-                  id="amfId"
-                  name="amfId"
-                  value={formData.amfId || ''}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="oriasId">ORIAS</Label>
-                <Input
-                  id="oriasId"
-                  name="oriasId"
-                  value={formData.oriasId || ''}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="oriasId">ORIAS</Label>
+              <Input
+                id="oriasId"
+                name="oriasId"
+                value={formData.oriasId || ''}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label>Certifications</Label>
+              <CertificationsChips
+                selectedCertifications={formData.certifications || []}
+                onChange={(certifications: ProCertificationEnum[]) =>
+                  setFormData((prev) => ({ ...prev, certifications }))
+                }
+              />
             </div>
 
             <div className="space-y-2">

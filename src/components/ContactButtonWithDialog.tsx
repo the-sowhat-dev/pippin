@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogTrigger,
   DialogDescription,
-} from '../../components/ui/dialog';
+} from './ui/dialog';
 import { AvatarProfile } from './AvatarProfile';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { Button } from '@radix-ui/themes';

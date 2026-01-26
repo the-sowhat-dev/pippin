@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { AppleAppStoreLink } from '../../lib/utils';
+import { AppleAppStoreLink } from '../utils/stores';
 
 export function AppleAppStoreButton() {
   const handleClick = () => {

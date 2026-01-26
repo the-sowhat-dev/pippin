@@ -3,8 +3,8 @@
 import { ComponentRef, forwardRef } from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDown } from 'lucide-react';
+import { cn } from '../../utils/cn';
 
-import { cn } from '../../lib/utils';
 
 const Accordion = forwardRef<ComponentRef<typeof AccordionPrimitive.Root>, AccordionProps>(
   ({ onValueChange, ...props }, ref) => {

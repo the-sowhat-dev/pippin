@@ -2,7 +2,7 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../../../components/ui/button';
+import { Button } from '../ui/button';
 
 export default function TribuneProStrategy() {
   return (

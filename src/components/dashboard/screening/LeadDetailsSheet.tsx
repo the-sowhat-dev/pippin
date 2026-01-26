@@ -39,7 +39,7 @@ import { Label } from '@/components/ui/label';
 import { SectionTitle } from './SheetSectionTitle';
 import { formatAmount } from '@/utils/formatAmount';
 import { Textarea } from '@/components/ui/textarea';
-import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../../lib/api';
+import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../lib/api';
 import { LexendFont } from '@/utils/fonts';
 import { formatPostalCode } from '@/utils/formatPostalCode';
 import { sanitizeText } from '@/utils/sanitize';

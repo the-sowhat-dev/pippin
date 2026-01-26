@@ -1,6 +1,6 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { User, Mail, Building2, Briefcase, FileText, Fingerprint, PenLine } from 'lucide-react';
-import { getPro } from '../../../../../lib/api';
+import { getPro } from '../../../../lib/api';
 import { UpdateProSheet } from '@/components/dashboard/UpdateProSheet';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';

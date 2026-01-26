@@ -32,7 +32,7 @@ const buttonCarouselVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonCarouselVariants> {
+  VariantProps<typeof buttonCarouselVariants> {
   asChild?: boolean;
 }
 

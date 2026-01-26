@@ -2,7 +2,7 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { Sidebar } from '@/components/dashboard/Sidebar';
 import QueryProvider from '@/components/providers/QueryProvider';
-import { initPro } from '../../../../lib/api';
+import { initPro } from '../../../lib/api';
 import { Toaster } from 'sonner';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {

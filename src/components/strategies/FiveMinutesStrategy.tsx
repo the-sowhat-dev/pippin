@@ -9,7 +9,7 @@ import {
   ProjectStep1Options,
   ProjectStep2Options,
   ProjectStep2BisOptions,
-} from '../../../lib/project.utils';
+} from '../../utils/project';
 import { Messages } from 'next-intl';
 import { LexendFont } from '@/utils/fonts';
 import { AmountSlider } from './AmountSlider';
