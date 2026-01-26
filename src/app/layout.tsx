@@ -12,7 +12,7 @@ import { LanguageProvider } from '@/i18n/LanguageProvider';
 import { MetricoolAnalytics } from '@/components/analytics/MetricoolAnalytics';
 import { Footer } from '@/components/footer';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
-import { getYesterdayDate } from '../lib/utils';
+import { getYesterdayDate } from '../utils/date';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://invstore.fr'),

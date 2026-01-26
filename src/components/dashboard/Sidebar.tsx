@@ -13,7 +13,7 @@ import {
   Handshake,
   Eye,
 } from 'lucide-react';
-import { cn } from '../../lib/utils';
+import { cn } from '../../utils/cn';
 import { SignOutButton } from '@clerk/nextjs';
 import { motion } from 'framer-motion';
 import { InvLogo } from '../InvLogo';

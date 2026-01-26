@@ -1,9 +1,10 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
-import { User, Mail, Building2, Briefcase, FileText, Fingerprint, PenLine } from 'lucide-react';
+import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from 'lucide-react';
 import { getPro } from '../../../../lib/api';
 import { UpdateProSheet } from '@/components/dashboard/UpdateProSheet';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { getProCertificationByKey } from 'sowhat-types';
 
 export default async function Page() {
   const user = await currentUser();
@@ -114,7 +115,7 @@ export default async function Page() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-50">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-50">
                 <div className="space-y-1">
                   <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1">
                     <FileText size={12} /> SIREN
@@ -125,19 +126,35 @@ export default async function Page() {
                 </div>
                 <div className="space-y-1">
                   <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1">
-                    <Fingerprint size={12} /> AMF
-                  </span>
-                  <p className="font-mono text-gray-900 bg-gray-50 px-2 py-1 rounded text-sm w-fit">
-                    {proData?.amfId || 'N/A'}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1">
                     <Briefcase size={12} /> ORIAS
                   </span>
                   <p className="font-mono text-gray-900 bg-gray-50 px-2 py-1 rounded text-sm w-fit">
                     {proData?.oriasId || 'N/A'}
                   </p>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-gray-50 mt-4">
+                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-3">
+                  <Award size={12} /> Certifications
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {proData?.certifications && proData.certifications.length > 0 ? (
+                    proData.certifications.map((cert) => {
+                      const certInfo = getProCertificationByKey(cert);
+                      return (
+                        <span
+                          key={cert}
+                          title={certInfo?.description}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-800 border border-green-200"
+                        >
+                          {certInfo?.label || cert}
+                        </span>
+                      );
+                    })
+                  ) : (
+                    <span className="text-gray-400 text-sm">Aucune certification</span>
+                  )}
                 </div>
               </div>
             </div>

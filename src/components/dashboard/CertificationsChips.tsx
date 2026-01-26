@@ -5,7 +5,6 @@ import {
   ProCertifications,
   getProCertificationByKey,
 } from 'sowhat-types';
-// import * as Switch from '@radix-ui/react-switch';
 import { Switch } from '../ui/switch';
 
 interface CertificationsChipsProps {
@@ -28,11 +27,8 @@ export function CertificationsChips({
     }
   };
 
-  return (<Switch id="airplane-mode" defaultChecked />)
-
   return (
     <div className="flex flex-col gap-3">
-      <Switch defaultChecked />
       {ProCertifications.map((certificationData) => {
         const certification = certificationData.key;
         const certificationInfo = getProCertificationByKey(certification);
@@ -51,39 +47,21 @@ export function CertificationsChips({
               }
             `}
           >
-            <div className="flex flex-col">
-              <span
-                className={`font-semibold ${isSelected ? 'text-green-800' : 'text-gray-600'}`}
-              >
-                {certificationInfo?.label || certification}
-                {isAMF && (
-                  <span className="ml-2 text-xs font-normal text-green-600">(obligatoire)</span>
-                )}
-              </span>
-              <span className={`text-xs ${isSelected ? 'text-green-600' : 'text-gray-400'}`}>
-                {certificationInfo?.description}
-              </span>
-            </div>
+            <span
+              className={`font-semibold ${isSelected ? 'text-green-800' : 'text-gray-600'}`}
+            >
+              {certificationInfo?.label || certification}
+              {isAMF && (
+                <span className="ml-2 text-xs font-normal text-green-600">(obligatoire)</span>
+              )}
+            </span>
 
-            {/* <Switch.Root
+            <Switch
               checked={isSelected}
               onCheckedChange={(checked) => handleToggle(certification, checked)}
               disabled={isAMF}
-              className={`
-                relative w-11 h-6 rounded-full transition-colors
-                ${isAMF ? 'cursor-not-allowed' : 'cursor-pointer'}
-                ${isSelected ? 'bg-green-500' : 'bg-gray-300'}
-                focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
-              `}
-            >
-              <Switch.Thumb
-                className={`
-                  block w-5 h-5 bg-white rounded-full shadow-md transition-transform
-                  ${isSelected ? 'translate-x-5' : 'translate-x-0.5'}
-                `}
-              />
-            </Switch.Root> */}
-
+              className="data-[state=checked]:bg-green-500"
+            />
           </div>
         );
       })}
