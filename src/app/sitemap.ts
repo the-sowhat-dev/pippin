@@ -1,19 +1,37 @@
 import { MetadataRoute } from 'next';
-import { getArticles } from '@/utils/getArticles';
+import pool from '@/lib/db';
 
 const BASE_URL = 'https://invstore.fr';
 
+// Helper to fetch all published articles from database
+async function getArticles() {
+  const client = await pool.connect();
+  try {
+    const query = `
+      SELECT slug, published_at, updated_at
+      FROM articles
+      WHERE is_published = true
+      ORDER BY published_at DESC
+    `;
+    const result = await client.query(query);
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = getArticles();
+  const articles = await getArticles();
 
   const blogEntries: MetadataRoute.Sitemap = articles.map((article) => {
-    // Parse date DD/MM/YYYY to Date object
-    const [day, month, year] = article.date.split('/');
-    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    // Use updated_at if available, otherwise use published_at
+    const lastModified = article.updated_at 
+      ? new Date(article.updated_at) 
+      : new Date(article.published_at);
 
     return {
       url: `${BASE_URL}/blog/a/${article.slug}`,
-      lastModified: date,
+      lastModified: lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     };
