@@ -222,6 +222,25 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                       </div>
                     </section>
                   )}
+                {/* Rejected Section */}
+                {(lead.offer?.status === 'REJECTED' ||
+                  lead.offer?.status === 'REJECTED_THEN_ARCHIVED_BY_USER') && (
+                    <section className="bg-red-50/50 -mx-6 px-6 py-4 border-b border-red-100 mb-6">
+                      <div className="px-0">
+                        <SectionTitle>Refus de mise en relation</SectionTitle>
+                      </div>
+                      <div className="mt-4">
+                        <p className="text-red-800 text-sm">
+                          Le particulier a refusé la mise en relation.{' '}
+                          {lead.offer?.rejectedReason ? (
+                            <span className="font-medium">Raison : {lead.offer.rejectedReason}</span>
+                          ) : (
+                            <span className="italic">Il n'a pas souhaité partager la raison de son refus.</span>
+                          )}
+                        </p>
+                      </div>
+                    </section>
+                  )}
                 {/* Activity Section  */}
                 <section>
                   <SectionTitle>Activité</SectionTitle>
