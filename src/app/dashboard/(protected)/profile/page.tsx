@@ -76,10 +76,35 @@ export default async function Page() {
               <User size={18} className="text-gray-500" />
               <h3 className="font-semibold text-gray-900">Présentation</h3>
             </div>
+
             <div className="p-6">
               <p className="text-gray-600 whitespace-pre-wrap">
                 {proData?.presentation || 'Aucune présentation renseignée.'}
               </p>
+            </div>
+
+            <div className="pt-6 border-t border-gray-50 mt-4">
+              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-3">
+                <Award size={12} /> Certifications
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {proData?.certifications && proData.certifications.length > 0 ? (
+                  proData.certifications.map((cert) => {
+                    const certInfo = getProCertificationByKey(cert);
+                    return (
+                      <span
+                        key={cert}
+                        title={certInfo?.description}
+                        className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-800 border border-green-200"
+                      >
+                        {certInfo?.label || cert}
+                      </span>
+                    );
+                  })
+                ) : (
+                  <span className="text-gray-400 text-sm">Aucune certification</span>
+                )}
+              </div>
             </div>
           </div>
 
@@ -131,30 +156,6 @@ export default async function Page() {
                   <p className="font-mono text-gray-900 bg-gray-50 px-2 py-1 rounded text-sm w-fit">
                     {proData?.oriasId || 'N/A'}
                   </p>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-gray-50 mt-4">
-                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-3">
-                  <Award size={12} /> Certifications
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {proData?.certifications && proData.certifications.length > 0 ? (
-                    proData.certifications.map((cert) => {
-                      const certInfo = getProCertificationByKey(cert);
-                      return (
-                        <span
-                          key={cert}
-                          title={certInfo?.description}
-                          className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-800 border border-green-200"
-                        >
-                          {certInfo?.label || cert}
-                        </span>
-                      );
-                    })
-                  ) : (
-                    <span className="text-gray-400 text-sm">Aucune certification</span>
-                  )}
                 </div>
               </div>
             </div>
