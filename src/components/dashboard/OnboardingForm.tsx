@@ -233,6 +233,16 @@ export default function OnboardingForm({
           />
         </div>
 
+        <div>
+          <label className="block font-medium text-gray-700 mb-2">Certifications</label>
+          <CertificationsChips
+            selectedCertifications={formData.certifications || []}
+            onChange={(certifications: ProCertificationEnum[]) =>
+              setFormData((prev) => ({ ...prev, certifications }))
+            }
+          />
+        </div>
+
         <button
           type="submit"
           className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer"
@@ -306,16 +316,6 @@ export default function OnboardingForm({
           value={formData.sirenId || ''}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
-        />
-      </div>
-
-      <div>
-        <label className="block font-medium text-gray-700 mb-2">Certifications</label>
-        <CertificationsChips
-          selectedCertifications={formData.certifications || []}
-          onChange={(certifications: ProCertificationEnum[]) =>
-            setFormData((prev) => ({ ...prev, certifications }))
-          }
         />
       </div>
 

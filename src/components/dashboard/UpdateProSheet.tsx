@@ -1,28 +1,29 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
-import { useUser, useAuth } from '@clerk/nextjs';
+import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useUser, useAuth } from '@clerk/nextjs';
 import { ProResponse, UpdateProInput, ProCertificationEnum } from 'sowhat-types';
-import { updatePro, uploadImage } from '../../lib/api';
-import { sanitizeText } from '@/utils/sanitize';
-import { CertificationsChips } from './CertificationsChips';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+
 import {
   Sheet,
+  SheetClose,
+  SheetTitle,
+  SheetHeader,
+  SheetFooter,
+  SheetTrigger,
   SheetContent,
   SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  SheetFooter,
-  SheetClose,
 } from '@/components/ui/sheet';
-import { Loader2 } from 'lucide-react';
-import Image from 'next/image';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { sanitizeText } from '@/utils/sanitize';
+import { Textarea } from '@/components/ui/textarea';
+import { updatePro, uploadImage } from '../../lib/api';
+import { CertificationsChips } from './CertificationsChips';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -227,6 +228,16 @@ export function UpdateProSheet({
                 placeholder="Une courte présentation visible par les clients..."
               />
             </div>
+
+            <div className="space-y-2">
+              <Label>Certifications</Label>
+              <CertificationsChips
+                selectedCertifications={formData.certifications || []}
+                onChange={(certifications: ProCertificationEnum[]) =>
+                  setFormData((prev) => ({ ...prev, certifications }))
+                }
+              />
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -283,16 +294,6 @@ export function UpdateProSheet({
                 value={formData.oriasId || ''}
                 onChange={handleChange}
                 required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label>Certifications</Label>
-              <CertificationsChips
-                selectedCertifications={formData.certifications || []}
-                onChange={(certifications: ProCertificationEnum[]) =>
-                  setFormData((prev) => ({ ...prev, certifications }))
-                }
               />
             </div>
 
