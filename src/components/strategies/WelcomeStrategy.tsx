@@ -5,11 +5,12 @@ import { NunitoFont } from '@/utils/fonts';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
+import TrustUs from '../TrustUs';
 
 export default function WelcomeStrategy() {
   return (
-    <section className="bg-white">
-      <div className="relative min-h-screen flex flex-col overflow-hidden">
+    <section className="">
+      <div className="relative min-h-screen flex flex-col">
         {/* Upper Green Background */}
         <div className="absolute top-0 left-0 right-0 h-[35vh] lg:h-[45vh] bg-[#35c055]" />
 
@@ -57,7 +58,7 @@ export default function WelcomeStrategy() {
               {/* Positioned mockup: absolute on desktop, relative on mobile */}
               <div className="max-w-[360px] lg:max-w-[500px] lg:absolute lg:-top-56 xl:-top-64 right-0 transform translate-y-4 lg:translate-y-0">
                 <Image
-                  src="/images/mockup_welcome.png"
+                  src="/images/mockup-welcome.png"
                   alt="Invstore App Mockup"
                   width={747}
                   height={970}
@@ -84,6 +85,8 @@ export default function WelcomeStrategy() {
           className="absolute -bottom-12 -right-6 text-blue-700 opacity-30"
         />
       </div>
+
+      <TrustUs />
     </section>
   );
 }

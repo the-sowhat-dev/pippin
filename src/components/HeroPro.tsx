@@ -27,12 +27,12 @@ export const HeroPro = () => {
         </div>
       </div>
 
-      <div className="items-center justify-center w-[70%] max-w-5xl mx-auto rounded-lg overflow-hidden xl:mt-12 border-2 border-gray-200 shadow-sm  md:shadow-lg rotate-1">
+      <div className="items-center justify-center w-[80%] max-w-2xl mx-auto xl:mt-12">
         <Image
-          src={`/images/test.png`}
+          src={`/images/pro-screen.png`}
           alt={`@invstore`}
-          width={1728}
-          height={1117}
+          width={1360}
+          height={1330}
           className="w-full h-auto object-contain"
         />
       </div>
