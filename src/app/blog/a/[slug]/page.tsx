@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${article.title} | invstore`,
+    title: `${article.title} | Invstore - gagner mieux sans effort`,
     description: article.description,
     openGraph: {
       title: article.title,

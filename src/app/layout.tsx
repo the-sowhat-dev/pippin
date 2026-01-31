@@ -20,18 +20,18 @@ export const metadata: Metadata = {
     date: getYesterdayDate().toISOString(),
     'last-modified': getYesterdayDate().toISOString(),
   },
-  title: "Invstore - une nouvelle expérience de l'épargne",
+  title: "Invstore - gagner mieux sans effort",
   description:
     "L'application française qui réduit la charge mentale et administrative des épargnants.",
   openGraph: {
-    title: "Invstore - une nouvelle expérience de l'épargne",
+    title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
     images: { url: '/images/invstore.png' },
     url: 'https://invstore.fr/app',
   },
   twitter: {
-    title: "Invstore - une nouvelle expérience de l'épargne",
+    title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
     images: { url: '/images/invstore.png' },

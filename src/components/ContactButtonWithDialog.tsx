@@ -93,7 +93,7 @@ export function ContactButtonWithDialog({ trigger }: { trigger?: React.ReactNode
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md z-50">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{messages.contactDialog.title}</DialogTitle>
           <DialogDescription>{messages.contactDialog.description}</DialogDescription>
