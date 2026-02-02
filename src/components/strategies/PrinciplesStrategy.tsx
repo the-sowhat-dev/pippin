@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -13,7 +14,7 @@ import {
 } from '../ui/accordion';
 import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { LexendFont } from '@/utils/fonts';
+import { LexendFont, SourceSansPro } from '@/utils/fonts';
 
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -22,12 +23,28 @@ export default function PrinciplesStrategy() {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-4 md:p-8 flex flex-col gap-4 items-center">
-        <p className="text-base sm:text-lg mx-auto text-center text-white">
-          Quelle que soit votre définition de{' '}
-          <span className={`${LexendFont.className} text-green-100`}>&quot;gagner mieux&quot;</span>
-          , nous avons la solution.
-        </p>
+      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-8 md:p-12 flex flex-col gap-4 items-center">
+        <div className="max-w-5xl flex md:flex-row flex-col items-center gap-4 md:gap-16">
+          <h2 className={`${LexendFont.className} text-center md:text-left text-xl sm:text-2xl font-bold relative text-white`}>
+            Ils parlent de nous. <br /> <span className={`text-white/70 text-lg sm:text-xl ${SourceSansPro.className}`}>Invstore citée parmi les startups à suivre en 2026</span>
+          </h2>
+
+          <Link
+            href="https://www.forbes.fr/business/2026-leconomie-de-la-resilience-entre-contraintes-macroeconomiques-et-crises-sectorielles-silencieuses/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Forbes"
+            className="transition-transform duration-300 hover:scale-105"
+          >
+            <Image
+              src="/images/forbes.png"
+              alt="Forbes"
+              width={600}
+              height={162}
+              className="w-32 h-32 object-contain"
+            />
+          </Link>
+        </div>
       </div>
 
       <section className="flex flex-col gap-16 sm:gap-12 py-12 sm:py-16 items-center bg-[#c6f0d0]">
