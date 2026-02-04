@@ -17,7 +17,7 @@ import { useLanguage } from '@/i18n/LanguageProvider';
 import { LexendFont, SourceSansPro } from '@/utils/fonts';
 
 export default function PrinciplesStrategy() {
-  const [activeStep, setActiveStep] = useState<number>(1);
+  const [activeStep, setActiveStep] = useState<number>(3);
   const { messages } = useLanguage();
   const steps = messages.home.principles.steps;
 
@@ -120,7 +120,7 @@ export default function PrinciplesStrategy() {
           <div className="flex-1 flex justify-center items-center p-4 xs:p-16 min-h-[700px]">
             <Accordion
               type="single"
-              defaultValue="step-1"
+              defaultValue="step-3"
               onValueChange={(value: string) => {
                 if (value) setActiveStep(Number(value.replace('step-', '')));
               }}

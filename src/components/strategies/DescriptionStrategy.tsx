@@ -36,7 +36,7 @@ export default function DescriptionStrategy() {
         </div>
 
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
-          <span className="font-bold">Concrêtement</span>, elle analyse votre situation financière{' '}
+          <span className="font-bold">Concrètement</span>, elle analyse votre situation financière{' '}
           <span className="font-bold">en moins de 5 minutes grâce à l'IA</span>, puis vous{' '}
           <span className="font-bold">connecte de manière anonyme</span> avec des experts financiers
           agréés (banquiers et conseillers en gestion de patrimoine indépendants), qui sont{' '}
