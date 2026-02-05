@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AndroidAppStoreLink, AppleAppStoreLink } from '@/utils/stores';
 
@@ -8,7 +8,7 @@ const DEEP_LINK_SCHEME = 'com.thesowhatdev.fintech';
 
 type DeviceType = 'ios' | 'android' | 'desktop';
 
-export default function AppRedirect() {
+function AppRedirectContent() {
   const searchParams = useSearchParams();
   const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
   const [isRedirecting, setIsRedirecting] = useState(true);
@@ -239,5 +239,29 @@ export default function AppRedirect() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AppRedirect() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-green-500/10 via-background to-secondary/10 flex items-center justify-center p-4">
+          <div className="max-w-md w-full bg-card rounded-2xl shadow-xl border border-border p-8 md:p-12">
+            <div className="flex flex-col items-center text-center space-y-6">
+              <div className="relative w-24 h-24">
+                <div className="absolute inset-0 border-4 border-green-500/20 rounded-full"></div>
+                <div className="absolute inset-0 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <div className="space-y-2">
+                <h1 className="text-2xl font-bold text-foreground">Chargement...</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <AppRedirectContent />
+    </Suspense>
   );
 }
