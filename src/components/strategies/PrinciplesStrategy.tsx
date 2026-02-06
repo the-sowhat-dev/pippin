@@ -24,26 +24,48 @@ export default function PrinciplesStrategy() {
   return (
     <>
       <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-8 md:p-12 flex flex-col gap-4 items-center">
-        <div className="max-w-5xl flex md:flex-row flex-col items-center gap-4 md:gap-16">
-          <h2 className={`${LexendFont.className} text-center md:text-left text-xl sm:text-2xl font-bold relative text-white`}>
-            Ils parlent de nous. <br /> <span className={`text-white/70 text-lg sm:text-xl ${SourceSansPro.className}`}>Invstore citée parmi les startups à suivre en 2026</span>
-          </h2>
+        <h2 className={`${LexendFont.className} text-center md:text-left text-xl sm:text-2xl font-bold relative text-white`}>
+          Ils parlent de nous.
+        </h2>
 
-          <Link
-            href="https://www.forbes.fr/business/2026-leconomie-de-la-resilience-entre-contraintes-macroeconomiques-et-crises-sectorielles-silencieuses/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Forbes"
-            className="transition-transform duration-300 hover:scale-105"
-          >
-            <Image
-              src="/images/forbes.png"
-              alt="Forbes"
-              width={600}
-              height={162}
-              className="w-32 h-32 object-contain"
-            />
-          </Link>
+        <div className="max-w-5xl w-full px-8 sm:px-0 flex flex-col sm:flex-row items-center sm:items-start justify-around gap-4">
+          <div className="flex flex-col items-center">
+            <Link
+              href="https://www.forbes.fr/business/2026-leconomie-de-la-resilience-entre-contraintes-macroeconomiques-et-crises-sectorielles-silencieuses/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Forbes"
+              className="transition-transform duration-300 hover:scale-105"
+            >
+              <Image
+                src="/images/forbes.png"
+                alt="Forbes"
+                width={600}
+                height={162}
+                className="w-32 h-32 object-contain"
+              />
+            </Link>
+            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>Invstore citée parmi les startups à suivre en 2026</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Link
+              href="https://finyear.com/invstore-la-nouvelle-app-de-matching-entre-epargnants-et-conseillers-financiers"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Finyear"
+              className="transition-transform duration-300 hover:scale-105"
+            >
+              <Image
+                src="/images/finyear.png"
+                alt="Finyear"
+                width={702}
+                height={234}
+                className="w-32 h-32 object-contain"
+              />
+            </Link>
+            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>Notre communiqué de presse</span>
+          </div>
         </div>
       </div>
 

@@ -99,8 +99,7 @@ export default function ActionsStrategy() {
 
       <div className="flex flex-col items-center gap-8 md:gap-16 bg-[#c2e7ff] p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl">
         <p className="text-lg sm:text-2xl font-bold relative text-center leading-relaxed max-w-xl">
-          Testez l&apos;application pour vous faire votre propre avis avant le lancement des
-          fonctionnalités matching dans les prochaines semaines.
+          Testez l&apos;application pour vous faire votre propre avis avant l&apos;ouverture de la plateforme à tous les professionnels début mars.
         </p>
 
         <div className="flex flex-col md:flex-row items-center gap-4">

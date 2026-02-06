@@ -41,7 +41,7 @@ L’Utilisateur demeure libre de :
 - ou bien d’ignorer les propositions qu’il ne juge pas suffisamment intéressantes,
 - ou encore de mettre en pause la diffusion de sa fiche profil anonymisée sur la Plateforme.
 
-En cas d’intérêt confirmé par l’Utilisateur à la suite d’un premier échange, ce dernier aura la possibilité de communiquer son identité et ses coordonnées personnelles au Professionnel en question. Cette opération nécessitera le consentement explicite de l’Utilisateur, conformément à l’article 6(1)(a) du RGPD.
+En cas d’intérêt confirmé par l’Utilisateur pour un premier échange, ce dernier aura la possibilité de communiquer son identité et ses coordonnées personnelles au Professionnel en question. Cette opération nécessitera le consentement explicite de l’Utilisateur, conformément à l’article 6(1)(a) du RGPD.
 
 ### 3.2. Service secondaire – Gestion des finances personnelles assistée par Open Banking
 
@@ -64,6 +64,7 @@ La Société ne facture en aucun cas les Utilisateurs pour l’accès, le mainti
 La rémunération de la Société provient exclusivement :
 
 1. d’un abonnement mensuel acquitté par les Professionnels pour l’accès à la Plateforme et aux fonctionnalités de consultation des profils anonymisés des Utilisateurs ;
+
 2. d’une commission de succès versée par le Professionnel à la Société lorsqu’un entretien téléphonique est organisé avec un Utilisateur par l’intermédiaire de la Plateforme.
 
 Ces revenus sont exclusivement perçus auprès des Professionnels et n’ont aucun impact financier pour l’Utilisateur, quel que soit le nombre d’interactions ou de mises en relation effectuées.
@@ -106,8 +107,7 @@ La Société agit uniquement en qualité d’opérateur technique au sens de l�
 
 Elle ne perçoit aucune rémunération liée à la distribution de produits et ne détient aucun mandat pour le compte des Utilisateurs ou des Professionnels.
 
-Toute information ou analyse fournie via la Plateforme, qu’elle émane de l’outil d’IA ou d’un Professionnel, a un caractère purement informatif et non contractuel.
-L’Utilisateur demeure seul responsable de l’usage qu’il en fait.
+Toute information ou analyse fournie via la Plateforme, qu’elle émane de l’outil d’IA ou d’un Professionnel, a un caractère purement informatif et non contractuel. L’Utilisateur demeure seul responsable de l’usage qu’il en fait.
 
 ### 5.2. Exonération de responsabilité
 
@@ -141,7 +141,7 @@ Les finalités du traitement sont :
 - la création et la gestion du compte utilisateur,
 - le profilage patrimonial,
 - le fonctionnement des algorithmes d’IA,
-- la mise en relation anonymisée avec les Professionnels,
+- la mise en relation avec les Professionnels,
 - la fourniture du service open banking via Powens,
 - la gestion technique et la sécurité de la Plateforme.
 
@@ -162,23 +162,19 @@ Elles sont conservées pendant la durée d’activation du compte, puis supprim�
 
 ### 6.5. Droits des Utilisateurs
 
-Conformément aux articles 15 à 22 du RGPD, l’Utilisateur dispose d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité de ses données. Ces droits peuvent être exercés en adressant un courriel à contact@sowhat-app.com. L’Utilisateur dispose également du droit d’introduire une réclamation auprès de la CNIL.
+Conformément aux articles 15 à 22 du RGPD, l’Utilisateur dispose d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité de ses données. Ces droits peuvent être exercés en adressant un courriel à contact@sowhat-app.com.L’Utilisateur dispose également du droit d’introduire une réclamation auprès de la CNIL.
 
 ---
 
 ## 7. Propriété intellectuelle
 
-La Plateforme invstore®, son contenu, sa structure, son logo, sa dénomination, ses codes sources et sa base de données constituent des œuvres protégées au titre du Code de la propriété intellectuelle.
-
-Toute reproduction, représentation ou utilisation non autorisée est strictement interdite.
+La Plateforme invstore®, son contenu, sa structure, son logo, sa dénomination, ses codes sources et sa base de données constituent des œuvres protégées au titre du Code de la propriété intellectuelle. Toute reproduction, représentation ou utilisation non autorisée est strictement interdite.
 
 ---
 
 ## 8. Modification et résiliation
 
-Les présentes CGU entrent en vigueur à compter de leur acceptation par l’Utilisateur et demeurent applicables tant que celui-ci dispose d’un compte actif sur la Plateforme.
-
-L’Utilisateur peut à tout moment supprimer son compte depuis son espace personnel, entraînant la désactivation de l’accès à la Plateforme et, conformément à la Politique de Confidentialité, la suppression des données à l’expiration des délais légaux de conservation.
+Les présentes CGU entrent en vigueur à compter de leur acceptation par l’Utilisateur et demeurent applicables tant que celui-ci dispose d’un compte actif sur la Plateforme. L’Utilisateur peut à tout moment supprimer son compte depuis son espace personnel, entraînant la désactivation de l’accès à la Plateforme et, conformément à la Politique de Confidentialité, la suppression des données à l’expiration des délais légaux de conservation.
 
 La Société se réserve le droit de modifier les présentes CGU à tout moment. Les Utilisateurs seront informés de toute mise à jour substantielle et devront accepter la nouvelle version pour continuer à utiliser les Services.
 
@@ -195,7 +191,6 @@ Une telle désactivation ou suppression n’a aucune incidence sur les droits de
 ## 9. Loi applicable et juridiction compétente
 
 Les présentes CGU sont régies par le droit français.
-
 Tout différend relatif à leur interprétation ou exécution relève de la compétence exclusive des tribunaux de Lyon, conformément aux dispositions du Code de procédure civile.
 
 ---
