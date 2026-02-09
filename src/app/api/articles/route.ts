@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import pool from '../../../lib/db';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const limit = parseInt(searchParams.get('limit') || '16', 10);
+    const offset = parseInt(searchParams.get('offset') || '0', 10);
+
     const client = await pool.connect();
     try {
       const query = `
@@ -10,8 +14,9 @@ export async function GET() {
         FROM articles
         WHERE is_published = true
         ORDER BY id DESC
+        LIMIT $1 OFFSET $2
       `;
-      const result = await client.query(query);
+      const result = await client.query(query, [limit, offset]);
       return NextResponse.json(result.rows);
     } finally {
       client.release();

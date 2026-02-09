@@ -66,6 +66,25 @@ export default function PrinciplesStrategy() {
             </Link>
             <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>Notre communiqué de presse</span>
           </div>
+
+          <div className="flex flex-col items-center">
+            <Link
+              href="https://www.gestiondefortune.com/banque-cgp/rubriques-banque-privee/actualites/12908-invstore-lance-un-tinder-de-lepargne.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Gestion de Fortune"
+              className="transition-transform duration-300 hover:scale-105"
+            >
+              <Image
+                src="/images/gestion-de-fortune.png"
+                alt="Gestion de Fortune"
+                width={702}
+                height={234}
+                className="w-32 h-32 object-contain"
+              />
+            </Link>
+            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>“Invstore lance un Tinder de l&apos;épargne”</span>
+          </div>
         </div>
       </div>
 
