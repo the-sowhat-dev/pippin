@@ -20,7 +20,7 @@ export function sanitizeText(text: string | null | undefined): string {
 
   // Simple SQL injection prevention (escaping single quotes)
   // Note: This is a basic measure. Parameterized queries should be used in the backend.
-  sanitized = sanitized.replace(/'/g, "''");
+  sanitized = sanitized.replace(/'/g, "'");
 
   return sanitized.trim();
 }
