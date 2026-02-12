@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -14,7 +13,6 @@ import {
 } from '../ui/accordion';
 import { Title } from '@/components/Title';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import { LexendFont, SourceSansPro } from '@/utils/fonts';
 
 export default function PrinciplesStrategy() {
   const [activeStep, setActiveStep] = useState<number>(3);
@@ -23,71 +21,6 @@ export default function PrinciplesStrategy() {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-[#203649] to-[#405e79] p-8 md:p-12 flex flex-col gap-4 items-center">
-        <h2 className={`${LexendFont.className} text-center md:text-left text-xl sm:text-2xl font-bold relative text-white`}>
-          Ils parlent de nous.
-        </h2>
-
-        <div className="max-w-5xl w-full px-8 sm:px-0 flex flex-col sm:flex-row items-center sm:items-start justify-around gap-4">
-          <div className="flex flex-col items-center">
-            <Link
-              href="https://www.forbes.fr/business/2026-leconomie-de-la-resilience-entre-contraintes-macroeconomiques-et-crises-sectorielles-silencieuses/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Forbes"
-              className="transition-transform duration-300 hover:scale-105"
-            >
-              <Image
-                src="/images/forbes.png"
-                alt="Forbes"
-                width={600}
-                height={162}
-                className="w-32 h-32 object-contain"
-              />
-            </Link>
-            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>Invstore citée parmi les startups à suivre en 2026</span>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <Link
-              href="https://finyear.com/invstore-la-nouvelle-app-de-matching-entre-epargnants-et-conseillers-financiers"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Finyear"
-              className="transition-transform duration-300 hover:scale-105"
-            >
-              <Image
-                src="/images/finyear.png"
-                alt="Finyear"
-                width={702}
-                height={234}
-                className="w-32 h-32 object-contain"
-              />
-            </Link>
-            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>Notre communiqué de presse</span>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <Link
-              href="https://www.gestiondefortune.com/banque-cgp/rubriques-banque-privee/actualites/12908-invstore-lance-un-tinder-de-lepargne.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Gestion de Fortune"
-              className="transition-transform duration-300 hover:scale-105"
-            >
-              <Image
-                src="/images/gestion-de-fortune.png"
-                alt="Gestion de Fortune"
-                width={702}
-                height={234}
-                className="w-32 h-32 object-contain"
-              />
-            </Link>
-            <span className={`text-white/70 sm:text-xl ${SourceSansPro.className} max-w-48 text-center`}>“Invstore lance un Tinder de l&apos;épargne”</span>
-          </div>
-        </div>
-      </div>
-
       <section className="flex flex-col gap-16 sm:gap-12 py-12 sm:py-16 items-center bg-[#c6f0d0]">
         <Title id="principles" text={messages.home.principles.title} />
 
@@ -204,3 +137,4 @@ export default function PrinciplesStrategy() {
     </>
   );
 }
+

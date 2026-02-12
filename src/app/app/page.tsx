@@ -8,6 +8,7 @@ import FiveMinutesStrategy from '@/components/strategies/FiveMinutesStrategy';
 import InvstoreStrategy from '@/components/strategies/InvstoreStrategy';
 import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
 import { PlayStoreButton } from '@/components/PlayStoreButton';
+import { PressMentionsCarousel } from '@/components/PressMentionsCarousel';
 
 export default function Page() {
   return (
@@ -17,6 +18,8 @@ export default function Page() {
       {/* <WordsCarousel /> */}
 
       <DescriptionStrategy />
+
+      <PressMentionsCarousel />
 
       <PrinciplesStrategy />
 

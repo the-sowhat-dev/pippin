@@ -131,6 +131,101 @@ html {
   margin: 0px 60px;
 }
 
+/* Press mentions carousel – infinite slide, same animation on all breakpoints */
+.press-carousel {
+  background: linear-gradient(to bottom, #203649, #405e79);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+}
+
+.press-carousel-title {
+  width: 100%;
+  max-width: 80rem;
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .press-carousel {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.press-carousel-track {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.press-carousel-slide {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
+  animation: sliding 20s infinite linear;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .press-carousel-slide {
+    margin-right: 5rem;
+    gap: 5rem;
+  }
+}
+
+.press-carousel-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: normal;
+  text-align: center;
+  text-decoration: none;
+  min-width: 180px;
+}
+
+.press-carousel-image {
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (min-width: 640px) {
+  .press-carousel-image {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .press-carousel-image {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.press-carousel-caption {
+  font-size: 0.75rem;
+  max-width: 12rem;
+}
+
+@media (min-width: 640px) {
+  .press-carousel-caption {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .press-carousel-caption {
+    font-size: 1.25rem;
+    max-width: 14rem;
+  }
+}
+
 @layer base {
   :root {
     --card: 0 0% 100%;
