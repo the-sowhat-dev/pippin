@@ -1,11 +1,11 @@
-import { LexendFont } from '@/utils/fonts';
-
 export default async function Page() {
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-6 lg:p-8 max-w-7xl mx-auto">
       <header className="mb-8">
-        <h1 className={`${LexendFont.className} text-3xl font-bold text-green-900`}>Alertes</h1>
-        <h3 className="text-gray-500 mt-2 text-lg">Gérez vos alertes</h3>
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Alertes</h1>
+        <p className="text-gray-500 mt-2">
+          Enregistrez vos critères de recherche pour recevoir des alertes lorsque des profils qualifiés sont disponibles.
+        </p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -33,6 +33,8 @@ export default async function Page() {
           </div>
         ))}
       </div>
+
     </div>
+
   );
 }

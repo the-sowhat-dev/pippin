@@ -146,7 +146,7 @@ export function UpdateProSheet({
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent className="overflow-y-auto sm:max-w-md w-full">
+      <SheetContent className="overflow-y-auto sm:max-w-2xl w-full">
         <SheetHeader>
           <SheetTitle className="text-green-900">Modifier le profil</SheetTitle>
           <SheetDescription>

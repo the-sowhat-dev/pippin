@@ -27,18 +27,9 @@ import {
   SheetTrigger,
   SheetDescription,
 } from '@/components/ui/sheet';
-import {
-  Dialog,
-  DialogTitle,
-  DialogFooter,
-  DialogHeader,
-  DialogContent,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { Label } from '@/components/ui/label';
+import { OfferDialog } from './OfferDialog';
 import { SectionTitle } from './SheetSectionTitle';
 import { formatAmount } from '@/utils/formatAmount';
-import { Textarea } from '@/components/ui/textarea';
 import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../lib/api';
 import { LexendFont } from '@/utils/fonts';
 import { formatPostalCode } from '@/utils/formatPostalCode';
@@ -642,46 +633,15 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
         </SheetContent>
       </Sheet>
 
-      <Dialog open={isOfferDialogOpen} onOpenChange={setIsOfferDialogOpen}>
-        <DialogContent className="sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle>{lead?.offer ? "Modifier l'offre" : 'Faire une offre'}</DialogTitle>
-            <DialogDescription>
-              Rédigez votre proposition commerciale pour ce prospect. Il recevra une notification.
-              <span className="p-1 bg-gray-50 rounded-md border border-gray-100 flex gap-4 items-center mt-4">
-                <Info className="w-10 h-10" />
-                En plus du message d'offre, le particulier aura accès à vos informations de profil
-                ainsi que les éléments de votre entreprise renseignés dans la section "Profil"
-              </span>
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid gap-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea
-                id="message"
-                placeholder="Bonjour, je vous propose..."
-                value={offerMessage}
-                onChange={(e) => setOfferMessage(e.target.value)}
-                className="h-32"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsOfferDialogOpen(false)}>
-              Annuler
-            </Button>
-            <Button
-              className="bg-green-500 hover:bg-green-600 text-white"
-              onClick={handleOfferSubmit}
-              disabled={isSubmitting}
-            >
-              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {lead?.offer ? 'Mettre à jour' : 'Envoyer'}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <OfferDialog
+        open={isOfferDialogOpen}
+        onOpenChange={setIsOfferDialogOpen}
+        lead={lead ?? undefined}
+        offerMessage={offerMessage}
+        onOfferMessageChange={setOfferMessage}
+        onSubmit={handleOfferSubmit}
+        isSubmitting={isSubmitting}
+      />
     </>
   );
 }
