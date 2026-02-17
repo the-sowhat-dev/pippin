@@ -13,7 +13,7 @@ export function MainQuoteStrategy() {
           téléchargez l&apos;application invstore®
           <br />
           <span className="font-bold block mt-1 sm:mt-2">
-            laissez le monde de la finance venir à vous
+            et laissez le monde de la finance venir à vous
           </span>
         </h2>
 

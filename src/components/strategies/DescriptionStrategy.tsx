@@ -25,11 +25,8 @@ export default function DescriptionStrategy() {
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
           <span className="font-bold">L&apos;application française invstore®</span> transforme
           l&apos;
-          <span className="font-bold">
-            expérience d'achat des produits d'épargne en facilitant l'accès des particuliers aux
-            conseillers financiers spécialisés
-          </span>
-          .
+          <span className="font-bold">expérience d'achat des produits d'épargne</span> en facilitant
+          l'accès des particuliers aux conseillers financiers spécialisés.
         </div>
 
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
