@@ -1,4 +1,4 @@
-@import '@radix-ui/themes/styles.css';
+@import "@radix-ui/themes/styles.css";
 
 @tailwind base;
 @tailwind components;
@@ -93,7 +93,7 @@ html {
   top: 0;
   width: 250px;
   height: 100%;
-  content: '';
+  content: "";
 }
 
 .titles:before {
@@ -223,6 +223,30 @@ html {
   .press-carousel-caption {
     font-size: 1.25rem;
     max-width: 14rem;
+  }
+}
+
+/* Partner Logos Carousel */
+.partner-carousel-track {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.partner-carousel-slide {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-right: 2rem;
+  animation: sliding 25s infinite linear;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .partner-carousel-slide {
+    margin-right: 4rem;
+    gap: 4rem;
   }
 }
 

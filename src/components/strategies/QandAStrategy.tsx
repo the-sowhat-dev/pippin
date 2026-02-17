@@ -1,15 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { FAQ } from '@/utils/faq';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../ui/accordion';
-import { Button } from '../ui/button';
-import { Title } from '../Title';
+import Link from "next/link";
+import { FAQ_INVSTORE } from "@/utils/faq";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { Button } from "../ui/button";
+import { Title } from "../Title";
 
 export default function QandAStrategy() {
   return (
@@ -18,7 +13,7 @@ export default function QandAStrategy() {
         <Title id="faq" text="Questions fréquentes" />
 
         <Accordion type="single" collapsible className="w-full">
-          {FAQ.slice(0, 5).map((item, index) => (
+          {FAQ_INVSTORE.slice(0, 5).map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
               <AccordionContent className="text-gray-700">{item.answer}</AccordionContent>

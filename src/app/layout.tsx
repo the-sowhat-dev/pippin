@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
-    images: { url: '/images/invstore.png' },
+    images: { url: '/images/invstore.svg' },
     url: 'https://invstore.fr/app',
   },
   twitter: {
     title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
-    images: { url: '/images/invstore.png' },
+    images: { url: '/images/invstore.svg' },
   },
   icons: {
     icon: [

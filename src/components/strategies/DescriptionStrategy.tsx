@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import { LexendFont } from '@/utils/fonts';
+import Image from "next/image";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { LexendFont } from "@/utils/fonts";
 
 export default function DescriptionStrategy() {
   return (
     <section className="flex flex-col md:flex-row items-center gap-16 md:gap-8 bg-[#C2E7FF] p-12 sm:p-16 sm:pb-24 ">
       <div className="flex-1">
         <Image
-          src={'/images/description.svg'}
+          src={"/images/description.svg"}
           alt="Trois mockups en un pour présentation"
-          style={{ width: '100%', objectFit: 'contain' }}
+          style={{ width: "100%", objectFit: "contain" }}
           className="max-w-[400px] mx-auto"
           width={6750}
           height={14405}
@@ -23,27 +23,23 @@ export default function DescriptionStrategy() {
 
       <div className="flex flex-1 flex-col gap-14 items-center">
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
-          <span className="font-bold">L&apos;application française invstore®</span> facilite
+          <span className="font-bold">L&apos;application française invstore®</span> transforme
           l&apos;
           <span className="font-bold">
-            accès des particuliers aux conseillers financiers spécialisés
+            expérience d'achat des produits d'épargne en facilitant l'accès des particuliers aux
+            conseillers financiers spécialisés
           </span>
-          . Son objectif est de{' '}
-          <span className="font-bold">
-            transformer l&apos;expérience d&apos;achat des produits d&apos;investissement
-          </span>{' '}
-          en réduisant la charge mentale et administrative qui freine encore de nombreux épargnants.
+          .
         </div>
 
         <div className="flex-1 max-w-[500px] text-pretty text-justify">
-          <span className="font-bold">Concrètement</span>, elle analyse votre situation financière{' '}
-          <span className="font-bold">en moins de 5 minutes grâce à l'IA</span>, puis vous{' '}
+          Elle analyse votre situation financière{" "}
+          <span className="font-bold">en moins de 5 minutes grâce à l'IA</span>, puis vous{" "}
           <span className="font-bold">connecte de manière anonyme</span> avec des experts financiers
-          agréés (banquiers et conseillers en gestion de patrimoine indépendants), qui sont{' '}
-          <span className="font-bold">mis en compétition</span> pour vous proposer les{' '}
+          agréés (banquiers et conseillers en gestion de patrimoine indépendants), qui sont{" "}
+          <span className="font-bold">mis en compétition</span> pour vous proposer les{" "}
           <span className="font-bold">solutions d'épargne les plus adaptées à votre besoin</span>.
         </div>
-
         <div className="flex flex-col items-center gap-16 md:gap-8 mb-16">
           <div className="relative max-w-xl mx-auto md:mx-0 p-4">
             <FormatQuoteIcon
@@ -51,9 +47,9 @@ export default function DescriptionStrategy() {
               className="absolute -top-10 -left-6 text-[#35c055] opacity-30 rotate-180"
             />
             <h2
-              className={` ${LexendFont.className} text-xl sm:text-2xl leading-tight sm:leading-normal font-bold relative text-center md:text-left text-[#1a5d2a]`}
-            >
-              Moins de 5 minutes pour une analyse IA gratuite de ma situation financière ?
+              className={` ${LexendFont.className} text-xl sm:text-2xl leading-tight sm:leading-normal font-bold relative text-center md:text-left text-[#1a5d2a]`}>
+              L&apos;application de ceux qui n&apos;ont pas le temps de s&apos;occuper de leur
+              argent
             </h2>
             <FormatQuoteIcon
               sx={{ fontSize: 100 }}
@@ -63,9 +59,9 @@ export default function DescriptionStrategy() {
 
           <div className="bg-[#35c055] rounded-lg overflow-hidden flex-shrink-0 shadow-xl transform rotate-1 transition-transform hover:rotate-0 max-w-[500px]">
             <Image
-              src={'/images/woman_in_bed.png'}
+              src={"/images/woman_in_bed.png"}
               alt="Five minutes to analyze your financial situation"
-              style={{ objectFit: 'contain' }}
+              style={{ objectFit: "contain" }}
               width={1280}
               height={853}
             />
