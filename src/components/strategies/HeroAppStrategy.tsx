@@ -3,8 +3,7 @@
 import Image from "next/image";
 
 import { NunitoFont } from "@/utils/fonts";
-import { PlayStoreButton } from "@/components/PlayStoreButton";
-import { AppleAppStoreButton } from "@/components/AppleAppStoreButton";
+import { AppStoreButtons } from "@/components/AppStoreButtons";
 
 const words = [
   "Assurance-vie",
@@ -67,7 +66,7 @@ export function HeroAppStrategy() {
         ))}
       </div>
 
-      <div className="min-h-[25vh] lg:min-h-[35vh] flex items-center justify-center pt-2 lg:pt-4 px-2 lg:px-4">
+      <div className="min-h-[30vh] lg:min-h-[45vh] flex items-center justify-center pt-2 lg:pt-4 px-2 lg:px-4">
         {/* Text and Buttons Column */}
         <div className="flex flex-col items-center lg:basis-1/2 gap-4 lg:gap-8">
           <h1 className={`${NunitoFont.className} text-2xl lg:text-3xl text-center`}>
@@ -76,14 +75,7 @@ export function HeroAppStrategy() {
             <span className="font-bold block mt-1 lg:mt-2">de vous occuper de votre argent ?</span>
           </h1>
 
-          <div className="flex flex-col lg:flex-row gap-4 items-center w-full justify-center">
-            <div className="scale-90 lg:scale-100 origin-center lg:origin-left">
-              <AppleAppStoreButton />
-            </div>
-            <div className="scale-90 lg:scale-100 origin-center lg:origin-left">
-              <PlayStoreButton />
-            </div>
-          </div>
+          <AppStoreButtons layout="column" />
         </div>
 
         {/* Space for Mockup on Desktop */}

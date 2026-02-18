@@ -13,11 +13,12 @@ import {
   getPersonalSalaryRangeLabel,
 } from 'sowhat-types';
 import { toast } from 'sonner';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import { Loader2, Heart, Info, CheckCircle2 } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient, InfiniteData } from '@tanstack/react-query';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 import {
   Sheet,
@@ -39,14 +40,44 @@ import { DetailItem } from './DetailItem';
 interface LeadDetailsSheetProps {
   leadId: string;
   trigger: React.ReactNode;
+  defaultOpen?: boolean;
 }
 
-export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
+export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadDetailsSheetProps) {
   const { getToken } = useAuth();
   const queryClient = useQueryClient();
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const [isOfferDialogOpen, setIsOfferDialogOpen] = useState(false);
   const [offerMessage, setOfferMessage] = useState('');
+
+  // Sync isOpen state with defaultOpen when it changes
+  useEffect(() => {
+    if (defaultOpen) {
+      setIsOpen(true);
+    }
+  }, [defaultOpen]);
+
+  // Update URL when sheet opens/closes
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (open) {
+      // Add leadId to URL
+      params.set('leadId', leadId);
+    } else {
+      // Remove leadId from URL
+      params.delete('leadId');
+    }
+    
+    const queryString = params.toString();
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ''}`, { scroll: false });
+  };
 
   const {
     data: lead,
@@ -161,7 +192,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
 
   return (
     <>
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <Sheet open={isOpen} onOpenChange={handleOpenChange}>
         <SheetTrigger asChild>{trigger}</SheetTrigger>
         <SheetContent className="w-full sm:max-w-none sm:w-1/2 flex flex-col h-full p-0 gap-0">
           <div className="flex-1 overflow-y-auto p-6">

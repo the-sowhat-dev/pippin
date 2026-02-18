@@ -72,6 +72,8 @@ export function PartnersCarousel() {
           <div className="partner-carousel-track w-full">
             <PartnerCarouselSlide items={PartnerLogos} />
             <PartnerCarouselSlide items={PartnerLogos} />
+            <PartnerCarouselSlide items={PartnerLogos} />
+            <PartnerCarouselSlide items={PartnerLogos} />
           </div>
         </div>
       </div>

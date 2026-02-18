@@ -9,7 +9,7 @@ export function MainQuoteStrategy() {
           className="absolute -top-12 -left-6 md:left-6 lg:-left-6 text-blue-700 opacity-30 rotate-180"
         />
 
-        <h2 className="text-2xl lg:text-3xl text-center">
+        <h2 className="text-xl lg:text-3xl text-center">
           téléchargez l&apos;application invstore®
           <br />
           <span className="font-bold block mt-1 sm:mt-2">

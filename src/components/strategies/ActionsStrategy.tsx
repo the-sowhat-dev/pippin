@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { AppleAppStoreButton } from '@/components/AppleAppStoreButton';
-import { PlayStoreButton } from '@/components/PlayStoreButton';
+import { AppStoreButtons } from '@/components/AppStoreButtons';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { MousePointer } from 'lucide-react';
@@ -102,10 +101,7 @@ export default function ActionsStrategy() {
           Testez l&apos;application pour vous faire votre propre avis avant l&apos;ouverture de la plateforme à tous les professionnels début mars.
         </p>
 
-        <div className="flex flex-col md:flex-row items-center gap-4">
-          <AppleAppStoreButton />
-          <PlayStoreButton />
-        </div>
+        <AppStoreButtons layout="row" />
       </div>
     </section>
   );

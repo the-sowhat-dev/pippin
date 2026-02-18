@@ -25,6 +25,9 @@ export const ProLeadsContent = () => {
 
   const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(filters);
 
+  // Get leadId from URL
+  const leadIdFromUrl = searchParams.get('leadId');
+
   // Debounce logic
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -34,12 +37,18 @@ export const ProLeadsContent = () => {
     return () => clearTimeout(handler);
   }, [filters]);
 
-  // Sync URL with filters
+  // Sync URL with filters and preserve leadId
   useEffect(() => {
     const params = filtersToSearchParams(debouncedFilters);
+    
+    // Preserve leadId in URL if it exists
+    if (leadIdFromUrl) {
+      params.set('leadId', leadIdFromUrl);
+    }
+    
     const queryString = params.toString();
     router.replace(`${pathname}?${queryString}`, { scroll: false });
-  }, [debouncedFilters, pathname, router]);
+  }, [debouncedFilters, pathname, router, leadIdFromUrl]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isFetching } =
     useInfiniteQuery({
@@ -88,6 +97,7 @@ export const ProLeadsContent = () => {
           fetchNextPage={fetchNextPage}
           isFetchingNextPage={isFetchingNextPage}
           totalCount={totalCount}
+          openLeadId={leadIdFromUrl}
         />
       </section>
     </div>

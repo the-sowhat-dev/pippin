@@ -10,7 +10,7 @@ export function SecondMainQuoteStrategy() {
           className="absolute -top-12 -left-6 md:left-6 lg:-left-6 text-green-700 opacity-30 rotate-180"
         />
 
-        <h2 className={`${LexendFont.className} text-2xl lg:text-3xl text-center`}>
+        <h2 className={`${LexendFont.className} text-xl lg:text-3xl text-center text-green-950`}>
           Quel que soit le montant que vous souhaitez investir, vous avez le contrôle de la
           négociation !
         </h2>
