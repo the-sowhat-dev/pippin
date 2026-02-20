@@ -1,50 +1,23 @@
 "use client";
 
-import Image from "next/image";
+import { LogoSoup } from "react-logo-soup";
 
 import { LexendFont } from "@/utils/fonts";
 
-const PartnerLogos = [
-  {
-    src: "/images/yomoni.png",
-    alt: "Yomoni",
-    width: 300,
-    height: 150,
-  },
-  {
-    src: "/images/prosper-conseil.png",
-    alt: "Prosper Conseil",
-    width: 300,
-    height: 150,
-  },
-  {
-    src: "/images/baltis-conseil.png",
-    alt: "Baltis Groupe Magelim",
-    width: 300,
-    height: 150,
-  },
-  {
-    src: "/images/green-got.png",
-    alt: "Green Got",
-    width: 300,
-    height: 150,
-  },
+const PARTNERS_LOGOS = [
+  { src: "/images/partners/yomoni.png", alt: "Yomoni" },
+  { src: "/images/partners/prosper-conseil.png", alt: "Prosper Conseil" },
+  { src: "/images/partners/baltis-conseil.png", alt: "Baltis Groupe Magelim" },
+  { src: "/images/partners/green-got.png", alt: "Green Got" },
+  { src: "/images/partners/la-premiere-brique.png", alt: "La Première Brique" },
+  { src: "/images/partners/optivest.png", alt: "Optivest" },
+  { src: "/images/partners/mon-petit-placement.png", alt: "Mon Petit Placement" },
 ];
 
-function PartnerCarouselSlide({ items }: { items: typeof PartnerLogos }) {
+function PartnerCarouselSlide() {
   return (
     <div className="partner-carousel-slide">
-      {items.map((logo, index) => (
-        <div key={index} className="inline-flex items-center justify-center w-[200px]">
-          <Image
-            src={logo.src}
-            alt={logo.alt}
-            width={logo.width * 2}
-            height={logo.height * 2}
-            className="object-contain"
-          />
-        </div>
-      ))}
+      <LogoSoup baseSize={72} className="flex flex-row gap-10" logos={PARTNERS_LOGOS} />
     </div>
   );
 }
@@ -70,10 +43,10 @@ export function PartnersCarousel() {
           </div>
 
           <div className="partner-carousel-track w-full">
-            <PartnerCarouselSlide items={PartnerLogos} />
-            <PartnerCarouselSlide items={PartnerLogos} />
-            <PartnerCarouselSlide items={PartnerLogos} />
-            <PartnerCarouselSlide items={PartnerLogos} />
+            <PartnerCarouselSlide />
+            <PartnerCarouselSlide />
+            <PartnerCarouselSlide />
+            <PartnerCarouselSlide />
           </div>
         </div>
       </div>

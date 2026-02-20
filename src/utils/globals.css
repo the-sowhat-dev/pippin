@@ -173,7 +173,6 @@ html {
 
 @media (min-width: 768px) {
   .press-carousel-slide {
-    margin-right: 5rem;
     gap: 5rem;
   }
 }
@@ -209,19 +208,11 @@ html {
 }
 
 .press-carousel-caption {
-  font-size: 0.75rem;
   max-width: 12rem;
-}
-
-@media (min-width: 640px) {
-  .press-carousel-caption {
-    font-size: 1rem;
-  }
 }
 
 @media (min-width: 768px) {
   .press-carousel-caption {
-    font-size: 1.25rem;
     max-width: 14rem;
   }
 }
@@ -238,14 +229,12 @@ html {
   flex-direction: row;
   align-items: center;
   gap: 2rem;
-  margin-right: 2rem;
   animation: sliding 25s infinite linear;
   padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
   .partner-carousel-slide {
-    margin-right: 4rem;
     gap: 4rem;
   }
 }
