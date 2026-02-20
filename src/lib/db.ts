@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool } from "pg";
 
 export interface Article {
   id: number;
@@ -14,6 +14,7 @@ export interface Article {
   reading_time: number | null;
   is_published: boolean | null;
   published_at: Date;
+  collaboration: string | null;
   updated_at: Date | null;
   created_at: Date | null;
 }
