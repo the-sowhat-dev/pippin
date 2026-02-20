@@ -11,6 +11,9 @@ import {
   MatchingLeadsResponse,
   getPersonalSalaryRangeKey,
   getPersonalNetWorthRangeKey,
+  ProLeadsAlertResponse,
+  CreateProLeadsAlertInput,
+  UpdateProLeadsAlertInput,
 } from 'sowhat-types';
 
 import { LeadsFiltersAndSorting } from '@/utils/filters';
@@ -279,6 +282,61 @@ export async function toggleLikeUser(
 ): Promise<void> {
   await fetchWithAuth<void>(`/pro/like/user/${id}?like=${like}`, token, {
     method: 'PUT',
+  });
+}
+
+/**
+ * Get all alerts for the current pro
+ */
+export async function getAlerts(token: string | null): Promise<ProLeadsAlertResponse[]> {
+  try {
+    const result = await fetchWithAuth<ProLeadsAlertResponse[]>('/pro/alerts', token, {
+      method: 'GET',
+    });
+    return result ?? [];
+  } catch (error) {
+    console.error('Error fetching alerts:', error);
+    throw error;
+  }
+}
+
+/**
+ * Create a new leads alert
+ */
+export async function createAlert(
+  data: CreateProLeadsAlertInput,
+  token: string | null
+): Promise<ProLeadsAlertResponse> {
+  const result = await fetchWithAuth<ProLeadsAlertResponse | null>('/pro/alerts', token, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  if (!result) throw new Error('Failed to create alert');
+  return result;
+}
+
+/**
+ * Update an existing leads alert (filters, name, or pause)
+ */
+export async function updateAlert(
+  data: UpdateProLeadsAlertInput,
+  token: string | null
+): Promise<ProLeadsAlertResponse> {
+  const { id, ...body } = data;
+  const result = await fetchWithAuth<ProLeadsAlertResponse | null>(`/pro/alerts/${id}`, token, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+  });
+  if (!result) throw new Error('Failed to update alert');
+  return result;
+}
+
+/**
+ * Delete a leads alert
+ */
+export async function deleteAlert(id: string, token: string | null): Promise<void> {
+  await fetchWithAuth<void>(`/pro/alerts/${id}`, token, {
+    method: 'DELETE',
   });
 }
 
