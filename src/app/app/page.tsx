@@ -10,6 +10,7 @@ import PrinciplesStrategy from "@/components/strategies/PrinciplesStrategy";
 import { DescriptionStrategy } from "@/components/strategies/DescriptionStrategy";
 import { MainQuoteStrategy } from "@/components/strategies/MainQuoteStrategy";
 import { SecondMainQuoteStrategy } from "@/components/strategies/SecondMainQuoteStrategy";
+import { VideoStrategy } from "@/components/strategies/VideoStrategy";
 
 export default function Page() {
   return (
@@ -28,7 +29,10 @@ export default function Page() {
 
       <SecondMainQuoteStrategy />
 
-      {/* <FiveMinutesStrategy /> */}
+      <VideoStrategy
+        videoUrl="https://abkqohkbpzpaafojdzqg.supabase.co/storage/v1/object/public/public-videos/app-demo.mp4"
+        thumbnailUrl="https://abkqohkbpzpaafojdzqg.supabase.co/storage/v1/object/public/public-videos/video-thumbnail.jpg"
+      />
 
       {/* DOWNLOAD BUTTON */}
       <div className="flex items-center bg-gradient-to-b from-[#203649] to-[#405e79] p-4 py-8 md:p-8 justify-center">
