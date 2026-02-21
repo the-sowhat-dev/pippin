@@ -1,7 +1,9 @@
-import { Suspense } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Suspense } from "react";
 
-import { AlertsClient } from '@/components/dashboard/alerts/AlertsClient';
+import { AlertsClient } from "@/components/dashboard/alerts/AlertsClient";
+import { AlertsSkeleton } from "@/components/dashboard/alerts/AlertsSkeleton";
+import { NotificationEmailHandler } from "@/components/dashboard/alerts/NotificationEmailHandler";
+import { NotificationEmailSkeleton } from "@/components/dashboard/alerts/NotificationEmailSkeleton";
 
 export default function Page() {
   return (
@@ -14,15 +16,15 @@ export default function Page() {
         </p>
       </header>
 
-      <Suspense
-        fallback={
-          <div className="flex justify-center py-20">
-            <Loader2 className="w-6 h-6 animate-spin text-gray-300" />
-          </div>
-        }
-      >
-        <AlertsClient />
-      </Suspense>
+      <div className="space-y-8">
+        <Suspense fallback={<NotificationEmailSkeleton />}>
+          <NotificationEmailHandler />
+        </Suspense>
+
+        <Suspense fallback={<AlertsSkeleton />}>
+          <AlertsClient />
+        </Suspense>
+      </div>
     </div>
   );
 }
