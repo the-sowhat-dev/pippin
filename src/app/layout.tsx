@@ -1,24 +1,24 @@
-import '@/utils/globals.css';
+import "@/utils/globals.css";
 
-import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
-import { Theme } from '@radix-ui/themes';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Theme } from "@radix-ui/themes";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import Header from '@/components/header';
-import { SourceSansPro } from '@/utils/fonts';
-import { LanguageProvider } from '@/i18n/LanguageProvider';
-import { MetricoolAnalytics } from '@/components/analytics/MetricoolAnalytics';
-import { Footer } from '@/components/footer';
-import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
-import { getYesterdayDate } from '../utils/date';
+import Header from "@/components/header";
+import { SourceSansPro } from "@/utils/fonts";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { MetricoolAnalytics } from "@/components/analytics/MetricoolAnalytics";
+import { Footer } from "@/components/footer";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { getYesterdayDate } from "../utils/date";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://invstore.fr'),
+  metadataBase: new URL("https://invstore.fr"),
   other: {
     date: getYesterdayDate().toISOString(),
-    'last-modified': getYesterdayDate().toISOString(),
+    "last-modified": getYesterdayDate().toISOString(),
   },
   title: "Invstore - gagner mieux sans effort",
   description:
@@ -27,24 +27,22 @@ export const metadata: Metadata = {
     title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
-    images: { url: '/images/invstore.svg' },
-    url: 'https://invstore.fr/app',
+    images: { url: "/images/invstore.svg" },
+    url: "https://invstore.fr/app",
   },
   twitter: {
     title: "Invstore - gagner mieux sans effort",
     description:
       "L'application française qui réduit la charge mentale et administrative des épargnants.",
-    images: { url: '/images/invstore.svg' },
+    images: { url: "/images/invstore.svg" },
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: "/favicon.ico" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: [
-      { url: '/icons/apple-icon.svg', type: 'image/svg+xml' },
-    ],
+    apple: [{ url: "/icons/apple-icon.svg", type: "image/svg+xml" }],
   },
 };
 
@@ -54,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider allowedRedirectOrigins={["https://invstore.fr", /https:\/\/.*\.vercel\.app$/]}>
       <html lang="fr">
         <head>
           <MetricoolAnalytics />
