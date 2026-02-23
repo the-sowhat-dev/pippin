@@ -88,6 +88,7 @@ export default function Page() {
                   title={article.title}
                   subtitle={article.subtitle}
                   slug={article.slug}
+                  collaboration={article.collaboration}
                   date={article.published_at}
                   coverImage={article.cover_image}
                   collaboration={article.collaboration}

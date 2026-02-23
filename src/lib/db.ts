@@ -17,6 +17,7 @@ export interface Article {
   collaboration: string | null;
   updated_at: Date | null;
   created_at: Date | null;
+  collaboration: string | null;
 }
 
 const pool = new Pool({
