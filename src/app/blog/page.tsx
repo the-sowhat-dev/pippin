@@ -91,7 +91,6 @@ export default function Page() {
                   collaboration={article.collaboration}
                   date={article.published_at}
                   coverImage={article.cover_image}
-                  collaboration={article.collaboration}
                   readingTime={article.reading_time!}
                 />
               ))}

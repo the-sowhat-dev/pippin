@@ -31,10 +31,6 @@ export function NotificationEmailHandler() {
 
   const proData = proQuery.data;
 
-  useEffect(() => {
-    console.log("proDataaaaa:", proData?.notificationEmail);
-  }, [proData]);
-
   const savedNotifEmail = proData?.notificationEmail ?? null;
   const isUsingClerkEmail = !savedNotifEmail || savedNotifEmail === clerkEmail;
 
