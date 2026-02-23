@@ -1,22 +1,18 @@
-import { X } from 'lucide-react';
+import { DepartmentsList } from "sowhat-types";
+
 import {
-  ProjectNeeds,
-  FinancialProducts,
-  DepartmentsList,
-  PersonalSalaryRanges,
-  PersonalNetWorthRanges,
-} from 'sowhat-types';
-
-import { RangeSlider } from '../RangeSlider';
-import { MultiSelect } from '../MultiSelect';
-import { formatAmount } from '@/utils/formatAmount';
-import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
-
-const NEEDS_OPTIONS = ProjectNeeds.map((n) => n.proLabel);
-const PRODUCTS_OPTIONS = FinancialProducts.map((p) => p.label);
-const SALARY_OPTIONS = PersonalSalaryRanges.map((p) => p.label);
-const NET_WORTH_OPTIONS = PersonalNetWorthRanges.map((p) => p.label);
-const DEPARTMENT_OPTIONS = DepartmentsList.map((d) => `${d.code} - ${d.departmentName}`);
+  NEEDS_OPTIONS,
+  SALARY_OPTIONS,
+  PRODUCTS_OPTIONS,
+  NET_WORTH_OPTIONS,
+  DEPARTMENT_OPTIONS,
+} from "@/utils/filtersPanel";
+import { Chip } from "../Chip";
+import { FilterRow } from "../FilterRow";
+import { RangeSlider } from "../RangeSlider";
+import { MultiSelect } from "../MultiSelect";
+import { formatAmount } from "@/utils/formatAmount";
+import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from "@/utils/filters";
 
 interface FiltersPanelProps {
   filters: LeadsFiltersAndSorting;
@@ -32,7 +28,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
 
   const handleDepartmentsChange = (values: string[]) => {
     // Extract codes from "Code - Name"
-    const codes = values.map((v) => v.split(' - ')[0]);
+    const codes = values.map((v) => v.split(" - ")[0]);
     onChange({ ...filters, postalCodes: codes });
   };
 
@@ -65,169 +61,61 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
         </div>
 
         {/* Needs */}
-        <div className="space-y-2 border-b border-gray-100 pb-4">
-          <span className="text-sm font-medium text-gray-800/60">Besoins</span>
-          <MultiSelect
-            label="Sélectionner des besoins"
-            options={NEEDS_OPTIONS}
-            value={filters.needs}
-            onChange={(needs) => onChange({ ...filters, needs })}
-          />
-          {filters.needs.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-2">
-              {filters.needs.map((need) => (
-                <span
-                  key={need}
-                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 max-w-full"
-                  title={need}
-                >
-                  <span className="truncate max-w-[200px]">{need}</span>
-                  <button
-                    onClick={() =>
-                      onChange({
-                        ...filters,
-                        needs: filters.needs.filter((n) => n !== need),
-                      })
-                    }
-                    className="ml-1 hover:text-blue-900 flex-shrink-0"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+        <FilterRow
+          label="Besoins"
+          color="blue"
+          options={NEEDS_OPTIONS}
+          value={filters.needs}
+          onChange={(needs) => onChange({ ...filters, needs })}
+          selectLabel="Sélectionner des besoins"
+          labelClassName="text-sm font-medium text-gray-800/60"
+          className="space-y-2 border-b border-gray-100 pb-4"
+        />
 
         {/* Products */}
-        <div className="border-b border-gray-100 pb-4">
-          <div className="space-y-2">
-            <span className="text-sm font-medium text-gray-800/60">
-              Produits financiers recherchés
-            </span>
-            <MultiSelect
-              label="Sélectionner des produits"
-              options={PRODUCTS_OPTIONS}
-              value={filters.financialProducts}
-              onChange={(financialProducts) =>
-                onChange({
-                  ...filters,
-                  financialProducts,
-                  onlyWithoutProduct:
-                    financialProducts.length > 0 && filters.onlyWithoutProduct
-                      ? false
-                      : filters.onlyWithoutProduct,
-                })
-              }
-            />
-            {filters.financialProducts.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
-                {filters.financialProducts.map((p) => (
-                  <span
-                    key={p}
-                    className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700 max-w-full"
-                    title={p}
-                  >
-                    <span className="truncate max-w-[200px]">{p}</span>
-                    <button
-                      onClick={() =>
-                        onChange({
-                          ...filters,
-                          financialProducts: filters.financialProducts.filter((x) => x !== p),
-                        })
-                      }
-                      className="ml-1 hover:text-green-900 flex-shrink-0"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+        <FilterRow
+          label="Produits financiers recherchés"
+          color="green"
+          options={PRODUCTS_OPTIONS}
+          value={filters.financialProducts}
+          onChange={(financialProducts) =>
+            onChange({
+              ...filters,
+              financialProducts,
+              onlyWithoutProduct:
+                financialProducts.length > 0 && filters.onlyWithoutProduct
+                  ? false
+                  : filters.onlyWithoutProduct,
+            })
+          }
+          selectLabel="Sélectionner des produits"
+          labelClassName="text-sm font-medium text-gray-800/60"
+          className="space-y-2 border-b border-gray-100 pb-4"
+        />
 
         {/* Salary Ranges */}
-        <div className="border-b border-gray-100 pb-4">
-          <div className="space-y-2">
-            <span className="text-sm font-medium text-gray-800/60">Revenus personnels déclarés</span>
-            <MultiSelect
-              label="Sélectionner les revenus personnels"
-              options={SALARY_OPTIONS}
-              value={filters.personalSalaryRanges}
-              onChange={(personalSalaryRanges) =>
-                onChange({ ...filters, personalSalaryRanges })
-              }
-            />
-            {filters.personalSalaryRanges.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
-                {filters.personalSalaryRanges.map((range) => (
-                  <span
-                    key={range}
-                    className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-50 text-orange-700 max-w-full"
-                    title={range}
-                  >
-                    <span className="truncate max-w-[200px]">{range}</span>
-                    <button
-                      onClick={() =>
-                        onChange({
-                          ...filters,
-                          personalSalaryRanges: filters.personalSalaryRanges.filter(
-                            (x) => x !== range
-                          ),
-                        })
-                      }
-                      className="ml-1 hover:text-orange-900 flex-shrink-0"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+        <FilterRow
+          label="Revenus personnels déclarés"
+          color="orange"
+          options={SALARY_OPTIONS}
+          value={filters.personalSalaryRanges}
+          onChange={(personalSalaryRanges) => onChange({ ...filters, personalSalaryRanges })}
+          selectLabel="Sélectionner les revenus personnels"
+          labelClassName="text-sm font-medium text-gray-800/60"
+          className="space-y-2 border-b border-gray-100 pb-4"
+        />
 
         {/* Net Worth Ranges */}
-        <div className="border-b border-gray-100 pb-4">
-          <div className="space-y-2">
-            <span className="text-sm font-medium text-gray-800/60">Patrimoines personnels déclarés</span>
-            <MultiSelect
-              label="Sélectionner les patrimoines personnels"
-              options={NET_WORTH_OPTIONS}
-              value={filters.personalNetWorthRanges}
-              onChange={(personalNetWorthRanges) =>
-                onChange({ ...filters, personalNetWorthRanges })
-              }
-            />
-            {filters.personalNetWorthRanges.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
-                {filters.personalNetWorthRanges.map((range) => (
-                  <span
-                    key={range}
-                    className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-teal-50 text-teal-700 max-w-full"
-                    title={range}
-                  >
-                    <span className="truncate max-w-[200px]">{range}</span>
-                    <button
-                      onClick={() =>
-                        onChange({
-                          ...filters,
-                          personalNetWorthRanges: filters.personalNetWorthRanges.filter(
-                            (x) => x !== range
-                          ),
-                        })
-                      }
-                      className="ml-1 hover:text-teal-900 flex-shrink-0"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+        <FilterRow
+          label="Patrimoines personnels déclarés"
+          color="teal"
+          options={NET_WORTH_OPTIONS}
+          value={filters.personalNetWorthRanges}
+          onChange={(personalNetWorthRanges) => onChange({ ...filters, personalNetWorthRanges })}
+          selectLabel="Sélectionner les patrimoines personnels"
+          labelClassName="text-sm font-medium text-gray-800/60"
+          className="space-y-2 border-b border-gray-100 pb-4"
+        />
 
         {/* Postal Codes */}
         <div className="space-y-2">
@@ -241,24 +129,17 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
           {filters.postalCodes.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {selectedDepartments.map((dept) => (
-                <span
+                <Chip
                   key={dept}
-                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-50 text-purple-700 max-w-full"
-                  title={dept}
-                >
-                  <span className="truncate max-w-[200px]">{dept}</span>
-                  <button
-                    onClick={() =>
-                      onChange({
-                        ...filters,
-                        postalCodes: filters.postalCodes.filter((c) => !dept.startsWith(c)),
-                      })
-                    }
-                    className="ml-1 hover:text-purple-900 flex-shrink-0"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                </span>
+                  label={dept}
+                  color="purple"
+                  onRemove={() =>
+                    onChange({
+                      ...filters,
+                      postalCodes: filters.postalCodes.filter((c) => !dept.startsWith(c)),
+                    })
+                  }
+                />
               ))}
             </div>
           )}
@@ -301,8 +182,8 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
               id="sort-created-at"
               name="sortBy"
               value="user_created_at"
-              checked={filters.sortBy === 'user_created_at'}
-              onChange={() => onChange({ ...filters, sortBy: 'user_created_at' })}
+              checked={filters.sortBy === "user_created_at"}
+              onChange={() => onChange({ ...filters, sortBy: "user_created_at" })}
               className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="sort-created-at" className="text-sm text-gray-700 cursor-pointer">
@@ -315,8 +196,8 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
               id="sort-initial-amount"
               name="sortBy"
               value="initial_amount"
-              checked={filters.sortBy === 'initial_amount'}
-              onChange={() => onChange({ ...filters, sortBy: 'initial_amount' })}
+              checked={filters.sortBy === "initial_amount"}
+              onChange={() => onChange({ ...filters, sortBy: "initial_amount" })}
               className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="sort-initial-amount" className="text-sm text-gray-700 cursor-pointer">
@@ -330,8 +211,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
       <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm space-y-8">
         <button
           onClick={() => onChange(InitialLeadsFiltersAndSorting)}
-          className="w-full py-2 text-sm text-gray-500 hover:text-gray-900 underline decoration-gray-300 hover:decoration-gray-900"
-        >
+          className="w-full py-2 text-sm text-gray-500 hover:text-gray-900 underline decoration-gray-300 hover:decoration-gray-900">
           Réinitialiser les filtres
         </button>
       </div>

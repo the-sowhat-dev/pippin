@@ -34,7 +34,6 @@ export default function ArticleCard({
   return (
     <a href={`/blog/a/${slug}`} className="block w-full group">
       {collaboration && <CollaborationBlock id={collaboration} />}
-
       <article
         itemScope
         itemType="http://schema.org/BlogPosting"
