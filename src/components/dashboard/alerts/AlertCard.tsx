@@ -1,124 +1,41 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
+import { DepartmentsList, ProLeadsAlertResponse } from "sowhat-types";
+import { useState, useEffect, useCallback } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Trash2, BellOff, Bell, Save, Loader2, ChevronDown, ChevronUp } from "lucide-react";
-import {
-  ProjectNeeds,
-  FinancialProducts,
-  DepartmentsList,
-  PersonalSalaryRanges,
-  PersonalNetWorthRanges,
-  ProjectNeedEnum,
-  FinancialProductEnum,
-  PersonalSalaryRangeEnum,
-  PersonalNetWorthRangeEnum,
-  ProLeadsAlertResponse,
-  CreateProLeadsAlertInput,
-  UpdateProLeadsAlertInput,
-  getProjectNeedKey,
-  getFinancialProductKey,
-  getPersonalSalaryRangeKey,
-  getPersonalNetWorthRangeKey,
-} from "sowhat-types";
-import { toast } from "sonner";
 
-import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
+import {
+  NEEDS_OPTIONS,
+  SALARY_OPTIONS,
+  PRODUCTS_OPTIONS,
+  NET_WORTH_OPTIONS,
+  DEPARTMENT_OPTIONS,
+} from "@/utils/filtersPanel";
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
   DialogTitle,
+  DialogHeader,
   DialogFooter,
+  DialogContent,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/dashboard/Chip";
+import { formatAmount } from "@/utils/formatAmount";
+import { FilterRow } from "@/components/dashboard/FilterRow";
 import { MultiSelect } from "@/components/dashboard/MultiSelect";
 import { RangeSlider } from "@/components/dashboard/RangeSlider";
-import { Chip } from "@/components/dashboard/Chip";
-import { FilterRow } from "@/components/dashboard/FilterRow";
 import { createAlert, updateAlert, deleteAlert } from "@/lib/api";
-import { formatAmount } from "@/utils/formatAmount";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-type AlertFilters = {
-  name: string;
-  minInitialAmount: number;
-  maxInitialAmount: number;
-  needs: string[];
-  financialProducts: string[];
-  postalCodes: string[];
-  personalSalaryRanges: string[];
-  personalNetWorthRanges: string[];
-};
-
-const DEFAULT_FILTERS: AlertFilters = {
-  name: "",
-  minInitialAmount: 0,
-  maxInitialAmount: 1_000_000,
-  needs: [],
-  financialProducts: [],
-  postalCodes: [],
-  personalSalaryRanges: [],
-  personalNetWorthRanges: [],
-};
-
-const NEEDS_OPTIONS = ProjectNeeds.map((n) => n.proLabel);
-const PRODUCTS_OPTIONS = FinancialProducts.map((p) => p.label);
-const SALARY_OPTIONS = PersonalSalaryRanges.map((p) => p.label);
-const NET_WORTH_OPTIONS = PersonalNetWorthRanges.map((p) => p.label);
-const DEPARTMENT_OPTIONS = DepartmentsList.map((d) => `${d.code} - ${d.departmentName}`);
-
-// ─── Conversion helpers ────────────────────────────────────────────────────────
-
-function alertToFilters(alert: ProLeadsAlertResponse): AlertFilters {
-  return {
-    name: alert.name,
-    minInitialAmount: alert.minInitialAmount,
-    maxInitialAmount: alert.maxInitialAmount,
-    needs: alert.needs.map((k) => ProjectNeeds.find((n) => n.key === k)?.proLabel ?? k),
-    financialProducts: alert.financialProducts.map(
-      (k) => FinancialProducts.find((p) => p.key === k)?.label ?? k,
-    ),
-    postalCodes: alert.postalCodes,
-    personalSalaryRanges: alert.personalSalaryRanges.map(
-      (k) => PersonalSalaryRanges.find((r) => r.key === k)?.label ?? k,
-    ),
-    personalNetWorthRanges: alert.personalNetWorthRanges.map(
-      (k) => PersonalNetWorthRanges.find((r) => r.key === k)?.label ?? k,
-    ),
-  };
-}
-
-function filtersToCreateInput(filters: AlertFilters): CreateProLeadsAlertInput {
-  return {
-    name: filters.name.trim() || "Alerte",
-    minInitialAmount: filters.minInitialAmount,
-    maxInitialAmount: filters.maxInitialAmount,
-    needs: filters.needs.map((l) => getProjectNeedKey(l)).filter(Boolean) as ProjectNeedEnum[],
-    financialProducts: filters.financialProducts
-      .map((l) => getFinancialProductKey(l))
-      .filter(Boolean) as FinancialProductEnum[],
-    postalCodes: filters.postalCodes,
-    personalSalaryRanges: filters.personalSalaryRanges
-      .map((l) => getPersonalSalaryRangeKey(l))
-      .filter(Boolean) as PersonalSalaryRangeEnum[],
-    personalNetWorthRanges: filters.personalNetWorthRanges
-      .map((l) => getPersonalNetWorthRangeKey(l))
-      .filter(Boolean) as PersonalNetWorthRangeEnum[],
-  };
-}
-
-function filtersToUpdateInput(id: string, filters: AlertFilters): UpdateProLeadsAlertInput {
-  return {
-    id,
-    ...filtersToCreateInput(filters),
-  };
-}
-
-// ─── Component ────────────────────────────────────────────────────────────────
+import {
+  AlertFilters,
+  alertToFilters,
+  DefaultAlertFilters,
+  filtersToCreateInput,
+  filtersToUpdateInput,
+} from "@/utils/alertFilters";
 
 interface AlertCardProps {
   alert: ProLeadsAlertResponse | null;
@@ -134,7 +51,7 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
   const isNew = alert === null;
 
   const [filters, setFilters] = useState<AlertFilters>(() =>
-    isNew ? { ...DEFAULT_FILTERS, name: defaultName } : alertToFilters(alert!),
+    isNew ? { ...DefaultAlertFilters, name: defaultName } : alertToFilters(alert!),
   );
   const [savedFilters, setSavedFilters] = useState<AlertFilters>(filters);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -161,8 +78,6 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
     const codes = values.map((v) => v.split(" - ")[0]);
     setFilters((f) => ({ ...f, postalCodes: codes }));
   }, []);
-
-  // ── Mutations ──────────────────────────────────────────────────────────────
 
   const saveMutation = useMutation({
     mutationFn: async () => {
@@ -214,8 +129,6 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
       toast.error("Erreur lors de la suppression de l'alerte");
     },
   });
-
-  // ── Render ─────────────────────────────────────────────────────────────────
 
   return (
     <>
@@ -390,30 +303,29 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
             {isNew && onCancel && (
               <button
                 onClick={onCancel}
-                className="text-xs text-gray-400 hover:text-gray-600 transition-colors px-3 py-1.5">
+                className="text-gray-400 hover:text-gray-600 transition-colors px-3 py-1.5">
                 Annuler
               </button>
             )}
             {!isNew && isDirty && (
               <button
                 onClick={() => setFilters(savedFilters)}
-                className="text-xs text-gray-400 hover:text-gray-600 transition-colors px-3 py-1.5">
+                className="text-gray-400 hover:text-gray-600 transition-colors px-3 py-1.5">
                 Annuler
               </button>
             )}
             {(isNew || isDirty) && (
-              <Button
-                size="sm"
+              <button
                 onClick={() => saveMutation.mutate()}
                 disabled={saveMutation.isPending || !filters.name.trim()}
-                className="bg-[#35C055] hover:bg-[#35C055]/80 text-white gap-1.5 text-xs h-7 px-3">
+                className="bg-[#35C055] hover:bg-[#35C055]/80 text-white gap-2 px-3 py-2 flex flex-row items-center rounded-md">
                 {saveMutation.isPending ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 ) : (
-                  <Save className="w-3.5 h-3.5" />
+                  <Save size={20} />
                 )}
-                {isNew ? "Créer" : "Sauvegarder"}
-              </Button>
+                {isNew ? "Créer l'alerte" : "Sauvegarder"}
+              </button>
             )}
           </div>
         </div>
@@ -455,4 +367,3 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
     </>
   );
 }
-

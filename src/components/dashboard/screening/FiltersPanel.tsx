@@ -1,23 +1,18 @@
+import { DepartmentsList } from "sowhat-types";
+
 import {
-  ProjectNeeds,
-  FinancialProducts,
-  DepartmentsList,
-  PersonalSalaryRanges,
-  PersonalNetWorthRanges,
-} from 'sowhat-types';
-
-import { RangeSlider } from '../RangeSlider';
-import { MultiSelect } from '../MultiSelect';
-import { Chip } from '../Chip';
-import { FilterRow } from '../FilterRow';
-import { formatAmount } from '@/utils/formatAmount';
-import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from '@/utils/filters';
-
-const NEEDS_OPTIONS = ProjectNeeds.map((n) => n.proLabel);
-const PRODUCTS_OPTIONS = FinancialProducts.map((p) => p.label);
-const SALARY_OPTIONS = PersonalSalaryRanges.map((p) => p.label);
-const NET_WORTH_OPTIONS = PersonalNetWorthRanges.map((p) => p.label);
-const DEPARTMENT_OPTIONS = DepartmentsList.map((d) => `${d.code} - ${d.departmentName}`);
+  NEEDS_OPTIONS,
+  SALARY_OPTIONS,
+  PRODUCTS_OPTIONS,
+  NET_WORTH_OPTIONS,
+  DEPARTMENT_OPTIONS,
+} from "@/utils/filtersPanel";
+import { Chip } from "../Chip";
+import { FilterRow } from "../FilterRow";
+import { RangeSlider } from "../RangeSlider";
+import { MultiSelect } from "../MultiSelect";
+import { formatAmount } from "@/utils/formatAmount";
+import { InitialLeadsFiltersAndSorting, LeadsFiltersAndSorting } from "@/utils/filters";
 
 interface FiltersPanelProps {
   filters: LeadsFiltersAndSorting;
@@ -33,7 +28,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
 
   const handleDepartmentsChange = (values: string[]) => {
     // Extract codes from "Code - Name"
-    const codes = values.map((v) => v.split(' - ')[0]);
+    const codes = values.map((v) => v.split(" - ")[0]);
     onChange({ ...filters, postalCodes: codes });
   };
 
@@ -187,8 +182,8 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
               id="sort-created-at"
               name="sortBy"
               value="user_created_at"
-              checked={filters.sortBy === 'user_created_at'}
-              onChange={() => onChange({ ...filters, sortBy: 'user_created_at' })}
+              checked={filters.sortBy === "user_created_at"}
+              onChange={() => onChange({ ...filters, sortBy: "user_created_at" })}
               className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="sort-created-at" className="text-sm text-gray-700 cursor-pointer">
@@ -201,8 +196,8 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
               id="sort-initial-amount"
               name="sortBy"
               value="initial_amount"
-              checked={filters.sortBy === 'initial_amount'}
-              onChange={() => onChange({ ...filters, sortBy: 'initial_amount' })}
+              checked={filters.sortBy === "initial_amount"}
+              onChange={() => onChange({ ...filters, sortBy: "initial_amount" })}
               className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <label htmlFor="sort-initial-amount" className="text-sm text-gray-700 cursor-pointer">
@@ -216,8 +211,7 @@ export const FiltersPanel = ({ filters, onChange }: FiltersPanelProps) => {
       <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm space-y-8">
         <button
           onClick={() => onChange(InitialLeadsFiltersAndSorting)}
-          className="w-full py-2 text-sm text-gray-500 hover:text-gray-900 underline decoration-gray-300 hover:decoration-gray-900"
-        >
+          className="w-full py-2 text-sm text-gray-500 hover:text-gray-900 underline decoration-gray-300 hover:decoration-gray-900">
           Réinitialiser les filtres
         </button>
       </div>

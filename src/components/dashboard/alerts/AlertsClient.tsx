@@ -6,7 +6,6 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Bell, Plus, Loader2 } from "lucide-react";
 import { ProLeadsAlertResponse } from "sowhat-types";
 
-import { Button } from "@/components/ui/button";
 import { LexendFont } from "@/utils/fonts";
 import { getAlerts } from "@/lib/api";
 import { AlertCard } from "./AlertCard";
@@ -28,6 +27,7 @@ export function AlertsClient() {
   });
 
   const alerts: ProLeadsAlertResponse[] = alertsQuery.data ?? [];
+  const activeAlerts = alerts.filter((alert) => alert.isActive).length;
   const [creatingNew, setCreatingNew] = useState(false);
 
   const handleAlertSaved = (saved: ProLeadsAlertResponse) => {
@@ -57,22 +57,28 @@ export function AlertsClient() {
 
         <div className="p-6 space-y-5">
           <p className="text-sm text-gray-500">
-            Les emails d&apos;alertes seront envoyés à l&apos;email indiqué ci-dessous vers 9h du
-            matin toutes les semaines lorsque une ou plusieurs alertes sont actives.
+            Les emails d&apos;alertes seront envoyés à l&apos;email indiqué ci-dessus vers 8h chaque
+            matin lorsque une ou plusieurs alertes sont actives.
           </p>
         </div>
       </div>
 
       <div>
-        {alerts.length < 2 && alerts.length > 0 && !creatingNew && (
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setCreatingNew(true)}
-            className="gap-1.5 text-xs h-7 border-gray-200 hover:border-[#35C055] hover:text-[#35C055]">
-            <Plus className="w-3.5 h-3.5" />
-            Ajouter une alerte
-          </Button>
+        {!creatingNew && (
+          <div className="pb-4 ml-4">
+            {activeAlerts < 2 ? (
+              <button
+                onClick={() => setCreatingNew(true)}
+                className="gap-2 px-3 py-2 flex flex-row items-center rounded-md border bg-white border-gray-300 text-green-800 hover:border-[#35C055] hover:text-[#35C055]">
+                <Plus size={20} />
+                Ajouter une alerte
+              </button>
+            ) : (
+              <p className="text-sm text-gray-500">
+                Vous avez atteint le nombre maximum d&apos;alertes actives.
+              </p>
+            )}
+          </div>
         )}
 
         {/* Empty state */}
@@ -98,7 +104,7 @@ export function AlertsClient() {
         )}
 
         {/* Alert cards */}
-        <div className="space-y-4">
+        <div className="space-y-4 pb-36">
           {alerts.map((alert) => (
             <AlertCard
               key={alert.id}
