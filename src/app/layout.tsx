@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider allowedRedirectOrigins={["https://invstore.fr", /https:\/\/.*\.vercel\.app$/]}>
+    <ClerkProvider>
       <html lang="fr">
         <head>
           <MetricoolAnalytics />

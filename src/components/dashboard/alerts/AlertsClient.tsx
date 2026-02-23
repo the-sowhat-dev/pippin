@@ -66,14 +66,16 @@ export function AlertsClient() {
       <div>
         {!creatingNew && (
           <div className="pb-4 ml-4">
-            {activeAlerts < 2 ? (
+            {activeAlerts < 2 && alerts.length > 0 && (
               <button
                 onClick={() => setCreatingNew(true)}
                 className="gap-2 px-3 py-2 flex flex-row items-center rounded-md border bg-white border-gray-300 text-green-800 hover:border-[#35C055] hover:text-[#35C055]">
                 <Plus size={20} />
                 Ajouter une alerte
               </button>
-            ) : (
+            )}
+
+            {activeAlerts >= 2 && alerts.length > 0 && (
               <p className="text-sm text-gray-500">
                 Vous avez atteint le nombre maximum d&apos;alertes actives.
               </p>
@@ -95,8 +97,8 @@ export function AlertsClient() {
                   Créer votre première alerte
                 </p>
                 <p className="text-xs text-gray-400 mt-1 max-w-xs mx-auto">
-                  Configurez vos critères de recherche et recevez un email hebdomadaire lorsque de
-                  nouveaux profils correspondent.
+                  Configurez vos critères de recherche et recevez un email lorsque de nouveaux
+                  profils correspondent.
                 </p>
               </div>
             </div>
