@@ -1,44 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import { LogoSoup } from "react-logo-soup";
-
 import { LexendFont } from "@/utils/fonts";
-
-const PARTNERS_LOGOS = [
-  { src: "/images/partners/yomoni.png", alt: "Yomoni" },
-  { src: "/images/partners/prosper-conseil.png", alt: "Prosper Conseil" },
-  { src: "/images/partners/baltis-conseil.png", alt: "Baltis Groupe Magelim" },
-  { src: "/images/partners/green-got.png", alt: "Green Got" },
-  { src: "/images/partners/la-premiere-brique.png", alt: "La Première Brique" },
-  { src: "/images/partners/optivest.png", alt: "Optivest" },
-  { src: "/images/partners/mon-petit-placement.png", alt: "Mon Petit Placement" },
-];
-
-function PartnerCarouselSlide() {
-  return (
-    <div className="partner-carousel-slide">
-      <LogoSoup
-        renderImage={(logo) => {
-          return (
-            <div key={logo.alt} className="h-[72px] w-[120px] md:w-[160px]">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                className="object-contain"
-              />
-            </div>
-          );
-        }}
-        baseSize={72}
-        className="flex flex-row gap-10"
-        logos={PARTNERS_LOGOS}
-      />
-    </div>
-  );
-}
+import { PartnersLogosCarousel } from "./PartnersLogosCarousel";
 
 export function PartnersCarousel() {
   return (
@@ -60,12 +23,7 @@ export function PartnersCarousel() {
             </h2>
           </div>
 
-          <div className="partner-carousel-track w-full">
-            <PartnerCarouselSlide />
-            <PartnerCarouselSlide />
-            <PartnerCarouselSlide />
-            <PartnerCarouselSlide />
-          </div>
+          <PartnersLogosCarousel />
         </div>
       </div>
     </div>

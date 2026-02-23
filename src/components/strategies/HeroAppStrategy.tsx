@@ -25,10 +25,6 @@ const words = [
 ];
 
 export function HeroAppStrategy() {
-  {
-    /* <WordsCarousel /> */
-  }
-
   return (
     <section className="relative">
       {/* Top Part: Logo & Space for Header */}

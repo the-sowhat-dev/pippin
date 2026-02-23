@@ -15,14 +15,6 @@
         "android": "Télécharger sur Android"
       }
     },
-    "wordsCarousel": [
-      { "index": 0, "word": "Rapide" },
-      { "index": 1, "word": "Gratuite" },
-      { "index": 2, "word": "Anonyme" },
-      { "index": 3, "word": "Simple" },
-      { "index": 4, "word": "Sécurisée" },
-      { "index": 5, "word": "Française" }
-    ],
     "description": {
       "features": {
         "accounts": "Vous souhaitez gagner mieux avec votre argent 💶 mais n'avez jamais franchi le pas ?",

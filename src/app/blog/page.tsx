@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import ArticleCard from '@/components/ArticleCard';
+import { useEffect, useState } from "react";
+import ArticleCard from "@/components/ArticleCard";
 
-import { Article } from '../../lib/db';
-import { LexendFont } from '@/utils/fonts';
+import { Article } from "../../lib/db";
+import { LexendFont } from "@/utils/fonts";
 
 const ARTICLES_PER_PAGE = 15;
 
@@ -24,9 +24,9 @@ export default function Page() {
     try {
       // Fetch 16 articles (15 + 1 to check if more exist)
       const res = await fetch(
-        `/api/articles?limit=${ARTICLES_PER_PAGE + 1}&offset=${currentOffset}`
+        `/api/articles?limit=${ARTICLES_PER_PAGE + 1}&offset=${currentOffset}`,
       );
-      if (!res.ok) throw new Error('Failed to fetch');
+      if (!res.ok) throw new Error("Failed to fetch");
 
       const data = await res.json();
 
@@ -74,8 +74,7 @@ export default function Page() {
     <main className="min-h-screen  pt-24 px-8 text-[#203649]">
       <div className="max-w-4xl mx-auto pb-64">
         <h1
-          className={`text-3xl sm:text-5xl text-green-900 mb-12 sm:mb-24 text-center ${LexendFont.className}`}
-        >
+          className={`text-3xl sm:text-5xl text-green-900 mb-12 sm:mb-24 text-center ${LexendFont.className}`}>
           Blog
         </h1>
         {loading ? (
@@ -89,6 +88,7 @@ export default function Page() {
                   title={article.title}
                   subtitle={article.subtitle}
                   slug={article.slug}
+                  collaboration={article.collaboration}
                   date={article.published_at}
                   coverImage={article.cover_image}
                   readingTime={article.reading_time!}
@@ -100,12 +100,12 @@ export default function Page() {
                 <button
                   onClick={loadMore}
                   disabled={loadingMore}
-                  className={`px-8 py-3 rounded-lg transition-colors ${loadingMore
-                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      : 'bg-green-900 text-white hover:bg-green-800'
-                    }`}
-                >
-                  {loadingMore ? 'Chargement...' : 'Charger plus'}
+                  className={`px-8 py-3 rounded-lg transition-colors ${
+                    loadingMore
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-green-900 text-white hover:bg-green-800"
+                  }`}>
+                  {loadingMore ? "Chargement..." : "Charger plus"}
                 </button>
               </div>
             )}

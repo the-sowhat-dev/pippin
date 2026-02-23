@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool } from "pg";
 
 export interface Article {
   id: number;
@@ -16,6 +16,7 @@ export interface Article {
   published_at: Date;
   updated_at: Date | null;
   created_at: Date | null;
+  collaboration: string | null;
 }
 
 const pool = new Pool({
