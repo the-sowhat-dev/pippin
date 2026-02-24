@@ -14,14 +14,14 @@ import {
   ProLeadsAlertResponse,
   CreateProLeadsAlertInput,
   UpdateProLeadsAlertInput,
-} from 'sowhat-types';
+} from "sowhat-types";
 
-import { LeadsFiltersAndSorting } from '@/utils/filters';
+import { LeadsFiltersAndSorting } from "@/utils/filters";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 if (!BACKEND_URL) {
-  console.warn('NEXT_PUBLIC_BACKEND_URL is not defined');
+  console.warn("NEXT_PUBLIC_BACKEND_URL is not defined");
 }
 
 /**
@@ -30,7 +30,7 @@ if (!BACKEND_URL) {
 async function fetchWithAuth<T>(
   endpoint: string,
   token: string | null,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T | null> {
   const headers: Record<string, string> = {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -38,8 +38,8 @@ async function fetchWithAuth<T>(
   };
 
   // Only add Content-Type: application/json if the body is not FormData
-  if (!(options.body instanceof FormData) && !headers['Content-Type']) {
-    headers['Content-Type'] = 'application/json';
+  if (!(options.body instanceof FormData) && !headers["Content-Type"]) {
+    headers["Content-Type"] = "application/json";
   }
 
   const response = await fetch(`${BACKEND_URL}${endpoint}`, {
@@ -58,8 +58,8 @@ async function fetchWithAuth<T>(
   }
 
   // Check if response is JSON
-  const contentType = response.headers.get('content-type');
-  if (contentType && contentType.includes('application/json')) {
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.includes("application/json")) {
     return response.json();
   }
 
@@ -72,9 +72,9 @@ async function fetchWithAuth<T>(
  */
 export async function getPro(token: string | null): Promise<ProResponse | null> {
   try {
-    return fetchWithAuth<ProResponse | null>('/pro', token, { method: 'GET' });
+    return fetchWithAuth<ProResponse | null>("/pro", token, { method: "GET" });
   } catch (error) {
-    console.error('Error fetching pro profile:', error);
+    console.error("Error fetching pro profile:", error);
     throw error;
   }
 }
@@ -83,13 +83,13 @@ export async function getPro(token: string | null): Promise<ProResponse | null> 
  * Update or create the Pro profile
  */
 export async function updatePro(data: UpdateProInput, token: string | null): Promise<ProResponse> {
-  const result = await fetchWithAuth<ProResponse | null>('/pro', token, {
-    method: 'PUT',
+  const result = await fetchWithAuth<ProResponse | null>("/pro", token, {
+    method: "PUT",
     body: JSON.stringify(data),
   });
 
   if (!result) {
-    throw new Error('Failed to update pro profile');
+    throw new Error("Failed to update pro profile");
   }
 
   return result;
@@ -99,12 +99,12 @@ export async function updatePro(data: UpdateProInput, token: string | null): Pro
  * Initialize the Pro profile
  */
 export async function initPro(token: string | null): Promise<ProResponse> {
-  const result = await fetchWithAuth<ProResponse | null>('/pro/init', token, {
-    method: 'POST',
+  const result = await fetchWithAuth<ProResponse | null>("/pro/init", token, {
+    method: "POST",
   });
 
   if (!result) {
-    throw new Error('Failed to initialize pro profile');
+    throw new Error("Failed to initialize pro profile");
   }
 
   return result;
@@ -115,15 +115,15 @@ export async function initPro(token: string | null): Promise<ProResponse> {
  */
 export async function uploadImage(
   file: File,
-  type: 'clerk' | 'company',
-  token: string | null
+  type: "clerk" | "company",
+  token: string | null,
 ): Promise<void> {
   const formData = new FormData();
-  formData.append('file', file);
-  formData.append('type', type);
+  formData.append("file", file);
+  formData.append("type", type);
 
-  await fetchWithAuth<void>('/pro/upload', token, {
-    method: 'POST',
+  await fetchWithAuth<void>("/pro/upload", token, {
+    method: "POST",
     body: formData,
   });
 }
@@ -134,42 +134,42 @@ export async function uploadImage(
 export async function getLeads(
   filters: LeadsFiltersAndSorting,
   cursor: string | null, // encoded { initialAmount: number, id: string }
-  token: string | null
+  token: string | null,
 ): Promise<LeadsResponse> {
   const params = new URLSearchParams();
 
-  params.append('minInitialAmount', filters.minInitialAmount.toString());
-  params.append('maxInitialAmount', filters.maxInitialAmount.toString());
+  params.append("minInitialAmount", filters.minInitialAmount.toString());
+  params.append("maxInitialAmount", filters.maxInitialAmount.toString());
 
   if (filters.onlyWithoutProduct) {
-    params.append('onlyWithoutProduct', 'true');
+    params.append("onlyWithoutProduct", "true");
   }
 
   if (filters.onlyOutsideFrance) {
-    params.append('onlyOutsideFrance', 'true');
+    params.append("onlyOutsideFrance", "true");
   }
 
   filters.postalCodes.forEach((code) => {
-    params.append('postalCodes[]', code);
+    params.append("postalCodes[]", code);
   });
 
   if (filters.sortBy) {
-    params.append('sortBy', filters.sortBy);
+    params.append("sortBy", filters.sortBy);
   }
 
   if (filters.sortOrder) {
-    params.append('sortOrder', filters.sortOrder);
+    params.append("sortOrder", filters.sortOrder);
   }
 
   if (cursor) {
-    params.append('cursor', cursor);
+    params.append("cursor", cursor);
   }
 
   // Convert the label into keys
   filters.needs.forEach((n) => {
     const key = getProjectNeedKey(n);
     if (key) {
-      params.append('needs[]', key);
+      params.append("needs[]", key);
     }
   });
 
@@ -177,7 +177,7 @@ export async function getLeads(
   filters.financialProducts.forEach((p) => {
     const key = getFinancialProductKey(p);
     if (key) {
-      params.append('financialProducts[]', key);
+      params.append("financialProducts[]", key);
     }
   });
 
@@ -185,7 +185,7 @@ export async function getLeads(
   filters.personalNetWorthRanges.forEach((r) => {
     const key = getPersonalNetWorthRangeKey(r);
     if (key) {
-      params.append('personalNetWorthRanges[]', key);
+      params.append("personalNetWorthRanges[]", key);
     }
   });
 
@@ -193,27 +193,25 @@ export async function getLeads(
   filters.personalSalaryRanges.forEach((r) => {
     const key = getPersonalSalaryRangeKey(r);
     if (key) {
-      params.append('personalSalaryRanges[]', key);
+      params.append("personalSalaryRanges[]", key);
     }
   });
 
   try {
-    console.log('Sending request to /pro/leads with params:', params.toString());
+    console.log("Sending request to /pro/leads with params:", params.toString());
 
     const result = await fetchWithAuth<LeadsResponse | null>(
       `/pro/leads?${params.toString()}`,
       token,
-      { method: 'GET' }
+      { method: "GET" },
     );
-
-    console.log('Getting a result:', result);
 
     if (!result) {
       return { items: [], nextCursor: null, total: 0 };
     }
     return result;
   } catch (error) {
-    console.error('Error fetching leads:', error);
+    console.error("Error fetching leads:", error);
     throw error;
   }
 }
@@ -223,7 +221,7 @@ export async function getLeads(
  */
 export async function getLead(id: string, token: string | null): Promise<FullLeadResponse | null> {
   try {
-    return fetchWithAuth<FullLeadResponse | null>(`/pro/lead/${id}`, token, { method: 'GET' });
+    return fetchWithAuth<FullLeadResponse | null>(`/pro/lead/${id}`, token, { method: "GET" });
   } catch (error) {
     console.error(`Error fetching lead details for ${id}:`, error);
     throw error;
@@ -235,15 +233,15 @@ export async function getLead(id: string, token: string | null): Promise<FullLea
  */
 export async function createOffer(
   data: CreateCommercialOfferInput,
-  token: string | null
+  token: string | null,
 ): Promise<ProCommercialOfferResponse> {
-  const result = await fetchWithAuth<ProCommercialOfferResponse | null>('/pro/offer', token, {
-    method: 'POST',
+  const result = await fetchWithAuth<ProCommercialOfferResponse | null>("/pro/offer", token, {
+    method: "POST",
     body: JSON.stringify(data),
   });
 
   if (!result) {
-    throw new Error('Failed to create offer');
+    throw new Error("Failed to create offer");
   }
 
   return result;
@@ -254,19 +252,19 @@ export async function createOffer(
  */
 export async function updateOffer(
   data: UpdateCommercialOfferInput,
-  token: string | null
+  token: string | null,
 ): Promise<ProCommercialOfferResponse> {
   const result = await fetchWithAuth<ProCommercialOfferResponse | null>(
     `/pro/offer/${data.id}`,
     token,
     {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(data),
-    }
+    },
   );
 
   if (!result) {
-    throw new Error('Failed to update offer');
+    throw new Error("Failed to update offer");
   }
 
   return result;
@@ -278,10 +276,10 @@ export async function updateOffer(
 export async function toggleLikeUser(
   id: string,
   token: string | null,
-  like: boolean
+  like: boolean,
 ): Promise<void> {
   await fetchWithAuth<void>(`/pro/like/user/${id}?like=${like}`, token, {
-    method: 'PUT',
+    method: "PUT",
   });
 }
 
@@ -290,12 +288,12 @@ export async function toggleLikeUser(
  */
 export async function getAlerts(token: string | null): Promise<ProLeadsAlertResponse[]> {
   try {
-    const result = await fetchWithAuth<ProLeadsAlertResponse[]>('/pro/alerts', token, {
-      method: 'GET',
+    const result = await fetchWithAuth<ProLeadsAlertResponse[]>("/pro/alerts", token, {
+      method: "GET",
     });
     return result ?? [];
   } catch (error) {
-    console.error('Error fetching alerts:', error);
+    console.error("Error fetching alerts:", error);
     throw error;
   }
 }
@@ -305,13 +303,13 @@ export async function getAlerts(token: string | null): Promise<ProLeadsAlertResp
  */
 export async function createAlert(
   data: CreateProLeadsAlertInput,
-  token: string | null
+  token: string | null,
 ): Promise<ProLeadsAlertResponse> {
-  const result = await fetchWithAuth<ProLeadsAlertResponse | null>('/pro/alerts', token, {
-    method: 'POST',
+  const result = await fetchWithAuth<ProLeadsAlertResponse | null>("/pro/alerts", token, {
+    method: "POST",
     body: JSON.stringify(data),
   });
-  if (!result) throw new Error('Failed to create alert');
+  if (!result) throw new Error("Failed to create alert");
   return result;
 }
 
@@ -320,14 +318,14 @@ export async function createAlert(
  */
 export async function updateAlert(
   data: UpdateProLeadsAlertInput,
-  token: string | null
+  token: string | null,
 ): Promise<ProLeadsAlertResponse> {
   const { id, ...body } = data;
   const result = await fetchWithAuth<ProLeadsAlertResponse | null>(`/pro/alerts/${id}`, token, {
-    method: 'PUT',
+    method: "PUT",
     body: JSON.stringify(body),
   });
-  if (!result) throw new Error('Failed to update alert');
+  if (!result) throw new Error("Failed to update alert");
   return result;
 }
 
@@ -336,7 +334,7 @@ export async function updateAlert(
  */
 export async function deleteAlert(id: string, token: string | null): Promise<void> {
   await fetchWithAuth<void>(`/pro/alerts/${id}`, token, {
-    method: 'DELETE',
+    method: "DELETE",
   });
 }
 
@@ -344,12 +342,12 @@ export async function deleteAlert(id: string, token: string | null): Promise<voi
  * Get matching leads (offered and liked)
  */
 export async function getMatchingLeads(token: string | null): Promise<MatchingLeadsResponse> {
-  const result = await fetchWithAuth<MatchingLeadsResponse>('/pro/match', token, {
-    method: 'GET',
+  const result = await fetchWithAuth<MatchingLeadsResponse>("/pro/match", token, {
+    method: "GET",
   });
 
   if (!result) {
-    throw new Error('Failed to fetch matching leads');
+    throw new Error("Failed to fetch matching leads");
   }
 
   return result;
