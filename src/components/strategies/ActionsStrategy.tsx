@@ -1,29 +1,28 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { AppStoreButtons } from '@/components/AppStoreButtons';
-import Link from 'next/link';
-import { Button } from '../ui/button';
-import { MousePointer } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import { AppStoreButtons } from "@/components/AppStoreButtons";
+import { MousePointer } from "lucide-react";
+import { motion } from "framer-motion";
+import { JoinUsButton } from "../JoinUsButton";
 
 const Actions = [
   {
-    image: '/icons/phone.svg',
-    title: 'Découvrez des leads pré-qualifiés',
+    image: "/icons/phone.svg",
+    title: "Découvrez des leads pré-qualifiés",
     description:
-      'Accédez à une source de prospects dont les besoins financiers sont clairement identifiés.',
+      "Accédez à une source de prospects dont les besoins financiers sont clairement identifiés.",
   },
   {
-    image: '/icons/bow.svg',
-    title: 'Ciblez les profils qui vous intéressent',
+    image: "/icons/bow.svg",
+    title: "Ciblez les profils qui vous intéressent",
     description:
       "Filtrez les utilisateurs en fonction de leur situation financière et des produits qu'ils recherchent.",
   },
   {
-    image: '/icons/lead.svg',
-    title: 'Obtenez de nouveaux clients',
-    description: 'Affinez votre offre et engagez la conversation directement sur la plateforme.',
+    image: "/icons/lead.svg",
+    title: "Obtenez de nouveaux clients",
+    description: "Affinez votre offre et engagez la conversation directement sur la plateforme.",
   },
 ];
 
@@ -52,7 +51,7 @@ export default function ActionsStrategy() {
         ))}
       </div>
 
-      <div className='flex flex-col sm:flex-row gap-8 items-center justify-center sm:mb-16 relative'>
+      <div className="flex flex-col sm:flex-row gap-8 items-center justify-center sm:mb-16 relative">
         <Image
           src="/images/pro-mac.png"
           alt="Actions"
@@ -62,14 +61,9 @@ export default function ActionsStrategy() {
         />
 
         <div className="flex justify-center mb-16 relative sm:absolute bottom-0 left-0 right-0">
-          <Link href="/pro/form" className="relative">
-            <Button
-              size="lg"
-              className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:scale-105 transition-all duration-300 hover:bg-green-600"
-            >
-              Nous rejoindre
-            </Button>
+          <JoinUsButton href="/pro/form" />
 
+          <div className="relative">
             {/* Animated cursor icon */}
             <motion.div
               className="absolute pointer-events-none"
@@ -81,24 +75,23 @@ export default function ActionsStrategy() {
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: 'easeInOut',
+                ease: "easeInOut",
                 times: [0, 0.5, 1],
               }}
               style={{
-                bottom: '-20px',
-                right: '-20px',
-              }}
-            >
+                bottom: "-20px",
+                right: "-20px",
+              }}>
               <MousePointer className="w-8 h-8 text-green-700 drop-shadow-lg" />
             </motion.div>
-          </Link>
+          </div>
         </div>
       </div>
 
-
       <div className="flex flex-col items-center gap-8 md:gap-16 bg-[#c2e7ff] p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl">
         <p className="text-lg sm:text-2xl font-bold relative text-center leading-relaxed max-w-xl">
-          Testez l&apos;application pour vous faire votre propre avis avant l&apos;ouverture de la plateforme à tous les professionnels début mars.
+          Testez l&apos;application pour vous faire votre propre avis avant l&apos;ouverture de la
+          plateforme à tous les professionnels début mars.
         </p>
 
         <AppStoreButtons layout="row" />

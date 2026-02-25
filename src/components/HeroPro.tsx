@@ -1,28 +1,26 @@
-import { OpenSans } from '@/utils/fonts';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from './ui/button';
+import Link from "next/link";
+import Image from "next/image";
+
+import { OpenSans } from "@/utils/fonts";
+import { JoinUsButton } from "./JoinUsButton";
 
 export const HeroPro = () => {
   return (
     <section className="py-12 pt-16 text-green-900 min-h-screen flex flex-col justify-between gap-8">
       <div className="max-w-6xl mx-auto flex flex-col gap-16 pt-8 sm:pt-16">
         <h1
-          className={`text-3xl sm:text-6xl leading-tight text-center w-[80%] mx-auto ${OpenSans.className}`}
-        >
+          className={`text-3xl sm:text-6xl leading-tight text-center w-[80%] mx-auto ${OpenSans.className}`}>
           Faire progresser l&apos;épargne par l&apos;expérience d&apos;achat
         </h1>
         <p className="text-center text-lg sm:text-2xl text-pretty w-[60%] mx-auto opacity-80">
           Vous distribuez des produits d&apos;épargne ? <br /> Obtenez de nouveaux clients !
         </p>
-        <div className="flex justify-center">
-          <Link href="/pro/form">
-            <Button
-              size="lg"
-              className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:bg-green-500/80"
-            >
-              Nous rejoindre
-            </Button>
+
+        <div className="flex flex-col mx-auto gap-3 items-center justify-center text-md sm:text-lg font-medium">
+          <JoinUsButton href="/pro/form" />
+
+          <Link href="/dashboard">
+            <button className="px-6 sm:px-8 py-2 text-green-800 underline">Se connecter</button>
           </Link>
         </div>
       </div>

@@ -1,8 +1,8 @@
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import Link from "next/link";
+import Image from "next/image";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '../ui/button';
+import { JoinUsButton } from "../JoinUsButton";
 
 export default function TribuneProStrategy() {
   return (
@@ -16,7 +16,7 @@ export default function TribuneProStrategy() {
         <div className="flex flex-col gap-8 leading-tight text-justify">
           <p>
             Aujourd&apos;hui, plus de 70 % des Français disposent d&apos;une capacité
-            d&apos;épargne, mais nombre d&apos;entre eux ne cherche pas à la valoriser,{' '}
+            d&apos;épargne, mais nombre d&apos;entre eux ne cherche pas à la valoriser,{" "}
             <span className="font-bold text-[#203649]">
               paralysés par la complexité du système financier.
             </span>
@@ -25,33 +25,33 @@ export default function TribuneProStrategy() {
             Dans un contexte où la fiscalité pèse de plus en plus sur les revenus du travail, où les
             produits d&apos;épargne traditionnels rapportent moins que l&apos;inflation et où la
             retraite par capitalisation s&apos;impose progressivement, il leur sera malgré tout
-            nécessaire d&apos;optimiser leur épargne - et au sens large leur patrimoine financier -{' '}
+            nécessaire d&apos;optimiser leur épargne - et au sens large leur patrimoine financier -{" "}
             <span className="font-bold text-[#203649]">
               s&apos;ils veulent préserver leur pouvoir d&apos;achat à long terme
             </span>
             .
           </p>
           <p>
-            Le paradoxe, c&apos;est que ces épargnants savent qu&apos;ils devraient agir, mais{' '}
+            Le paradoxe, c&apos;est que ces épargnants savent qu&apos;ils devraient agir, mais{" "}
             <span className="font-bold text-[#203649]">
               ils ne se lancent pas car l&apos;effort à fournir leur semble disproportionné
-            </span>{' '}
+            </span>{" "}
             : comprendre les produits, comparer les acteurs et les offres, remplir des formulaires,
             bloquer des rendez-vous, transmettre des justificatifs…
           </p>
           <p>
             Ces frictions cumulées tout au long du parcours d&apos;achat amènent le client à juger —
-            parfois à juste titre — que{' '}
+            parfois à juste titre — que{" "}
             <span className="font-bold text-[#203649]">
               les contraintes à court terme dépassent les bénéfices à long terme.
-            </span>{' '}
+            </span>{" "}
             C&apos;est le syndrome de la salle de sport : on prend un abonnement plein de bonnes
             résolutions, mais n&apos;y retournons jamais…
           </p>
           <p>
             C&apos;est pourquoi chez invstore®, nous avons décidé d&apos;attaquer le problème sous
             un angle radicalement différent. Plutôt que de travailler sur les caractéristiques
-            techniques des produits bancaires,{' '}
+            techniques des produits bancaires,{" "}
             <span className="font-bold text-[#203649]">
               nous nous sommes concentrés sur le parcours client avec pour objectif de supprimer
               tous les irritants
@@ -63,23 +63,23 @@ export default function TribuneProStrategy() {
             <span className="font-bold text-[#203649]">
               Notre conviction, c&apos;est que le problème ne vient pas du produit, mais de
               l&apos;expérience d&apos;achat !
-            </span>{' '}
+            </span>{" "}
             Notre mission : permettre aux particuliers de gagner mieux sans effort, en rendant
             l&apos;investissement aussi simple et agréable qu&apos;une sortie shopping ou un passage
             au marché.
           </p>
           <p>
             Tout comme Doctolib® a révolutionné la santé en simplifiant le parcours patient sans se
-            substituer aux médecins,{' '}
+            substituer aux médecins,{" "}
             <span className="font-bold text-[#203649]">
               notre algorithme propriétaire met en musique les technologies Open Banking et IA pour
               fluidifier le parcours bancaire,
-            </span>{' '}
+            </span>{" "}
             en laissant aux professionnels le cœur de leur métier : l&apos;expertise, le conseil et
             la vente.
           </p>
           <p>
-            Si vous aussi vous partagez cette vision et souhaitez{' '}
+            Si vous aussi vous partagez cette vision et souhaitez{" "}
             <span className="font-bold text-[#203649]">
               participer à la construction de ce pan de marché encore largement inexploré
             </span>
@@ -107,14 +107,11 @@ export default function TribuneProStrategy() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-16">
-        <Link href="/pro/form">
-          <Button
-            size="lg"
-            className="text-md sm:text-lg px-8 py-6 rounded-lg bg-green-500 hover:bg-green-500/80"
-          >
-            Nous rejoindre
-          </Button>
+      <div className="flex flex-col mx-auto gap-3 items-center justify-center text-md sm:text-lg font-medium mt-16">
+        <JoinUsButton href="/pro/form" />
+
+        <Link href="/dashboard">
+          <button className="px-6 sm:px-8 py-2 text-green-800 underline">Se connecter</button>
         </Link>
       </div>
     </section>
