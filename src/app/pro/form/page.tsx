@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { FilloutStandardEmbed } from '@fillout/react';
+import { FilloutStandardEmbed } from "@fillout/react";
 
 export default function ProFormPage() {
   return (

@@ -6,8 +6,7 @@ interface SimpleBadgeProps {
 export const SimpleBadge = ({ children, className, title }: SimpleBadgeProps) => (
   <span
     className={`inline-flex items-center px-2.5 py-0.5 rounded-full ${className}`}
-    title={title}
-  >
+    title={title}>
     {children}
   </span>
 );

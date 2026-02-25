@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { SimpleBadge } from '../SimpleBadge';
+import { ReactNode } from "react";
+import { SimpleBadge } from "../SimpleBadge";
 
 interface DetailItemProps {
   label: string;

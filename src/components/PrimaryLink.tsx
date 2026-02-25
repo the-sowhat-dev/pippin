@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { PropsWithChildren } from 'react';
+import Link from "next/link";
+import { PropsWithChildren } from "react";
 
 interface Props {
   title: string;
@@ -23,11 +23,10 @@ export function PrimaryLink({
       href={link}
       tabIndex={disabled ? -1 : undefined}
       className={`flex gap-3 justify-center items-center text-base sm:text-lg rounded-md text-white py-3 sm:py-4 px-6 sm:px-12 w-[230px] sm:w-[300px] mx-auto
-        ${disabled ? 'bg-blue-500/65 pointer-events-none' : darkBg ? 'bg-white text-gray-900' : 'bg-[#203649] hover:bg-[#203649]/85 shadow-sm'} `}
-    >
+        ${disabled ? "bg-blue-500/65 pointer-events-none" : darkBg ? "bg-white text-gray-900" : "bg-[#203649] hover:bg-[#203649]/85 shadow-sm"} `}>
       {children}
 
-      <p className={`text-nowrap text-sm sm:text-base ${darkBg ? 'text-gray-900' : 'text-white'}`}>
+      <p className={`text-nowrap text-sm sm:text-base ${darkBg ? "text-gray-900" : "text-white"}`}>
         {title}
       </p>
     </Link>

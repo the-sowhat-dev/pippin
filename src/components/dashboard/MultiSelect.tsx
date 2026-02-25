@@ -1,7 +1,7 @@
-import { Check, ChevronDown } from 'lucide-react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { Check, ChevronDown } from "lucide-react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 
-import { cn } from '../../utils/cn';
+import { cn } from "../../utils/cn";
 
 interface MultiSelectProps {
   label: string;
@@ -18,7 +18,7 @@ export const MultiSelect = ({ label, options, value, onChange }: MultiSelectProp
           <span className="truncate">
             {value.length === 0
               ? label
-              : `${value.length} sélectionné${value.length > 1 ? 's' : ''}`}
+              : `${value.length} sélectionné${value.length > 1 ? "s" : ""}`}
           </span>
           <ChevronDown className="w-4 h-4 text-gray-500 ml-2" />
         </button>
@@ -38,16 +38,14 @@ export const MultiSelect = ({ label, options, value, onChange }: MultiSelectProp
                       onChange([...value, option]);
                     }
                   }}
-                  className="flex items-start space-x-2 px-2 py-1.5 rounded-sm hover:bg-gray-100 cursor-pointer"
-                >
+                  className="flex items-start space-x-2 px-2 py-1.5 rounded-sm hover:bg-gray-100 cursor-pointer">
                   <div
                     className={cn(
-                      'w-4 h-4 mt-0.5 rounded border flex items-center justify-center transition-colors flex-shrink-0',
+                      "w-4 h-4 mt-0.5 rounded border flex items-center justify-center transition-colors flex-shrink-0",
                       isSelected
-                        ? 'bg-blue-600 border-blue-600 text-white'
-                        : 'border-gray-300 bg-white'
-                    )}
-                  >
+                        ? "bg-blue-600 border-blue-600 text-white"
+                        : "border-gray-300 bg-white",
+                    )}>
                     {isSelected && <Check className="w-3 h-3" />}
                   </div>
                   <span className="text-sm text-gray-700 leading-tight">{option}</span>

@@ -8,17 +8,17 @@ export function timeAgo(date: Date): string {
 
   const diffInMinutes = Math.floor(diffInSeconds / 60);
   if (diffInMinutes < 60) {
-    return `il y a ${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''}`;
+    return `il y a ${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""}`;
   }
 
   const diffInHours = Math.floor(diffInMinutes / 60);
   if (diffInHours < 24) {
-    return `il y a ${diffInHours} heure${diffInHours > 1 ? 's' : ''}`;
+    return `il y a ${diffInHours} heure${diffInHours > 1 ? "s" : ""}`;
   }
 
   const diffInDays = Math.floor(diffInHours / 24);
   if (diffInDays < 30) {
-    return `il y a ${diffInDays} jour${diffInDays > 1 ? 's' : ''}`;
+    return `il y a ${diffInDays} jour${diffInDays > 1 ? "s" : ""}`;
   }
 
   const diffInMonths = Math.floor(diffInDays / 30);
@@ -27,7 +27,7 @@ export function timeAgo(date: Date): string {
   }
 
   const diffInYears = Math.floor(diffInDays / 365);
-  return `il y a ${diffInYears} an${diffInYears > 1 ? 's' : ''}`;
+  return `il y a ${diffInYears} an${diffInYears > 1 ? "s" : ""}`;
 }
 
 /**
@@ -62,9 +62,9 @@ export function getYesterdayDate(): Date {
 }
 
 export function formatDateFrench(date: Date): string {
-  return new Intl.DateTimeFormat('fr-FR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   }).format(date);
 }

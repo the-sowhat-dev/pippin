@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export function AvatarProfile({ person }: { person: 'raph' | 'hugo' }) {
+export function AvatarProfile({ person }: { person: "raph" | "hugo" }) {
   const initials = person.slice(0, 2).toUpperCase();
 
   return (

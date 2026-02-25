@@ -1,45 +1,44 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { motion } from "framer-motion";
 
 const ImagesPro = [
   {
-    src: '/images/france-fintech.png',
+    src: "/images/france-fintech.png",
     delay: 0,
     duration: 3,
     y: -15,
-    href: 'https://www.francefintech.org/',
+    href: "https://www.francefintech.org/",
   },
   {
-    src: '/images/french-tech.png',
+    src: "/images/french-tech.png",
     delay: 0.5,
     duration: 4,
     y: -20,
-    href: 'https://www.lafrenchtech-stl.com/',
+    href: "https://www.lafrenchtech-stl.com/",
   },
   {
-    src: '/images/hub-612.png',
+    src: "/images/hub-612.png",
     delay: 0.2,
     duration: 3.5,
     y: -18,
-    href: 'https://www.hub612.com/',
+    href: "https://www.hub612.com/",
   },
   {
-    src: '/images/powens.png',
+    src: "/images/powens.png",
     delay: 0.8,
     duration: 3.5,
     y: -18,
-    href: 'https://www.powens.com/',
+    href: "https://www.powens.com/",
   },
 ];
 
-export default function DescriptionProStrategy({ theme = 'green' }: { theme?: 'green' | 'blue' }) {
+export default function DescriptionProStrategy({ theme = "green" }: { theme?: "green" | "blue" }) {
   return (
     <section
-      className={`flex flex-col items-center ${theme === 'green' ? 'bg-[#35C055]' : 'bg-sky-400'} gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white`}
-    >
+      className={`flex flex-col items-center ${theme === "green" ? "bg-[#35C055]" : "bg-sky-400"} gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white`}>
       <div className="flex flex-col items-center gap-16">
         <div className="relative max-w-xl mx-auto my-8">
           <FormatQuoteIcon
@@ -62,19 +61,17 @@ export default function DescriptionProStrategy({ theme = 'green' }: { theme?: 'g
               href={img.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:scale-110 transition-all duration-300"
-            >
+              className="hover:scale-110 transition-all duration-300">
               <motion.div
                 key={index}
                 animate={{ y: [0, img.y, 0] }}
                 transition={{
                   duration: img.duration,
                   repeat: Infinity,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                   delay: img.delay,
                 }}
-                className="relative overflow-hidden"
-              >
+                className="relative overflow-hidden">
                 <Image
                   src={img.src}
                   alt={`Option ${index + 1}`}

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   LeadsResponse,
@@ -11,14 +11,14 @@ import {
   getHouseholdSalaryRangeLabel,
   getPersonalNetWorthRangeLabel,
   getPersonalSalaryRangeLabel,
-} from 'sowhat-types';
-import { toast } from 'sonner';
-import { useState, useEffect } from 'react';
-import { useAuth } from '@clerk/nextjs';
-import { Button } from '@/components/ui/button';
-import { Loader2, Heart, Info, CheckCircle2 } from 'lucide-react';
-import { useQuery, useMutation, useQueryClient, InfiniteData } from '@tanstack/react-query';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+} from "sowhat-types";
+import { toast } from "sonner";
+import { useState, useEffect } from "react";
+import { useAuth } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { Loader2, Heart, Info, CheckCircle2 } from "lucide-react";
+import { useQuery, useMutation, useQueryClient, InfiniteData } from "@tanstack/react-query";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import {
   Sheet,
@@ -27,15 +27,15 @@ import {
   SheetContent,
   SheetTrigger,
   SheetDescription,
-} from '@/components/ui/sheet';
-import { OfferDialog } from './OfferDialog';
-import { SectionTitle } from './SheetSectionTitle';
-import { formatAmount } from '@/utils/formatAmount';
-import { getLead, createOffer, updateOffer, toggleLikeUser } from '../../../lib/api';
-import { LexendFont } from '@/utils/fonts';
-import { formatPostalCode } from '@/utils/formatPostalCode';
-import { sanitizeText } from '@/utils/sanitize';
-import { DetailItem } from './DetailItem';
+} from "@/components/ui/sheet";
+import { OfferDialog } from "./OfferDialog";
+import { SectionTitle } from "./SheetSectionTitle";
+import { formatAmount } from "@/utils/formatAmount";
+import { getLead, createOffer, updateOffer, toggleLikeUser } from "../../../lib/api";
+import { LexendFont } from "@/utils/fonts";
+import { formatPostalCode } from "@/utils/formatPostalCode";
+import { sanitizeText } from "@/utils/sanitize";
+import { DetailItem } from "./DetailItem";
 
 interface LeadDetailsSheetProps {
   leadId: string;
@@ -49,10 +49,10 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  
+
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [isOfferDialogOpen, setIsOfferDialogOpen] = useState(false);
-  const [offerMessage, setOfferMessage] = useState('');
+  const [offerMessage, setOfferMessage] = useState("");
 
   // Sync isOpen state with defaultOpen when it changes
   useEffect(() => {
@@ -64,19 +64,19 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
   // Update URL when sheet opens/closes
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
-    
+
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (open) {
       // Add leadId to URL
-      params.set('leadId', leadId);
+      params.set("leadId", leadId);
     } else {
       // Remove leadId from URL
-      params.delete('leadId');
+      params.delete("leadId");
     }
-    
+
     const queryString = params.toString();
-    router.replace(`${pathname}${queryString ? `?${queryString}` : ''}`, { scroll: false });
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false });
   };
 
   const {
@@ -84,7 +84,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['lead', leadId],
+    queryKey: ["lead", leadId],
     queryFn: async () => {
       const token = await getToken();
       return getLead(leadId, token);
@@ -96,40 +96,40 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
   const createMutation = useMutation({
     mutationFn: async (message: string) => {
       const token = await getToken();
-      if (!lead) throw new Error('Lead not loaded');
+      if (!lead) throw new Error("Lead not loaded");
       return createOffer(
         {
           leadUserId: lead.userId,
           message: sanitizeText(message),
           sentAt: new Date(),
         },
-        token
+        token,
       );
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
+      queryClient.invalidateQueries({ queryKey: ["lead", leadId] });
       setIsOfferDialogOpen(false);
-      toast.success('Offre créée avec succès');
+      toast.success("Offre créée avec succès");
     },
   });
 
   const updateMutation = useMutation({
     mutationFn: async (message: string) => {
       const token = await getToken();
-      if (!lead?.offer) throw new Error('No offer to update');
+      if (!lead?.offer) throw new Error("No offer to update");
       return updateOffer({ id: lead.offer.id, message: sanitizeText(message) }, token);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['lead', leadId] });
+      queryClient.invalidateQueries({ queryKey: ["lead", leadId] });
       setIsOfferDialogOpen(false);
-      toast.success('Offre mise à jour avec succès');
+      toast.success("Offre mise à jour avec succès");
     },
   });
 
   const likeMutation = useMutation({
     mutationFn: async () => {
       const token = await getToken();
-      if (!lead) throw new Error('Lead not loaded');
+      if (!lead) throw new Error("Lead not loaded");
       const newLikedState = !lead.likedAt;
       await toggleLikeUser(lead.userId, token, newLikedState);
       return newLikedState;
@@ -138,7 +138,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
       const newLikedAt = newLikedState ? new Date().toISOString() : null;
 
       // Update individual lead query
-      queryClient.setQueryData(['lead', leadId], (oldLead: FullLeadResponse | undefined) => {
+      queryClient.setQueryData(["lead", leadId], (oldLead: FullLeadResponse | undefined) => {
         if (!oldLead) return oldLead;
         return {
           ...oldLead,
@@ -148,7 +148,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
 
       // Update list query
       queryClient.setQueriesData<InfiniteData<LeadsResponse>>(
-        { queryKey: ['pro-leads'] },
+        { queryKey: ["pro-leads"] },
         (oldData) => {
           if (!oldData) return oldData;
           return {
@@ -166,7 +166,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
               }),
             })),
           };
-        }
+        },
       );
     },
   });
@@ -183,7 +183,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     if (lead?.offer) {
       setOfferMessage(lead.offer.message);
     } else {
-      setOfferMessage('');
+      setOfferMessage("");
     }
     setIsOfferDialogOpen(true);
   };
@@ -216,53 +216,61 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
             ) : lead ? (
               <div className="mt-6 pb-20 space-y-6">
                 {/* Identity Section */}
-                {(lead.offer?.status === 'ACCEPTED' ||
-                  lead.offer?.status === 'ACCEPTED_THEN_ARCHIVED_BY_USER') && (
-                    <section className="bg-green-50/50 -mx-6 px-6 py-4 border-b border-green-100 mb-6">
-                      <div className="px-0">
-                        <SectionTitle>Identité</SectionTitle>
-                      </div>
-                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-4">
-                        <DetailItem label="Prénom" value={lead.firstName} />
-                        <DetailItem label="Nom" value={lead.lastName} />
-                        <DetailItem label="Email" value={<span className="flex items-center gap-2">{lead.email}
-                          <CheckCircle2 className="w-4 h-4 text-green-500" />
-                        </span>} />
-                        <DetailItem
-                          label="Téléphone"
-                          value={
-                            lead.phoneNumber ? (
-                              <span className="flex items-center gap-2">
-                                {lead.phoneNumber}
-                                {lead.phoneNumberVerifiedAt && (
-                                  <CheckCircle2 className="w-4 h-4 text-green-500" />
-                                )}
-                              </span>
-                            ) : null
-                          }
-                        />
-                      </div>
-                    </section>
-                  )}
+                {(lead.offer?.status === "ACCEPTED" ||
+                  lead.offer?.status === "ACCEPTED_THEN_ARCHIVED_BY_USER") && (
+                  <section className="bg-green-50/50 -mx-6 px-6 py-4 border-b border-green-100 mb-6">
+                    <div className="px-0">
+                      <SectionTitle>Identité</SectionTitle>
+                    </div>
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-4">
+                      <DetailItem label="Prénom" value={lead.firstName} />
+                      <DetailItem label="Nom" value={lead.lastName} />
+                      <DetailItem
+                        label="Email"
+                        value={
+                          <span className="flex items-center gap-2">
+                            {lead.email}
+                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                          </span>
+                        }
+                      />
+                      <DetailItem
+                        label="Téléphone"
+                        value={
+                          lead.phoneNumber ? (
+                            <span className="flex items-center gap-2">
+                              {lead.phoneNumber}
+                              {lead.phoneNumberVerifiedAt && (
+                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                              )}
+                            </span>
+                          ) : null
+                        }
+                      />
+                    </div>
+                  </section>
+                )}
                 {/* Rejected Section */}
-                {(lead.offer?.status === 'REJECTED' ||
-                  lead.offer?.status === 'REJECTED_THEN_ARCHIVED_BY_USER') && (
-                    <section className="bg-red-50/50 -mx-6 px-6 py-4 border-b border-red-100 mb-6">
-                      <div className="px-0">
-                        <SectionTitle>Refus de mise en relation</SectionTitle>
-                      </div>
-                      <div className="mt-4">
-                        <p className="text-red-800 text-sm">
-                          Le particulier a refusé la mise en relation.{' '}
-                          {lead.offer?.rejectedReason ? (
-                            <span className="font-medium">Raison : {lead.offer.rejectedReason}</span>
-                          ) : (
-                            <span className="italic">Il n'a pas souhaité partager la raison de son refus.</span>
-                          )}
-                        </p>
-                      </div>
-                    </section>
-                  )}
+                {(lead.offer?.status === "REJECTED" ||
+                  lead.offer?.status === "REJECTED_THEN_ARCHIVED_BY_USER") && (
+                  <section className="bg-red-50/50 -mx-6 px-6 py-4 border-b border-red-100 mb-6">
+                    <div className="px-0">
+                      <SectionTitle>Refus de mise en relation</SectionTitle>
+                    </div>
+                    <div className="mt-4">
+                      <p className="text-red-800 text-sm">
+                        Le particulier a refusé la mise en relation.{" "}
+                        {lead.offer?.rejectedReason ? (
+                          <span className="font-medium">Raison : {lead.offer.rejectedReason}</span>
+                        ) : (
+                          <span className="italic">
+                            Il n'a pas souhaité partager la raison de son refus.
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                  </section>
+                )}
                 {/* Activity Section  */}
                 <section>
                   <SectionTitle>Activité</SectionTitle>
@@ -314,7 +322,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                     <DetailItem
                       label="Année de naissance"
                       value={
-                        lead.birthYear && typeof lead.birthYear === 'number'
+                        lead.birthYear && typeof lead.birthYear === "number"
                           ? `${lead.birthYear} (${new Date().getFullYear() - lead.birthYear} ans)`
                           : null
                       }
@@ -328,7 +336,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                     {lead.childrenBirthYears && lead.childrenBirthYears.length > 0 && (
                       <DetailItem
                         label="Années naissance enfants"
-                        value={lead.childrenBirthYears.join(', ')}
+                        value={lead.childrenBirthYears.join(", ")}
                       />
                     )}
                     <DetailItem
@@ -377,9 +385,9 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                       label="Propriétaire résidence principale"
                       value={
                         lead.isMainResidenceOwner
-                          ? 'Oui'
+                          ? "Oui"
                           : lead.isMainResidenceOwner === false
-                            ? 'Non'
+                            ? "Non"
                             : null
                       }
                     />
@@ -409,7 +417,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                         value={
                           lead.financialProductsOwned
                             ?.map((p) => getFinancialProductLabel(p))
-                            .join(', ') || null
+                            .join(", ") || null
                         }
                       />
                     </div>
@@ -443,7 +451,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
 
                     <DetailItem
                       label="Comptes Épargne (Nombre)"
-                      value={!lead.totalSavingsBankAccounts ? '--' : lead.totalSavingsBankAccounts}
+                      value={!lead.totalSavingsBankAccounts ? "--" : lead.totalSavingsBankAccounts}
                     />
 
                     <DetailItem
@@ -458,7 +466,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                     <DetailItem
                       label="Comptes Courants (Nombre)"
                       value={
-                        !lead.totalCheckingBankAccounts ? '--' : lead.totalCheckingBankAccounts
+                        !lead.totalCheckingBankAccounts ? "--" : lead.totalCheckingBankAccounts
                       }
                     />
                     <DetailItem
@@ -472,7 +480,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
 
                     <DetailItem
                       label="Crédits (Nombre)"
-                      value={!lead.totalLoansBankAccounts ? '--' : lead.totalLoansBankAccounts}
+                      value={!lead.totalLoansBankAccounts ? "--" : lead.totalLoansBankAccounts}
                     />
 
                     <DetailItem
@@ -533,8 +541,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                               <span className="block text-xs text-gray-500">Produit</span>
                               <span
                                 className="font-bold text-purple-700 text-xs break-words"
-                                title={lead.aiSummary.fullResponse.synthese.product}
-                              >
+                                title={lead.aiSummary.fullResponse.synthese.product}>
                                 {lead.aiSummary.fullResponse.synthese.product}
                               </span>
                             </div>
@@ -546,8 +553,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                         lead.aiSummary.fullResponse.analyse.length > 0 && (
                           <div className="py-4">
                             <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
-                            >
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
                               Analyse
                             </h4>
                             <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
@@ -562,8 +568,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                         lead.aiSummary.fullResponse.recommandations.length > 0 && (
                           <div className="py-4">
                             <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
-                            >
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
                               Recommandations
                             </h4>
                             <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
@@ -578,8 +583,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                         lead.aiSummary.fullResponse.concretement.length > 0 && (
                           <div className="py-4">
                             <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}
-                            >
+                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
                               Concrètement
                             </h4>
                             <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
@@ -607,26 +611,27 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                       "Vous n'avez pas encore fait d'offre à ce particulier"
                     ) : (
                       <>
-                        {(lead.offer.status === 'REJECTED' ||
-                          lead.offer.status === 'REJECTED_THEN_ARCHIVED_BY_USER') &&
-                          'Offre rejetée par le particulier.'}
-                        {(lead.offer.status === 'ACCEPTED' ||
-                          lead.offer.status === 'ACCEPTED_THEN_ARCHIVED_BY_USER') && (
-                            <>
-                              Mise en relation acceptée par le particulier.<br />
-                              Contactez-le au plus vite
-                              {lead.phoneNumber && ` au ${lead.phoneNumber}`}
-                              {lead.email && ` ou par email ${lead.email}`}
-                            </>
-                          )}
-                        {lead.offer.status === 'PENDING' && (
+                        {(lead.offer.status === "REJECTED" ||
+                          lead.offer.status === "REJECTED_THEN_ARCHIVED_BY_USER") &&
+                          "Offre rejetée par le particulier."}
+                        {(lead.offer.status === "ACCEPTED" ||
+                          lead.offer.status === "ACCEPTED_THEN_ARCHIVED_BY_USER") && (
+                          <>
+                            Mise en relation acceptée par le particulier.
+                            <br />
+                            Contactez-le au plus vite
+                            {lead.phoneNumber && ` au ${lead.phoneNumber}`}
+                            {lead.email && ` ou par email ${lead.email}`}
+                          </>
+                        )}
+                        {lead.offer.status === "PENDING" && (
                           <>
                             En attente de réponse par le particulier
                             {lead.offer.seenByUser &&
                               ` (Vu le ${new Date(lead.offer.seenByUser).toLocaleDateString()})`}
                           </>
                         )}
-                        {lead.offer.status === 'ARCHIVED_BY_PRO' &&
+                        {lead.offer.status === "ARCHIVED_BY_PRO" &&
                           "Vous avez archivé ce lead et l'offre correspondante, l'utilisateur ne verra pas votre offre si vous en avez fait une."}
                       </>
                     )}
@@ -635,26 +640,25 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                 <div className="flex items-center gap-3 ml-auto shrink-0">
                   <Button
                     variant="outline"
-                    className={`transition-colors ${lead?.likedAt
-                      ? 'bg-green-500/20 border-green-400 text-green-500 hover:bg-transparent hover:border-white hover:text-green-500/20'
-                      : 'bg-transparent text-white hover:bg-green-500/20 hover:border-green-400 hover:text-green-500/20'
-                      }`}
+                    className={`transition-colors ${
+                      lead?.likedAt
+                        ? "bg-green-500/20 border-green-400 text-green-500 hover:bg-transparent hover:border-white hover:text-green-500/20"
+                        : "bg-transparent text-white hover:bg-green-500/20 hover:border-green-400 hover:text-green-500/20"
+                    }`}
                     onClick={() => likeMutation.mutate()}
-                    disabled={likeMutation.isPending || !lead}
-                  >
+                    disabled={likeMutation.isPending || !lead}>
                     {likeMutation.isPending ? (
                       <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
-                      <Heart className={`h-5 w-5 ${lead?.likedAt ? 'fill-current' : ''}`} />
+                      <Heart className={`h-5 w-5 ${lead?.likedAt ? "fill-current" : ""}`} />
                     )}
                   </Button>
-                  {(!lead?.offer || lead?.offer?.status === 'PENDING') && (
+                  {(!lead?.offer || lead?.offer?.status === "PENDING") && (
                     <Button
                       className="bg-green-600 hover:bg-green-600/80 text-white font-semibold"
                       onClick={openOfferDialog}
-                      disabled={!lead}
-                    >
-                      {lead?.offer ? "Modifier l'offre" : 'Faire une offre'}
+                      disabled={!lead}>
+                      {lead?.offer ? "Modifier l'offre" : "Faire une offre"}
                     </Button>
                   )}
                 </div>

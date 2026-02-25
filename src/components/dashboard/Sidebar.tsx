@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   User,
@@ -12,36 +12,36 @@ import {
   ShieldCheck,
   Handshake,
   Eye,
-} from 'lucide-react';
-import { cn } from '../../utils/cn';
-import { SignOutButton } from '@clerk/nextjs';
-import { motion } from 'framer-motion';
-import { InvLogo } from '../InvLogo';
+} from "lucide-react";
+import { cn } from "../../utils/cn";
+import { SignOutButton } from "@clerk/nextjs";
+import { motion } from "framer-motion";
+import { InvLogo } from "../InvLogo";
 
 const sidebarItems = [
   {
-    label: 'Compte',
-    href: '/dashboard/profile',
+    label: "Compte",
+    href: "/dashboard/profile",
     icon: User,
   },
   {
-    label: 'Alertes',
-    href: '/dashboard/alerts',
+    label: "Alertes",
+    href: "/dashboard/alerts",
     icon: LayoutDashboard,
   },
   {
-    label: 'Screening',
-    href: '/dashboard/screening',
+    label: "Screening",
+    href: "/dashboard/screening",
     icon: ShieldCheck,
   },
   {
-    label: 'Match',
-    href: '/dashboard/match',
+    label: "Match",
+    href: "/dashboard/match",
     icon: Handshake,
   },
   {
-    label: 'Monitoring',
-    href: '/dashboard/monitoring',
+    label: "Monitoring",
+    href: "/dashboard/monitoring",
     icon: Eye,
   },
 ];
@@ -58,16 +58,14 @@ export function Sidebar() {
     <motion.div
       initial={{ width: isCollapsed ? 80 : 280 }}
       animate={{ width: isCollapsed ? 80 : 280 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="relative flex flex-col h-screen bg-white border-r border-gray-200 shadow-sm z-20"
-    >
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="relative flex flex-col h-screen bg-white border-r border-gray-200 shadow-sm z-20">
       {/* Header */}
       <div
         className={cn(
-          'flex items-center h-20 px-4',
-          isCollapsed ? 'justify-center' : 'justify-between'
-        )}
-      >
+          "flex items-center h-20 px-4",
+          isCollapsed ? "justify-center" : "justify-between",
+        )}>
         {!isCollapsed && (
           <div className="flex items-center gap-2 overflow-hidden whitespace-nowrap">
             <InvLogo className={`max-h-[30px] sm:max-h-[30px] w-auto text-green-500`} />
@@ -77,10 +75,9 @@ export function Sidebar() {
         <button
           onClick={toggleSidebar}
           className={cn(
-            'p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-500',
-            isCollapsed ? '' : 'ml-auto'
-          )}
-        >
+            "p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-500",
+            isCollapsed ? "" : "ml-auto",
+          )}>
           {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
         </button>
       </div>
@@ -94,18 +91,17 @@ export function Sidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                'flex items-center gap-3 p-3 rounded-lg transition-all duration-200 group',
+                "flex items-center gap-3 p-3 rounded-lg transition-all duration-200 group",
                 isActive
-                  ? 'bg-gray-100 text-green-800 font-medium'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                isCollapsed ? 'justify-center' : ''
-              )}
-            >
+                  ? "bg-gray-100 text-green-800 font-medium"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                isCollapsed ? "justify-center" : "",
+              )}>
               <item.icon
                 size={22}
                 className={cn(
-                  'flex-shrink-0 transition-colors',
-                  isActive ? 'text-green-800' : 'text-gray-500 group-hover:text-gray-900'
+                  "flex-shrink-0 transition-colors",
+                  isActive ? "text-green-800" : "text-gray-500 group-hover:text-gray-900",
                 )}
               />
               {!isCollapsed && (
@@ -121,10 +117,9 @@ export function Sidebar() {
         <SignOutButton redirectUrl="/dashboard/login">
           <button
             className={cn(
-              'flex items-center gap-3 w-full p-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors',
-              isCollapsed ? 'justify-center' : ''
-            )}
-          >
+              "flex items-center gap-3 w-full p-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors",
+              isCollapsed ? "justify-center" : "",
+            )}>
             <LogOut size={20} />
             {!isCollapsed && <span>Se déconnecter</span>}
           </button>

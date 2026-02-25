@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useLanguage } from '@/i18n/LanguageProvider';
-import { ContactInfoList } from '@/components/ContactButtonWithDialog';
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { ContactInfoList } from "@/components/ContactButtonWithDialog";
 
 export default function ContactPage() {
   const { messages } = useLanguage();

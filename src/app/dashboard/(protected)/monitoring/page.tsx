@@ -1,4 +1,4 @@
-import { LexendFont } from '@/utils/fonts';
+import { LexendFont } from "@/utils/fonts";
 
 export default async function Page() {
   return (
@@ -12,8 +12,7 @@ export default async function Page() {
         {[1, 2, 3].map((i) => (
           <div
             key={i}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4"
-          >
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
             {/* Header skeleton */}
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gray-200"></div>

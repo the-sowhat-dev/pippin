@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useLanguage } from '@/i18n/LanguageProvider';
-import { Button } from '@radix-ui/themes';
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { Button } from "@radix-ui/themes";
 import {
   ProjectStep1Options,
   ProjectStep2Options,
   ProjectStep2BisOptions,
-} from '../../utils/project';
-import { Messages } from 'next-intl';
-import { LexendFont } from '@/utils/fonts';
-import { AmountSlider } from './AmountSlider';
+} from "../../utils/project";
+import { Messages } from "next-intl";
+import { LexendFont } from "@/utils/fonts";
+import { AmountSlider } from "./AmountSlider";
 
 export default function FiveMinutesStrategy() {
   const { messages } = useLanguage();
@@ -23,9 +23,9 @@ export default function FiveMinutesStrategy() {
     // keys in utils: 'project.step1.option1'
     // keys in json: home.project.step1.option1
     // messages object: root of json
-    const path = ['home', ...key.split('.')];
+    const path = ["home", ...key.split(".")];
     const result = path.reduce((acc: Messages, part: string) => acc?.[part], messages);
-    return typeof result === 'string' ? result : key;
+    return typeof result === "string" ? result : key;
   };
 
   const handleStep1 = (key: string) => {
@@ -61,14 +61,12 @@ export default function FiveMinutesStrategy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
-              >
+                className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {ProjectStep1Options.map((option) => (
                   <div
                     key={option.key}
                     onClick={() => handleStep1(option.key)}
-                    className="bg-white rounded-lg hover:shadow-lg py-4 border border-gray-200 transition-all cursor-pointer overflow-hidden transform hover:-translate-y-1 flex flex-col h-full"
-                  >
+                    className="bg-white rounded-lg hover:shadow-lg py-4 border border-gray-200 transition-all cursor-pointer overflow-hidden transform hover:-translate-y-1 flex flex-col h-full">
                     <div className="relative h-24 md:h-32 w-24 md:w-32 mx-auto rounded-full overflow-hidden border-2 border-green-800">
                       <Image
                         src={`/images/${option.image}`}
@@ -104,16 +102,14 @@ export default function FiveMinutesStrategy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className=""
-              >
-                {step1Selection === '1' || step1Selection === '2' ? (
+                className="">
+                {step1Selection === "1" || step1Selection === "2" ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {ProjectStep2Options.map((option) => (
                       <button
                         key={option.text}
                         onClick={handleStep2}
-                        className="p-4 bg-white hover:bg-green-50 rounded-lg hover:shadow-lg border border-gray-200 hover:border-green-700 hover:text-green-700 transition-all hover:translate-y-1 text-left font-medium text-gray-700"
-                      >
+                        className="p-4 bg-white hover:bg-green-50 rounded-lg hover:shadow-lg border border-gray-200 hover:border-green-700 hover:text-green-700 transition-all hover:translate-y-1 text-left font-medium text-gray-700">
                         {resolveMessage(option.text)}
                       </button>
                     ))}
@@ -124,8 +120,7 @@ export default function FiveMinutesStrategy() {
                       <button
                         key={option.text}
                         onClick={handleStep2}
-                        className="px-6 py-3 bg-white rounded-full shadow-sm border border-gray-200 hover:bg-[#35c055] hover:text-white transition-all font-medium text-gray-700"
-                      >
+                        className="px-6 py-3 bg-white rounded-full shadow-sm border border-gray-200 hover:bg-[#35c055] hover:text-white transition-all font-medium text-gray-700">
                         {resolveMessage(option.text)}
                       </button>
                     ))}
@@ -151,8 +146,7 @@ export default function FiveMinutesStrategy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="text-center"
-              >
+                className="text-center">
                 <div className="mb-12 py-8">
                   <AmountSlider />
                 </div>
@@ -160,8 +154,7 @@ export default function FiveMinutesStrategy() {
                   size="4"
                   variant="solid"
                   onClick={handleValidate}
-                  className="bg-green-600 text-white hover:bg-green-600/85 px-12"
-                >
+                  className="bg-green-600 text-white hover:bg-green-600/85 px-12">
                   Valider
                 </Button>
               </motion.div>
@@ -172,8 +165,7 @@ export default function FiveMinutesStrategy() {
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-8 shadow-md gap-8 flex flex-col">
               <div className={`flex flex-col gap-2`}>
                 <p
-                  className={`text-xl sm:text-2xl ${LexendFont.className} text-green-800 leading-tight`}
-                >
+                  className={`text-xl sm:text-2xl ${LexendFont.className} text-green-800 leading-tight`}>
                   Félicitations, vous avez fait le plus dur !
                 </p>
                 <div className="text-green-600 leading-snug">

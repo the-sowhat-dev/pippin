@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from './ui/carousel';
-import { Card, CardContent } from './ui/card';
-import { LexendFont } from '@/utils/fonts';
+} from "./ui/carousel";
+import { Card, CardContent } from "./ui/card";
+import { LexendFont } from "@/utils/fonts";
 
 interface InstagramPostCarouselProps {
   slug: string;
@@ -30,31 +30,28 @@ export function InstagramPostCarousel({ slug, title, slideCount }: InstagramPost
       <div className="flex flex-col pl-6">
         <h2 className={`text-xl sm:text-2xl font-bold mb-1 ${LexendFont.className}`}>{title}</h2>
         <h3 className="text-sm sm:text-base text-gray-500 mb-4">
-          Retrouvez d'autres posts sur{' '}
+          Retrouvez d'autres posts sur{" "}
           <a
             href="https://www.instagram.com/invstore_app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-green-700 hover:text-green-800"
-          >
+            className="font-medium text-green-700 hover:text-green-800">
             Instagram
           </a>
         </h3>
       </div>
       <div className="w-full px-6 mb-12">
-        <Carousel opts={{ align: 'start' }} className="w-full">
+        <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem
                 key={slide.id}
-                className="basis-[90%] sm:basis-[60%] md:basis-[40%] lg:basis-1/2 xl:basis-[40%]"
-              >
+                className="basis-[90%] sm:basis-[60%] md:basis-[40%] lg:basis-1/2 xl:basis-[40%]">
                 <div className="p-1">
                   <Card className="border-0 shadow-none">
                     <CardContent
                       className="flex items-center justify-center p-0 relative overflow-hidden rounded-xl bg-gray-100 border-2 border-gray-200"
-                      style={{ aspectRatio }}
-                    >
+                      style={{ aspectRatio }}>
                       <Image
                         src={slide.src}
                         alt={`Instagram slide ${index + 1}`}

@@ -1,12 +1,12 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const COLLABS = [
   {
-    id: 'adi',
-    src: 'https://avenuedesinvestisseurs.fr/wp-content/uploads/2021/02/avenue-des-investisseurs.jpg',
+    id: "adi",
+    src: "https://avenuedesinvestisseurs.fr/wp-content/uploads/2021/02/avenue-des-investisseurs.jpg",
     alt: "Logo d'Avenue des Investisseurs",
     description: `Lancé début 2018, Avenue des Investisseurs (ADI) est un portail d'information et d'éducation financière créé par 2 investisseurs passionnés qui souhaitent partager leurs connaissances en matière de finances personnelles : Nicolas et Ludovic. Nous démocratisons les conseils habituellement accessibles seulement aux plus fortunés. Vous êtes maintenant plus de 200 000 visiteurs par mois à nous suivre !`,
-    website: 'https://avenuedesinvestisseurs.fr/',
+    website: "https://avenuedesinvestisseurs.fr/",
   },
 ];
 
@@ -40,8 +40,7 @@ export const CollaborationBlock = ({ id }: { id: string }) => {
             href={collab.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
-          >
+            className="text-blue-500 hover:underline">
             {collab.website}
           </a>
         </div>

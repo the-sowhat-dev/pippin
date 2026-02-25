@@ -1,11 +1,11 @@
-import { auth, currentUser } from '@clerk/nextjs/server';
-import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from 'lucide-react';
-import { getPro } from '../../../../lib/api';
-import { UpdateProSheet } from '@/components/dashboard/UpdateProSheet';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import { getProCertificationByKey } from 'sowhat-types';
-import { LexendFont } from '@/utils/fonts';
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from "lucide-react";
+import { getPro } from "../../../../lib/api";
+import { UpdateProSheet } from "@/components/dashboard/UpdateProSheet";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { getProCertificationByKey } from "sowhat-types";
+import { LexendFont } from "@/utils/fonts";
 
 export default async function Page() {
   const user = await currentUser();
@@ -25,7 +25,7 @@ export default async function Page() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* User Card */}
-        <div className='flex flex-col gap-4'>
+        <div className="flex flex-col gap-4">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col items-center text-center space-y-4 h-fit">
             <div className="relative">
               <div className="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center text-3xl overflow-hidden ring-4 ring-white shadow-md">
@@ -47,7 +47,7 @@ export default async function Page() {
                 {proData?.firstName} {proData?.lastName}
               </h2>
               <p className="text-green-900 font-medium bg-green-50 px-3 py-1 rounded-full text-sm inline-block mt-2">
-                {proData?.role || 'Rôle non défini'}
+                {proData?.role || "Rôle non défini"}
               </p>
             </div>
             <div className="w-full pt-6 border-t border-gray-100 space-y-3 text-left">
@@ -56,8 +56,6 @@ export default async function Page() {
                 <span className="text-sm truncate">{user?.emailAddresses[0]?.emailAddress}</span>
               </div>
             </div>
-
-
           </div>
 
           <UpdateProSheet
@@ -71,7 +69,6 @@ export default async function Page() {
           />
         </div>
 
-
         {/* Details Column */}
         <div className="lg:col-span-2 space-y-8">
           {/* Presentation Section */}
@@ -83,7 +80,7 @@ export default async function Page() {
 
             <div className="p-6">
               <p className="text-gray-600 whitespace-pre-wrap">
-                {proData?.presentation || 'Aucune présentation renseignée.'}
+                {proData?.presentation || "Aucune présentation renseignée."}
               </p>
             </div>
 
@@ -99,8 +96,7 @@ export default async function Page() {
                       <span
                         key={cert}
                         title={certInfo?.description}
-                        className="inline-flex items-center px-3 py-1 rounded-sm text-sm font-medium bg-green-50 text-green-800 border border-green-200"
-                      >
+                        className="inline-flex items-center px-3 py-1 rounded-sm text-sm font-medium bg-green-50 text-green-800 border border-green-200">
                         {certInfo?.label || cert}
                       </span>
                     );
@@ -123,8 +119,8 @@ export default async function Page() {
                 {proData?.companyImage ? (
                   // For cache busting
                   <Image
-                    src={`${proData.companyImage}${proData.companyImage.includes('?') ? '&' : '?'}v=${new Date(proData.updatedAt).getTime()}`}
-                    alt={proData?.companyName || 'Company'}
+                    src={`${proData.companyImage}${proData.companyImage.includes("?") ? "&" : "?"}v=${new Date(proData.updatedAt).getTime()}`}
+                    alt={proData?.companyName || "Company"}
                     className="object-cover"
                     width={128}
                     height={128}
@@ -148,7 +144,7 @@ export default async function Page() {
                     <FileText size={12} /> SIREN
                   </span>
                   <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
-                    {proData?.sirenId || 'N/A'}
+                    {proData?.sirenId || "N/A"}
                   </p>
                 </div>
                 <div className="space-y-1">
@@ -156,7 +152,7 @@ export default async function Page() {
                     <Briefcase size={12} /> ORIAS
                   </span>
                   <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
-                    {proData?.oriasId || 'N/A'}
+                    {proData?.oriasId || "N/A"}
                   </p>
                 </div>
               </div>

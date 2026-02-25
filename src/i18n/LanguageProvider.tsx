@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { IntlProvider } from 'next-intl';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { IntlProvider } from "next-intl";
+import { createContext, useContext, useEffect, useState } from "react";
 
-import enMessages from './locales/en.json';
-import frMessages from './locales/fr.json';
+import enMessages from "./locales/en.json";
+import frMessages from "./locales/fr.json";
 
 type Messages = typeof enMessages | typeof frMessages;
 
-type Language = 'en' | 'fr';
+type Language = "en" | "fr";
 
 type LanguageContextType = {
   language: Language;
@@ -24,7 +24,7 @@ const messages = {
 };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('fr');
+  const [language, setLanguage] = useState<Language>("fr");
   const [isClient, setIsClient] = useState(false);
 
   // Setting up the default language based on URL or local storage preferences
@@ -32,20 +32,20 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setIsClient(true);
 
     // Check URL parameters first
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
-      const urlLanguage = urlParams.get('lg');
+      const urlLanguage = urlParams.get("lg");
 
-      if (urlLanguage === 'en' || urlLanguage === 'fr') {
+      if (urlLanguage === "en" || urlLanguage === "fr") {
         setLanguage(urlLanguage);
-        localStorage.setItem('language', urlLanguage);
+        localStorage.setItem("language", urlLanguage);
         return;
       }
     }
 
     // If no URL parameter, check localStorage
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'fr')) {
+    const savedLanguage = localStorage.getItem("language") as Language;
+    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "fr")) {
       setLanguage(savedLanguage);
     }
   }, []);
@@ -58,10 +58,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [language, isClient]);
 
   const toggleLanguage = () => {
-    const newLanguage = language === 'fr' ? 'en' : 'fr';
+    const newLanguage = language === "fr" ? "en" : "fr";
     setLanguage(newLanguage);
     if (isClient) {
-      localStorage.setItem('language', newLanguage);
+      localStorage.setItem("language", newLanguage);
     }
   };
 
@@ -77,7 +77,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 }

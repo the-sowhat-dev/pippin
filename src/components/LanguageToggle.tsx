@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useLanguage } from '@/i18n/LanguageProvider';
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function LanguageToggle() {
   const { language, toggleLanguage } = useLanguage();
@@ -10,31 +10,29 @@ export function LanguageToggle() {
       {/* Sliding background indicator */}
       <div
         className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-md transition-all duration-300 ease-in-out ${
-          language === 'fr' ? 'left-1' : 'left-[calc(50%+2px)]'
+          language === "fr" ? "left-1" : "left-[calc(50%+2px)]"
         }`}
       />
 
       {/* French Flag Button */}
       <button
-        onClick={() => language !== 'fr' && toggleLanguage()}
+        onClick={() => language !== "fr" && toggleLanguage()}
         className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-          language === 'fr' ? 'scale-100' : 'scale-90 opacity-60 hover:opacity-80 hover:scale-95'
+          language === "fr" ? "scale-100" : "scale-90 opacity-60 hover:opacity-80 hover:scale-95"
         }`}
         aria-label="Switch to French"
-        disabled={language === 'fr'}
-      >
+        disabled={language === "fr"}>
         <span className="text-2xl">🇫🇷</span>
       </button>
 
       {/* US Flag Button */}
       <button
-        onClick={() => language !== 'en' && toggleLanguage()}
+        onClick={() => language !== "en" && toggleLanguage()}
         className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-          language === 'en' ? 'scale-100' : 'scale-90 opacity-60 hover:opacity-80 hover:scale-95'
+          language === "en" ? "scale-100" : "scale-90 opacity-60 hover:opacity-80 hover:scale-95"
         }`}
         aria-label="Switch to English"
-        disabled={language === 'en'}
-      >
+        disabled={language === "en"}>
         <span className="text-2xl">🇺🇸</span>
       </button>
     </div>

@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useUser, useAuth } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
-import { ProResponse, UpdateProInput, ProCertificationEnum } from 'sowhat-types';
-import { updatePro, uploadImage } from '../../lib/api';
-import { markOnboardingAsCompleted } from '../../utils/markOnboardingAsCompleted';
-import { LexendFont } from '@/utils/fonts';
-import { sanitizeText } from '@/utils/sanitize';
-import { Loader2 } from 'lucide-react';
-import Image from 'next/image';
-import { CertificationsChips } from './CertificationsChips';
+import { useState } from "react";
+import { useUser, useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { ProResponse, UpdateProInput, ProCertificationEnum } from "sowhat-types";
+import { updatePro, uploadImage } from "../../lib/api";
+import { markOnboardingAsCompleted } from "../../utils/markOnboardingAsCompleted";
+import { LexendFont } from "@/utils/fonts";
+import { sanitizeText } from "@/utils/sanitize";
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
+import { CertificationsChips } from "./CertificationsChips";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -43,12 +43,12 @@ export default function OnboardingForm({
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
     firstName: initialData?.firstName || initialFirstName,
     lastName: initialData?.lastName || initialLastName,
-    role: initialData?.role || '',
-    presentation: initialData?.presentation || '',
-    companyName: initialData?.companyName || '',
-    sirenId: initialData?.sirenId || '',
-    oriasId: initialData?.oriasId || '',
-    companyDescription: initialData?.companyDescription || '',
+    role: initialData?.role || "",
+    presentation: initialData?.presentation || "",
+    companyName: initialData?.companyName || "",
+    sirenId: initialData?.sirenId || "",
+    oriasId: initialData?.oriasId || "",
+    companyDescription: initialData?.companyDescription || "",
     certifications: initialCertifications,
   });
 
@@ -60,7 +60,7 @@ export default function OnboardingForm({
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
-        alert('Image trop volumineuse. La taille maximum est de 2MB.');
+        alert("Image trop volumineuse. La taille maximum est de 2MB.");
         return;
       }
       setProfileImageFile(file);
@@ -73,7 +73,7 @@ export default function OnboardingForm({
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
-        alert('Image trop volumineuse. La taille maximum est de 2MB.');
+        alert("Image trop volumineuse. La taille maximum est de 2MB.");
         return;
       }
       setCompanyImageFile(file);
@@ -118,19 +118,19 @@ export default function OnboardingForm({
       await updatePro(payload, token);
 
       if (profileImageFile) {
-        await uploadImage(profileImageFile, 'clerk', token);
+        await uploadImage(profileImageFile, "clerk", token);
       }
 
       if (companyImageFile) {
-        await uploadImage(companyImageFile, 'company', token);
+        await uploadImage(companyImageFile, "company", token);
       }
 
       await markOnboardingAsCompleted();
       await user.reload();
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (err) {
       console.error(err);
-      alert('Something went wrong');
+      alert("Something went wrong");
     } finally {
       setIsLoading(false);
     }
@@ -181,7 +181,7 @@ export default function OnboardingForm({
               name="firstName"
               id="firstName"
               required
-              value={formData.firstName || ''}
+              value={formData.firstName || ""}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
             />
@@ -195,7 +195,7 @@ export default function OnboardingForm({
               name="lastName"
               id="lastName"
               required
-              value={formData.lastName || ''}
+              value={formData.lastName || ""}
               onChange={handleChange}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
             />
@@ -212,7 +212,7 @@ export default function OnboardingForm({
             id="role"
             required
             placeholder="Commercial, Head of Growth, Conseiller, etc."
-            value={formData.role || ''}
+            value={formData.role || ""}
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
           />
@@ -227,7 +227,7 @@ export default function OnboardingForm({
             id="presentation"
             required
             rows={3}
-            value={formData.presentation || ''}
+            value={formData.presentation || ""}
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
           />
@@ -245,8 +245,7 @@ export default function OnboardingForm({
 
         <button
           type="submit"
-          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer"
-        >
+          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer">
           Suivant : Informations de l'entreprise
         </button>
       </form>
@@ -297,7 +296,7 @@ export default function OnboardingForm({
           name="companyName"
           id="companyName"
           required
-          value={formData.companyName || ''}
+          value={formData.companyName || ""}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
@@ -313,7 +312,7 @@ export default function OnboardingForm({
           id="sirenId"
           required
           placeholder="Numéro SIREN de l'entreprise"
-          value={formData.sirenId || ''}
+          value={formData.sirenId || ""}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
@@ -329,7 +328,7 @@ export default function OnboardingForm({
           id="oriasId"
           required
           placeholder="Numéro ORIAS de l'entreprise"
-          value={formData.oriasId || ''}
+          value={formData.oriasId || ""}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
@@ -344,7 +343,7 @@ export default function OnboardingForm({
           id="companyDescription"
           required
           rows={3}
-          value={formData.companyDescription || ''}
+          value={formData.companyDescription || ""}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
         />
@@ -354,22 +353,20 @@ export default function OnboardingForm({
         <button
           type="button"
           onClick={() => setStep(1)}
-          className="w-full text-green-500 p-2 bg-green-500/10 rounded-md cursor-pointer"
-        >
+          className="w-full text-green-500 p-2 bg-green-500/10 rounded-md cursor-pointer">
           Retour
         </button>
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer flex items-center justify-center gap-2"
-        >
+          className="w-full text-white font-bold p-4 bg-green-500 hover:bg-green-500/80 rounded-md cursor-pointer flex items-center justify-center gap-2">
           {isLoading ? (
             <>
               <Loader2 className="h-5 w-5 animate-spin" />
               Enregistrement...
             </>
           ) : (
-            'Compléter la configuration'
+            "Compléter la configuration"
           )}
         </button>
       </div>

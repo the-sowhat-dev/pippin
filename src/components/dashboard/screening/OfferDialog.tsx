@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Info, Loader2, AlertTriangle } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Info, Loader2, AlertTriangle } from "lucide-react";
 import {
   Dialog,
   DialogTitle,
@@ -9,12 +9,12 @@ import {
   DialogHeader,
   DialogContent,
   DialogDescription,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import type { FullLeadResponse } from 'sowhat-types';
-import { Switch } from '@/components/ui/switch';
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import type { FullLeadResponse } from "sowhat-types";
+import { Switch } from "@/components/ui/switch";
 
 /** Patterns to detect forbidden content in offer messages */
 const FORBIDDEN_PATTERNS = {
@@ -23,7 +23,7 @@ const FORBIDDEN_PATTERNS = {
   url: /(https?:\/\/|www\.)[^\s]+/i,
 };
 
-type ForbiddenContentType = 'email' | 'phone' | 'url';
+type ForbiddenContentType = "email" | "phone" | "url";
 
 interface ForbiddenContentDetection {
   hasError: boolean;
@@ -34,13 +34,13 @@ function detectForbiddenContent(message: string): ForbiddenContentDetection {
   const detectedTypes: ForbiddenContentType[] = [];
 
   if (FORBIDDEN_PATTERNS.email.test(message)) {
-    detectedTypes.push('email');
+    detectedTypes.push("email");
   }
   if (FORBIDDEN_PATTERNS.frenchPhone.test(message)) {
-    detectedTypes.push('phone');
+    detectedTypes.push("phone");
   }
   if (FORBIDDEN_PATTERNS.url.test(message)) {
-    detectedTypes.push('url');
+    detectedTypes.push("url");
   }
 
   return {
@@ -51,9 +51,9 @@ function detectForbiddenContent(message: string): ForbiddenContentDetection {
 
 function getForbiddenContentMessage(detectedTypes: ForbiddenContentType[]): React.ReactElement {
   const typeLabels: Record<ForbiddenContentType, string> = {
-    email: 'adresse email',
-    phone: 'numéro de téléphone',
-    url: 'URL',
+    email: "adresse email",
+    phone: "numéro de téléphone",
+    url: "URL",
   };
 
   if (detectedTypes.length === 0) return <></>;
@@ -66,7 +66,7 @@ function getForbiddenContentMessage(detectedTypes: ForbiddenContentType[]): Reac
     return (
       <span key={type}>
         <strong>{label}</strong>
-        {detectedTypes.length > 1 && !isLast && (isSecondToLast ? ' et ' : ', ')}
+        {detectedTypes.length > 1 && !isLast && (isSecondToLast ? " et " : ", ")}
       </span>
     );
   });
@@ -75,8 +75,10 @@ function getForbiddenContentMessage(detectedTypes: ForbiddenContentType[]): Reac
 
   return (
     <>
-      Il semble qu&apos;{plural ? 'une ou plusieurs informations interdites ont' : 'une information interdite a'} été{plural ? 's' : ''} ajoutée{plural ? 's' : ''} dans le message : {boldTypes}.
-      Veuillez supprimer {plural ? 'ces éléments' : 'cet élément'} de votre message pour pouvoir l'envoyer.
+      Il semble qu&apos;
+      {plural ? "une ou plusieurs informations interdites ont" : "une information interdite a"} été
+      {plural ? "s" : ""} ajoutée{plural ? "s" : ""} dans le message : {boldTypes}. Veuillez
+      supprimer {plural ? "ces éléments" : "cet élément"} de votre message pour pouvoir l'envoyer.
     </>
   );
 }
@@ -129,18 +131,17 @@ export function OfferDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[560px]">
         <DialogHeader>
-          <DialogTitle>{lead?.offer ? "Modifier l'offre" : 'Faire une offre'}</DialogTitle>
+          <DialogTitle>{lead?.offer ? "Modifier l'offre" : "Faire une offre"}</DialogTitle>
           <DialogDescription asChild>
             <div className="space-y-3">
               <p>
-                Rédigez votre proposition commerciale pour ce prospect. Il recevra une
-                notification.
+                Rédigez votre proposition commerciale pour ce prospect. Il recevra une notification.
               </p>
               <div className="flex gap-3 p-3 bg-gray-50 rounded-md border border-gray-100 items-start">
                 <Info className="w-5 h-5 shrink-0 text-gray-500 mt-0.5" />
                 <p className="text-sm text-gray-600">
-                  En plus du message d'offre, le particulier aura accès à vos informations de
-                  profil ainsi que les éléments de votre entreprise renseignés dans la section
+                  En plus du message d'offre, le particulier aura accès à vos informations de profil
+                  ainsi que les éléments de votre entreprise renseignés dans la section
                   &quot;Profil&quot;.
                 </p>
               </div>
@@ -156,18 +157,14 @@ export function OfferDialog({
               placeholder="Bonjour, je vous propose..."
               value={offerMessage}
               onChange={(e) => onOfferMessageChange(e.target.value)}
-              className={`min-h-[180px] resize-y ${showWarningAlert ? 'border-amber-500 border-2 focus-visible:ring-amber-500' : ''}`}
+              className={`min-h-[180px] resize-y ${showWarningAlert ? "border-amber-500 border-2 focus-visible:ring-amber-500" : ""}`}
               disabled={showWarningAlert}
             />
           </div>
 
           {/* Certification checkbox - always checked, not interactive */}
           <div className="flex gap-3 p-3 rounded-lg items-center">
-            <Switch
-              checked={true}
-              disabled={true}
-              className="data-[state=checked]:bg-green-500"
-            />
+            <Switch checked={true} disabled={true} className="data-[state=checked]:bg-green-500" />
 
             <p className="text-sm text-gray-700 leading-tight">
               Je certifie ne pas transmettre d&apos;adresse email, numéro de téléphone ou url vers
@@ -189,8 +186,7 @@ export function OfferDialog({
                 <Button
                   className="bg-amber-600 hover:bg-amber-700 text-white"
                   onClick={handleEditMessage}
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   Modifier mon message
                 </Button>
@@ -207,10 +203,9 @@ export function OfferDialog({
             <Button
               className="bg-green-500 hover:bg-green-600 text-white"
               onClick={handleValidationClick}
-              disabled={isSubmitting}
-            >
+              disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {lead?.offer ? 'Mettre à jour' : 'Envoyer'}
+              {lead?.offer ? "Mettre à jour" : "Envoyer"}
             </Button>
           </DialogFooter>
         )}

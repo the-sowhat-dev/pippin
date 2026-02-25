@@ -3,13 +3,13 @@ import {
   getProjectNeedProLabel,
   getFinancialProductLabel,
   getProfessionStatusLabel,
-} from 'sowhat-types';
-import { ReactNode } from 'react';
-import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from 'lucide-react';
+} from "sowhat-types";
+import { ReactNode } from "react";
+import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from "lucide-react";
 
-import { SimpleBadge } from '../SimpleBadge';
-import { formatAmount } from '@/utils/formatAmount';
-import { calculateAge, formatInscriptionDate } from '@/utils/date';
+import { SimpleBadge } from "../SimpleBadge";
+import { formatAmount } from "@/utils/formatAmount";
+import { calculateAge, formatInscriptionDate } from "@/utils/date";
 
 interface LeadRowProps {
   lead: LeadResponse;
@@ -18,16 +18,16 @@ interface LeadRowProps {
 }
 
 export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
-  const isOutsideFrance = lead.postalCode === 'LIVES_OUTSIDE_FRANCE';
+  const isOutsideFrance = lead.postalCode === "LIVES_OUTSIDE_FRANCE";
   const postalCodeLabel = isOutsideFrance
-    ? 'Ne réside pas en France'
-    : lead.postalCode || 'Non renseigné';
+    ? "Ne réside pas en France"
+    : lead.postalCode || "Non renseigné";
 
   const productsOwnedLabel = !lead.financialProductsOwned
-    ? 'Non renseigné'
+    ? "Non renseigné"
     : lead.financialProductsOwned.length === 0
-      ? 'Aucun produit'
-      : lead.financialProductsOwned.map((p) => getFinancialProductLabel(p)).join(', ');
+      ? "Aucun produit"
+      : lead.financialProductsOwned.map((p) => getFinancialProductLabel(p)).join(", ");
 
   return (
     <div className="group bg-white rounded-xl border border-gray-100 hover:border-green-800/40 hover:shadow-md transition-all duration-200 p-5 mb-3 relative overflow-hidden">
@@ -64,8 +64,8 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
             <span className="text-sm text-gray-400 font-medium block mb-1.5">Besoin principal</span>
 
             <span className="text-green-800">
-              {' '}
-              {lead.need ? getProjectNeedProLabel(lead.need) : 'Non renseigné'}
+              {" "}
+              {lead.need ? getProjectNeedProLabel(lead.need) : "Non renseigné"}
             </span>
           </div>
         </div>
@@ -77,12 +77,11 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
               Produit recherché
             </span>
             <SimpleBadge
-              className={`${lead.financialProduct ? 'bg-blue-50 text-blue-700 border-blue-100' : 'bg-gray-50 text-gray-500'} w-fit max-w-full flex items-center gap-1.5 py-1`}
-            >
+              className={`${lead.financialProduct ? "bg-blue-50 text-blue-700 border-blue-100" : "bg-gray-50 text-gray-500"} w-fit max-w-full flex items-center gap-1.5 py-1`}>
               <span className="truncate">
                 {lead.financialProduct
                   ? getFinancialProductLabel(lead.financialProduct)
-                  : 'Non renseigné'}
+                  : "Non renseigné"}
               </span>
             </SimpleBadge>
           </div>
@@ -104,7 +103,7 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
               <span className="font-medium">
                 {lead.professionStatus
                   ? getProfessionStatusLabel(lead.professionStatus)
-                  : 'Non renseigné'}
+                  : "Non renseigné"}
               </span>
             </div>
           </div>
@@ -136,22 +135,22 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
           {(lead.likedAt || lead.hasBeenOfferedAt || lead.totalOffersReceived >= 0) && (
             <div className="flex items-center gap-2">
               {lead.likedAt && (
-                <div className="bg-red-50 p-1.5 rounded-md border border-red-100" title="Vous avez mis ce lead en favori">
+                <div
+                  className="bg-red-50 p-1.5 rounded-md border border-red-100"
+                  title="Vous avez mis ce lead en favori">
                   <Heart className="w-4 h-4 text-red-500 fill-current" />
                 </div>
               )}
               {lead.hasBeenOfferedAt && (
                 <div
                   className="bg-blue-50 p-1.5 rounded-md border border-blue-100"
-                  title="Vous avez envoyé une offre à ce lead"
-                >
+                  title="Vous avez envoyé une offre à ce lead">
                   <Send className="w-4 h-4 text-blue-500" />
                 </div>
               )}
               <div
                 className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-md text-sm font-medium border border-amber-100"
-                title="Nombre d'offres reçues par le lead"
-              >
+                title="Nombre d'offres reçues par le lead">
                 <Badge className="w-3.5 h-3.5" />
                 <span>{lead.totalOffersReceived}</span>
               </div>

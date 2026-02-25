@@ -1,25 +1,36 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { LexendFont } from '@/utils/fonts';
-import { LeadCard } from '../screening/LeadCard';
-import { UseMutationResult } from '@tanstack/react-query';
-import { LeadDetailsSheet } from '../screening/LeadDetailsSheet';
-import { ProCommercialOfferLeadResponse, ProCommercialOfferResponse } from 'sowhat-types';
+import { LexendFont } from "@/utils/fonts";
+import { LeadCard } from "../screening/LeadCard";
+import { UseMutationResult } from "@tanstack/react-query";
+import { LeadDetailsSheet } from "../screening/LeadDetailsSheet";
+import { ProCommercialOfferLeadResponse, ProCommercialOfferResponse } from "sowhat-types";
 
 interface OfferSectionProps {
   title: string;
   subtitle: string;
   leads: ProCommercialOfferLeadResponse[];
-  archiveMutation: UseMutationResult<ProCommercialOfferResponse, Error, {
-    offerId: string;
-  }, unknown>;
-  color: 'green' | 'blue' | 'red' | 'gray';
+  archiveMutation: UseMutationResult<
+    ProCommercialOfferResponse,
+    Error,
+    {
+      offerId: string;
+    },
+    unknown
+  >;
+  color: "green" | "blue" | "red" | "gray";
 }
 
-export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }: OfferSectionProps) => {
+export const OfferSection = ({
+  title,
+  subtitle,
+  leads,
+  archiveMutation,
+  color,
+}: OfferSectionProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -38,27 +49,28 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
     return () => clearTimeout(timer);
   }, [leads.length]);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const scrollAmount = 320; // Card width + gap
       const newScrollLeft =
-        scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+        scrollContainerRef.current.scrollLeft +
+        (direction === "left" ? -scrollAmount : scrollAmount);
       scrollContainerRef.current.scrollTo({
         left: newScrollLeft,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
       setTimeout(checkScrollButtons, 300);
     }
   };
 
   const colorClasses = {
-    green: 'text-green-800',
-    blue: 'text-blue-800',
-    red: 'text-red-800',
-    gray: 'text-gray-800',
+    green: "text-green-800",
+    blue: "text-blue-800",
+    red: "text-red-800",
+    gray: "text-gray-800",
   };
 
-  const showArchiveButton = color !== 'gray'; // Don't show archive button for already archived leads
+  const showArchiveButton = color !== "gray"; // Don't show archive button for already archived leads
 
   return (
     <section>
@@ -72,10 +84,9 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
           {/* Left Arrow */}
           {canScrollLeft && (
             <button
-              onClick={() => scroll('left')}
+              onClick={() => scroll("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 transition-all opacity-0 group-hover/section:opacity-100"
-              aria-label="Scroll left"
-            >
+              aria-label="Scroll left">
               <ChevronLeft className="w-6 h-6 text-gray-700" />
             </button>
           )}
@@ -85,8 +96,7 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
             ref={scrollContainerRef}
             onScroll={checkScrollButtons}
             className="flex gap-4 overflow-x-auto scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {leads.map((offeredLead) => (
               <LeadCard
                 key={offeredLead.lead.userId}
@@ -98,14 +108,16 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
                     : undefined
                 }
                 isArchiving={archiveMutation.isPending}
-                onDetail={<LeadDetailsSheet
-                  leadId={offeredLead.lead.userId}
-                  trigger={
-                    <button className="cursor-pointer text-sm flex-1 flex text-green-600 hover:text-green-800 font-medium transition-opacity items-center gap-1">
-                      Voir le détail <span aria-hidden="true">&rarr;</span>
-                    </button>
-                  }
-                />}
+                onDetail={
+                  <LeadDetailsSheet
+                    leadId={offeredLead.lead.userId}
+                    trigger={
+                      <button className="cursor-pointer text-sm flex-1 flex text-green-600 hover:text-green-800 font-medium transition-opacity items-center gap-1">
+                        Voir le détail <span aria-hidden="true">&rarr;</span>
+                      </button>
+                    }
+                  />
+                }
               />
             ))}
           </div>
@@ -113,10 +125,9 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
           {/* Right Arrow */}
           {canScrollRight && (
             <button
-              onClick={() => scroll('right')}
+              onClick={() => scroll("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 transition-all opacity-0 group-hover/section:opacity-100"
-              aria-label="Scroll right"
-            >
+              aria-label="Scroll right">
               <ChevronRight className="w-6 h-6 text-gray-700" />
             </button>
           )}
@@ -124,4 +135,4 @@ export const OfferSection = ({ title, subtitle, leads, archiveMutation, color }:
       )}
     </section>
   );
-}
+};

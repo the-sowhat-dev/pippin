@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export const AmountSlider = () => {
   const [sliderPosition, setSliderPosition] = useState(0); // 0 to 100
@@ -17,9 +17,9 @@ export const AmountSlider = () => {
   };
 
   const formatAmount = (amount: number): string => {
-    if (amount >= 1000000) return '1 000 000 €';
+    if (amount >= 1000000) return "1 000 000 €";
     if (amount >= 1000) {
-      return `${Math.floor(amount / 1000)} ${(amount % 1000).toString().padStart(3, '0')} €`;
+      return `${Math.floor(amount / 1000)} ${(amount % 1000).toString().padStart(3, "0")} €`;
     }
     return `${amount} €`;
   };
@@ -30,12 +30,8 @@ export const AmountSlider = () => {
     <div className="w-full px-4">
       {/* Value Display */}
       <div className="text-center mb-8">
-        <div className="text-4xl font-bold text-green-500 mb-2">
-          {formatAmount(amount)}
-        </div>
-        <div className="text-sm text-gray-500">
-          Montant à investir
-        </div>
+        <div className="text-4xl font-bold text-green-500 mb-2">{formatAmount(amount)}</div>
+        <div className="text-sm text-gray-500">Montant à investir</div>
       </div>
 
       {/* Slider Container */}

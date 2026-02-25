@@ -3,7 +3,7 @@ import {
   OfferStatusEnum,
   ProCommercialOfferLeadResponse,
   ProUserLikeLeadResponse,
-} from 'sowhat-types';
+} from "sowhat-types";
 
 interface SortOffersByStatusResponse {
   acceptedLeads: ProCommercialOfferLeadResponse[];
@@ -22,7 +22,7 @@ const InitialResponse: SortOffersByStatusResponse = {
 };
 
 export function sortOffersByStatus(
-  data?: MatchingLeadsResponse | null | undefined
+  data?: MatchingLeadsResponse | null | undefined,
 ): SortOffersByStatusResponse {
   if (!data) return InitialResponse;
 
@@ -31,14 +31,14 @@ export function sortOffersByStatus(
       data?.offers.filter(
         (o) =>
           o.offer.status === OfferStatusEnum.ACCEPTED ||
-          o.offer.status === OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER
+          o.offer.status === OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER,
       ) || [],
     pendingLeads: data?.offers.filter((o) => o.offer.status === OfferStatusEnum.PENDING) || [],
     rejectedLeads:
       data?.offers.filter(
         (o) =>
           o.offer.status === OfferStatusEnum.REJECTED ||
-          o.offer.status === OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER
+          o.offer.status === OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER,
       ) || [],
     archivedLeads:
       data?.offers.filter((o) => o.offer.status === OfferStatusEnum.ARCHIVED_BY_PRO) || [],

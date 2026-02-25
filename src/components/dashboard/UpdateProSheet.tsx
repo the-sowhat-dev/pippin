@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useUser, useAuth } from '@clerk/nextjs';
-import { ProResponse, UpdateProInput, ProCertificationEnum } from 'sowhat-types';
+import Image from "next/image";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useUser, useAuth } from "@clerk/nextjs";
+import { ProResponse, UpdateProInput, ProCertificationEnum } from "sowhat-types";
 
 import {
   Sheet,
@@ -16,14 +16,14 @@ import {
   SheetTrigger,
   SheetContent,
   SheetDescription,
-} from '@/components/ui/sheet';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { sanitizeText } from '@/utils/sanitize';
-import { Textarea } from '@/components/ui/textarea';
-import { updatePro, uploadImage } from '../../lib/api';
-import { CertificationsChips } from './CertificationsChips';
+} from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { sanitizeText } from "@/utils/sanitize";
+import { Textarea } from "@/components/ui/textarea";
+import { updatePro, uploadImage } from "../../lib/api";
+import { CertificationsChips } from "./CertificationsChips";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
@@ -47,14 +47,14 @@ export function UpdateProSheet({
   }
 
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
-    firstName: initialData?.firstName || user?.firstName || '',
-    lastName: initialData?.lastName || user?.lastName || '',
-    role: initialData?.role || '',
-    presentation: initialData?.presentation || '',
-    companyName: initialData?.companyName || '',
-    sirenId: initialData?.sirenId || '',
-    oriasId: initialData?.oriasId || '',
-    companyDescription: initialData?.companyDescription || '',
+    firstName: initialData?.firstName || user?.firstName || "",
+    lastName: initialData?.lastName || user?.lastName || "",
+    role: initialData?.role || "",
+    presentation: initialData?.presentation || "",
+    companyName: initialData?.companyName || "",
+    sirenId: initialData?.sirenId || "",
+    oriasId: initialData?.oriasId || "",
+    companyDescription: initialData?.companyDescription || "",
     certifications: initialCertifications,
   });
 
@@ -71,7 +71,7 @@ export function UpdateProSheet({
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
-        alert('Image trop volumineuse. La taille maximum est de 2MB.');
+        alert("Image trop volumineuse. La taille maximum est de 2MB.");
         return;
       }
       setProfileImageFile(file);
@@ -84,7 +84,7 @@ export function UpdateProSheet({
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
-        alert('Image trop volumineuse. La taille maximum est de 2MB.');
+        alert("Image trop volumineuse. La taille maximum est de 2MB.");
         return;
       }
 
@@ -125,11 +125,11 @@ export function UpdateProSheet({
       await updatePro(payload, token);
 
       if (profileImageFile) {
-        await uploadImage(profileImageFile, 'clerk', token);
+        await uploadImage(profileImageFile, "clerk", token);
       }
 
       if (companyImageFile) {
-        await uploadImage(companyImageFile, 'company', token);
+        await uploadImage(companyImageFile, "company", token);
       }
 
       await user.reload();
@@ -137,7 +137,7 @@ export function UpdateProSheet({
       setIsOpen(false);
     } catch (err) {
       console.error(err);
-      alert('Une erreur est survenue lors de la mise à jour.');
+      alert("Une erreur est survenue lors de la mise à jour.");
     } finally {
       setIsLoading(false);
     }
@@ -187,7 +187,7 @@ export function UpdateProSheet({
                 <Input
                   id="firstName"
                   name="firstName"
-                  value={formData.firstName || ''}
+                  value={formData.firstName || ""}
                   onChange={handleChange}
                   required
                 />
@@ -197,7 +197,7 @@ export function UpdateProSheet({
                 <Input
                   id="lastName"
                   name="lastName"
-                  value={formData.lastName || ''}
+                  value={formData.lastName || ""}
                   onChange={handleChange}
                   required
                 />
@@ -209,7 +209,7 @@ export function UpdateProSheet({
               <Input
                 id="role"
                 name="role"
-                value={formData.role || ''}
+                value={formData.role || ""}
                 onChange={handleChange}
                 required
                 placeholder="Ex: Conseiller en gestion de patrimoine"
@@ -221,7 +221,7 @@ export function UpdateProSheet({
               <Textarea
                 id="presentation"
                 name="presentation"
-                value={formData.presentation || ''}
+                value={formData.presentation || ""}
                 onChange={handleChange}
                 required
                 rows={3}
@@ -270,7 +270,7 @@ export function UpdateProSheet({
               <Input
                 id="companyName"
                 name="companyName"
-                value={formData.companyName || ''}
+                value={formData.companyName || ""}
                 onChange={handleChange}
                 required
               />
@@ -281,7 +281,7 @@ export function UpdateProSheet({
               <Input
                 id="sirenId"
                 name="sirenId"
-                value={formData.sirenId || ''}
+                value={formData.sirenId || ""}
                 onChange={handleChange}
                 required
               />
@@ -291,7 +291,7 @@ export function UpdateProSheet({
               <Input
                 id="oriasId"
                 name="oriasId"
-                value={formData.oriasId || ''}
+                value={formData.oriasId || ""}
                 onChange={handleChange}
                 required
               />
@@ -302,7 +302,7 @@ export function UpdateProSheet({
               <Textarea
                 id="companyDescription"
                 name="companyDescription"
-                value={formData.companyDescription || ''}
+                value={formData.companyDescription || ""}
                 onChange={handleChange}
                 required
                 rows={3}
@@ -319,8 +319,7 @@ export function UpdateProSheet({
             <Button
               type="submit"
               disabled={isLoading}
-              className="bg-green-900 hover:bg-green-800 text-white gap-2 shadow-sm"
-            >
+              className="bg-green-900 hover:bg-green-800 text-white gap-2 shadow-sm">
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Enregistrer
             </Button>

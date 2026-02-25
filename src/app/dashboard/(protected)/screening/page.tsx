@@ -1,4 +1,4 @@
-import { ProLeadsClient } from '@/components/dashboard/screening/ProLeadsClient';
+import { ProLeadsClient } from "@/components/dashboard/screening/ProLeadsClient";
 
 export default async function Page() {
   return (

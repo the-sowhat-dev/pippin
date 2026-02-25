@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
-import pool from '../../../lib/db';
+import { NextResponse } from "next/server";
+import pool from "../../../lib/db";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit') || '16', 10);
-    const offset = parseInt(searchParams.get('offset') || '0', 10);
+    const limit = parseInt(searchParams.get("limit") || "16", 10);
+    const offset = parseInt(searchParams.get("offset") || "0", 10);
 
     const client = await pool.connect();
     try {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
       client.release();
     }
   } catch (error) {
-    console.error('Error fetching articles:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("Error fetching articles:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { LinkedIn } from '@mui/icons-material';
-import * as React from 'react';
+import Link from "next/link";
+import { LinkedIn } from "@mui/icons-material";
+import * as React from "react";
 
 import {
   Dialog,
@@ -11,15 +11,15 @@ import {
   DialogContent,
   DialogTrigger,
   DialogDescription,
-} from './ui/dialog';
-import { AvatarProfile } from './AvatarProfile';
-import { useLanguage } from '@/i18n/LanguageProvider';
-import { Button } from '@radix-ui/themes';
+} from "./ui/dialog";
+import { AvatarProfile } from "./AvatarProfile";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { Button } from "@radix-ui/themes";
 
-const EMAIL = 'contact@invstore.fr';
+const EMAIL = "contact@invstore.fr";
 
 interface ProfileContactDialogProps {
-  person: 'raph' | 'hugo';
+  person: "raph" | "hugo";
   name: string;
   title: string;
   link: string;
@@ -84,10 +84,9 @@ export function ContactButtonWithDialog({ trigger }: { trigger?: React.ReactNode
           trigger
         ) : (
           <Button
-            size={{ initial: '2', sm: '3' }}
+            size={{ initial: "2", sm: "3" }}
             variant="solid"
-            className="bg-gray-200 text-gray-900 hover:bg-gray-200/85"
-          >
+            className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
             <span className="hidden md:inline">Nous contacter</span>
             <span className="inline md:hidden">Contact</span>
           </Button>

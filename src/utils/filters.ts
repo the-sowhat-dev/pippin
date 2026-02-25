@@ -13,8 +13,8 @@ export type LeadsFiltersAndSorting = {
   personalSalaryRanges: string[];
 
   // Sorting
-  sortBy: 'user_created_at' | 'initial_amount';
-  sortOrder: 'asc' | 'desc';
+  sortBy: "user_created_at" | "initial_amount";
+  sortOrder: "asc" | "desc";
 };
 
 export const InitialLeadsFiltersAndSorting: LeadsFiltersAndSorting = {
@@ -27,6 +27,6 @@ export const InitialLeadsFiltersAndSorting: LeadsFiltersAndSorting = {
   onlyOutsideFrance: false,
   personalNetWorthRanges: [],
   personalSalaryRanges: [],
-  sortBy: 'user_created_at',
-  sortOrder: 'desc',
+  sortBy: "user_created_at",
+  sortOrder: "desc",
 };

@@ -1,11 +1,7 @@
-'use client';
+"use client";
 
-import {
-  ProCertificationEnum,
-  ProCertifications,
-  getProCertificationByKey,
-} from 'sowhat-types';
-import { Switch } from '../ui/switch';
+import { ProCertificationEnum, ProCertifications, getProCertificationByKey } from "sowhat-types";
+import { Switch } from "../ui/switch";
 
 interface CertificationsChipsProps {
   selectedCertifications: ProCertificationEnum[];
@@ -38,18 +34,16 @@ export function CertificationsChips({
         return (
           <div
             key={certification}
-            title={isAMF ? 'AMF est obligatoire' : certificationInfo?.description}
+            title={isAMF ? "AMF est obligatoire" : certificationInfo?.description}
             className={`
               flex items-center justify-between px-4 py-3 rounded-lg border-2 transition-all
-              ${isSelected
-                ? 'bg-green-50 border-green-500 shadow-sm'
-                : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+              ${
+                isSelected
+                  ? "bg-green-50 border-green-500 shadow-sm"
+                  : "bg-gray-50 border-gray-200 hover:border-gray-300"
               }
-            `}
-          >
-            <span
-              className={`font-semibold ${isSelected ? 'text-green-800' : 'text-gray-600'}`}
-            >
+            `}>
+            <span className={`font-semibold ${isSelected ? "text-green-800" : "text-gray-600"}`}>
               {certificationInfo?.label || certification}
               {isAMF && (
                 <span className="ml-2 text-xs font-normal text-green-600">(obligatoire)</span>

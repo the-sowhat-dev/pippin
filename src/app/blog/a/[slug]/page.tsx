@@ -1,15 +1,15 @@
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { Metadata } from 'next';
-import pool from '../../../../lib/db';
-import { MarkdownRenderer } from '@/components/MarkdownRenderer';
-import { LexendFont, RobotoFont } from '@/utils/fonts';
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Metadata } from "next";
+import pool from "../../../../lib/db";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { LexendFont, RobotoFont } from "@/utils/fonts";
 
 // Helper to fetch article
 async function getArticle(slug: string) {
   const client = await pool.connect();
   try {
-    const query = 'SELECT * FROM articles WHERE slug = $1 AND is_published = true';
+    const query = "SELECT * FROM articles WHERE slug = $1 AND is_published = true";
     const result = await client.query(query, [slug]);
     return result.rows[0] || null;
   } finally {
@@ -35,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.description,
-      type: 'article',
+      type: "article",
       publishedTime: article.published_at.toISOString(),
       images: article.cover_image ? [{ url: article.cover_image }] : [],
     },
@@ -56,13 +56,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   return (
     <div className={`flex flex-col gap-4 ${RobotoFont.className}`}>
       <h1
-        className={`text-2xl sm:text-3xl pt-8 pb-16 mb-0 fade-in text-center ${LexendFont.className} text-green-800`}
-      >
+        className={`text-2xl sm:text-3xl pt-8 pb-16 mb-0 fade-in text-center ${LexendFont.className} text-green-800`}>
         {article.title}
       </h1>
 
       <div className="text-center text-gray-500 mb-8">
-        {new Date(article.published_at).toLocaleDateString('fr-FR')}
+        {new Date(article.published_at).toLocaleDateString("fr-FR")}
       </div>
 
       {article.cover_image && (

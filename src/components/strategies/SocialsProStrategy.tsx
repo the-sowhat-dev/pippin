@@ -1,6 +1,6 @@
-import { Instagram, LinkedIn } from '@mui/icons-material';
-import Link from 'next/link';
-import Image from 'next/image';
+import { Instagram, LinkedIn } from "@mui/icons-material";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function SocialsProStrategy() {
   return (
@@ -12,31 +12,28 @@ export default function SocialsProStrategy() {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href={'https://www.instagram.com/invstore_app/'}
-          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
-        >
-          <Instagram fontSize="large" style={{ color: '#F50E6A' }} />
+          href={"https://www.instagram.com/invstore_app/"}
+          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center">
+          <Instagram fontSize="large" style={{ color: "#F50E6A" }} />
         </Link>
 
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href={'https://www.linkedin.com/company/invstore/'}
-          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
-        >
-          <LinkedIn fontSize="large" style={{ color: '#0C5CBA' }} />
+          href={"https://www.linkedin.com/company/invstore/"}
+          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center">
+          <LinkedIn fontSize="large" style={{ color: "#0C5CBA" }} />
         </Link>
 
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href={'https://www.tiktok.com/@invstore_app'}
-          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center"
-        >
+          href={"https://www.tiktok.com/@invstore_app"}
+          className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center">
           <Image
             width={28}
             height={28}
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: "contain" }}
             src="/icons/tiktok.svg"
             alt="TikTok icon"
           />

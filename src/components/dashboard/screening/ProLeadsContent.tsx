@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Loader2 } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
-import { useState, useEffect } from 'react';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useInfiniteQuery, keepPreviousData } from '@tanstack/react-query';
+import { Loader2 } from "lucide-react";
+import { useAuth } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useInfiniteQuery, keepPreviousData } from "@tanstack/react-query";
 
-import { LeadsList } from './LeadsList';
-import { getLeads } from '@/lib/api';
-import { FiltersPanel } from './FiltersPanel';
-import { LeadsFiltersAndSorting } from '@/utils/filters';
-import { filtersToSearchParams, searchParamsToFilters } from '@/utils/urlParams';
+import { LeadsList } from "./LeadsList";
+import { getLeads } from "@/lib/api";
+import { FiltersPanel } from "./FiltersPanel";
+import { LeadsFiltersAndSorting } from "@/utils/filters";
+import { filtersToSearchParams, searchParamsToFilters } from "@/utils/urlParams";
 
 export const ProLeadsContent = () => {
   const router = useRouter();
@@ -26,7 +26,7 @@ export const ProLeadsContent = () => {
   const [debouncedFilters, setDebouncedFilters] = useState<LeadsFiltersAndSorting>(filters);
 
   // Get leadId from URL
-  const leadIdFromUrl = searchParams.get('leadId');
+  const leadIdFromUrl = searchParams.get("leadId");
 
   // Debounce logic
   useEffect(() => {
@@ -40,19 +40,19 @@ export const ProLeadsContent = () => {
   // Sync URL with filters and preserve leadId
   useEffect(() => {
     const params = filtersToSearchParams(debouncedFilters);
-    
+
     // Preserve leadId in URL if it exists
     if (leadIdFromUrl) {
-      params.set('leadId', leadIdFromUrl);
+      params.set("leadId", leadIdFromUrl);
     }
-    
+
     const queryString = params.toString();
     router.replace(`${pathname}?${queryString}`, { scroll: false });
   }, [debouncedFilters, pathname, router, leadIdFromUrl]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isFetching } =
     useInfiniteQuery({
-      queryKey: ['pro-leads', debouncedFilters],
+      queryKey: ["pro-leads", debouncedFilters],
       queryFn: async ({ pageParam }: { pageParam: string | null }) => {
         const token = await getToken();
         return getLeads(debouncedFilters, pageParam, token);
@@ -66,8 +66,8 @@ export const ProLeadsContent = () => {
   const leads = data?.pages.flatMap((page) => page.items || []) || [];
   const totalCount = data?.pages[0]?.total;
 
-  const isLoadingInitial = status === 'pending';
-  const isError = status === 'error';
+  const isLoadingInitial = status === "pending";
+  const isError = status === "error";
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -102,4 +102,4 @@ export const ProLeadsContent = () => {
       </section>
     </div>
   );
-}
+};

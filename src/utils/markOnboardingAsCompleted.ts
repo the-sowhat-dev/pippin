@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
-import { auth, clerkClient } from '@clerk/nextjs/server';
+import { auth, clerkClient } from "@clerk/nextjs/server";
 
 export async function markOnboardingAsCompleted() {
   const { userId } = await auth();
 
   if (!userId) {
-    throw new Error('Unauthorized');
+    throw new Error("Unauthorized");
   }
 
   const client = await clerkClient();

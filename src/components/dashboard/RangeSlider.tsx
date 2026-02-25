@@ -1,5 +1,5 @@
-import * as SliderPrimitive from '@radix-ui/react-slider';
-import React from 'react';
+import * as SliderPrimitive from "@radix-ui/react-slider";
+import React from "react";
 
 interface RangeSliderProps {
   min: number;
@@ -35,7 +35,7 @@ export const RangeSlider = ({
       // Map bpValue..max to bpPercent..100
       return bpPercent + ((val - bpValue) / (max - bpValue)) * (100 - bpPercent);
     },
-    [isNonLinear, breakPoint, min, max]
+    [isNonLinear, breakPoint, min, max],
   );
 
   const fromSlider = React.useCallback(
@@ -50,7 +50,7 @@ export const RangeSlider = ({
       // Map bpPercent..100 to bpValue..max
       return bpValue + ((sliderVal - bpPercent) / (100 - bpPercent)) * (max - bpValue);
     },
-    [isNonLinear, breakPoint, min, max]
+    [isNonLinear, breakPoint, min, max],
   );
 
   const sliderValue = isNonLinear
@@ -69,8 +69,7 @@ export const RangeSlider = ({
       max={isNonLinear ? 100 : max}
       min={isNonLinear ? 0 : min}
       step={isNonLinear ? 0.1 : step}
-      onValueChange={handleValueChange}
-    >
+      onValueChange={handleValueChange}>
       <SliderPrimitive.Track className="bg-gray-200 relative grow rounded-full h-[3px]">
         <SliderPrimitive.Range className="absolute bg-blue-600 rounded-full h-full" />
       </SliderPrimitive.Track>

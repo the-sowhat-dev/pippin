@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import { toast } from 'sonner';
-import { useAuth } from '@clerk/nextjs';
-import { OfferStatusEnum } from 'sowhat-types';
-import { Loader2, RefreshCw } from 'lucide-react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMemo } from "react";
+import { toast } from "sonner";
+import { useAuth } from "@clerk/nextjs";
+import { OfferStatusEnum } from "sowhat-types";
+import { Loader2, RefreshCw } from "lucide-react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { LexendFont } from '@/utils/fonts';
-import { sortOffersByStatus } from '@/utils/sortOffers';
-import { getMatchingLeads, updateOffer } from '@/lib/api';
-import { OfferSection } from '@/components/dashboard/match/OfferSection';
-import { LikedLeadCard } from '@/components/dashboard/screening/LikedLeadCard';
-import { LeadDetailsSheet } from '@/components/dashboard/screening/LeadDetailsSheet';
+import { LexendFont } from "@/utils/fonts";
+import { sortOffersByStatus } from "@/utils/sortOffers";
+import { getMatchingLeads, updateOffer } from "@/lib/api";
+import { OfferSection } from "@/components/dashboard/match/OfferSection";
+import { LikedLeadCard } from "@/components/dashboard/screening/LikedLeadCard";
+import { LeadDetailsSheet } from "@/components/dashboard/screening/LeadDetailsSheet";
 
 export default function MatchPage() {
   const { getToken } = useAuth();
   const queryClient = useQueryClient();
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
-    queryKey: ['matching-leads'],
+    queryKey: ["matching-leads"],
     queryFn: async () => {
       const token = await getToken();
       return getMatchingLeads(token);
@@ -34,12 +34,12 @@ export default function MatchPage() {
           id: offerId,
           status: OfferStatusEnum.ARCHIVED_BY_PRO,
         },
-        token
+        token,
       );
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['matching-leads'] });
-      toast.success('Lead archivé avec succès');
+      queryClient.invalidateQueries({ queryKey: ["matching-leads"] });
+      toast.success("Lead archivé avec succès");
     },
     onError: () => {
       toast.error("Erreur lors de l'archivage du lead");
@@ -49,7 +49,7 @@ export default function MatchPage() {
   // Pre-sort offers by status
   const { acceptedLeads, pendingLeads, rejectedLeads, archivedLeads, likedLeads } = useMemo(
     () => sortOffersByStatus(data),
-    [data]
+    [data],
   );
 
   if (isLoading) {
@@ -78,9 +78,8 @@ export default function MatchPage() {
         <button
           onClick={() => refetch()}
           disabled={isFetching}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          <RefreshCw className={`w-4 h-4 ${isFetching ? 'animate-spin' : ''}`} />
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
           Rafraichir
         </button>
       </header>
@@ -126,9 +125,7 @@ export default function MatchPage() {
       {/* Liked Leads Section */}
       <section>
         <h2 className={`${LexendFont.className} text-2xl mb-2 text-green-800`}>Leads favoris</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Les leads que vous avez ajoutés à vos favoris
-        </p>
+        <p className="text-sm text-gray-500 mb-4">Les leads que vous avez ajoutés à vos favoris</p>
         {likedLeads.length === 0 ? (
           <p className="text-gray-500 italic">Aucun favori.</p>
         ) : (
@@ -137,16 +134,18 @@ export default function MatchPage() {
               <LikedLeadCard
                 key={`liked_lead_card_${index}`}
                 lead={likedLead.lead}
-                action={<LeadDetailsSheet
-                  key={`user_lead_details_sheet_${index}`}
-                  leadId={likedLead.lead.userId}
-                  trigger={
-                    <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
-                      Voir le détail <span aria-hidden="true">&rarr;</span>
-                    </button>
-                  }
-                />} />
-
+                action={
+                  <LeadDetailsSheet
+                    key={`user_lead_details_sheet_${index}`}
+                    leadId={likedLead.lead.userId}
+                    trigger={
+                      <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
+                        Voir le détail <span aria-hidden="true">&rarr;</span>
+                      </button>
+                    }
+                  />
+                }
+              />
             ))}
           </div>
         )}
@@ -154,5 +153,3 @@ export default function MatchPage() {
     </div>
   );
 }
-
-

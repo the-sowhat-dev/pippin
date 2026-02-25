@@ -1,8 +1,8 @@
-import { Loader2 } from 'lucide-react';
-import { LeadResponse } from 'sowhat-types';
+import { Loader2 } from "lucide-react";
+import { LeadResponse } from "sowhat-types";
 
-import { LeadRow } from './LeadRow';
-import { LeadDetailsSheet } from './LeadDetailsSheet';
+import { LeadRow } from "./LeadRow";
+import { LeadDetailsSheet } from "./LeadDetailsSheet";
 
 interface LeadsListProps {
   leads: LeadResponse[];
@@ -55,8 +55,7 @@ export const LeadsList = ({
         </div>
         <button
           onClick={() => window.location.reload()}
-          className="text-sm text-gray-600 underline hover:text-gray-900"
-        >
+          className="text-sm text-gray-600 underline hover:text-gray-900">
           Réessayer
         </button>
       </div>
@@ -77,7 +76,7 @@ export const LeadsList = ({
   return (
     <div>
       <div className="mb-4 text-sm text-gray-500 font-medium">
-        {totalCount !== undefined ? `${totalCount} résultats trouvés` : 'Résultats'}
+        {totalCount !== undefined ? `${totalCount} résultats trouvés` : "Résultats"}
       </div>
 
       <div className="space-y-3">
@@ -105,10 +104,9 @@ export const LeadsList = ({
           <button
             onClick={() => fetchNextPage()}
             disabled={isFetchingNextPage}
-            className="px-6 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2"
-          >
+            className="px-6 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center gap-2">
             {isFetchingNextPage && <Loader2 className="w-4 h-4 animate-spin" />}
-            {isFetchingNextPage ? 'Chargement...' : 'Charger plus'}
+            {isFetchingNextPage ? "Chargement..." : "Charger plus"}
           </button>
         </div>
       )}
