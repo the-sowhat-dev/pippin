@@ -98,11 +98,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
       const token = await getToken();
       if (!lead) throw new Error("Lead not loaded");
       return createOffer(
-        {
-          leadUserId: lead.userId,
-          message: sanitizeText(message),
-          sentAt: new Date(),
-        },
+        { leadUserId: lead.userId, message: sanitizeText(message), sentAt: new Date() },
         token,
       );
     },
@@ -117,7 +113,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     mutationFn: async (message: string) => {
       const token = await getToken();
       if (!lead?.offer) throw new Error("No offer to update");
-      return updateOffer({ id: lead.offer.id, message: sanitizeText(message) }, token);
+      return updateOffer(lead.offer.id, { message: sanitizeText(message) }, token);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["lead", leadId] });

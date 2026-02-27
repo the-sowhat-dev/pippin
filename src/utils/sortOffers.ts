@@ -1,8 +1,8 @@
 import {
-  MatchingLeadsResponse,
   OfferStatusEnum,
-  ProCommercialOfferLeadResponse,
+  MatchingLeadsResponse,
   ProUserLikeLeadResponse,
+  ProCommercialOfferLeadResponse,
 } from "sowhat-types";
 
 interface SortOffersByStatusResponse {
@@ -26,22 +26,28 @@ export function sortOffersByStatus(
 ): SortOffersByStatusResponse {
   if (!data) return InitialResponse;
 
+  const accepted: ProCommercialOfferLeadResponse[] = [];
+  const pending: ProCommercialOfferLeadResponse[] = [];
+  const rejected: ProCommercialOfferLeadResponse[] = [];
+  const archived: ProCommercialOfferLeadResponse[] = [];
+
+  for (const offer of data.offers) {
+    if (offer.offer.archivedByProAt !== null) {
+      archived.push(offer);
+    } else if (offer.offer.status === OfferStatusEnum.ACCEPTED) {
+      accepted.push(offer);
+    } else if (offer.offer.status === OfferStatusEnum.PENDING) {
+      pending.push(offer);
+    } else if (offer.offer.status === OfferStatusEnum.REJECTED) {
+      rejected.push(offer);
+    }
+  }
+
   return {
-    acceptedLeads:
-      data?.offers.filter(
-        (o) =>
-          o.offer.status === OfferStatusEnum.ACCEPTED ||
-          o.offer.status === OfferStatusEnum.ACCEPTED_THEN_ARCHIVED_BY_USER,
-      ) || [],
-    pendingLeads: data?.offers.filter((o) => o.offer.status === OfferStatusEnum.PENDING) || [],
-    rejectedLeads:
-      data?.offers.filter(
-        (o) =>
-          o.offer.status === OfferStatusEnum.REJECTED ||
-          o.offer.status === OfferStatusEnum.REJECTED_THEN_ARCHIVED_BY_USER,
-      ) || [],
-    archivedLeads:
-      data?.offers.filter((o) => o.offer.status === OfferStatusEnum.ARCHIVED_BY_PRO) || [],
+    acceptedLeads: accepted,
+    pendingLeads: pending,
+    rejectedLeads: rejected,
+    archivedLeads: archived,
     likedLeads: data?.likes || [],
   };
 }

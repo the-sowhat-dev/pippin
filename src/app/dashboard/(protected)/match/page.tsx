@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
-import { OfferStatusEnum } from "sowhat-types";
 import { Loader2, RefreshCw } from "lucide-react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -29,13 +28,7 @@ export default function MatchPage() {
   const archiveMutation = useMutation({
     mutationFn: async ({ offerId }: { offerId: string }) => {
       const token = await getToken();
-      return updateOffer(
-        {
-          id: offerId,
-          status: OfferStatusEnum.ARCHIVED_BY_PRO,
-        },
-        token,
-      );
+      return updateOffer(offerId, { archivedByProAt: new Date() }, token);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["matching-leads"] });

@@ -6,7 +6,6 @@ import {
   ProResponse,
   UpdateProInput,
   CreateCommercialOfferInput,
-  UpdateCommercialOfferInput,
   ProCommercialOfferResponse,
   MatchingLeadsResponse,
   getPersonalSalaryRangeKey,
@@ -14,6 +13,7 @@ import {
   ProLeadsAlertResponse,
   CreateProLeadsAlertInput,
   UpdateProLeadsAlertInput,
+  UpdateCommercialOfferAsProInput,
 } from "sowhat-types";
 
 import { LeadsFiltersAndSorting } from "@/utils/filters";
@@ -251,16 +251,14 @@ export async function createOffer(
  * Update a commercial offer
  */
 export async function updateOffer(
-  data: UpdateCommercialOfferInput,
+  offerId: string,
+  data: UpdateCommercialOfferAsProInput,
   token: string | null,
 ): Promise<ProCommercialOfferResponse> {
   const result = await fetchWithAuth<ProCommercialOfferResponse | null>(
-    `/pro/offer/${data.id}`,
+    `/pro/offer/${offerId}`,
     token,
-    {
-      method: "PUT",
-      body: JSON.stringify(data),
-    },
+    { method: "PUT", body: JSON.stringify(data) },
   );
 
   if (!result) {
