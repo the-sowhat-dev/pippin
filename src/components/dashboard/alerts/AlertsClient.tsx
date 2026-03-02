@@ -57,8 +57,11 @@ export function AlertsClient() {
 
         <div className="p-6 space-y-5">
           <p className="text-sm text-gray-500">
-            Les emails d&apos;alertes seront envoyés à l&apos;email indiqué ci-dessus vers 8h chaque
-            matin lorsque une ou plusieurs alertes sont actives.
+            Vous pouvez paramétrer jusqu'à deux alertes, nous vous recommandons d'en créer une
+            relativement restreinte à votre cœur de cible et une autre au périmètre plus large. Les
+            emails d&apos;alertes vous seront envoyés tous les matins vers 8h, sous réserve qu'un ou
+            plusieurs utilisateurs correspondant aux profils ciblés aient créé un compte invstore
+            dans les dernières 24h.
           </p>
         </div>
       </div>

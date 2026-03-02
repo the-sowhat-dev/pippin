@@ -18,6 +18,8 @@ import { useAuth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Loader2, Heart, Info, CheckCircle2 } from "lucide-react";
 import { useQuery, useMutation, useQueryClient, InfiniteData } from "@tanstack/react-query";
+import { useProQuota } from "@/hooks/useProQuota";
+import { useCreateOffer } from "@/hooks/useCreateOffer";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import {
@@ -31,7 +33,7 @@ import {
 import { OfferDialog } from "./OfferDialog";
 import { SectionTitle } from "./SheetSectionTitle";
 import { formatAmount } from "@/utils/formatAmount";
-import { getLead, createOffer, updateOffer, toggleLikeUser } from "../../../lib/api";
+import { getLead, updateOffer, toggleLikeUser } from "../../../lib/api";
 import { LexendFont } from "@/utils/fonts";
 import { formatPostalCode } from "@/utils/formatPostalCode";
 import { sanitizeText } from "@/utils/sanitize";
@@ -93,21 +95,24 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  const createMutation = useMutation({
-    mutationFn: async (message: string) => {
-      const token = await getToken();
-      if (!lead) throw new Error("Lead not loaded");
-      return createOffer(
-        { leadUserId: lead.userId, message: sanitizeText(message), sentAt: new Date() },
-        token,
-      );
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["lead", leadId] });
-      setIsOfferDialogOpen(false);
-      toast.success("Offre créée avec succès");
-    },
-  });
+  const { data: quota } = useProQuota();
+
+  const createOfferMutation = useCreateOffer();
+
+  // Wrap the hook to add component-specific side effects
+  const handleCreateOffer = (message: string) => {
+    if (!lead) return;
+    createOfferMutation.mutate(
+      { leadUserId: lead.userId, message: sanitizeText(message), sentAt: new Date() },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ["lead", leadId] });
+          setIsOfferDialogOpen(false);
+          toast.success("Offre créée avec succès");
+        },
+      },
+    );
+  };
 
   const updateMutation = useMutation({
     mutationFn: async (message: string) => {
@@ -171,7 +176,7 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     if (lead?.offer) {
       updateMutation.mutate(offerMessage);
     } else {
-      createMutation.mutate(offerMessage);
+      handleCreateOffer(offerMessage);
     }
   };
 
@@ -184,7 +189,9 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
     setIsOfferDialogOpen(true);
   };
 
-  const isSubmitting = createMutation.isPending || updateMutation.isPending;
+  const isSubmitting = createOfferMutation.isPending || updateMutation.isPending;
+  const isNewOffer = !lead?.offer;
+  const isQuotaExhausted = isNewOffer && quota !== undefined && quota.remaining === 0;
 
   return (
     <>
@@ -604,7 +611,20 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                   <Info className="w-4 h-4 shrink-0" />
                   <span className="text-sm">
                     {!lead?.offer ? (
-                      "Vous n'avez pas encore fait d'offre à ce particulier"
+                      isQuotaExhausted ? (
+                        <span className="text-red-400 font-medium">
+                          Quota mensuel atteint — vous ne pouvez plus envoyer d&apos;offres ce mois-ci.
+                        </span>
+                      ) : (
+                        <span>
+                          Vous n&apos;avez pas encore fait d&apos;offre à ce particulier
+                          {quota !== undefined && (
+                            <span className="ml-1 text-gray-400">
+                              ({quota.remaining} offre{quota.remaining > 1 ? "s" : ""} restante{quota.remaining > 1 ? "s" : ""})
+                            </span>
+                          )}
+                        </span>
+                      )
                     ) : (
                       <>
                         {(lead.offer.status === "REJECTED" ||
@@ -651,9 +671,9 @@ export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadD
                   </Button>
                   {(!lead?.offer || lead?.offer?.status === "PENDING") && (
                     <Button
-                      className="bg-green-600 hover:bg-green-600/80 text-white font-semibold"
+                      className="bg-green-600 hover:bg-green-600/80 text-white font-semibold disabled:opacity-50"
                       onClick={openOfferDialog}
-                      disabled={!lead}>
+                      disabled={!lead || isQuotaExhausted}>
                       {lead?.offer ? "Modifier l'offre" : "Faire une offre"}
                     </Button>
                   )}

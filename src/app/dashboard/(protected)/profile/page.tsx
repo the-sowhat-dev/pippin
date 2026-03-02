@@ -1,6 +1,8 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from "lucide-react";
-import { getPro } from "../../../../lib/api";
+import { getPro, getProQuota } from "../../../../lib/api";
+import { QuotaCard } from "@/components/dashboard/profile/QuotaCard";
+import { LegalLinks } from "@/components/dashboard/profile/LegalLinks";
 import { UpdateProSheet } from "@/components/dashboard/UpdateProSheet";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -12,7 +14,10 @@ export default async function Page() {
   const { getToken } = await auth();
   const token = await getToken();
 
-  const proData = token ? await getPro(token) : null;
+  const [proData, quotaData] = await Promise.all([
+    token ? getPro(token) : null,
+    token ? getProQuota(token) : null,
+  ]);
 
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto">
@@ -22,6 +27,8 @@ export default async function Page() {
           Gérez vos informations professionnelles et celle de votre entreprise.
         </p>
       </header>
+
+      <QuotaCard quota={quotaData} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* User Card */}
@@ -160,6 +167,8 @@ export default async function Page() {
           </div>
         </div>
       </div>
+
+      <LegalLinks />
     </div>
   );
 }

@@ -199,6 +199,7 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
             <FilterRow
               label="Besoins"
               color="blue"
+              noSelectionMessage="Tous les besoins seront pris en compte"
               options={NEEDS_OPTIONS}
               value={filters.needs}
               onChange={(needs) => setFilters((f) => ({ ...f, needs }))}
@@ -208,6 +209,7 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
             <FilterRow
               label="Produits financiers recherchés"
               color="green"
+              noSelectionMessage="Tous les produits seront pris en compte"
               options={PRODUCTS_OPTIONS}
               value={filters.financialProducts}
               onChange={(financialProducts) => setFilters((f) => ({ ...f, financialProducts }))}
@@ -216,6 +218,8 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
             {/* Salary ranges */}
             <FilterRow
               label="Revenus personnels déclarés"
+              selectLabel="Aucun revenu sélectionné"
+              noSelectionMessage="Tous les revenus personnels seront pris en compte"
               color="orange"
               options={SALARY_OPTIONS}
               value={filters.personalSalaryRanges}
@@ -228,6 +232,7 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
             <FilterRow
               label="Patrimoine personnel déclaré"
               color="teal"
+              noSelectionMessage="Tous les patrimoines personnels seront pris en compte"
               options={NET_WORTH_OPTIONS}
               value={filters.personalNetWorthRanges}
               onChange={(personalNetWorthRanges) =>
@@ -246,6 +251,11 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
                 value={selectedDepartments}
                 onChange={handleDepartmentsChange}
               />
+              {filters.postalCodes.length === 0 && (
+                <div className="text-xs text-gray-500 ml-1">
+                  <span className="text-gray-500">Tous les départements seront pris en compte</span>
+                </div>
+              )}
               {filters.postalCodes.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-2">
                   {selectedDepartments.map((dept, index) => (

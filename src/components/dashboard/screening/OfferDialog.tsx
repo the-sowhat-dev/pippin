@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Info, Loader2, AlertTriangle } from "lucide-react";
+import { Info, Loader2, AlertTriangle, MessageSquare } from "lucide-react";
 import {
   Dialog,
   DialogTitle,
@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { FullLeadResponse } from "sowhat-types";
 import { Switch } from "@/components/ui/switch";
+import { useProQuota } from "@/hooks/useProQuota";
 
 /** Patterns to detect forbidden content in offer messages */
 const FORBIDDEN_PATTERNS = {
@@ -105,6 +106,10 @@ export function OfferDialog({
   const [showWarningAlert, setShowWarningAlert] = useState(false);
   const [detectedTypes, setDetectedTypes] = useState<ForbiddenContentType[]>([]);
 
+  const { data: quota } = useProQuota();
+  const isNewOffer = !lead?.offer;
+  const isQuotaExhausted = isNewOffer && quota !== undefined && quota.remaining === 0;
+
   useEffect(() => {
     if (!open) {
       setShowWarningAlert(false);
@@ -145,6 +150,27 @@ export function OfferDialog({
                   &quot;Profil&quot;.
                 </p>
               </div>
+              {isNewOffer && quota !== undefined && (
+                <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm border ${
+                    isQuotaExhausted
+                      ? "bg-red-50 border-red-200 text-red-700"
+                      : quota.remaining <= quota.limit * 0.2
+                        ? "bg-amber-50 border-amber-200 text-amber-700"
+                        : "bg-green-50 border-green-200 text-green-700"
+                  }`}>
+                  <MessageSquare className="w-4 h-4 shrink-0" />
+                  <span>
+                    {isQuotaExhausted ? (
+                      <strong>Quota mensuel atteint — vous ne pouvez plus envoyer d&apos;offres ce mois-ci.</strong>
+                    ) : (
+                      <>
+                        <strong>{quota.remaining}</strong> offre{quota.remaining > 1 ? "s" : ""} restante{quota.remaining > 1 ? "s" : ""} ce mois-ci
+                      </>
+                    )}
+                  </span>
+                </div>
+              )}
             </div>
           </DialogDescription>
         </DialogHeader>
@@ -203,7 +229,7 @@ export function OfferDialog({
             <Button
               className="bg-green-500 hover:bg-green-600 text-white"
               onClick={handleValidationClick}
-              disabled={isSubmitting}>
+              disabled={isSubmitting || isQuotaExhausted}>
               {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               {lead?.offer ? "Mettre à jour" : "Envoyer"}
             </Button>

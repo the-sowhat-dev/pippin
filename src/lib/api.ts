@@ -14,6 +14,7 @@ import {
   CreateProLeadsAlertInput,
   UpdateProLeadsAlertInput,
   UpdateCommercialOfferAsProInput,
+  ProMonthlyQuotaResponse,
 } from "sowhat-types";
 
 import { LeadsFiltersAndSorting } from "@/utils/filters";
@@ -64,6 +65,18 @@ async function fetchWithAuth<T>(
   }
 
   return response.text() as T;
+}
+
+/**
+ * Get the monthly quota for the current pro
+ */
+export async function getProQuota(token: string | null): Promise<ProMonthlyQuotaResponse | null> {
+  try {
+    return fetchWithAuth<ProMonthlyQuotaResponse | null>("/pro/quota", token, { method: "GET" });
+  } catch (error) {
+    console.error("Error fetching pro quota:", error);
+    throw error;
+  }
 }
 
 /**
