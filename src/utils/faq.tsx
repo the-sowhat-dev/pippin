@@ -302,6 +302,165 @@ export const FAQ_INVSTORE = [
     ),
     answerHtml: `<p>Oui, vous pouvez supprimer votre compte à tout moment depuis votre espace personnel. Toutes les données sont ensuite supprimées conformément aux délais légaux.</p>`,
   },
+  {
+    question: "Pourquoi télécharger invstore si je souhaite dynamiser mon épargne ?",
+    answer: (
+      <>
+        <p>
+          Parce que dynamiser son épargne ne consiste pas seulement à changer de produit, mais à
+          bénéficier du bon conseil, au bon moment, par le bon professionnel.
+        </p>
+        <p className="mt-2">
+          Invstore vous met en relation avec des conseillers financiers spécialisés, sélectionnés en
+          fonction de votre situation et de vos objectifs. Vous recevez des propositions concrètes et
+          personnalisées, sans avoir à démarcher vous-même plusieurs interlocuteurs.
+        </p>
+        <p className="mt-2">Le processus est :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Rapide</li>
+          <li>Anonyme dans un premier temps</li>
+          <li>Sans engagement</li>
+          <li>Basé sur la mise en concurrence</li>
+        </ul>
+        <p className="mt-2">
+          Vous gagnez du temps, vous comparez des approches différentes et vous gardez le contrôle de
+          votre décision.
+        </p>
+      </>
+    ),
+    answerHtml: `<p>Parce que dynamiser son épargne ne consiste pas seulement à changer de produit, mais à bénéficier du bon conseil, au bon moment, par le bon professionnel.</p><p>Invstore vous met en relation avec des conseillers financiers spécialisés, sélectionnés en fonction de votre situation et de vos objectifs. Vous recevez des propositions concrètes et personnalisées, sans avoir à démarcher vous-même plusieurs interlocuteurs.</p><p>Le processus est :</p><ul><li>Rapide</li><li>Anonyme dans un premier temps</li><li>Sans engagement</li><li>Basé sur la mise en concurrence</li></ul><p>Vous gagnez du temps, vous comparez des approches différentes et vous gardez le contrôle de votre décision.</p>`,
+  },
+  {
+    question: "Quel intérêt d'utiliser invstore si je souhaite faire un bilan patrimonial ?",
+    answer: (
+      <>
+        <p>
+          Un bilan patrimonial est pertinent lorsqu'il est réalisé par un professionnel qualifié et
+          adapté à votre profil.
+        </p>
+        <p className="mt-2">
+          Invstore vous permet d'être orienté vers des conseillers spécialisés (retraite, fiscalité,
+          immobilier, investissements financiers…) correspondant précisément à votre situation.
+        </p>
+        <p className="mt-2">Plutôt que de chercher un cabinet au hasard, vous :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Exprimez vos besoins</li>
+          <li>Restez anonyme au départ</li>
+          <li>Recevez des propositions de professionnels intéressés</li>
+          <li>Comparez leurs approches</li>
+        </ul>
+        <p className="mt-2">
+          Vous accédez ainsi à un conseil humain et structuré, dans un cadre transparent et
+          concurrentiel.
+        </p>
+      </>
+    ),
+    answerHtml: `<p>Un bilan patrimonial est pertinent lorsqu'il est réalisé par un professionnel qualifié et adapté à votre profil.</p><p>Invstore vous permet d'être orienté vers des conseillers spécialisés (retraite, fiscalité, immobilier, investissements financiers…) correspondant précisément à votre situation.</p><p>Plutôt que de chercher un cabinet au hasard, vous :</p><ul><li>Exprimez vos besoins</li><li>Restez anonyme au départ</li><li>Recevez des propositions de professionnels intéressés</li><li>Comparez leurs approches</li></ul><p>Vous accédez ainsi à un conseil humain et structuré, dans un cadre transparent et concurrentiel.</p>`,
+  },
+  {
+    question: "Comment invstore peut m'aider à réduire mes impôts ?",
+    answer: (
+      <>
+        <p>
+          La réduction d'impôt efficace repose sur une stratégie personnalisée, pas sur une solution
+          standardisée.
+        </p>
+        <p className="mt-2">
+          Invstore vous met en relation avec des conseillers compétents en optimisation fiscale,
+          sélectionnés selon votre profil et vos objectifs (revenus, patrimoine, horizon, sensibilité
+          au risque).
+        </p>
+        <p className="mt-2">Grâce à la mise en concurrence :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Vous obtenez plusieurs visions</li>
+          <li>Vous comparez les stratégies proposées</li>
+          <li>Vous choisissez librement</li>
+        </ul>
+        <p className="mt-2">
+          Le tout avec un premier niveau d'échange anonyme, pour préserver votre liberté et éviter
+          toute pression commerciale.
+        </p>
+      </>
+    ),
+    answerHtml: `<p>La réduction d'impôt efficace repose sur une stratégie personnalisée, pas sur une solution standardisée.</p><p>Invstore vous met en relation avec des conseillers compétents en optimisation fiscale, sélectionnés selon votre profil et vos objectifs (revenus, patrimoine, horizon, sensibilité au risque).</p><p>Grâce à la mise en concurrence :</p><ul><li>Vous obtenez plusieurs visions</li><li>Vous comparez les stratégies proposées</li><li>Vous choisissez librement</li></ul><p>Le tout avec un premier niveau d'échange anonyme, pour préserver votre liberté et éviter toute pression commerciale.</p>`,
+  },
+  {
+    question: "Est-ce qu'invstore peut m'aider à préparer ma retraite ?",
+    answer: (
+      <>
+        <p>Oui, car la préparation de la retraite nécessite une stratégie sur mesure.</p>
+        <p className="mt-2">
+          Invstore vous permet d'entrer en contact avec des professionnels spécialisés dans la
+          retraite et la gestion patrimoniale long terme. Vous recevez des propositions adaptées à
+          votre âge, votre situation professionnelle et vos objectifs de revenus futurs.
+        </p>
+        <p className="mt-2">L'intérêt :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Un conseil humain et personnalisé</li>
+          <li>Une sélection ciblée de spécialistes</li>
+          <li>Une comparaison facilitée</li>
+          <li>Une totale liberté de décision</li>
+        </ul>
+        <p className="mt-2">Vous avancez à votre rythme, sans démarchage subi.</p>
+      </>
+    ),
+    answerHtml: `<p>Oui, car la préparation de la retraite nécessite une stratégie sur mesure.</p><p>Invstore vous permet d'entrer en contact avec des professionnels spécialisés dans la retraite et la gestion patrimoniale long terme. Vous recevez des propositions adaptées à votre âge, votre situation professionnelle et vos objectifs de revenus futurs.</p><p>L'intérêt :</p><ul><li>Un conseil humain et personnalisé</li><li>Une sélection ciblée de spécialistes</li><li>Une comparaison facilitée</li><li>Une totale liberté de décision</li></ul><p>Vous avancez à votre rythme, sans démarchage subi.</p>`,
+  },
+  {
+    question: "Pourquoi invstore doit être considéré comme une solution \"vie pratique\" ?",
+    answer: (
+      <>
+        <p>Parce qu'invstore simplifie l'accès à un conseil financier de qualité.</p>
+        <p className="mt-2">
+          Traditionnellement, trouver le bon conseiller demande :
+        </p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Du temps</li>
+          <li>Des recherches</li>
+          <li>Des rendez-vous multiples</li>
+          <li>Une part d'incertitude</li>
+        </ul>
+        <p className="mt-2">
+          Invstore inverse la logique : ce sont les professionnels qui viennent à vous, en fonction
+          de votre besoin.
+        </p>
+        <p className="mt-2">En quelques étapes simples :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Vous décrivez votre projet</li>
+          <li>Vous restez anonyme</li>
+          <li>Vous recevez des propositions</li>
+          <li>Vous choisissez</li>
+        </ul>
+        <p className="mt-2">
+          C'est une solution pratique, fluide et centrée sur l'utilisateur.
+        </p>
+      </>
+    ),
+    answerHtml: `<p>Parce qu'invstore simplifie l'accès à un conseil financier de qualité.</p><p>Traditionnellement, trouver le bon conseiller demande :</p><ul><li>Du temps</li><li>Des recherches</li><li>Des rendez-vous multiples</li><li>Une part d'incertitude</li></ul><p>Invstore inverse la logique : ce sont les professionnels qui viennent à vous, en fonction de votre besoin.</p><p>En quelques étapes simples :</p><ul><li>Vous décrivez votre projet</li><li>Vous restez anonyme</li><li>Vous recevez des propositions</li><li>Vous choisissez</li></ul><p>C'est une solution pratique, fluide et centrée sur l'utilisateur.</p>`,
+  },
+  {
+    question: "Comment invstore participe à la protection des consommateurs ?",
+    answer: (
+      <>
+        <p>Invstore renforce la position du particulier face aux professionnels financiers.</p>
+        <p className="mt-2">L'application :</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Préserve l'anonymat initial de l'utilisateur</li>
+          <li>Organise la mise en concurrence des conseillers</li>
+          <li>Permet de comparer les approches avant tout engagement</li>
+        </ul>
+        <p className="mt-2">
+          Cette transparence réduit la pression commerciale et limite les situations de dépendance à
+          un interlocuteur unique.
+        </p>
+        <p className="mt-2">
+          En donnant le pouvoir de comparer et de choisir librement, invstore contribue à un
+          environnement plus équilibré, plus transparent et plus protecteur pour les épargnants.
+        </p>
+      </>
+    ),
+    answerHtml: `<p>Invstore renforce la position du particulier face aux professionnels financiers.</p><p>L'application :</p><ul><li>Préserve l'anonymat initial de l'utilisateur</li><li>Organise la mise en concurrence des conseillers</li><li>Permet de comparer les approches avant tout engagement</li></ul><p>Cette transparence réduit la pression commerciale et limite les situations de dépendance à un interlocuteur unique.</p><p>En donnant le pouvoir de comparer et de choisir librement, invstore contribue à un environnement plus équilibré, plus transparent et plus protecteur pour les épargnants.</p>`,
+  },
 ];
 
 export const FAQ_EPARGNE_INVESTISSEMENT = [

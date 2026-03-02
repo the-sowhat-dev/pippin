@@ -17,9 +17,10 @@ export function PartnersCarousel() {
           <div className="relative lg:max-w-xl max-w-[90%] mx-auto">
             <h2
               className={`${LexendFont.className} text-xl sm:text-2xl font-bold relative text-center`}>
-              Leurs experts sont en compétition pour répondre à vos besoins
+              Nous mettons en compétition les meilleurs conseillers en gestion de patrimoine,
+              banques et fintechs pour qu'ils répondent à votre besoin
               <br />
-              <span className="text-white/90">Matchez avec nos partenaires pilotes</span>
+              <span className="text-white/90">Matchez avec ceux de votre choix !</span>
             </h2>
           </div>
 

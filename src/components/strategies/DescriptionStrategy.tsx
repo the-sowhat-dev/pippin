@@ -8,7 +8,7 @@ const steps = [
   { number: "1️⃣", text: "quel que soit le montant que vous souhaitez investir" },
   { number: "2️⃣", text: "vous complétez votre profil en quelques minutes" },
   { number: "3️⃣", text: "nous l'anonymisons pour vous protéger" },
-  { number: "4️⃣", text: "les experts (CGP, banque, fintech) sont mis en compétition" },
+  { number: "4️⃣", text: "Les spécialistes de l'épargne et du patrimoine sont mis en compétition" },
   { number: "5️⃣", text: "ce sont eux qui viennent à vous directement dans l'application" },
   { number: "6️⃣", text: "vous matchez avec celui ou ceux qui répondent le mieux à votre besoin" },
 ];
