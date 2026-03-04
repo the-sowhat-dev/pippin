@@ -10,8 +10,8 @@ export function QuotaCard({ quota }: QuotaCardProps) {
   return (
     <div className="mb-8 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-4 border-b border-gray-50 bg-gray-50/50 flex items-center gap-2">
-        <MessageSquare size={20} className="text-green-900" />
-        <h3 className={`text-green-900 ${LexendFont.className}`}>Quota mensuel d&apos;offres</h3>
+        <MessageSquare size={20} className="text-sky-900" />
+        <h3 className={`text-sky-900 ${LexendFont.className}`}>Quota mensuel d&apos;offres</h3>
       </div>
       <div className="p-6">
         {quota ? (
@@ -19,12 +19,12 @@ export function QuotaCard({ quota }: QuotaCardProps) {
             <div className="flex-1 space-y-3">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-gray-600">
-                  <span className="font-semibold text-gray-900">{quota.used}</span>
-                  {" "}offre{quota.used > 1 ? "s" : ""} envoyée{quota.used > 1 ? "s" : ""} sur{" "}
+                  <span className="font-semibold text-gray-900">{quota.used}</span> offre
+                  {quota.used > 1 ? "s" : ""} envoyée{quota.used > 1 ? "s" : ""} sur{" "}
                   <span className="font-semibold text-gray-900">{quota.limit}</span> ce mois-ci
                 </span>
                 <span
-                  className={`font-semibold ${quota.remaining === 0 ? "text-red-600" : "text-green-700"}`}>
+                  className={`font-semibold ${quota.remaining === 0 ? "text-red-600" : "text-sky-700"}`}>
                   {quota.remaining} restante{quota.remaining > 1 ? "s" : ""}
                 </span>
               </div>
@@ -35,7 +35,7 @@ export function QuotaCard({ quota }: QuotaCardProps) {
                       ? "bg-red-500"
                       : quota.remaining <= quota.limit * 0.2
                         ? "bg-amber-500"
-                        : "bg-green-500"
+                        : "bg-sky-500"
                   }`}
                   style={{ width: `${Math.min(100, (quota.used / quota.limit) * 100)}%` }}
                 />

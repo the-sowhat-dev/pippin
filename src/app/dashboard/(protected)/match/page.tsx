@@ -12,6 +12,8 @@ import { getMatchingLeads, updateOffer } from "@/lib/api";
 import { OfferSection } from "@/components/dashboard/match/OfferSection";
 import { LikedLeadCard } from "@/components/dashboard/screening/LikedLeadCard";
 import { LeadDetailsSheet } from "@/components/dashboard/screening/LeadDetailsSheet";
+import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
+import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
 
 export default function MatchPage() {
   const { getToken } = useAuth();
@@ -63,19 +65,22 @@ export default function MatchPage() {
 
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-8">
-      <header className="flex justify-between items-start">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Match</h1>
-          <p className="text-gray-500 mt-2">Gérez vos offres et vos favoris.</p>
-        </div>
-        <button
-          onClick={() => refetch()}
-          disabled={isFetching}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-          <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
-          Rafraichir
-        </button>
-      </header>
+      <HeaderWithPageOnboarding
+        storageKey={PageOnboardingConfig.match.key}
+        title={PageOnboardingConfig.match.title}
+        subtitle={PageOnboardingConfig.match.subtitle}
+        short={PageOnboardingConfig.match.short}
+        full={PageOnboardingConfig.match.full}
+        action={
+          <button
+            onClick={() => refetch()}
+            disabled={isFetching}
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+            <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
+            Rafraichir
+          </button>
+        }
+      />
 
       {/* Accepted Offers Section */}
       <OfferSection
