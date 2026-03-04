@@ -1,39 +1,56 @@
-import { LexendFont } from "@/utils/fonts";
+import { auth } from "@clerk/nextjs/server";
+import { Send, CheckCheck } from "lucide-react";
+import { getProMonitoring, getProQuota } from "@/lib/api";
+import { MetricCard } from "@/components/dashboard/monitoring/MetricCard";
+import { QuotaCard } from "@/components/dashboard/profile/QuotaCard";
 
 export default async function Page() {
+  const { getToken } = await auth();
+  const token = await getToken();
+
+  const [monitoring, quotaData] = await Promise.all([
+    token ? getProMonitoring(token) : null,
+    token ? getProQuota(token) : null,
+  ]);
+
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-6 lg:p-8 max-w-7xl mx-auto">
       <header className="mb-8">
-        <h1 className={`${LexendFont.className} text-3xl font-bold text-green-900`}>Monitoring</h1>
-        <h3 className="text-gray-500 mt-2 text-lg">Consulter vos performances</h3>
+        <div className="flex-1">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Monitoring</h1>
+          <p className="text-gray-500 mt-2">Suivez vos performances sur les 12 derniers mois</p>
+        </div>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col gap-4">
-            {/* Header skeleton */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gray-200"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-            </div>
+      {monitoring === null ? (
+        <div className="text-center text-gray-400 py-16 text-sm">
+          Données de monitoring non disponibles.
+        </div>
+      ) : (
+        <div className="space-y-5">
+          <QuotaCard quota={quotaData} />
 
-            {/* Content placeholder with requested text */}
-            <div className="h-32 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 flex items-center justify-center p-4 text-center">
-              <p className="text-gray-400 text-sm font-medium">
-                Aucun monitoring disponible pour le moment
-              </p>
-            </div>
+          {/* Offers sent */}
+          <MetricCard
+            title="Offres envoyées"
+            description="Nombre d'offres commerciales envoyées à des prospects chaque mois"
+            data={monitoring.offersSentPerMonth}
+            icon={Send}
+            color="blue"
+            currentLabel="ce mois-ci"
+          />
 
-            {/* Footer skeleton */}
-            <div className="space-y-2 mt-2">
-              <div className="h-3 bg-gray-200 rounded w-full"></div>
-              <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-            </div>
-          </div>
-        ))}
-      </div>
+          {/* Accepted offers */}
+          <MetricCard
+            title="Matchs (offres acceptées)"
+            description="Nombre de matches obtenus (offres acceptées par les prospects) chaque mois"
+            data={monitoring.acceptedOffersPerMonth}
+            icon={CheckCheck}
+            color="teal"
+            currentLabel="ce mois-ci"
+          />
+        </div>
+      )}
     </div>
   );
 }

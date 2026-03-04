@@ -1,20 +1,22 @@
 import { Suspense } from "react";
 
+import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
 import { AlertsClient } from "@/components/dashboard/alerts/AlertsClient";
 import { AlertsSkeleton } from "@/components/dashboard/alerts/AlertsSkeleton";
 import { NotificationEmailHandler } from "@/components/dashboard/alerts/NotificationEmailHandler";
 import { NotificationEmailSkeleton } from "@/components/dashboard/alerts/NotificationEmailSkeleton";
+import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
 
 export default function Page() {
   return (
     <div className="p-6 lg:p-8 max-w-3xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Alertes</h1>
-        <p className="text-gray-500 mt-2">
-          Enregistrez vos critères de recherche pour recevoir des alertes lorsque des profils
-          qualifiés sont disponibles.
-        </p>
-      </header>
+      <HeaderWithPageOnboarding
+        storageKey={PageOnboardingConfig.alerts.key}
+        title={PageOnboardingConfig.alerts.title}
+        subtitle={PageOnboardingConfig.alerts.subtitle}
+        short={PageOnboardingConfig.alerts.short}
+        full={PageOnboardingConfig.alerts.full}
+      />
 
       <div className="space-y-8">
         <Suspense fallback={<NotificationEmailSkeleton />}>

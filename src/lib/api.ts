@@ -15,6 +15,7 @@ import {
   UpdateProLeadsAlertInput,
   UpdateCommercialOfferAsProInput,
   ProMonthlyQuotaResponse,
+  ProMonitoringResponse,
 } from "sowhat-types";
 
 import { LeadsFiltersAndSorting } from "@/utils/filters";
@@ -347,6 +348,22 @@ export async function deleteAlert(id: string, token: string | null): Promise<voi
   await fetchWithAuth<void>(`/pro/alerts/${id}`, token, {
     method: "DELETE",
   });
+}
+
+/**
+ * Get monitoring stats for the current pro (last 12 months)
+ */
+export async function getProMonitoring(
+  token: string | null,
+): Promise<ProMonitoringResponse | null> {
+  try {
+    return fetchWithAuth<ProMonitoringResponse | null>("/pro/Monitoring", token, {
+      method: "GET",
+    });
+  } catch (error) {
+    console.error("Error fetching pro monitoring:", error);
+    throw error;
+  }
 }
 
 /**

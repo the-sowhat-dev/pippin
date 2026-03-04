@@ -3,11 +3,14 @@ import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from "luci
 import { getPro, getProQuota } from "../../../../lib/api";
 import { QuotaCard } from "@/components/dashboard/profile/QuotaCard";
 import { LegalLinks } from "@/components/dashboard/profile/LegalLinks";
+import { SubscriptionSection } from "@/components/dashboard/profile/SubscriptionSection";
 import { UpdateProSheet } from "@/components/dashboard/UpdateProSheet";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getProCertificationByKey } from "sowhat-types";
 import { LexendFont } from "@/utils/fonts";
+import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
+import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
 
 export default async function Page() {
   const user = await currentUser();
@@ -21,12 +24,13 @@ export default async function Page() {
 
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Mon Profil Pro</h1>
-        <p className="text-gray-500 mt-2">
-          Gérez vos informations professionnelles et celle de votre entreprise.
-        </p>
-      </header>
+      <HeaderWithPageOnboarding
+        storageKey={PageOnboardingConfig.profile.key}
+        title={PageOnboardingConfig.profile.title}
+        subtitle={PageOnboardingConfig.profile.subtitle}
+        short={PageOnboardingConfig.profile.short}
+        full={PageOnboardingConfig.profile.full}
+      />
 
       <QuotaCard quota={quotaData} />
 
@@ -165,6 +169,9 @@ export default async function Page() {
               </div>
             </div>
           </div>
+
+          {/* Subscription Section */}
+          <SubscriptionSection />
         </div>
       </div>
 

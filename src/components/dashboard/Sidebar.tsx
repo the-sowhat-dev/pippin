@@ -4,14 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard,
   User,
+  Search,
+  MessageSquare,
+  Bell,
+  BarChart3,
   ChevronLeft,
   ChevronRight,
   LogOut,
-  ShieldCheck,
-  Handshake,
-  Eye,
 } from "lucide-react";
 import { cn } from "../../utils/cn";
 import { SignOutButton } from "@clerk/nextjs";
@@ -25,24 +25,24 @@ const sidebarItems = [
     icon: User,
   },
   {
-    label: "Alertes",
-    href: "/dashboard/alerts",
-    icon: LayoutDashboard,
-  },
-  {
     label: "Screening",
     href: "/dashboard/screening",
-    icon: ShieldCheck,
+    icon: Search,
   },
   {
     label: "Match",
     href: "/dashboard/match",
-    icon: Handshake,
+    icon: MessageSquare,
+  },
+  {
+    label: "Alertes",
+    href: "/dashboard/alerts",
+    icon: Bell,
   },
   {
     label: "Monitoring",
     href: "/dashboard/monitoring",
-    icon: Eye,
+    icon: BarChart3,
   },
 ];
 
