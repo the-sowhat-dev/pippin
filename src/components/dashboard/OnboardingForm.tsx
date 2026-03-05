@@ -34,12 +34,6 @@ export default function OnboardingForm({
   const [companyImageFile, setCompanyImageFile] = useState<File | null>(null);
   const [companyImagePreview, setCompanyImagePreview] = useState<string | null>(null);
 
-  // Ensure AMF is always included in initial certifications
-  const initialCertifications = initialData?.certifications || [];
-  if (!initialCertifications.includes(ProCertificationEnum.AMF)) {
-    initialCertifications.push(ProCertificationEnum.AMF);
-  }
-
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
     firstName: initialData?.firstName || initialFirstName,
     lastName: initialData?.lastName || initialLastName,
@@ -49,7 +43,7 @@ export default function OnboardingForm({
     sirenId: initialData?.sirenId || "",
     oriasId: initialData?.oriasId || "",
     companyDescription: initialData?.companyDescription || "",
-    certifications: initialCertifications,
+    certifications: initialData?.certifications || [],
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -96,12 +90,6 @@ export default function OnboardingForm({
     try {
       const token = await getToken();
 
-      // Ensure AMF is always included in certifications
-      const certifications = formData.certifications || [];
-      if (!certifications.includes(ProCertificationEnum.AMF)) {
-        certifications.push(ProCertificationEnum.AMF);
-      }
-
       const payload: UpdateProInput = {
         clerkId: user.id,
         firstName: formData.firstName || null,
@@ -112,7 +100,7 @@ export default function OnboardingForm({
         companyDescription: sanitizeText(formData.companyDescription) || null,
         sirenId: formData.sirenId || null,
         oriasId: formData.oriasId || null,
-        certifications,
+        certifications: formData.certifications || [],
       };
 
       await updatePro(payload, token);

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LinkedIn } from "@mui/icons-material";
+import { LinkedInLogoIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 
 import {
@@ -41,7 +41,7 @@ export const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
       </div>
 
       <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
-        <LinkedIn fontSize="large" className=" hover:text-blue-600 transition-all duration-300" />
+        <LinkedInLogoIcon width={32} height={32} className="hover:text-blue-600 transition-all duration-300" />
       </Link>
     </div>
   );

@@ -40,12 +40,6 @@ export function UpdateProSheet({
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Ensure AMF is always included in initial certifications
-  const initialCertifications = initialData?.certifications || [];
-  if (!initialCertifications.includes(ProCertificationEnum.AMF)) {
-    initialCertifications.push(ProCertificationEnum.AMF);
-  }
-
   const [formData, setFormData] = useState<Partial<UpdateProInput>>({
     firstName: initialData?.firstName || user?.firstName || "",
     lastName: initialData?.lastName || user?.lastName || "",
@@ -55,7 +49,7 @@ export function UpdateProSheet({
     sirenId: initialData?.sirenId || "",
     oriasId: initialData?.oriasId || "",
     companyDescription: initialData?.companyDescription || "",
-    certifications: initialCertifications,
+    certifications: initialData?.certifications || [],
   });
 
   const [profileImageFile, setProfileImageFile] = useState<File | null>(null);
@@ -103,12 +97,6 @@ export function UpdateProSheet({
     try {
       const token = await getToken();
 
-      // Ensure AMF is always included in certifications
-      const certifications = formData.certifications || [];
-      if (!certifications.includes(ProCertificationEnum.AMF)) {
-        certifications.push(ProCertificationEnum.AMF);
-      }
-
       const payload: UpdateProInput = {
         clerkId: user.id,
         firstName: formData.firstName || null,
@@ -117,9 +105,10 @@ export function UpdateProSheet({
         presentation: sanitizeText(formData.presentation) || null,
         companyName: formData.companyName || null,
         companyDescription: sanitizeText(formData.companyDescription) || null,
+        companyWebsite: formData.companyWebsite || null,
         sirenId: formData.sirenId || null,
-        oriasId: formData.oriasId || null,
-        certifications,
+        oriasId: formData.oriasId && formData.oriasId !== "" ? formData.oriasId : null,
+        certifications: formData.certifications || [],
       };
 
       await updatePro(payload, token);
@@ -286,6 +275,7 @@ export function UpdateProSheet({
                 required
               />
             </div>
+
             <div className="space-y-2">
               <Label htmlFor="oriasId">ORIAS</Label>
               <Input
@@ -293,7 +283,16 @@ export function UpdateProSheet({
                 name="oriasId"
                 value={formData.oriasId || ""}
                 onChange={handleChange}
-                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="companyWebsite">Site internet</Label>
+              <Input
+                id="companyWebsite"
+                name="companyWebsite"
+                value={formData.companyWebsite || ""}
+                onChange={handleChange}
               />
             </div>
 

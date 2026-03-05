@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { PlayIcon } from "@radix-ui/react-icons";
 
 interface VideoStrategyProps {
   videoUrl: string;
@@ -39,7 +39,7 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-red-600 rounded-full p-6 group-hover:scale-110 group-hover:bg-red-700 transition-all duration-300 shadow-xl">
-                  <PlayArrowIcon sx={{ fontSize: 64 }} className="text-white" />
+                  <PlayIcon width={64} height={64} className="text-white" />
                 </div>
               </div>
 

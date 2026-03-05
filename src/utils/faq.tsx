@@ -1,37 +1,37 @@
 export const FAQ_INVSTORE = [
   {
-    question: "L’application invstore®, c’est quoi exactement ?",
+    question: "L'application invstore®, c'est quoi exactement ?",
     answer: (
       <>
         <p>
           Concrètement, invstore® est une application française gratuite qui analyse votre
-          situation financière en moins de 5 minutes grâce à l’intelligence artificielle, puis vous
+          situation financière en moins de 5 minutes grâce à l'intelligence artificielle, puis vous
           met en relation de manière anonyme avec des professionnels de la finance vérifiés et
           agréés en France.
         </p>
         <p className="mt-2">
-          L’app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les
+          L'app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les
           experts les mieux adaptés à vos besoins.
         </p>
       </>
     ),
-    answerHtml: `<p>Concrètement, invstore® est une application française gratuite qui analyse votre situation financière en moins de 5 minutes grâce à l’intelligence artificielle, puis vous met en relation de manière anonyme avec des professionnels de la finance vérifiés et agréés en France.</p><p>L’app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les experts les mieux adaptés à vos besoins.</p>`,
+    answerHtml: `<p>Concrètement, invstore® est une application française gratuite qui analyse votre situation financière en moins de 5 minutes grâce à l'intelligence artificielle, puis vous met en relation de manière anonyme avec des professionnels de la finance vérifiés et agréés en France.</p><p>L'app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les experts les mieux adaptés à vos besoins.</p>`,
   },
   {
-    question: "Est-ce qu’invstore® est disponible partout en France ?",
+    question: "Est-ce qu'invstore® est disponible partout en France ?",
     answer: (
       <>
         <p>
-          Oui, l’application fonctionne sur tout le territoire français, métropole et outre-mer
+          Oui, l'application fonctionne sur tout le territoire français, métropole et outre-mer
           inclus.
         </p>
         <p className="mt-2">
           Tous les professionnels présents sur la plateforme sont autorisés à exercer en France et
-          déclarés auprès de l’ORIAS.
+          déclarés auprès de l'ORIAS.
         </p>
       </>
     ),
-    answerHtml: `<p>Oui, l’application fonctionne sur tout le territoire français, métropole et outre-mer inclus.</p><p>Tous les professionnels présents sur la plateforme sont autorisés à exercer en France et déclarés auprès de l’ORIAS.</p>`,
+    answerHtml: `<p>Oui, l'application fonctionne sur tout le territoire français, métropole et outre-mer inclus.</p><p>Tous les professionnels présents sur la plateforme sont autorisés à exercer en France et déclarés auprès de l'ORIAS.</p>`,
   },
   {
     question: "Est-ce vraiment gratuit pour les particuliers ?",
@@ -58,51 +58,51 @@ export const FAQ_INVSTORE = [
       <>
         <p>Moins de 5 minutes :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
-          <li>téléchargement de l’app,</li>
+          <li>téléchargement de l'app,</li>
           <li>création du profil,</li>
           <li>réponses aux questions,</li>
           <li>analyse IA immédiate.</li>
         </ul>
       </>
     ),
-    answerHtml: `<p>Moins de 5 minutes :</p><ul><li>téléchargement de l’app,</li><li>création du profil,</li><li>réponses aux questions,</li><li>analyse IA immédiate.</li></ul>`,
+    answerHtml: `<p>Moins de 5 minutes :</p><ul><li>téléchargement de l'app,</li><li>création du profil,</li><li>réponses aux questions,</li><li>analyse IA immédiate.</li></ul>`,
   },
   {
-    question: "Est-ce qu’invstore® convient aux débutants ?",
+    question: "Est-ce qu'invstore® convient aux débutants ?",
     answer: (
       <>
-        <p>Oui, l’application est pensée pour les particuliers qui :</p>
+        <p>Oui, l'application est pensée pour les particuliers qui :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
-          <li>n’ont jamais investi,</li>
+          <li>n'ont jamais investi,</li>
           <li>souhaitent comprendre comment épargner,</li>
           <li>veulent être guidés simplement,</li>
           <li>cherchent une alternative aux parcours bancaires classiques.</li>
         </ul>
-        <p className="mt-2">L’objectif d’invstore® est de rendre l’épargne accessible à tous.</p>
+        <p className="mt-2">L'objectif d'invstore® est de rendre l'épargne accessible à tous.</p>
       </>
     ),
-    answerHtml: `<p>Oui, l’application est pensée pour les particuliers qui :</p><ul><li>n’ont jamais investi,</li><li>souhaitent comprendre comment épargner,</li><li>veulent être guidés simplement,</li><li>cherchent une alternative aux parcours bancaires classiques.</li></ul><p>L’objectif d’invstore® est de rendre l’épargne accessible à tous.</p>`,
+    answerHtml: `<p>Oui, l'application est pensée pour les particuliers qui :</p><ul><li>n'ont jamais investi,</li><li>souhaitent comprendre comment épargner,</li><li>veulent être guidés simplement,</li><li>cherchent une alternative aux parcours bancaires classiques.</li></ul><p>L'objectif d'invstore® est de rendre l'épargne accessible à tous.</p>`,
   },
   {
-    question: "Comment fonctionne l’analyse IA d’invstore® ?",
+    question: "Comment fonctionne l'analyse IA d'invstore® ?",
     answer: (
       <>
         <p>
-          Vous complétez quelques questions simples, puis l’IA analyse votre situation patrimoniale
+          Vous complétez quelques questions simples, puis l'IA analyse votre situation patrimoniale
           pour vous fournir :
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>un aperçu immédiat de votre situation financière,</li>
           <li>les leviers concrets pour “gagner mieux” selon vos objectifs,</li>
-          <li>les types d’opportunités adaptées à votre profil.</li>
+          <li>les types d'opportunités adaptées à votre profil.</li>
         </ul>
         <p className="mt-2">
-          L’analyse est purement informative, non contractuelle et ne constitue donc pas un conseil
-          d’investissement.
+          L'analyse est purement informative, non contractuelle et ne constitue donc pas un conseil
+          d'investissement.
         </p>
       </>
     ),
-    answerHtml: `<p>Vous complétez quelques questions simples, puis l’IA analyse votre situation patrimoniale pour vous fournir :</p><ul><li>un aperçu immédiat de votre situation financière,</li><li>les leviers concrets pour “gagner mieux” selon vos objectifs,</li><li>les types d’opportunités adaptées à votre profil.</li></ul><p>L’analyse est purement informative, non contractuelle et ne constitue donc pas un conseil d’investissement.</p>`,
+    answerHtml: `<p>Vous complétez quelques questions simples, puis l'IA analyse votre situation patrimoniale pour vous fournir :</p><ul><li>un aperçu immédiat de votre situation financière,</li><li>les leviers concrets pour “gagner mieux” selon vos objectifs,</li><li>les types d'opportunités adaptées à votre profil.</li></ul><p>L'analyse est purement informative, non contractuelle et ne constitue donc pas un conseil d'investissement.</p>`,
   },
   {
     question: "Qui sont les professionnels présents sur invstore® ?",
@@ -115,41 +115,41 @@ export const FAQ_INVSTORE = [
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>autorisés à exercer en France,</li>
-          <li>enregistrés à l’ORIAS,</li>
-          <li>conformes aux obligations AMF et/ou ACPR selon leur statut,</li>
-          <li>vérifiés par les équipes d’invstore®.</li>
+          <li>enregistrés à l'ORIAS,</li>
+          <li>conformes aux obligations ACPR selon leur statut,</li>
+          <li>vérifiés par les équipes d'invstore®.</li>
         </ul>
-        <p className="mt-2">Aucun d’entre eux n’est employé ou actionnaire d’invstore®.</p>
+        <p className="mt-2">Aucun d'entre eux n'est employé ou actionnaire d'invstore®.</p>
       </>
     ),
-    answerHtml: `<p>Des conseillers en gestion de patrimoine, banquiers, courtiers, et experts financiers indépendants, utilisant les services de la plateforme invstore® pour trouver de nouveaux clients. Tous sont :</p><ul><li>autorisés à exercer en France,</li><li>enregistrés à l’ORIAS,</li><li>conformes aux obligations AMF et/ou ACPR selon leur statut,</li><li>vérifiés par les équipes d’invstore®.</li></ul><p>Aucun d’entre eux n’est employé ou actionnaire d’invstore®.</p>`,
+    answerHtml: `<p>Des conseillers en gestion de patrimoine, banquiers, courtiers, et experts financiers indépendants, utilisant les services de la plateforme invstore® pour trouver de nouveaux clients. Tous sont :</p><ul><li>autorisés à exercer en France,</li><li>enregistrés à l'ORIAS,</li><li>conformes aux obligations ACPR selon leur statut,</li><li>vérifiés par les équipes d'invstore®.</li></ul><p>Aucun d'entre eux n'est employé ou actionnaire d'invstore®.</p>`,
   },
   {
-    question: "Comment fonctionne l’anonymat sur invstore® ?",
+    question: "Comment fonctionne l'anonymat sur invstore® ?",
     answer: (
       <>
         <p>
-          Votre fiche profil est entièrement anonymisée, ce qui signifie que l’outil IA comme les
+          Votre fiche profil est entièrement anonymisée, ce qui signifie que l'outil IA comme les
           professionnels voient vos données financières et vos objectifs, mais jamais votre identité
           :
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>pas de nom,</li>
           <li>pas de genre,</li>
-          <li>pas d’adresse,</li>
+          <li>pas d'adresse,</li>
           <li>pas de numéro de téléphone,</li>
-          <li>pas d’email.</li>
+          <li>pas d'email.</li>
         </ul>
         <p className="mt-2">
-          Votre identité et vos coordonnées ne sont révélées qu’avec votre consentement explicite
-          lorsque vous décidez d’aller plus loin avec un professionnel.
+          Votre identité et vos coordonnées ne sont révélées qu'avec votre consentement explicite
+          lorsque vous décidez d'aller plus loin avec un professionnel.
         </p>
       </>
     ),
-    answerHtml: `<p>Votre fiche profil est entièrement anonymisée, ce qui signifie que l’outil IA comme les professionnels voient vos données financières et vos objectifs, mais jamais votre identité :</p><ul><li>pas de nom,</li><li>pas de genre,</li><li>pas d’adresse,</li><li>pas de numéro de téléphone,</li><li>pas d’email.</li></ul><p>Votre identité et vos coordonnées ne sont révélées qu’avec votre consentement explicite lorsque vous décidez d’aller plus loin avec un professionnel.</p>`,
+    answerHtml: `<p>Votre fiche profil est entièrement anonymisée, ce qui signifie que l'outil IA comme les professionnels voient vos données financières et vos objectifs, mais jamais votre identité :</p><ul><li>pas de nom,</li><li>pas de genre,</li><li>pas d'adresse,</li><li>pas de numéro de téléphone,</li><li>pas d'email.</li></ul><p>Votre identité et vos coordonnées ne sont révélées qu'avec votre consentement explicite lorsque vous décidez d'aller plus loin avec un professionnel.</p>`,
   },
   {
-    question: "Que se passe-t-il après la création d’un compte utilisateur invstore® ?",
+    question: "Que se passe-t-il après la création d'un compte utilisateur invstore® ?",
     answer: (
       <>
         <p>Vous recevez :</p>
@@ -161,45 +161,45 @@ export const FAQ_INVSTORE = [
           </li>
         </ul>
         <p className="mt-2">
-          Vous restez libre d’accepter, d’ignorer ou de mettre votre diffusion en pause.
+          Vous restez libre d'accepter, d'ignorer ou de mettre votre diffusion en pause.
         </p>
       </>
     ),
-    answerHtml: `<p>Vous recevez :</p><ul><li>votre analyse IA personnalisée,</li><li>des offres de produit adaptées de professionnels agréés,</li><li>la possibilité de programmer un premier échange téléphonique avec ceux de votre choix.</li></ul><p>Vous restez libre d’accepter, d’ignorer ou de mettre votre diffusion en pause.</p>`,
+    answerHtml: `<p>Vous recevez :</p><ul><li>votre analyse IA personnalisée,</li><li>des offres de produit adaptées de professionnels agréés,</li><li>la possibilité de programmer un premier échange téléphonique avec ceux de votre choix.</li></ul><p>Vous restez libre d'accepter, d'ignorer ou de mettre votre diffusion en pause.</p>`,
   },
   {
-    question: "Est-ce qu’invstore® vend des produits financiers ?",
+    question: "Est-ce qu'invstore® vend des produits financiers ?",
     answer: (
       <>
         <p>
-          Non, invstore® n’exerce aucune activité de conseil ou vente de produits financiers. La
-          plateforme sert uniquement d’intermédiaire technique pour la mise en relation des
+          Non, invstore® n'exerce aucune activité de conseil ou vente de produits financiers. La
+          plateforme sert uniquement d'intermédiaire technique pour la mise en relation des
           particuliers et professionnels de la finance.
         </p>
       </>
     ),
-    answerHtml: `<p>Non, invstore® n’exerce aucune activité de conseil ou vente de produits financiers. La plateforme sert uniquement d’intermédiaire technique pour la mise en relation des particuliers et professionnels de la finance.</p>`,
+    answerHtml: `<p>Non, invstore® n'exerce aucune activité de conseil ou vente de produits financiers. La plateforme sert uniquement d'intermédiaire technique pour la mise en relation des particuliers et professionnels de la finance.</p>`,
   },
   {
     question: "Le matching avec les experts est-il vraiment indépendant ?",
     answer: (
       <>
         <p>
-          Oui, l’algorithme n’est pas influencé par des commissions sur des produits ou sur des
+          Oui, l'algorithme n'est pas influencé par des commissions sur des produits ou sur des
           ventes, et invstore® est rémunéré uniquement par :
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>un abonnement payé par les professionnels opérant sur la plateforme,</li>
           <li>
-            une commission de succès lorsque l’utilisateur accepte un premier échange téléphonique.
+            une commission de succès lorsque l'utilisateur accepte un premier échange téléphonique.
           </li>
         </ul>
         <p className="mt-2">
-          L’algorithme n’a donc aucun intérêt à favoriser un acteur plutôt qu’un autre.
+          L'algorithme n'a donc aucun intérêt à favoriser un acteur plutôt qu'un autre.
         </p>
       </>
     ),
-    answerHtml: `<p>Oui, l’algorithme n’est pas influencé par des commissions sur des produits ou sur des ventes, et invstore® est rémunéré uniquement par :</p><ul><li>un abonnement payé par les professionnels opérant sur la plateforme,</li><li>une commission de succès lorsque l’utilisateur accepte un premier échange téléphonique.</li></ul><p>L’algorithme n’a donc aucun intérêt à favoriser un acteur plutôt qu’un autre.</p>`,
+    answerHtml: `<p>Oui, l'algorithme n'est pas influencé par des commissions sur des produits ou sur des ventes, et invstore® est rémunéré uniquement par :</p><ul><li>un abonnement payé par les professionnels opérant sur la plateforme,</li><li>une commission de succès lorsque l'utilisateur accepte un premier échange téléphonique.</li></ul><p>L'algorithme n'a donc aucun intérêt à favoriser un acteur plutôt qu'un autre.</p>`,
   },
   {
     question: "Est-ce que je dois accepter les propositions des professionnels ?",
@@ -207,32 +207,32 @@ export const FAQ_INVSTORE = [
       <>
         <p>Non, vous restez totalement libre :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
-          <li>d’accepter,</li>
+          <li>d'accepter,</li>
           <li>de refuser,</li>
-          <li>d’ignorer,</li>
+          <li>d'ignorer,</li>
           <li>ou de mettre votre profil en pause sans aucune conséquence.</li>
         </ul>
       </>
     ),
-    answerHtml: `<p>Non, vous restez totalement libre :</p><ul><li>d’accepter,</li><li>de refuser,</li><li>d’ignorer,</li><li>ou de mettre votre profil en pause sans aucune conséquence.</li></ul>`,
+    answerHtml: `<p>Non, vous restez totalement libre :</p><ul><li>d'accepter,</li><li>de refuser,</li><li>d'ignorer,</li><li>ou de mettre votre profil en pause sans aucune conséquence.</li></ul>`,
   },
   {
-    question: "Les professionnels peuvent-ils me contacter en dehors de l’application ?",
+    question: "Les professionnels peuvent-ils me contacter en dehors de l'application ?",
     answer: (
       <>
         <p>
-          Non, votre identité est masquée et les professionnels n’ont aucun moyen de vous contacter
-          en dehors de l’app. Tout se passe dans un cadre sécurisé.
+          Non, votre identité est masquée et les professionnels n'ont aucun moyen de vous contacter
+          en dehors de l'app. Tout se passe dans un cadre sécurisé.
         </p>
       </>
     ),
-    answerHtml: `<p>Non, votre identité est masquée et les professionnels n’ont aucun moyen de vous contacter en dehors de l’app. Tout se passe dans un cadre sécurisé.</p>`,
+    answerHtml: `<p>Non, votre identité est masquée et les professionnels n'ont aucun moyen de vous contacter en dehors de l'app. Tout se passe dans un cadre sécurisé.</p>`,
   },
   {
     question: "Mes données sont-elles protégées ?",
     answer: (
       <>
-        <p>Oui, la protection des données est au cœur du fonctionnement d’invstore® :</p>
+        <p>Oui, la protection des données est au cœur du fonctionnement d'invstore® :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>chiffrement systématique,</li>
           <li>conformité stricte au RGPD,</li>
@@ -240,15 +240,15 @@ export const FAQ_INVSTORE = [
           <li>aucune transmission non consentie.</li>
         </ul>
         <p className="mt-2">
-          Les données d’identité ne sont accessibles à aucun professionnel sans votre accord
+          Les données d'identité ne sont accessibles à aucun professionnel sans votre accord
           explicite.
         </p>
       </>
     ),
-    answerHtml: `<p>Oui, la protection des données est au cœur du fonctionnement d’invstore® :</p><ul><li>chiffrement systématique,</li><li>conformité stricte au RGPD,</li><li>serveurs en Union Européenne,</li><li>aucune transmission non consentie.</li></ul><p>Les données d’identité ne sont accessibles à aucun professionnel sans votre accord explicite.</p>`,
+    answerHtml: `<p>Oui, la protection des données est au cœur du fonctionnement d'invstore® :</p><ul><li>chiffrement systématique,</li><li>conformité stricte au RGPD,</li><li>serveurs en Union Européenne,</li><li>aucune transmission non consentie.</li></ul><p>Les données d'identité ne sont accessibles à aucun professionnel sans votre accord explicite.</p>`,
   },
   {
-    question: "Est-ce qu’invstore® utilise des données bancaires ?",
+    question: "Est-ce qu'invstore® utilise des données bancaires ?",
     answer: (
       <>
         <p>
@@ -270,7 +270,7 @@ export const FAQ_INVSTORE = [
     answerHtml: `<p>Uniquement si vous choisissez la connexion Open Banking. Cette option gratuite est opérée via Powens, prestataire français agréé AISP (DSP2) par la Banque de France.</p><p>Mais invstore® ne peut jamais :</p><ul><li>voir vos identifiants bancaires,</li><li>modifier un compte,</li><li>ou initier un paiement.</li></ul><p>La connexion sert uniquement à suivre vos transactions pour obtenir une vue complète de vos finances depuis une seule application.</p>`,
   },
   {
-    question: "Dois-je connecter mes comptes bancaires pour utiliser l’application ?",
+    question: "Dois-je connecter mes comptes bancaires pour utiliser l'application ?",
     answer: (
       <>
         <p>
@@ -282,16 +282,16 @@ export const FAQ_INVSTORE = [
     answerHtml: `<p>Non, la connexion Open Banking est totalement facultative. Elle vous permet simplement de gagner du temps en consultant tous vos comptes bancaires depuis une seule application.</p>`,
   },
   {
-    question: "L’application est-elle compatible iPhone et Android ?",
+    question: "L'application est-elle compatible iPhone et Android ?",
     answer: (
       <>
-        <p>Oui, invstore® est disponible sur l’App Store et Google Play.</p>
+        <p>Oui, invstore® est disponible sur l'App Store et Google Play.</p>
       </>
     ),
-    answerHtml: `<p>Oui, invstore® est disponible sur l’App Store et Google Play.</p>`,
+    answerHtml: `<p>Oui, invstore® est disponible sur l'App Store et Google Play.</p>`,
   },
   {
-    question: "Puis-je arrêter d’utiliser invstore® quand je veux ?",
+    question: "Puis-je arrêter d'utiliser invstore® quand je veux ?",
     answer: (
       <>
         <p>
@@ -312,8 +312,8 @@ export const FAQ_INVSTORE = [
         </p>
         <p className="mt-2">
           Invstore vous met en relation avec des conseillers financiers spécialisés, sélectionnés en
-          fonction de votre situation et de vos objectifs. Vous recevez des propositions concrètes et
-          personnalisées, sans avoir à démarcher vous-même plusieurs interlocuteurs.
+          fonction de votre situation et de vos objectifs. Vous recevez des propositions concrètes
+          et personnalisées, sans avoir à démarcher vous-même plusieurs interlocuteurs.
         </p>
         <p className="mt-2">Le processus est :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -323,8 +323,8 @@ export const FAQ_INVSTORE = [
           <li>Basé sur la mise en concurrence</li>
         </ul>
         <p className="mt-2">
-          Vous gagnez du temps, vous comparez des approches différentes et vous gardez le contrôle de
-          votre décision.
+          Vous gagnez du temps, vous comparez des approches différentes et vous gardez le contrôle
+          de votre décision.
         </p>
       </>
     ),
@@ -367,8 +367,8 @@ export const FAQ_INVSTORE = [
         </p>
         <p className="mt-2">
           Invstore vous met en relation avec des conseillers compétents en optimisation fiscale,
-          sélectionnés selon votre profil et vos objectifs (revenus, patrimoine, horizon, sensibilité
-          au risque).
+          sélectionnés selon votre profil et vos objectifs (revenus, patrimoine, horizon,
+          sensibilité au risque).
         </p>
         <p className="mt-2">Grâce à la mise en concurrence :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -407,13 +407,11 @@ export const FAQ_INVSTORE = [
     answerHtml: `<p>Oui, car la préparation de la retraite nécessite une stratégie sur mesure.</p><p>Invstore vous permet d'entrer en contact avec des professionnels spécialisés dans la retraite et la gestion patrimoniale long terme. Vous recevez des propositions adaptées à votre âge, votre situation professionnelle et vos objectifs de revenus futurs.</p><p>L'intérêt :</p><ul><li>Un conseil humain et personnalisé</li><li>Une sélection ciblée de spécialistes</li><li>Une comparaison facilitée</li><li>Une totale liberté de décision</li></ul><p>Vous avancez à votre rythme, sans démarchage subi.</p>`,
   },
   {
-    question: "Pourquoi invstore doit être considéré comme une solution \"vie pratique\" ?",
+    question: 'Pourquoi invstore doit être considéré comme une solution "vie pratique" ?',
     answer: (
       <>
         <p>Parce qu'invstore simplifie l'accès à un conseil financier de qualité.</p>
-        <p className="mt-2">
-          Traditionnellement, trouver le bon conseiller demande :
-        </p>
+        <p className="mt-2">Traditionnellement, trouver le bon conseiller demande :</p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>Du temps</li>
           <li>Des recherches</li>
@@ -431,9 +429,7 @@ export const FAQ_INVSTORE = [
           <li>Vous recevez des propositions</li>
           <li>Vous choisissez</li>
         </ul>
-        <p className="mt-2">
-          C'est une solution pratique, fluide et centrée sur l'utilisateur.
-        </p>
+        <p className="mt-2">C'est une solution pratique, fluide et centrée sur l'utilisateur.</p>
       </>
     ),
     answerHtml: `<p>Parce qu'invstore simplifie l'accès à un conseil financier de qualité.</p><p>Traditionnellement, trouver le bon conseiller demande :</p><ul><li>Du temps</li><li>Des recherches</li><li>Des rendez-vous multiples</li><li>Une part d'incertitude</li></ul><p>Invstore inverse la logique : ce sont les professionnels qui viennent à vous, en fonction de votre besoin.</p><p>En quelques étapes simples :</p><ul><li>Vous décrivez votre projet</li><li>Vous restez anonyme</li><li>Vous recevez des propositions</li><li>Vous choisissez</li></ul><p>C'est une solution pratique, fluide et centrée sur l'utilisateur.</p>`,

@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { cn } from "../../utils/cn";
 import { SignOutButton } from "@clerk/nextjs";
-import { motion } from "framer-motion";
 import { InvLogo } from "../InvLogo";
 
 const sidebarItems = [
@@ -23,6 +22,11 @@ const sidebarItems = [
     label: "Compte",
     href: "/dashboard/profile",
     icon: User,
+  },
+  {
+    label: "Alertes",
+    href: "/dashboard/alerts",
+    icon: Bell,
   },
   {
     label: "Screening",
@@ -33,11 +37,6 @@ const sidebarItems = [
     label: "Match",
     href: "/dashboard/match",
     icon: MessageSquare,
-  },
-  {
-    label: "Alertes",
-    href: "/dashboard/alerts",
-    icon: Bell,
   },
   {
     label: "Monitoring",
@@ -55,10 +54,8 @@ export function Sidebar() {
   };
 
   return (
-    <motion.div
-      initial={{ width: isCollapsed ? 80 : 280 }}
-      animate={{ width: isCollapsed ? 80 : 280 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+    <div
+      style={{ width: isCollapsed ? 80 : 280, transition: "width 0.3s ease-in-out" }}
       className="relative flex flex-col h-screen bg-white border-r border-gray-200 shadow-sm z-20">
       {/* Header */}
       <div
@@ -125,6 +122,6 @@ export function Sidebar() {
           </button>
         </SignOutButton>
       </div>
-    </motion.div>
+    </div>
   );
 }

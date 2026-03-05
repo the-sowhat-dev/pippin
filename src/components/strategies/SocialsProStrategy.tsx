@@ -1,4 +1,4 @@
-import { Instagram, LinkedIn } from "@mui/icons-material";
+import { InstagramLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ export default function SocialsProStrategy() {
           rel="noopener noreferrer"
           href={"https://www.instagram.com/invstore_app/"}
           className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center">
-          <Instagram fontSize="large" style={{ color: "#F50E6A" }} />
+          <InstagramLogoIcon width={32} height={32} style={{ color: "#F50E6A" }} />
         </Link>
 
         <Link
@@ -22,7 +22,7 @@ export default function SocialsProStrategy() {
           rel="noopener noreferrer"
           href={"https://www.linkedin.com/company/invstore/"}
           className="h-16 w-16 transition-all duration-300 hover:scale-105 bg-white/60 border-2 border-white/80 hover:border-white hover:bg-white rounded-full items-center flex justify-center">
-          <LinkedIn fontSize="large" style={{ color: "#0C5CBA" }} />
+          <LinkedInLogoIcon width={32} height={32} style={{ color: "#0C5CBA" }} />
         </Link>
 
         <Link

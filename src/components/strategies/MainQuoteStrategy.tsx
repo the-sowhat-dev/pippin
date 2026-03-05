@@ -1,11 +1,12 @@
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { QuoteIcon } from "@radix-ui/react-icons";
 
 export function MainQuoteStrategy() {
   return (
     <section className="p-2 lg:p-5">
       <div className="relative lg:max-w-2xl mx-auto max-w-[90%] mt-8 lg:mt-10 mb-16 lg:mb-48">
-        <FormatQuoteIcon
-          sx={{ fontSize: 100 }}
+        <QuoteIcon
+          width={100}
+          height={100}
           className="absolute -top-12 -left-6 md:left-6 lg:-left-6 text-blue-700 opacity-30 rotate-180"
         />
 
@@ -17,8 +18,9 @@ export function MainQuoteStrategy() {
           </span>
         </h2>
 
-        <FormatQuoteIcon
-          sx={{ fontSize: 100 }}
+        <QuoteIcon
+          width={100}
+          height={100}
           className="absolute -bottom-12 -right-6 md:right-6 lg:-right-6 text-blue-700 opacity-30"
         />
       </div>

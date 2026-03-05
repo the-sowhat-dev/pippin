@@ -4,16 +4,8 @@ import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import {
-  Speed,
-  Verified,
-  Handshake,
-  Balance,
-  MoneyOff,
-  AccountBalance,
-  Instagram,
-  LinkedIn,
-} from "@mui/icons-material";
+import { LightningBoltIcon, CheckCircledIcon, LinkedInLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
+import { Handshake, Scale, Gift, Building2 } from "lucide-react";
 import { Title } from "../Title";
 import DescriptionProStrategy from "./DescriptionProStrategy";
 import { LexendFont } from "@/utils/fonts";
@@ -23,7 +15,9 @@ const items = [
     textBefore: "J'ai accès en ",
     highlight: "moins de 5 minutes",
     textAfter: " à une analyse IA de ma situation",
-    Icon: Speed,
+    Icon: ({ className }: { className?: string }) => (
+      <LightningBoltIcon width={28} height={28} className={className} />
+    ),
     gradient: "from-[#203649] to-[#405E79]",
     glowColor: "59, 130, 246",
     span: "md:col-span-1",
@@ -32,7 +26,9 @@ const items = [
     textBefore: "Je récupère le pouvoir de la négociation : ici c'est la finance qui ",
     highlight: "se bat pour moi",
     textAfter: ", pas l'inverse",
-    Icon: Handshake,
+    Icon: ({ className }: { className?: string }) => (
+      <Handshake size={28} className={className} />
+    ),
     gradient: "from-[#35C055] to-[#86f0ad]",
     glowColor: "16, 185, 129",
     span: "md:col-span-2",
@@ -41,7 +37,9 @@ const items = [
     textBefore: "invstore® ne vend pas de produits financiers : son algorithme n'a ",
     highlight: "aucun intérêt à m'orienter",
     textAfter: " vers un conseiller ou un produit en particulier",
-    Icon: Balance,
+    Icon: ({ className }: { className?: string }) => (
+      <Scale size={28} className={className} />
+    ),
     gradient: "from-[#35C055] to-[#86f0ad]",
     glowColor: "16, 185, 129",
     span: "md:col-span-2",
@@ -50,7 +48,9 @@ const items = [
     textBefore: "Tout est ",
     highlight: "gratuit pour moi",
     textAfter: ", ce sont les experts financiers qui payent",
-    Icon: MoneyOff,
+    Icon: ({ className }: { className?: string }) => (
+      <Gift size={28} className={className} />
+    ),
     gradient: "from-[#3264AC] to-[#79D1FB]",
     glowColor: "59, 130, 246",
     span: "md:col-span-1",
@@ -59,7 +59,9 @@ const items = [
     textBefore: "Je peux aussi gagner du temps en gérant ",
     highlight: "tous mes comptes bancaires",
     textAfter: " depuis une seule application",
-    Icon: AccountBalance,
+    Icon: ({ className }: { className?: string }) => (
+      <Building2 size={28} className={className} />
+    ),
     gradient: "from-[#3264AC] to-[#79D1FB]",
     glowColor: "59, 130, 246",
     span: "md:col-span-2",
@@ -68,7 +70,9 @@ const items = [
     textBefore: "Quel que soit ce que signifie « gagner mieux » pour moi, ",
     highlight: "invstore® répond à mon besoin",
     textAfter: "",
-    Icon: Verified,
+    Icon: ({ className }: { className?: string }) => (
+      <CheckCircledIcon width={28} height={28} className={className} />
+    ),
     gradient: "from-[#203649] to-[#405E79]",
     glowColor: "59, 130, 246",
     span: "md:col-span-1",
@@ -125,7 +129,7 @@ function GlowCard({ item, index }: { item: (typeof items)[number]; index: number
         className="mb-5">
         <div
           className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:shadow-xl`}>
-          <item.Icon sx={{ fontSize: 28 }} className="text-white" />
+          <item.Icon className="text-white" />
         </div>
       </motion.div>
 
@@ -182,7 +186,7 @@ export default function InvstoreStrategy() {
               href="https://www.instagram.com/invstore_app/"
               className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-pink-500/20">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
-              <Instagram fontSize="large" style={{ color: "#F50E6A" }} />
+              <InstagramLogoIcon width={32} height={32} style={{ color: "#F50E6A" }} />
             </Link>
 
             <Link
@@ -191,7 +195,7 @@ export default function InvstoreStrategy() {
               href="https://www.linkedin.com/company/invstore/"
               className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/20">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
-              <LinkedIn fontSize="large" style={{ color: "#0C5CBA" }} />
+              <LinkedInLogoIcon width={32} height={32} style={{ color: "#0C5CBA" }} />
             </Link>
 
             <Link

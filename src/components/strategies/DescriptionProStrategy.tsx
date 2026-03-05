@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { QuoteIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 
 const ImagesPro = [
@@ -41,15 +41,17 @@ export default function DescriptionProStrategy({ theme = "green" }: { theme?: "g
       className={`flex flex-col items-center ${theme === "green" ? "bg-[#35C055]" : "bg-sky-400"} gap-8 md:gap-16 p-4 sm:p-8 py-16 sm:py-24 m-2 sm:m-8 rounded-2xl text-white`}>
       <div className="flex flex-col items-center gap-16">
         <div className="relative max-w-xl mx-auto my-8">
-          <FormatQuoteIcon
-            sx={{ fontSize: 100 }}
+          <QuoteIcon
+            width={100}
+            height={100}
             className="absolute -top-10 -left-6 text-white opacity-30 rotate-180"
           />
           <h2 className="text-2xl font-bold relative text-center md:text-left leading-relaxed">
             Un projet pensé et conçu au cœur de l&apos;écosystème fintech français.
           </h2>
-          <FormatQuoteIcon
-            sx={{ fontSize: 100 }}
+          <QuoteIcon
+            width={100}
+            height={100}
             className="absolute -bottom-10 -right-6 text-white opacity-30"
           />
         </div>

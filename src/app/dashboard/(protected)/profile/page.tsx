@@ -1,16 +1,28 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
-import { User, Mail, Building2, Briefcase, FileText, PenLine, Award } from "lucide-react";
-import { getPro, getProQuota } from "../../../../lib/api";
-import { QuotaCard } from "@/components/dashboard/profile/QuotaCard";
-import { LegalLinks } from "@/components/dashboard/profile/LegalLinks";
-import { SubscriptionSection } from "@/components/dashboard/profile/SubscriptionSection";
-import { UpdateProSheet } from "@/components/dashboard/UpdateProSheet";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getProCertificationByKey } from "sowhat-types";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import {
+  User,
+  Mail,
+  Building2,
+  Briefcase,
+  FileText,
+  PenLine,
+  Award,
+  ShieldCheck,
+  Globe,
+} from "lucide-react";
+
 import { LexendFont } from "@/utils/fonts";
-import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
+import { Button } from "@/components/ui/button";
+import { getPro, getProQuota } from "../../../../lib/api";
+import { QuotaCard } from "@/components/dashboard/profile/QuotaCard";
 import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
+import { LegalLinks } from "@/components/dashboard/profile/LegalLinks";
+import { UpdateProSheet } from "@/components/dashboard/UpdateProSheet";
+import { SubscriptionSection } from "@/components/dashboard/profile/SubscriptionSection";
+import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
+import Link from "next/link";
 
 export default async function Page() {
   const user = await currentUser();
@@ -113,7 +125,7 @@ export default async function Page() {
                     );
                   })
                 ) : (
-                  <span className="text-gray-400 text-sm">Aucune certification</span>
+                  <span className="text-gray-400 text-sm">Aucune certification renseignée.</span>
                 )}
               </div>
             </div>
@@ -150,22 +162,55 @@ export default async function Page() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-50">
-                <div className="space-y-1">
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
-                    <FileText size={12} /> SIREN
-                  </span>
-                  <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
-                    {proData?.sirenId || "N/A"}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
-                    <Briefcase size={12} /> ORIAS
-                  </span>
-                  <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
-                    {proData?.oriasId || "N/A"}
-                  </p>
-                </div>
+                {proData?.sirenId && proData.sirenId !== "" && (
+                  <div className="space-y-1">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
+                      <FileText size={12} /> SIREN
+                    </span>
+                    <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
+                      {proData.sirenId}
+                    </p>
+                  </div>
+                )}
+
+                {proData?.oriasId && proData.oriasId !== "" && (
+                  <div className="space-y-1">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
+                      <Briefcase size={12} /> ORIAS
+                    </span>
+                    <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
+                      {proData.oriasId}
+                    </p>
+                  </div>
+                )}
+
+                {proData?.regulation && proData.regulation !== "" && (
+                  <div className="space-y-1">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
+                      <ShieldCheck size={12} /> Autre régulation
+                    </span>
+                    <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
+                      {proData?.regulation || "--"}
+                    </p>
+                  </div>
+                )}
+
+                {proData?.companyWebsite && proData.companyWebsite !== "" && (
+                  <div className="space-y-1">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wider flex items-center gap-1 mb-2">
+                      <Globe size={12} /> Site internet
+                    </span>
+                    <p className="text-gray-900 font-medium bg-gray-50 px-2 py-1 border border-gray-200 rounded text-sm w-fit">
+                      <Link
+                        href={proData.companyWebsite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-green-600 hover:text-green-500">
+                        {proData.companyWebsite}
+                      </Link>
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

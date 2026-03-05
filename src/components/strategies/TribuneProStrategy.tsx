@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { QuoteIcon } from "@radix-ui/react-icons";
 
 import { JoinUsButton } from "../JoinUsButton";
 
@@ -9,8 +9,9 @@ export default function TribuneProStrategy() {
     <section className="mx-12 sm:mx-auto max-w-xl text-black my-32">
       <p className="text-2xl font-bold text-center mb-16">Notre conviction</p>
       <div className="relative mx-auto">
-        <FormatQuoteIcon
-          sx={{ fontSize: 100 }}
+        <QuoteIcon
+          width={100}
+          height={100}
           className="absolute -top-12 -left-6 opacity-15 rotate-180"
         />
         <div className="flex flex-col gap-8 leading-tight text-justify">
@@ -86,8 +87,9 @@ export default function TribuneProStrategy() {
             , rejoignez-nous !
           </p>
         </div>
-        <FormatQuoteIcon
-          sx={{ fontSize: 100 }}
+        <QuoteIcon
+          width={100}
+          height={100}
           className="absolute -bottom-14 -right-6 opacity-15"
         />
       </div>

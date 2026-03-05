@@ -13,9 +13,6 @@ export function CertificationsChips({
   onChange,
 }: CertificationsChipsProps) {
   const handleToggle = (certification: ProCertificationEnum, checked: boolean) => {
-    // AMF is always required and cannot be disabled
-    if (certification === ProCertificationEnum.AMF) return;
-
     if (checked) {
       onChange([...selectedCertifications, certification]);
     } else {
@@ -28,13 +25,12 @@ export function CertificationsChips({
       {ProCertifications.map((certificationData) => {
         const certification = certificationData.key;
         const certificationInfo = getProCertificationByKey(certification);
-        const isAMF = certification === ProCertificationEnum.AMF;
-        const isSelected = isAMF || selectedCertifications.includes(certification);
+        const isSelected = selectedCertifications.includes(certification);
 
         return (
           <div
             key={certification}
-            title={isAMF ? "AMF est obligatoire" : certificationInfo?.description}
+            title={certificationInfo?.description}
             className={`
               flex items-center justify-between px-4 py-3 rounded-lg border-2 transition-all
               ${
@@ -45,15 +41,11 @@ export function CertificationsChips({
             `}>
             <span className={`font-semibold ${isSelected ? "text-green-800" : "text-gray-600"}`}>
               {certificationInfo?.label || certification}
-              {isAMF && (
-                <span className="ml-2 text-xs font-normal text-green-600">(obligatoire)</span>
-              )}
             </span>
 
             <Switch
               checked={isSelected}
               onCheckedChange={(checked) => handleToggle(certification, checked)}
-              disabled={isAMF}
               className="data-[state=checked]:bg-green-500"
             />
           </div>
