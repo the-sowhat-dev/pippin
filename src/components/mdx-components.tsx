@@ -123,10 +123,6 @@ const components = {
   hr: (props: HrProps) => <hr className="my-10 h-px border-0 bg-green-200" {...props} />,
 };
 
-declare global {
-  type MDXProvidedComponents = typeof components;
-}
-
-export function useMDXComponents(): MDXProvidedComponents {
+export function useMDXComponents(): typeof components {
   return components;
 }
