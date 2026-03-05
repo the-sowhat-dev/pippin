@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { AppStoreButtons } from "@/components/AppStoreButtons";
 import { MousePointer } from "lucide-react";
 import { motion } from "framer-motion";
 import { JoinUsButton } from "../JoinUsButton";

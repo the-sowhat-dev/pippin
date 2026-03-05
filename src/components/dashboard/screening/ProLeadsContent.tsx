@@ -97,7 +97,6 @@ export const ProLeadsContent = () => {
           fetchNextPage={fetchNextPage}
           isFetchingNextPage={isFetchingNextPage}
           totalCount={totalCount}
-          openLeadId={leadIdFromUrl}
         />
       </section>
     </div>

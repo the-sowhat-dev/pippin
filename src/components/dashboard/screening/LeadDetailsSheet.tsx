@@ -13,7 +13,7 @@ import {
   getPersonalSalaryRangeLabel,
 } from "sowhat-types";
 import { toast } from "sonner";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Loader2, Heart, Info, CheckCircle2 } from "lucide-react";
@@ -42,31 +42,23 @@ import { DetailItem } from "./DetailItem";
 interface LeadDetailsSheetProps {
   leadId: string;
   trigger: React.ReactNode;
-  defaultOpen?: boolean;
 }
 
-export function LeadDetailsSheet({ leadId, trigger, defaultOpen = false }: LeadDetailsSheetProps) {
+export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
   const { getToken } = useAuth();
   const queryClient = useQueryClient();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [isOpen, setIsOpen] = useState(defaultOpen);
   const [isOfferDialogOpen, setIsOfferDialogOpen] = useState(false);
   const [offerMessage, setOfferMessage] = useState("");
 
-  // Sync isOpen state with defaultOpen when it changes
-  useEffect(() => {
-    if (defaultOpen) {
-      setIsOpen(true);
-    }
-  }, [defaultOpen]);
+  // Derive open state from URL - sheet opens when leadId is in URL
+  const isOpen = searchParams.get("leadId") === leadId;
 
   // Update URL when sheet opens/closes
   const handleOpenChange = (open: boolean) => {
-    setIsOpen(open);
-
     const params = new URLSearchParams(searchParams.toString());
 
     if (open) {

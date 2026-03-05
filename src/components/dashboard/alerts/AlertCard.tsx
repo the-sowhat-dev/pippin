@@ -3,7 +3,7 @@
 import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
 import { DepartmentsList, ProLeadsAlertResponse } from "sowhat-types";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Trash2, BellOff, Bell, Save, Loader2, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -40,7 +40,7 @@ import {
 interface AlertCardProps {
   alert: ProLeadsAlertResponse | null;
   defaultName: string;
-  onSaved: (alert: ProLeadsAlertResponse) => void;
+  onSaved: () => void;
   onDeleted: () => void;
   onCancel?: () => void;
 }
@@ -58,15 +58,6 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
   const [filtersExpanded, setFiltersExpanded] = useState(isNew);
 
   const isDirty = JSON.stringify(filters) !== JSON.stringify(savedFilters);
-
-  // Reset if the alert prop changes (e.g. after save refreshes)
-  useEffect(() => {
-    if (!isNew && alert) {
-      const updated = alertToFilters(alert);
-      setFilters(updated);
-      setSavedFilters(updated);
-    }
-  }, [alert, isNew]);
 
   // Department display helpers
   const selectedDepartments = filters.postalCodes.map((code) => {
@@ -89,10 +80,12 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
       }
     },
     onSuccess: (saved) => {
-      setSavedFilters(alertToFilters(saved));
+      const savedFiltersState = alertToFilters(saved);
+      setFilters(savedFiltersState);
+      setSavedFilters(savedFiltersState);
       queryClient.invalidateQueries({ queryKey: ["pro-alerts"] });
       toast.success(isNew ? "Alerte créée avec succès" : "Alerte mise à jour");
-      onSaved(saved);
+      onSaved();
     },
     onError: () => {
       toast.error("Erreur lors de la sauvegarde de l'alerte");
@@ -107,7 +100,7 @@ export function AlertCard({ alert, defaultName, onSaved, onDeleted, onCancel }: 
     onSuccess: (updated) => {
       queryClient.invalidateQueries({ queryKey: ["pro-alerts"] });
       toast.success(updated.isActive ? "Alerte activée" : "Alerte mise en pause");
-      onSaved(updated);
+      onSaved();
     },
     onError: () => {
       toast.error("Erreur lors de la mise à jour de l'alerte");

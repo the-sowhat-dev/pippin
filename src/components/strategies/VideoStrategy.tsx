@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { PlayIcon } from "@radix-ui/react-icons";
 
@@ -26,7 +27,7 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
               className="relative w-full h-full group cursor-pointer overflow-hidden rounded-lg shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all hover:shadow-3xl"
               aria-label="Play video">
               {/* Thumbnail image */}
-              <img
+              <Image
                 src={thumbnailUrl}
                 alt="Video thumbnail"
                 className="absolute inset-0 w-full h-full object-cover"

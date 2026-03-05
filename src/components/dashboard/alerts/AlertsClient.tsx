@@ -8,6 +8,7 @@ import { ProLeadsAlertResponse } from "sowhat-types";
 
 import { LexendFont } from "@/utils/fonts";
 import { getAlerts } from "@/lib/api";
+import { alertToFilters } from "@/utils/alertFilters";
 import { AlertCard } from "./AlertCard";
 
 export function AlertsClient() {
@@ -30,7 +31,7 @@ export function AlertsClient() {
   const activeAlerts = alerts.filter((alert) => alert.isActive).length;
   const [creatingNew, setCreatingNew] = useState(false);
 
-  const handleAlertSaved = (saved: ProLeadsAlertResponse) => {
+  const handleAlertSaved = () => {
     setCreatingNew(false);
     queryClient.invalidateQueries({ queryKey: ["pro-alerts"] });
   };
@@ -112,7 +113,7 @@ export function AlertsClient() {
         <div className="space-y-4 pb-36">
           {alerts.map((alert) => (
             <AlertCard
-              key={alert.id}
+              key={`${alert.id}-${JSON.stringify(alertToFilters(alert))}`}
               alert={alert}
               defaultName={alert.name}
               onSaved={handleAlertSaved}

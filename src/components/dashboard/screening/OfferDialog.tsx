@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Info, Loader2, AlertTriangle, MessageSquare } from "lucide-react";
 import {
   Dialog,
@@ -110,12 +110,13 @@ export function OfferDialog({
   const isNewOffer = !lead?.offer;
   const isQuotaExhausted = isNewOffer && quota !== undefined && quota.remaining === 0;
 
-  useEffect(() => {
-    if (!open) {
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) {
       setShowWarningAlert(false);
       setDetectedTypes([]);
     }
-  }, [open]);
+    onOpenChange(nextOpen);
+  };
 
   const handleValidationClick = () => {
     const detection = detectForbiddenContent(offerMessage);
@@ -133,7 +134,7 @@ export function OfferDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[560px]">
         <DialogHeader>
           <DialogTitle>{lead?.offer ? "Modifier l'offre" : "Faire une offre"}</DialogTitle>
@@ -223,7 +224,7 @@ export function OfferDialog({
 
         {!showWarningAlert && (
           <DialogFooter>
-            <Button variant="outline" onClick={() => onOpenChange(false)}>
+            <Button variant="outline" onClick={() => handleOpenChange(false)}>
               Annuler
             </Button>
             <Button

@@ -12,7 +12,6 @@ interface LeadsListProps {
   fetchNextPage: () => void;
   isFetchingNextPage: boolean;
   totalCount?: number;
-  openLeadId?: string | null;
 }
 
 const LeadRowSkeleton = () => (
@@ -35,7 +34,6 @@ export const LeadsList = ({
   fetchNextPage,
   isFetchingNextPage,
   totalCount,
-  openLeadId,
 }: LeadsListProps) => {
   if (isLoading) {
     return (
@@ -87,7 +85,6 @@ export const LeadsList = ({
             action={
               <LeadDetailsSheet
                 leadId={lead.userId}
-                defaultOpen={openLeadId === lead.userId}
                 trigger={
                   <button className="text-sm text-green-600 hover:text-green-800 font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                     Voir le détail <span aria-hidden="true">&rarr;</span>
