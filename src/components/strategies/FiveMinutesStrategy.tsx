@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { Messages } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/i18n/LanguageProvider";
-import { Button } from "@radix-ui/themes";
+
 import {
   ProjectStep1Options,
   ProjectStep2Options,
   ProjectStep2BisOptions,
 } from "../../utils/project";
-import { Messages } from "next-intl";
+import { Button } from "../ui/button";
 import { LexendFont } from "@/utils/fonts";
 import { AmountSlider } from "./AmountSlider";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function FiveMinutesStrategy() {
   const { messages } = useLanguage();
@@ -151,8 +152,6 @@ export default function FiveMinutesStrategy() {
                   <AmountSlider />
                 </div>
                 <Button
-                  size="4"
-                  variant="solid"
                   onClick={handleValidate}
                   className="bg-green-600 text-white hover:bg-green-600/85 px-12">
                   Valider

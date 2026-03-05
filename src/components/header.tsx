@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Button } from "@radix-ui/themes";
+import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
 import { ContactButtonWithDialog } from "@/components/ContactButtonWithDialog";
@@ -59,10 +59,7 @@ export default function Header() {
         className={`hidden sm:flex gap-4 lg:gap-8 items-center ${!showLogo ? "flex-grow justify-end" : ""}`}>
         {isAppPage && (
           <a href={"/pro"} key="pro">
-            <Button
-              size={{ initial: "2", sm: "3" }}
-              variant="solid"
-              className="bg-white text-green-700 hover:bg-white/85">
+            <Button className="bg-white text-green-700 hover:bg-white/85">
               <span className="hidden md:inline">Vous êtes un professionnel ?</span>
               <span className="inline md:hidden">Professionnel</span>
             </Button>
@@ -71,10 +68,7 @@ export default function Header() {
 
         {isProPage && (
           <a href={"/dashboard"} key="dashboard">
-            <Button
-              size={{ initial: "2", sm: "3" }}
-              variant="solid"
-              className="bg-[#C6F0D0]/60 text-[#35C055] font-bold hover:bg-[#C6F0D0]/85 underline">
+            <Button className="bg-[#C6F0D0]/60 text-[#35C055] font-bold hover:bg-[#C6F0D0]/85 underline">
               <span className="hidden md:inline">Se connecter à la Plateforme Pro</span>
               <span className="inline md:hidden">Se connecter</span>
             </Button>
@@ -84,12 +78,7 @@ export default function Header() {
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
         {!isLegalPage && !isBlogPage && (
           <a href={"/blog"} key="blog">
-            <Button
-              size={{ initial: "2", sm: "3" }}
-              variant="solid"
-              className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
-              Articles
-            </Button>
+            <Button className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">Articles</Button>
           </a>
         )}
 

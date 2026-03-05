@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { FAQ_INVSTORE } from "@/utils/faq";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { Button } from "../ui/button";
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContentDangerousHtml,
+} from "../ui/accordion";
 import { Title } from "../Title";
+import { Button } from "../ui/button";
+import { FAQ_INVSTORE } from "@/utils/faq";
 
 export default function QandAStrategy() {
   return (
@@ -16,7 +22,10 @@ export default function QandAStrategy() {
           {FAQ_INVSTORE.slice(0, 5).map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-              <AccordionContent className="text-gray-700">{item.answer}</AccordionContent>
+              <AccordionContentDangerousHtml
+                className="text-gray-700 [&_p+p]:mt-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mt-2 [&_li+li]:mt-1"
+                dangerouslySetInnerHTML={{ __html: item.answerHtml }}
+              />
             </AccordionItem>
           ))}
         </Accordion>

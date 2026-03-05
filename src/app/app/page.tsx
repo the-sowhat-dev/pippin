@@ -1,20 +1,20 @@
 "use client";
 
-import QandAStrategy from "@/components/strategies/QandAStrategy";
 import { AppStoreButtons } from "@/components/AppStoreButtons";
+import { PartnersCarousel } from "@/components/PartnersCarousel";
+import QandAStrategy from "@/components/strategies/QandAStrategy";
+import { VideoStrategy } from "@/components/strategies/VideoStrategy";
 import InvstoreStrategy from "@/components/strategies/InvstoreStrategy";
 import { HeroAppStrategy } from "@/components/strategies/HeroAppStrategy";
-import PrinciplesStrategy from "@/components/strategies/PrinciplesStrategy";
-import { DescriptionStrategy } from "@/components/strategies/DescriptionStrategy";
-import { MainQuoteStrategy } from "@/components/strategies/MainQuoteStrategy";
-import { SecondMainQuoteStrategy } from "@/components/strategies/SecondMainQuoteStrategy";
-import { VideoStrategy } from "@/components/strategies/VideoStrategy";
-import { PartnersCarousel } from "@/components/PartnersCarousel";
 import { PressMentionsCarousel } from "@/components/PressMentionsCarousel";
+import PrinciplesStrategy from "@/components/strategies/PrinciplesStrategy";
+import { MainQuoteStrategy } from "@/components/strategies/MainQuoteStrategy";
+import { DescriptionStrategy } from "@/components/strategies/DescriptionStrategy";
+import { SecondMainQuoteStrategy } from "@/components/strategies/SecondMainQuoteStrategy";
 
 export default function Page() {
   return (
-    <main>
+    <main className="bg-white">
       <HeroAppStrategy />
 
       <MainQuoteStrategy />

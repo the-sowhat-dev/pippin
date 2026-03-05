@@ -12,9 +12,9 @@ import {
   DialogTrigger,
   DialogDescription,
 } from "./ui/dialog";
+import { Button } from "./ui/button";
 import { AvatarProfile } from "./AvatarProfile";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { Button } from "@radix-ui/themes";
 
 const EMAIL = "contact@invstore.fr";
 
@@ -41,7 +41,11 @@ export const ProfileContactDialog: React.FC<ProfileContactDialogProps> = ({
       </div>
 
       <Link href={`https://www.linkedin.com/in/${link}`} rel="noopener noreferrer" target="_blank">
-        <LinkedInLogoIcon width={32} height={32} className="hover:text-blue-600 transition-all duration-300" />
+        <LinkedInLogoIcon
+          width={32}
+          height={32}
+          className="hover:text-blue-600 transition-all duration-300"
+        />
       </Link>
     </div>
   );
@@ -83,10 +87,7 @@ export function ContactButtonWithDialog({ trigger }: { trigger?: React.ReactNode
         {trigger ? (
           trigger
         ) : (
-          <Button
-            size={{ initial: "2", sm: "3" }}
-            variant="solid"
-            className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
+          <Button className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
             <span className="hidden md:inline">Nous contacter</span>
             <span className="inline md:hidden">Contact</span>
           </Button>

@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ArticleCard from "@/components/ArticleCard";
 
 import { Article } from "../../lib/db";
 import { LexendFont } from "@/utils/fonts";
+import ArticleCard from "@/components/ArticleCard";
 
 const ARTICLES_PER_PAGE = 15;
 
@@ -71,7 +71,7 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen  pt-24 px-8 text-[#203649]">
+    <main className="min-h-screen  pt-24 px-8 text-[#203649] bg-green-50">
       <div className="max-w-4xl mx-auto pb-64">
         <h1
           className={`text-3xl sm:text-5xl text-green-900 mb-12 sm:mb-24 text-center ${LexendFont.className}`}>

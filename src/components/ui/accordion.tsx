@@ -73,4 +73,32 @@ const AccordionContent = forwardRef<
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+/**
+ * To avoid the following error, I create a second Accord for dangerous html
+ * @error Can only set one of `children` or `props.dangerouslySetInnerHTML`.
+ */
+const AccordionContentDangerousHtml = forwardRef<
+  ComponentRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> & {
+    dangerouslySetInnerHTML: { __html: string };
+  }
+>(({ className, dangerouslySetInnerHTML, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className={cn(
+      "overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-pretty text-lg",
+      className,
+    )}
+    {...props}>
+    <div className={cn("pb-4 pt-0", className)} dangerouslySetInnerHTML={dangerouslySetInnerHTML} />
+  </AccordionPrimitive.Content>
+));
+AccordionContentDangerousHtml.displayName = AccordionPrimitive.Content.displayName;
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionContentDangerousHtml,
+};

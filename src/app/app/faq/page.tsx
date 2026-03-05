@@ -42,7 +42,7 @@ export default function FAQPage() {
               key={faq.question}
               className={`${RobotoFont.className} border-b border-green-100 pb-8`}>
               <h2 className={`text-xl ${LexendFont.className}`}>{faq.question}</h2>
-              <div className="mt-2 text-gray-700">{faq.answer}</div>
+              <div className="mt-2 text-gray-700 [&_p+p]:mt-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mt-2 [&_li+li]:mt-1" dangerouslySetInnerHTML={{ __html: faq.answerHtml }} />
             </section>
           ))}
         </div>
@@ -57,7 +57,7 @@ export default function FAQPage() {
               key={faq.question}
               className={`${RobotoFont.className} border-b border-green-100 pb-8`}>
               <h2 className={`text-xl ${LexendFont.className}`}>{faq.question}</h2>
-              <div className="mt-2 text-gray-700">{faq.answer}</div>
+              <div className="mt-2 text-gray-700 [&_p+p]:mt-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mt-2 [&_li+li]:mt-1" dangerouslySetInnerHTML={{ __html: faq.answerHtml }} />
             </section>
           ))}
         </div>
