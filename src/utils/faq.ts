@@ -1,11 +1,21 @@
-export const FAQ_INVSTORE = [
+export const FAQ_INVSTORE_HIGHLIGHT = [
   {
-    question: "L'application invstore®, c'est quoi exactement ?",
-    answerHtml: `<p>Concrètement, invstore® est une application française gratuite qui analyse votre situation financière en moins de 5 minutes grâce à l'intelligence artificielle, puis vous met en relation de manière anonyme avec des professionnels de la finance vérifiés et agréés en France.</p><p>L'app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les experts les mieux adaptés à vos besoins.</p>`,
+    question: "A quels besoins invstore peut m'aider à répondre ?",
+    answerHtml: `<p>Invstore vous aide à trouver rapidement le bon conseiller financier en fonction de vos objectifs.</p><p>La plateforme peut vous accompagner pour de nombreux besoins, par exemple :</p><ul><li>Optimiser votre patrimoine</li><li>Dynamiser votre épargne</li><li>Réduire vos impôts</li><li>Préparer votre retraite</li><li>Organiser la transmission à vos enfants</li><li>Investir dans l'économie réelle</li><li>Financer une épargne responsable</li><li>Diversifier vos placements</li><li>Ou simplement trouver un conseiller financier spécialisé près de chez vous</li></ul><p>Vous décrivez votre besoin en quelques minutes et recevez des propositions de professionnels intéressés pour vous accompagner.</p>`,
   },
   {
-    question: "Est-ce qu'invstore® est disponible partout en France ?",
-    answerHtml: `<p>Oui, l'application fonctionne sur tout le territoire français, métropole et outre-mer inclus.</p><p>Tous les professionnels présents sur la plateforme sont autorisés à exercer en France et déclarés auprès de l'ORIAS.</p>`,
+    question: "Sur quels supports puis-je investir par l'intermédiaire d'invstore ?",
+    answerHtml: `<p>Invstore n'est pas une plateforme d'investissement, mais une plateforme de mise en relation avec des conseillers financiers spécialisés.</p><p>Les investissements se font ensuite directement auprès des professionnels que vous choisissez.</p><p>Grâce à eux, vous pouvez accéder à l'ensemble des solutions d'épargne et d'investissement, notamment :</p><ul><li>Livrets d'épargne</li><li>Comptes à terme</li><li>Assurance-vie</li><li>PEA et comptes-titres</li><li>PER</li><li>SCPI et immobilier</li><li>Private equity</li><li>Financement participatif</li></ul><p>Invstore vous permet ainsi d'accéder à tout l'univers de l'investissement, via des experts.</p>`,
+  },
+  {
+    question:
+      "Quels sont les conseillers financiers spécialisés que je peux retrouver sur invstore ?",
+    answerHtml: `<p>Les conseillers présents sur invstore sont des professionnels et sociétés indépendants. Ils ne sont ni salariés ni partenaires exclusifs de la plateforme.</p><p>Ils utilisent invstore pour proposer leurs services aux particuliers et paient pour accéder à la plateforme, ce qui garantit l'indépendance d'invstore.</p><p>Vous pouvez notamment retrouver :</p><ul><li>Des conseillers en gestion de patrimoine (Prosper Conseil, Optivest, Inovea, Le Conservateur…)</li><li>Des fintechs d'investissement (Yomoni, Mon Petit Placement…)</li><li>Des plateformes de financement (Baltis, La Première Brique, Temys…)</li><li>Des acteurs bancaires innovants (Green-Got…)</li></ul><p>En quelques minutes, vous pouvez recevoir plusieurs propositions personnalisées de professionnels mis en concurrence pour répondre à votre besoin.</p>`,
+  },
+  {
+    question:
+      "Pourquoi invstore peut être considéré comme le premier comparateur financier interactif ?",
+    answerHtml: `<p>Invstore s'inspire des applications de rencontre pour simplifier l'accès au conseil financier.</p><p>Plutôt que de chercher et comparer vous-même des offres, vous décrivez votre besoin en quelques étapes. Ensuite, les acteurs de la finance vous contactent avec des propositions personnalisées. Ils sont mis en concurrence pour répondre au mieux à votre projet, et vous choisissez librement avec qui échanger.</p><p>Invstore est ainsi le premier comparateur financier interactif, assisté par l'IA et conçu pour ceux qui n'ont pas le temps de passer des heures à s'occuper de leur argent. Avec invstore, ce n'est plus à vous de chercher : c'est le monde de la finance qui se bat pour vous.</p>`,
   },
   {
     question: "Est-ce vraiment gratuit pour les particuliers ?",
@@ -18,6 +28,47 @@ export const FAQ_INVSTORE = [
   {
     question: "Est-ce qu'invstore® convient aux débutants ?",
     answerHtml: `<p>Oui, l'application est pensée pour les particuliers qui :</p><ul><li>n'ont jamais investi,</li><li>souhaitent comprendre comment épargner,</li><li>veulent être guidés simplement,</li><li>cherchent une alternative aux parcours bancaires classiques.</li></ul><p>L'objectif d'invstore® est de rendre l'épargne accessible à tous.</p>`,
+  },
+];
+
+export const FAQ_INVSTORE = [
+  {
+    question: "A quels besoins invstore peut m'aider à répondre ?",
+    answerHtml: `<p>Invstore vous aide à trouver rapidement le bon conseiller financier en fonction de vos objectifs.</p><p>La plateforme peut vous accompagner pour de nombreux besoins, par exemple :</p><ul><li>Optimiser votre patrimoine</li><li>Dynamiser votre épargne</li><li>Réduire vos impôts</li><li>Préparer votre retraite</li><li>Organiser la transmission à vos enfants</li><li>Investir dans l'économie réelle</li><li>Financer une épargne responsable</li><li>Diversifier vos placements</li><li>Ou simplement trouver un conseiller financier spécialisé près de chez vous</li></ul><p>Vous décrivez votre besoin en quelques minutes et recevez des propositions de professionnels intéressés pour vous accompagner.</p>`,
+  },
+  {
+    question: "Sur quels supports puis-je investir par l'intermédiaire d'invstore ?",
+    answerHtml: `<p>Invstore n'est pas une plateforme d'investissement, mais une plateforme de mise en relation avec des conseillers financiers spécialisés.</p><p>Les investissements se font ensuite directement auprès des professionnels que vous choisissez.</p><p>Grâce à eux, vous pouvez accéder à l'ensemble des solutions d'épargne et d'investissement, notamment :</p><ul><li>Livrets d'épargne</li><li>Comptes à terme</li><li>Assurance-vie</li><li>PEA et comptes-titres</li><li>PER</li><li>SCPI et immobilier</li><li>Private equity</li><li>Financement participatif</li></ul><p>Invstore vous permet ainsi d'accéder à tout l'univers de l'investissement, via des experts.</p>`,
+  },
+  {
+    question:
+      "Quels sont les conseillers financiers spécialisés que je peux retrouver sur invstore ?",
+    answerHtml: `<p>Les conseillers présents sur invstore sont des professionnels et sociétés indépendants. Ils ne sont ni salariés ni partenaires exclusifs de la plateforme.</p><p>Ils utilisent invstore pour proposer leurs services aux particuliers et paient pour accéder à la plateforme, ce qui garantit l'indépendance d'invstore.</p><p>Vous pouvez notamment retrouver :</p><ul><li>Des conseillers en gestion de patrimoine (Prosper Conseil, Optivest, Inovea, Le Conservateur…)</li><li>Des fintechs d'investissement (Yomoni, Mon Petit Placement…)</li><li>Des plateformes de financement (Baltis, La Première Brique, Temys…)</li><li>Des acteurs bancaires innovants (Green-Got…)</li></ul><p>En quelques minutes, vous pouvez recevoir plusieurs propositions personnalisées de professionnels mis en concurrence pour répondre à votre besoin.</p>`,
+  },
+  {
+    question:
+      "Pourquoi invstore peut être considéré comme le premier comparateur financier interactif ?",
+    answerHtml: `<p>Invstore s'inspire des applications de rencontre pour simplifier l'accès au conseil financier.</p><p>Plutôt que de chercher et comparer vous-même des offres, vous décrivez votre besoin en quelques étapes. Ensuite, les acteurs de la finance vous contactent avec des propositions personnalisées. Ils sont mis en concurrence pour répondre au mieux à votre projet, et vous choisissez librement avec qui échanger.</p><p>Invstore est ainsi le premier comparateur financier interactif, assisté par l'IA et conçu pour ceux qui n'ont pas le temps de passer des heures à s'occuper de leur argent. Avec invstore, ce n'est plus à vous de chercher : c'est le monde de la finance qui se bat pour vous.</p>`,
+  },
+  {
+    question: "Est-ce vraiment gratuit pour les particuliers ?",
+    answerHtml: `<p>Oui, invstore® est 100 % gratuit pour les particuliers :</p><ul><li>création du profil,</li><li>analyse IA,</li><li>matching,</li><li>connexion Open Banking.</li></ul><p>Ce sont les professionnels financiers qui rémunèrent la plateforme. Aucun frais, aucune commission, aucune facturation ne pèse sur les utilisateurs.</p>`,
+  },
+  {
+    question: "Combien de temps faut-il pour utiliser invstore® ?",
+    answerHtml: `<p>Moins de 5 minutes :</p><ul><li>téléchargement de l'app,</li><li>création du profil,</li><li>réponses aux questions,</li><li>analyse IA immédiate.</li></ul>`,
+  },
+  {
+    question: "Est-ce qu'invstore® convient aux débutants ?",
+    answerHtml: `<p>Oui, l'application est pensée pour les particuliers qui :</p><ul><li>n'ont jamais investi,</li><li>souhaitent comprendre comment épargner,</li><li>veulent être guidés simplement,</li><li>cherchent une alternative aux parcours bancaires classiques.</li></ul><p>L'objectif d'invstore® est de rendre l'épargne accessible à tous.</p>`,
+  },
+  {
+    question: "L'application invstore®, c'est quoi exactement ?",
+    answerHtml: `<p>Concrètement, invstore® est une application française gratuite qui analyse votre situation financière en moins de 5 minutes grâce à l'intelligence artificielle, puis vous met en relation de manière anonyme avec des professionnels de la finance vérifiés et agréés en France.</p><p>L'app vous guide pas à pas pour comprendre comment améliorer votre épargne et trouver les experts les mieux adaptés à vos besoins.</p>`,
+  },
+  {
+    question: "Est-ce qu'invstore® est disponible partout en France ?",
+    answerHtml: `<p>Oui, l'application fonctionne sur tout le territoire français, métropole et outre-mer inclus.</p><p>Tous les professionnels présents sur la plateforme sont autorisés à exercer en France et déclarés auprès de l'ORIAS.</p>`,
   },
   {
     question: "Comment fonctionne l'analyse IA d'invstore® ?",
@@ -99,10 +150,6 @@ export const FAQ_INVSTORE = [
 
 export const FAQ_EPARGNE_INVESTISSEMENT = [
   {
-    question: "Combien rapporte 20.000 € sur un livret A ?",
-    answerHtml: `<p>Enfin, il est nécessaire de calculer combien rapportent 20 000 € sur un livret A d'août à décembre : 20 000 x 1,7 % x 5/12 = 141,67 €. Par conséquent, si vous avez 20 000 € sur votre livret A en début d'année 2025, il vous rapportera 431,67 € d'intérêts.</p>`,
-  },
-  {
     question: "Est-ce dangereux d'avoir beaucoup d'argent sur son compte courant ?",
     answerHtml: `<p>En laissant trop d'argent sur votre compte courant, vous n'augmentez pas les risques de fraudes à la carte bancaire ou de piratage de votre compte. Par contre, si cela devait malheureusement vous arriver, cela peut fortement aggraver le montant du préjudice.</p>`,
   },
@@ -117,10 +164,6 @@ export const FAQ_EPARGNE_INVESTISSEMENT = [
   {
     question: "Quels sont les inconvénients de l'épargne ?",
     answerHtml: `<p>L'argent conservé en épargne peut être à la fois sécurisé et accessible lorsque vous en avez besoin. Cependant, l'un des inconvénients de l'épargne est que les taux d'intérêt des comptes d'épargne peuvent être inférieurs au taux d'inflation. Autrement dit, votre pouvoir d'achat risque de diminuer à long terme.</p>`,
-  },
-  {
-    question: "Quel est l'investissement le plus rentable actuellement ?",
-    answerHtml: `<p>Sans surprise, c'est la bourse, avec les placements en actions qui arrivent en tête de ce classement avec une rentabilité moyenne de 8,5% par an ; et c'est le PEL qui ferme la marche avec 1,75% bruts (en réalité, on peut trouver encore moins rentable avec certains livrets non défiscalisés comme le CEL).</p>`,
   },
   {
     question: "Comment définir l'investissement ?",
@@ -219,16 +262,8 @@ export const FAQ_EPARGNE_INVESTISSEMENT = [
     answerHtml: `<p>Vous pouvez transmettre votre patrimoine de votre vivant, grâce à une donation, en bénéficiant d'un abattement de 100 000 € par parent au profit de chaque enfant. Cet abattement se renouvelle tous les 15 ans.</p>`,
   },
   {
-    question: "Quels sont les frais de transmission pour une succession ?",
-    answerHtml: `<p>Si le barème s'applique, après abattements, sur la somme de 40 675 €, les droits de succession sont calculés de la façon suivante : Jusqu'à 8 072 € : 403,60 € (8 072 € x 5 %) De 8 073 € à 12 109 € : 403,70 € (4 037 € x 10 %) De 12 110 € à 15 932 € : 573,45 € (3 823 € x 15 %)</p>`,
-  },
-  {
     question: "Qu'est-ce que la transmission de la succession ?",
     answerHtml: `<p>La transmission de patrimoine de son vivant est un processus par lequel une personne décide de céder une partie ou la totalité de ses biens à ses héritiers potentiels ou à d'autres bénéficiaires, tout en restant en vie.</p>`,
-  },
-  {
-    question: "Est-ce que les enfants doivent payer des frais de succession ?",
-    answerHtml: `<p>Les droits de succession seront donc de 20 % maximum pour chacun des enfants. De plus, ils bénéficieront chacun d'un abattement de 100 000 €. Le notaire calcule les droits de succession sur la base de 100 000 € pour chaque enfant. Au-delà de l'abattement, il faudra payer selon un barème fiscal.</p>`,
   },
   {
     question: "Quelle est la règle des 7 ans en matière d'héritage ?",

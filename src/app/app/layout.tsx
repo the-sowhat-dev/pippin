@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Invstore - gagner mieux sans effort",
-  description: "Invstore accompagne les épargnants avec une expérience simple et personnalisée.",
+  title: "Invstore - épargner et investir",
+  description: "Téléchargez l'application et laissez le monde de la finance venir à vous.",
   alternates: { canonical: "/app" },
   openGraph: {
     url: "https://invstore.fr/app",
-    title: "Invstore - gagner mieux sans effort",
-    description: "Invstore accompagne les épargnants avec une expérience simple et personnalisée.",
+    title: "Invstore - épargner et investir",
+    description: "Téléchargez l'application et laissez le monde de la finance venir à vous.",
   },
 };
 

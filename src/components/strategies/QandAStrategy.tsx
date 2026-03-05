@@ -10,7 +10,7 @@ import {
 } from "../ui/accordion";
 import { Title } from "../Title";
 import { Button } from "../ui/button";
-import { FAQ_INVSTORE } from "@/utils/faq";
+import { FAQ_INVSTORE_HIGHLIGHT } from "@/utils/faq";
 
 export default function QandAStrategy() {
   return (
@@ -19,7 +19,7 @@ export default function QandAStrategy() {
         <Title id="faq" text="Questions fréquentes" />
 
         <Accordion type="single" collapsible className="w-full">
-          {FAQ_INVSTORE.slice(0, 5).map((item, index) => (
+          {FAQ_INVSTORE_HIGHLIGHT.map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
               <AccordionContentDangerousHtml

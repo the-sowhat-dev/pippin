@@ -19,20 +19,17 @@ export const metadata: Metadata = {
     date: getYesterdayDate().toISOString(),
     "last-modified": getYesterdayDate().toISOString(),
   },
-  title: "Invstore - gagner mieux sans effort",
-  description:
-    "L'application française qui réduit la charge mentale et administrative des épargnants.",
+  title: "Invstore - épargner et investir",
+  description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
   openGraph: {
-    title: "Invstore - gagner mieux sans effort",
-    description:
-      "L'application française qui réduit la charge mentale et administrative des épargnants.",
+    title: "Invstore - épargner et investir",
+    description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
     images: { url: "/images/invstore.svg" },
     url: "https://invstore.fr/app",
   },
   twitter: {
-    title: "Invstore - gagner mieux sans effort",
-    description:
-      "L'application française qui réduit la charge mentale et administrative des épargnants.",
+    title: "Invstore - épargner et investir",
+    description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
     images: { url: "/images/invstore.svg" },
   },
   icons: {
