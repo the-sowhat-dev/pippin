@@ -1,12 +1,12 @@
 "use client";
 
 import { AppStoreButtons } from "@/components/AppStoreButtons";
-import { PartnersCarousel } from "@/components/PartnersCarousel";
 import QandAStrategy from "@/components/strategies/QandAStrategy";
 import { VideoStrategy } from "@/components/strategies/VideoStrategy";
 import InvstoreStrategy from "@/components/strategies/InvstoreStrategy";
 import { HeroAppStrategy } from "@/components/strategies/HeroAppStrategy";
 import { PressMentionsCarousel } from "@/components/PressMentionsCarousel";
+import { PartnersStrategy } from "@/components/strategies/PartnersStrategy";
 import PrinciplesStrategy from "@/components/strategies/PrinciplesStrategy";
 import { MainQuoteStrategy } from "@/components/strategies/MainQuoteStrategy";
 import { DescriptionStrategy } from "@/components/strategies/DescriptionStrategy";
@@ -19,7 +19,7 @@ export default function Page() {
 
       <MainQuoteStrategy />
 
-      <PartnersCarousel />
+      <PartnersStrategy />
 
       <DescriptionStrategy />
 

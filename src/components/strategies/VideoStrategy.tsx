@@ -18,7 +18,7 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
 
   return (
     <section className="pt-0 pb-12 sm:pt-4 sm:pb-16 bg-[#c6f0d0]">
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-4 max-w-4xl">
         <div className="relative w-full mx-auto" style={{ aspectRatio: "16/9" }}>
           {!isVideoLoaded ? (
             // Facade: Static thumbnail with play button
@@ -30,6 +30,8 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
               <Image
                 src={thumbnailUrl}
                 alt="Video thumbnail"
+                width={1000}
+                height={1000}
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
               />
@@ -39,8 +41,8 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-red-600 rounded-full p-6 group-hover:scale-110 group-hover:bg-red-700 transition-all duration-300 shadow-xl">
-                  <PlayIcon width={64} height={64} className="text-white" />
+                <div className="bg-red-600 rounded-full p-3 md:p-6 group-hover:scale-110 group-hover:bg-red-700 transition-all duration-300 shadow-xl">
+                  <PlayIcon className="text-white w-8 h-8 md:w-16 md:h-16" />
                 </div>
               </div>
 

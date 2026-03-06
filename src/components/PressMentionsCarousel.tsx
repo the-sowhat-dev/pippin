@@ -48,6 +48,13 @@ const PressMentions: PressMentionItem[] = [
     title: 'Invstore dans "Le Pitch" (BFM Business)',
     src: "/images/media-mentions/bfm-business.png",
   },
+  {
+    about:
+      "https://www.leprogres.fr/economie/2026/03/04/invstore-veut-faciliter-les-relations-entre-epargnants-et-conseillers-financiers-a-la-maniere-d-un-doctolib-de-l-epargne",
+    alt: "Le Progrès",
+    title: '"Faciliter les relations entre épargnants et conseillers financiers"',
+    src: "/images/media-mentions/le-progres.png",
+  },
 ];
 
 const PressMentionsItems = () => {
