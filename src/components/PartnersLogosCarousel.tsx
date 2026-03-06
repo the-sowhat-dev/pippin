@@ -22,7 +22,6 @@ const PartnersLogos2 = [
     src: "/images/partners-logos/mon-conseil-patrimonial-dreotto.png",
     alt: "Mon Conseil Patrimoine",
   },
-  { src: "/images/partners-logos/le-conservateur.png", alt: "Le Conservateur" },
   { src: "/images/partners-logos/la-belle-epargne.png", alt: "La Belle Épargne" },
   { src: "/images/partners-logos/hecterea-la-fonciere.png", alt: "Hecterea La Foncière" },
 ];
