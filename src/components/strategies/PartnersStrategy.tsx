@@ -11,7 +11,7 @@ export function PartnersStrategy() {
         <div className="w-full h-1/2 bg-[#C2E7FF]" />
       </div>
 
-      <div className="relative z-10 p-2 sm:p-6">
+      <div className="relative z-1 p-2 sm:p-6">
         <div
           className={`flex flex-col items-center bg-[#35C055] p-3 sm:p-10 py-8 rounded-2xl text-green-900`}>
           <div className="relative lg:max-w-xl max-w-[90%] mx-auto mb-4 md:mb-8">
