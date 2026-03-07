@@ -18,9 +18,7 @@ export function toSortKey(value: string | null | undefined): SortKey {
 
 export async function fetchCategories(): Promise<BlogCategoryResponse[]> {
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const res = await fetch(`${backendUrl}/articles/categories`, {
-    next: { revalidate: 3600 },
-  });
+  const res = await fetch(`${backendUrl}/articles/categories`);
   if (!res.ok) {
     throw new Error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
   }

@@ -25,6 +25,8 @@ export default async function BlogPage({ searchParams }: PageProps) {
     queryArticles(category, keyword, sort, ARTICLES_PER_PAGE + 1, 0),
   ]);
 
+  console.log("categories", categories);
+
   const hasMore = rows.length > ARTICLES_PER_PAGE;
   const articles = rows.slice(0, ARTICLES_PER_PAGE);
 
