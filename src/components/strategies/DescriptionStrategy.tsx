@@ -34,17 +34,13 @@ export function DescriptionStrategy() {
         <div className="flex flex-col gap-14 items-center md:basis-1/2">
           <div className="md:max-w-[600px]">
             <p className="text-justify text-pretty">
-              <span className="font-bold">L&apos;application française invstore®</span> transforme
-              l&apos;
-              <span className="font-bold">expérience d'achat des produits d'épargne</span> en
-              facilitant l'accès des particuliers aux conseillers financiers spécialisés.
-            </p>
-
-            <br />
-
-            <p className="text-pretty text-justify">
-              Elle reprend les codes des applications de rencontre – associés à l&apos;Intelligence
-              Artificielle – pour repenser votre parcours client :
+              L&apos;application française invstore® reprend
+              <span className="font-bold"> les codes des applications de rencontre</span> – associés
+              à l&apos;intelligence artificielle – pour
+              <span className="font-bold">
+                {" "}
+                faciliter l’accès aux conseillers financiers spécialisés :
+              </span>
             </p>
 
             <br />
@@ -62,27 +58,6 @@ export function DescriptionStrategy() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Quote */}
-      <div className="p-2">
-        <div className="relative lg:max-w-2xl mx-auto max-w-[90%] mt-8 lg:mt-10 mb-16 lg:mb-48">
-          <QuoteIcon
-            width={100}
-            height={100}
-            className="absolute -top-12 -left-6 md:left-6 lg:-left-6 text-blue-700 opacity-30 rotate-180"
-          />
-
-          <h2 className={`${LexendFont.className} text-xl lg:text-3xl text-center text-blue-950`}>
-            L&apos;application de ceux qui n&apos;ont pas le temps de s&apos;occuper de leur argent.
-          </h2>
-
-          <QuoteIcon
-            width={100}
-            height={100}
-            className="absolute -bottom-12 -right-6 md:right-6 lg:-right-6 text-blue-700 opacity-30"
-          />
         </div>
       </div>
     </section>

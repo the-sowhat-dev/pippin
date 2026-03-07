@@ -20,16 +20,19 @@ export const metadata: Metadata = {
     "last-modified": getYesterdayDate().toISOString(),
   },
   title: "Invstore - épargner et investir",
-  description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
+  description:
+    "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
   openGraph: {
     title: "Invstore - épargner et investir",
-    description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
+    description:
+      "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
     images: { url: "/images/invstore.svg" },
     url: "https://invstore.fr/app",
   },
   twitter: {
     title: "Invstore - épargner et investir",
-    description: "L'application de ceux qui n'ont pas le temps de s'occuper de leur argent.",
+    description:
+      "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
     images: { url: "/images/invstore.svg" },
   },
   icons: {

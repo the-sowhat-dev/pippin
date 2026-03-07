@@ -45,18 +45,18 @@ export function HeroAppStrategy() {
         <div className="hidden lg:block basis-1/2 h-2 w-full" />
       </div>
 
-      <div className="bg-green-200 h-[4vh] lg:h-[3vh] items-center justify-start px-2 lg:px-4 flex overflow-hidden">
+      <div className="bg-green-200 h-[4vh] items-center justify-start px-2 text-xl lg:text-2xl lg:px-4 flex overflow-hidden">
         {words.map((word, index) => (
           <span
             key={`${word}-${index}`}
-            className={`text-green-950 ${word === "|" ? "opacity-30" : "opacity-70"} text-sm lg:text-base px-2 lg:px-4 whitespace-nowrap`}>
+            className={`text-green-950 ${word === "|" ? "opacity-30" : "opacity-70"} px-2 lg:px-4 whitespace-nowrap`}>
             {word}
           </span>
         ))}
         {words.map((word, index) => (
           <span
             key={`${word}-${index}`}
-            className={`text-green-950 ${word === "|" ? "opacity-30" : "opacity-70"} text-sm lg:text-base px-2 lg:px-4 whitespace-nowrap`}>
+            className={`text-green-950 ${word === "|" ? "opacity-30" : "opacity-70"} px-2 lg:px-4 whitespace-nowrap`}>
             {word}
           </span>
         ))}
@@ -66,9 +66,9 @@ export function HeroAppStrategy() {
         {/* Text and Buttons Column */}
         <div className="flex flex-col items-center lg:basis-1/2 gap-4 lg:gap-8">
           <h1 className={`${NunitoFont.className} text-2xl lg:text-3xl text-center`}>
-            vous n&apos;avez pas le temps
+            Vous ne savez pas
             <br />
-            <span className="font-bold block mt-1 lg:mt-2">de vous occuper de votre argent ?</span>
+            <span className="font-bold block mt-1 lg:mt-2">par où commencer ?</span>
           </h1>
 
           <AppStoreButtons layout="column" />

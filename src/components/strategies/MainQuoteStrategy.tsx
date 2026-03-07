@@ -3,7 +3,7 @@ import { QuoteIcon } from "@radix-ui/react-icons";
 export function MainQuoteStrategy() {
   return (
     <section className="p-2 lg:p-5">
-      <div className="relative lg:max-w-2xl mx-auto max-w-[90%] mt-8 lg:mt-10 mb-16 lg:mb-48">
+      <div className="relative lg:max-w-lg mx-auto max-w-[90%] mt-8 lg:mt-10 mb-16 lg:mb-48">
         <QuoteIcon
           width={100}
           height={100}
@@ -11,11 +11,9 @@ export function MainQuoteStrategy() {
         />
 
         <h2 className="text-xl lg:text-3xl text-center">
-          téléchargez l&apos;application invstore®
+          Venez matcher avec le monde
           <br />
-          <span className="font-bold block mt-1 sm:mt-2">
-            et laissez le monde de la finance venir à vous
-          </span>
+          <span className="font-bold block mt-1 sm:mt-2">de la finance !</span>
         </h2>
 
         <QuoteIcon
