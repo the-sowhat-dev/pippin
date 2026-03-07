@@ -1,26 +1,17 @@
 import { NextResponse } from "next/server";
-import pool from "../../../lib/db";
+import { queryArticles, toSortKey } from "@/lib/articles";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get("limit") || "16", 10);
+    const limit = Math.min(parseInt(searchParams.get("limit") || "16", 10), 50);
     const offset = parseInt(searchParams.get("offset") || "0", 10);
+    const category = searchParams.get("category") || null;
+    const keyword = searchParams.get("keyword") || null;
+    const sort = toSortKey(searchParams.get("sort"));
 
-    const client = await pool.connect();
-    try {
-      const query = `
-        SELECT *
-        FROM articles
-        WHERE is_published = true
-        ORDER BY id DESC
-        LIMIT $1 OFFSET $2
-      `;
-      const result = await client.query(query, [limit, offset]);
-      return NextResponse.json(result.rows);
-    } finally {
-      client.release();
-    }
+    const articles = await queryArticles(category, keyword, sort, limit, offset);
+    return NextResponse.json(articles);
   } catch (error) {
     console.error("Error fetching articles:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

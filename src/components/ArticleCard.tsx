@@ -12,6 +12,7 @@ interface ArticleCardProps {
   collaboration?: string | null;
   coverImage?: string | null;
   readingTime: number;
+  category?: string | null;
 }
 
 export default function ArticleCard({
@@ -22,6 +23,7 @@ export default function ArticleCard({
   collaboration,
   coverImage,
   readingTime,
+  category,
 }: ArticleCardProps) {
   // Parse date if it's a string
   const dateObj = typeof date === "string" ? new Date(date) : date;
@@ -63,7 +65,19 @@ export default function ArticleCard({
         {/* Content Container */}
         <div
           className={`flex flex-col gap-2 pb-4 border-b group-hover:border-gray-200 border-gray-100 ${RobotoFont.className}`}>
-          <time className="text-xs text-gray-400 font-medium text-pretty">{timeAgoString}</time>
+          <div className="flex items-center gap-2">
+            <time
+              dateTime={dateObj.toISOString()}
+              suppressHydrationWarning
+              className="text-xs text-gray-400 font-medium">
+              {timeAgoString}
+            </time>
+            {category && (
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium text-gray-800 bg-gray-200">
+                {category}
+              </span>
+            )}
+          </div>
 
           <h2
             className={`text-lg sm:text-xl font-bold text-gray-900 group-hover:text-green-800 transition-colors ${LexendFont.className}`}>
