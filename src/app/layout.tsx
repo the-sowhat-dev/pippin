@@ -1,7 +1,6 @@
 import "@/utils/globals.css";
 
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -51,26 +50,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="fr">
-        <head>
-          <MetricoolAnalytics />
-          <GoogleAnalytics />
-        </head>
+    <html lang="fr">
+      <head>
+        <MetricoolAnalytics />
+        <GoogleAnalytics />
+      </head>
 
-        <LanguageProvider>
-          <body className={`${SourceSansPro.className} antialiased`}>
-            <Header />
+      <LanguageProvider>
+        <body className={`${SourceSansPro.className} antialiased`}>
+          <Header />
 
-            {children}
+          {children}
 
-            <Footer />
+          <Footer />
 
-            <Analytics />
-            <SpeedInsights />
-          </body>
-        </LanguageProvider>
-      </html>
-    </ClerkProvider>
+          <Analytics />
+          <SpeedInsights />
+        </body>
+      </LanguageProvider>
+    </html>
   );
 }
