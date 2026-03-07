@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { RobotoFont, LexendFont } from "@/utils/fonts";
 import { timeAgo } from "../utils/date";
-import { getCategoryColor } from "@/utils/categoryColors";
 import { InstagramPostCarousel } from "./InstagramPostCarousel";
 import { CollaborationBlock } from "./CollaborationBlock";
 
@@ -70,15 +69,11 @@ export default function ArticleCard({
             <time
               dateTime={dateObj.toISOString()}
               suppressHydrationWarning
-              className="text-xs text-gray-400 font-medium"
-            >
+              className="text-xs text-gray-400 font-medium">
               {timeAgoString}
             </time>
             {category && (
-              <span
-                className="px-2 py-0.5 rounded-full text-xs font-medium text-gray-800"
-                style={{ backgroundColor: getCategoryColor(category) }}
-              >
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium text-gray-800 bg-gray-200">
                 {category}
               </span>
             )}
