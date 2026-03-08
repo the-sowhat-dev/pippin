@@ -73,6 +73,7 @@ export default function FiveMinutesStrategy() {
                         src={`/images/${option.image}`}
                         alt={resolveMessage(option.text)}
                         fill
+                        sizes="(max-width: 767px) 96px, 128px"
                         className="object-cover"
                       />
                     </div>
