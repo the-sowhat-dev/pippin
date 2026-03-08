@@ -71,6 +71,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${article.cover_image}.webp`}
               alt={article.title}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 600px"
               className="object-cover rounded-lg max-w-[600px] mx-auto"
             />
           </div>

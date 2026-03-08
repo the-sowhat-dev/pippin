@@ -37,6 +37,7 @@ export default function ActionsStrategy() {
                 alt={action.title}
                 width={40}
                 height={40}
+                unoptimized
                 className="w-10 h-10"
               />
               <h3 className="font-bold text-[#203649] text-lg sm:text-xl text-center md:text-left">

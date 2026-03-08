@@ -56,6 +56,7 @@ export function InstagramPostCarousel({ slug, title, slideCount }: InstagramPost
                         src={slide.src}
                         alt={`Instagram slide ${index + 1}`}
                         fill
+                        sizes="(max-width: 639px) 90vw, (max-width: 767px) 60vw, (max-width: 1023px) 40vw, (max-width: 1279px) 50vw, 40vw"
                         className="object-cover"
                       />
                     </CardContent>

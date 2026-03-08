@@ -32,6 +32,7 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
                 alt="Video thumbnail"
                 width={1000}
                 height={1000}
+                sizes="(max-width: 1024px) 100vw, 896px"
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
               />

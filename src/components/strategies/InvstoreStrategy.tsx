@@ -210,6 +210,7 @@ export default function InvstoreStrategy() {
                 style={{ objectFit: "contain" }}
                 src="/icons/tiktok.svg"
                 alt="TikTok icon"
+                unoptimized
               />
             </Link>
           </div>
