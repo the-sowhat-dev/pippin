@@ -1,20 +1,15 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Metadata } from "next";
-import pool from "@/lib/db";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { getArticleBySlug, getPublishedArticleSlugs } from "@/lib/articles";
 import { LexendFont, RobotoFont } from "@/utils/fonts";
 
-// Helper to fetch article
-async function getArticle(slug: string) {
-  const client = await pool.connect();
-  try {
-    const query = "SELECT * FROM articles WHERE slug = $1 AND is_published = true";
-    const result = await client.query(query, [slug]);
-    return result.rows[0] || null;
-  } finally {
-    client.release();
-  }
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const rows = await getPublishedArticleSlugs();
+  return rows.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -23,7 +18,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getArticle(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {};
@@ -31,12 +26,12 @@ export async function generateMetadata({
 
   return {
     title: `${article.title} | Invstore - épargner et investir`,
-    description: article.description,
+    description: article.description ?? undefined,
     openGraph: {
       title: article.title,
-      description: article.description,
+      description: article.description ?? undefined,
       type: "article",
-      publishedTime: article.published_at.toISOString(),
+      publishedTime: new Date(article.published_at).toISOString(),
       images: article.cover_image ? [{ url: article.cover_image }] : [],
     },
     keywords: article.keywords || [],
@@ -47,7 +42,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = await getArticle(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();

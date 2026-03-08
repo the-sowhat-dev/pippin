@@ -1,27 +1,12 @@
 import { MetadataRoute } from "next";
-import pool from "@/lib/db";
+import { getPublishedArticlesForSitemap } from "@/lib/articles";
 
 const BASE_URL = "https://invstore.fr";
 
-// Helper to fetch all published articles from database
-async function getArticles() {
-  const client = await pool.connect();
-  try {
-    const query = `
-      SELECT slug, published_at, updated_at
-      FROM articles
-      WHERE is_published = true
-      ORDER BY published_at DESC
-    `;
-    const result = await client.query(query);
-    return result.rows;
-  } finally {
-    client.release();
-  }
-}
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = await getArticles();
+  const articles = await getPublishedArticlesForSitemap();
 
   const blogEntries: MetadataRoute.Sitemap = articles.map((article) => {
     // Use updated_at if available, otherwise use published_at
