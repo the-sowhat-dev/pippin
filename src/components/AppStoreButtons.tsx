@@ -28,6 +28,7 @@ export function AppStoreButtons({ layout = "row", className = "" }: AppStoreButt
             alt="QR Code pour télécharger l'application"
             width={200}
             height={200}
+            unoptimized
             className="w-48 h-48"
           />
         </div>

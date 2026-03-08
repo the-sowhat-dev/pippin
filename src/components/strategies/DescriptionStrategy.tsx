@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { QuoteIcon } from "@radix-ui/react-icons";
-import { LexendFont } from "@/utils/fonts";
 
 const steps = [
   { number: "1️⃣", text: "quel que soit le montant que vous souhaitez investir" },
@@ -25,6 +23,7 @@ export function DescriptionStrategy() {
             className="max-w-[400px] mx-auto"
             width={6750}
             height={14405}
+            unoptimized
           />
         </div>
 
