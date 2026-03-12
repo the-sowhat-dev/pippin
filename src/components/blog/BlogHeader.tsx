@@ -153,7 +153,7 @@ export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
         </div>
 
         {/* Keyword chips */}
-        <div>
+        {/* <div>
           <div className="text-gray-600 text-xs md:text-base mb-1.5 ml-2">Mots-clés :</div>
           {keywords.length > 0 && (
             <div className="flex flex-wrap gap-1.5 items-center">
@@ -175,7 +175,7 @@ export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
               )}
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

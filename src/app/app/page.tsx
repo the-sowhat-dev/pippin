@@ -8,7 +8,6 @@ import { HeroAppStrategy } from "@/components/strategies/HeroAppStrategy";
 import { PressMentionsCarousel } from "@/components/PressMentionsCarousel";
 import { PartnersStrategy } from "@/components/strategies/PartnersStrategy";
 import PrinciplesStrategy from "@/components/strategies/PrinciplesStrategy";
-import { MainQuoteStrategy } from "@/components/strategies/MainQuoteStrategy";
 import { DescriptionStrategy } from "@/components/strategies/DescriptionStrategy";
 import { SecondMainQuoteStrategy } from "@/components/strategies/SecondMainQuoteStrategy";
 
@@ -17,7 +16,7 @@ export default function Page() {
     <main className="bg-white">
       <HeroAppStrategy />
 
-      <MainQuoteStrategy />
+      {/* <MainQuoteStrategy /> */}
 
       <PartnersStrategy />
 

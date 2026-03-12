@@ -18,11 +18,17 @@ export function toSortKey(value: string | null | undefined): SortKey {
 
 export async function fetchCategories(): Promise<BlogCategoryResponse[]> {
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const res = await fetch(`${backendUrl}/articles/categories`);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
+  try {
+    const res = await fetch(`${backendUrl}/articles/categories`);
+    if (!res.ok) {
+      console.error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
+      return [];
+    }
+    return res.json();
+  } catch (err) {
+    console.error("fetchCategories error:", err);
+    return [];
   }
-  return res.json();
 }
 
 export async function queryArticles(
@@ -33,28 +39,37 @@ export async function queryArticles(
   offset: number,
 ): Promise<ArticlePreviewResponse[]> {
   const orderBy = SORT_MAP[sort];
-  const result = await pool.query(
-    `SELECT id, slug, title, subtitle, cover_image, author,
-            category, keywords, reading_time, published_at, collaboration
-     FROM articles
-     WHERE is_published = true
-       AND ($1::text IS NULL OR category = $1)
-       AND ($2::text IS NULL OR $2 = ANY(keywords))
-     ORDER BY ${orderBy}
-     LIMIT $3 OFFSET $4`,
-    [category, keyword, limit, offset],
-  );
-  return result.rows;
+  try {
+    const result = await pool.query(
+      `SELECT id, slug, title, subtitle, cover_image, author,
+              category, keywords, reading_time, published_at, collaboration
+       FROM articles
+       WHERE is_published = true
+         AND ($1::text IS NULL OR category = $1)
+         AND ($2::text IS NULL OR $2 = ANY(keywords))
+       ORDER BY ${orderBy}
+       LIMIT $3 OFFSET $4`,
+      [category, keyword, limit, offset],
+    );
+    return result.rows;
+  } catch (err) {
+    console.error("queryArticles error:", err);
+    return [];
+  }
 }
 
 export async function queryBlogMeta(): Promise<{
   keywords: string[];
 }> {
-  const result = await pool.query(
-    "SELECT DISTINCT unnest(keywords) AS keyword FROM articles WHERE is_published = true ORDER BY keyword",
-  );
-
-  return {
-    keywords: result.rows.map((r) => r.keyword as string).filter(Boolean),
-  };
+  try {
+    const result = await pool.query(
+      "SELECT DISTINCT unnest(keywords) AS keyword FROM articles WHERE is_published = true ORDER BY keyword",
+    );
+    return {
+      keywords: result.rows.map((r) => r.keyword as string).filter(Boolean),
+    };
+  } catch (err) {
+    console.error("queryBlogMeta error:", err);
+    return { keywords: [] };
+  }
 }
