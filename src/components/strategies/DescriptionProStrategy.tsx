@@ -79,6 +79,7 @@ export default function DescriptionProStrategy({ theme = "green" }: { theme?: "g
                   alt={`Option ${index + 1}`}
                   width={300}
                   height={300}
+                  unoptimized
                   className="w-16 sm:w-24 h-auto object-cover"
                 />
               </motion.div>

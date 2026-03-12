@@ -36,6 +36,7 @@ export default function SocialsProStrategy() {
             style={{ objectFit: "contain" }}
             src="/icons/tiktok.svg"
             alt="TikTok icon"
+            unoptimized
           />
         </Link>
       </div>

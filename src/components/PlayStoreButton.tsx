@@ -20,6 +20,7 @@ export function PlayStoreButton() {
           src="/icons/play-store-icon.svg"
           alt="Play Store Logo"
           fill
+          unoptimized
           className="object-contain"
           sizes="(min-width: 640px) 40px, 32px"
         />

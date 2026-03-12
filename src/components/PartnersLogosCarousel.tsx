@@ -45,6 +45,7 @@ const PartnersLogosItems = ({
             alt={partner.alt}
             width={300}
             height={200}
+            unoptimized
             className="object-contain w-[170px] md:w-[200px]"
           />
         </li>

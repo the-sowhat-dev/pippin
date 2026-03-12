@@ -20,6 +20,7 @@ export function AppleAppStoreButton() {
           src="/icons/apple-icon.svg"
           alt="Apple Logo"
           fill
+          unoptimized
           className="object-contain"
           sizes="(min-width: 640px) 40px, 32px"
         />

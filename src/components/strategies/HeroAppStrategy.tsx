@@ -37,7 +37,10 @@ export function HeroAppStrategy() {
             alt="Invstore Logo"
             width={810}
             height={165}
-            priority
+            unoptimized
+            preload
+            fetchPriority="high"
+            sizes="(max-width: 1023px) 320px, 550px"
             className="max-w-[320px] lg:max-w-[550px] h-auto"
           /> */}
           <span
@@ -111,7 +114,7 @@ export function HeroAppStrategy() {
             alt="Invstore App Mockup"
             width={747}
             height={970}
-            priority
+            sizes="(max-width: 1023px) 360px, 500px"
             className="max-w-[360px] lg:max-w-[500px] drop-shadow-xl"
           />
         </div>

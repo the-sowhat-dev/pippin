@@ -72,6 +72,7 @@ const PressMentionsItems = () => {
               alt={partner.alt}
               width={300}
               height={200}
+              unoptimized
               className="object-contain w-[150px] md:w-[170px]"
             />
             <p
