@@ -44,9 +44,12 @@ export async function fetchCategories(): Promise<BlogCategoryResponse[]> {
       tags: ["blog:categories"],
     },
   });
+
   if (!res.ok) {
     throw new Error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
   }
+
+  return res.json();
 }
 
 const queryArticlesCached = unstable_cache(
