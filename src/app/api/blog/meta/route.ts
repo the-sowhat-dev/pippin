@@ -8,11 +8,7 @@ export async function GET() {
     const [categories, { keywords }] = await Promise.all([fetchCategories(), queryBlogMeta()]);
     return NextResponse.json(
       { categories, keywords },
-      {
-        headers: {
-          "Cache-Control": CACHE_CONTROL,
-        },
-      },
+      { headers: { "Cache-Control": CACHE_CONTROL } },
     );
   } catch (error) {
     console.error("Error fetching blog meta:", error);

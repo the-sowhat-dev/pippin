@@ -1,30 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { BlogCategoryResponse } from "sowhat-types";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 import { LexendFont } from "@/utils/fonts";
 import { SortArticleSelect } from "./SortArticleSelect";
-import { BlogKeywordChip } from "./BlogKeywordChip";
 import { BlogCategoryChip } from "./BlogCategoryChip";
 
-const VISIBLE_KEYWORDS = 10;
 const VISIBLE_CATEGORIES = 5;
 
 const DEFAULT_BG = "#F0FDF4"; // green-50
 
 interface BlogHeaderProps {
   categories: BlogCategoryResponse[];
-  keywords: string[];
 }
 
-export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
+export default function BlogHeader({ categories }: BlogHeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [showAllKeywords, setShowAllKeywords] = useState(false);
   const [showAllCategories, setShowAllCategories] = useState(false);
 
   // Track the animated fill color separately from URL state so the animation
@@ -40,7 +36,6 @@ export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
   });
 
   const currentCategory = searchParams.get("category");
-  const currentKeyword = searchParams.get("keyword");
   const currentSort = searchParams.get("sort") ?? "date_desc";
 
   const updateParams = (updates: Record<string, string | null>) => {
@@ -68,15 +63,8 @@ export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
 
   const clearFilters = () => {
     triggerBgFill(DEFAULT_BG);
-    updateParams({ category: null, keyword: null });
+    updateParams({ category: null });
   };
-
-  const toggleKeyword = (keyword: string) => {
-    updateParams({ keyword: currentKeyword === keyword ? null : keyword });
-  };
-
-  const visibleKeywords = showAllKeywords ? keywords : keywords.slice(0, VISIBLE_KEYWORDS);
-  const hiddenKeywordsCount = keywords.length - VISIBLE_KEYWORDS;
 
   const visibleCategories = showAllCategories
     ? categories
@@ -151,31 +139,6 @@ export default function BlogHeader({ categories, keywords }: BlogHeaderProps) {
             </div>
           )}
         </div>
-
-        {/* Keyword chips */}
-        {/* <div>
-          <div className="text-gray-600 text-xs md:text-base mb-1.5 ml-2">Mots-clés :</div>
-          {keywords.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 items-center">
-              {visibleKeywords.map((kw) => (
-                <BlogKeywordChip
-                  key={kw}
-                  keyword={kw}
-                  isActive={currentKeyword === kw}
-                  onClick={() => toggleKeyword(kw)}
-                />
-              ))}
-
-              {hiddenKeywordsCount > 0 && (
-                <button
-                  onClick={() => setShowAllKeywords((v) => !v)}
-                  className="px-3.5 py-1 text-sm text-green-800 font-medium hover:underline">
-                  {showAllKeywords ? "Voir moins" : `+${hiddenKeywordsCount} autres`}
-                </button>
-              )}
-            </div>
-          )}
-        </div> */}
       </div>
     </div>
   );
