@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { LexendFont, SourceSansPro } from "@/utils/fonts";
+import { LexendFont } from "@/utils/fonts";
 
 type PressMentionItem = {
   about: string;
@@ -75,10 +75,7 @@ const PressMentionsItems = () => {
               unoptimized
               className="object-contain w-[150px] md:w-[170px]"
             />
-            <p
-              className={`text-white/70 ${SourceSansPro.className} text-sm md:text-base text-center mt-2`}>
-              {partner.title}
-            </p>
+            <p className={`text-white/70 text-sm md:text-base text-center mt-2`}>{partner.title}</p>
           </Link>
         </li>
       ))}

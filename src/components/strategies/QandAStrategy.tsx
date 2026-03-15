@@ -14,7 +14,7 @@ import { FAQ_INVSTORE_HIGHLIGHT } from "@/utils/faq";
 
 export default function QandAStrategy() {
   return (
-    <section className="w-full flex justify-center py-12 px-4 bg-[#c6f0d0] text-[#203649]">
+    <section className="w-full flex justify-center py-12 px-4 bg-white text-[#203649]">
       <div className="flex flex-col w-full max-w-3xl p-6 md:p-8 gap-10 sm:gap-16">
         <Title id="faq" text="Questions fréquentes" />
 

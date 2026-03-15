@@ -8,6 +8,10 @@ const PartnersLogos = [
   { src: "/images/partners-logos/la-premiere-brique.png", alt: "La Première Brique" },
   { src: "/images/partners-logos/optivest.png", alt: "Optivest" },
   { src: "/images/partners-logos/mon-petit-placement.png", alt: "Mon Petit Placement" },
+  { src: "/images/partners-logos/novalia-patrimoine.png", alt: "Novalia Patrimoine" },
+  { src: "/images/partners-logos/nyko.png", alt: "Nyko" },
+  { src: "/images/partners-logos/vatel-direct.png", alt: "Vatel Direct" },
+  { src: "/images/partners-logos/chemins-du-patrimoine.png", alt: "Chemins du Patrimoine" },
 ];
 
 const PartnersLogos2 = [

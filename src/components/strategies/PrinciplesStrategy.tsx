@@ -16,7 +16,7 @@ export default function PrinciplesStrategy() {
 
   return (
     <>
-      <section className="flex flex-col gap-16 sm:gap-12 py-12 sm:py-16 items-center bg-[#c6f0d0]">
+      <section className="flex flex-col gap-16 sm:gap-12 py-12 sm:py-16 items-center bg-white">
         <Title id="principles" text={messages.home.principles.title} />
 
         {/* WHEN ON MOBILE */}

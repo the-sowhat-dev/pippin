@@ -3,7 +3,7 @@ import { QuoteIcon } from "@radix-ui/react-icons";
 
 export function SecondMainQuoteStrategy() {
   return (
-    <section className="pt-16 pb-32 bg-[#c6f0d0]">
+    <section className="pt-16 pb-32 bg-white">
       <div className="relative lg:max-w-2xl mx-auto max-w-[85%]">
         <QuoteIcon
           width={100}

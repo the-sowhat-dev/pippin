@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { NunitoFont, OpenSans, SourceSansPro } from "@/utils/fonts";
+import { OpenSans, PoppinsFont, SourceSansPro } from "@/utils/fonts";
 import { AppStoreButtons } from "@/components/AppStoreButtons";
 import { QuoteIcon } from "lucide-react";
 
@@ -32,19 +32,8 @@ export function HeroAppStrategy() {
       <div className="min-h-[25vh] lg:min-h-[35vh] bg-[#35c055] flex items-center justify-center pt-16 lg:pt-4 pb-8 lg:pb-0 px-4">
         {/* Logo Column */}
         <div className="basis-2/3 flex justify-center">
-          {/* <Image
-            src="/images/invstore.svg"
-            alt="Invstore Logo"
-            width={810}
-            height={165}
-            unoptimized
-            preload
-            fetchPriority="high"
-            sizes="(max-width: 1023px) 320px, 550px"
-            className="max-w-[320px] lg:max-w-[550px] h-auto"
-          /> */}
           <span
-            className={`${SourceSansPro.className} text-4xl lg:text-6xl text-center text-white`}>
+            className={`${PoppinsFont.className} font-normal text-4xl lg:text-6xl text-center text-white`}>
             La première{" "}
             <span className="font-bold">
               marketplace <br /> patrimoniale
@@ -83,7 +72,7 @@ export function HeroAppStrategy() {
               className="absolute w-10 h-10 lg:w-20 lg:h-20 -top-4 lg:-top-12 -left-4 lg:-left-12 text-blue-700 opacity-30 rotate-180"
             />
 
-            <h2 className={`${OpenSans.className} text-xl lg:text-3xl text-center`}>
+            <h2 className={`${PoppinsFont.className} text-xl lg:text-3xl text-center`}>
               <span className={"font-bold"}>Matchez avec le monde de la finance</span>
               <br />
               <span>dans l&apos;application !</span>
@@ -110,7 +99,7 @@ export function HeroAppStrategy() {
         {/* Positioned mockup: absolute on desktop, relative on mobile */}
         <div className="h-full basis-1/2 flex items-center justify-center mt-10 lg:mt-20">
           <Image
-            src="/images/mockup-welcome.png"
+            src="/images/welcome_mockup.png"
             alt="Invstore App Mockup"
             width={747}
             height={970}

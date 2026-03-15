@@ -25,7 +25,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${article.title} | Invstore - épargner et investir`,
+    title: `${article.title} | Invstore | marketplace patrimoniale`,
     description: article.description ?? undefined,
     openGraph: {
       title: article.title,

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Invstore - épargner et investir",
+  title: "Invstore | marketplace patrimoniale",
   description: "Vous ne savez pas par où commencer ? Venez matcher avec le monde de la finance !",
   alternates: { canonical: "/app" },
   openGraph: {
     url: "https://invstore.fr/app",
-    title: "Invstore - épargner et investir",
+    title: "Invstore | marketplace patrimoniale",
     description: "Vous ne savez pas par où commencer ? Venez matcher avec le monde de la finance !",
   },
 };

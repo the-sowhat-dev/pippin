@@ -1,4 +1,4 @@
-import { Open_Sans, Source_Sans_3, Lexend, Roboto, Nunito } from "next/font/google";
+import { Open_Sans, Source_Sans_3, Lexend, Roboto, Nunito, Poppins } from "next/font/google";
 
 export const SourceSansPro = Source_Sans_3({
   weight: ["400", "700"],
@@ -17,7 +17,7 @@ export const RobotoFont = Roboto({
   subsets: ["latin"],
 });
 
-export const NunitoFont = Nunito({
+export const PoppinsFont = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
 });

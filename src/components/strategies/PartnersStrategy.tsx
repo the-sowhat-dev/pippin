@@ -8,7 +8,7 @@ export function PartnersStrategy() {
     <div className="relative">
       <div className="absolute inset-0 flex flex-col z-0">
         <div className="w-full h-1/2 bg-white" />
-        <div className="w-full h-1/2 bg-[#C2E7FF]" />
+        <div className="w-full h-1/2 bg-white" />
       </div>
 
       <div className="relative z-1 p-2 sm:p-6">

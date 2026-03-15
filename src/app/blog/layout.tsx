@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Invstore - épargner et investir",
+  title: "Blog Invstore | marketplace patrimoniale",
   description: "Conseils et guides pour mieux épargner en 2026.",
   alternates: { canonical: "/blog" },
   openGraph: {
     url: "https://invstore.fr/blog",
-    title: "Blog Invstore - épargner et investir",
+    title: "Blog Invstore | marketplace patrimoniale",
     description: "Conseils et guides pour mieux épargner en 2026.",
   },
 };

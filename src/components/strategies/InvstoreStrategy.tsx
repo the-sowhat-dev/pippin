@@ -4,7 +4,12 @@ import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { LightningBoltIcon, CheckCircledIcon, LinkedInLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
+import {
+  LightningBoltIcon,
+  CheckCircledIcon,
+  LinkedInLogoIcon,
+  InstagramLogoIcon,
+} from "@radix-ui/react-icons";
 import { Handshake, Scale, Gift, Building2 } from "lucide-react";
 import { Title } from "../Title";
 import DescriptionProStrategy from "./DescriptionProStrategy";
@@ -26,9 +31,7 @@ const items = [
     textBefore: "Je récupère le pouvoir de la négociation : ici c'est la finance qui ",
     highlight: "se bat pour moi",
     textAfter: ", pas l'inverse",
-    Icon: ({ className }: { className?: string }) => (
-      <Handshake size={28} className={className} />
-    ),
+    Icon: ({ className }: { className?: string }) => <Handshake size={28} className={className} />,
     gradient: "from-[#35C055] to-[#86f0ad]",
     glowColor: "16, 185, 129",
     span: "md:col-span-2",
@@ -37,9 +40,7 @@ const items = [
     textBefore: "invstore® ne vend pas de produits financiers : son algorithme n'a ",
     highlight: "aucun intérêt à m'orienter",
     textAfter: " vers un conseiller ou un produit en particulier",
-    Icon: ({ className }: { className?: string }) => (
-      <Scale size={28} className={className} />
-    ),
+    Icon: ({ className }: { className?: string }) => <Scale size={28} className={className} />,
     gradient: "from-[#35C055] to-[#86f0ad]",
     glowColor: "16, 185, 129",
     span: "md:col-span-2",
@@ -48,9 +49,7 @@ const items = [
     textBefore: "Tout est ",
     highlight: "gratuit pour moi",
     textAfter: ", ce sont les experts financiers qui payent",
-    Icon: ({ className }: { className?: string }) => (
-      <Gift size={28} className={className} />
-    ),
+    Icon: ({ className }: { className?: string }) => <Gift size={28} className={className} />,
     gradient: "from-[#3264AC] to-[#79D1FB]",
     glowColor: "59, 130, 246",
     span: "md:col-span-1",
@@ -59,9 +58,7 @@ const items = [
     textBefore: "Je peux aussi gagner du temps en gérant ",
     highlight: "tous mes comptes bancaires",
     textAfter: " depuis une seule application",
-    Icon: ({ className }: { className?: string }) => (
-      <Building2 size={28} className={className} />
-    ),
+    Icon: ({ className }: { className?: string }) => <Building2 size={28} className={className} />,
     gradient: "from-[#3264AC] to-[#79D1FB]",
     glowColor: "59, 130, 246",
     span: "md:col-span-2",
@@ -151,7 +148,7 @@ function GlowCard({ item, index }: { item: (typeof items)[number]; index: number
 export default function InvstoreStrategy() {
   return (
     <>
-      <section className="relative bg-[#C2E7FF] px-4 py-16 sm:px-8 flex flex-col gap-10 sm:gap-16 overflow-hidden">
+      <section className="relative bg-white px-4 py-16 sm:px-8 flex flex-col gap-10 sm:gap-16 overflow-hidden">
         {/* Decorative background blobs for depth */}
         <div className="pointer-events-none absolute -left-40 -top-40 h-80 w-80 rounded-full bg-blue-300/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-40 -right-40 h-80 w-80 rounded-full bg-cyan-300/30 blur-3xl" />

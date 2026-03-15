@@ -17,7 +17,7 @@ export function VideoStrategy({ videoUrl, thumbnailUrl }: VideoStrategyProps) {
   };
 
   return (
-    <section className="pt-0 pb-12 sm:pt-4 sm:pb-16 bg-[#c6f0d0]">
+    <section className="pt-0 pb-12 sm:pt-4 sm:pb-16 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="relative w-full mx-auto" style={{ aspectRatio: "16/9" }}>
           {!isVideoLoaded ? (

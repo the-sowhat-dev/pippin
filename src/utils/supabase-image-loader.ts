@@ -9,13 +9,21 @@ const OBJECT_PUBLIC_SEGMENT = "/storage/v1/object/public/";
 const RENDER_PUBLIC_SEGMENT = "/storage/v1/render/image/public/";
 
 export function supabaseImageLoader({ src, width, quality }: ImageLoaderProps): string {
+  // Local/relative paths (e.g. /images/foo.png) cannot be parsed as an absolute URL.
+  // Return them with a width query param so Next.js knows the loader uses width.
+  if (src.startsWith("/") || src.startsWith("./") || src.startsWith("../")) {
+    const separator = src.includes("?") ? "&" : "?";
+    return `${src}${separator}w=${width}`;
+  }
+
   try {
     const sourceUrl = new URL(src);
     const isSupportedHost = SUPABASE_HOSTNAMES.has(sourceUrl.hostname);
     const isObjectPublicPath = sourceUrl.pathname.includes(OBJECT_PUBLIC_SEGMENT);
 
     if (!isSupportedHost || !isObjectPublicPath) {
-      return src;
+      const separator = src.includes("?") ? "&" : "?";
+      return `${src}${separator}w=${width}`;
     }
 
     const renderedPathname = sourceUrl.pathname.replace(OBJECT_PUBLIC_SEGMENT, RENDER_PUBLIC_SEGMENT);

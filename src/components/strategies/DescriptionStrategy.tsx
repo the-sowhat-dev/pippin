@@ -6,14 +6,14 @@ const steps = [
   { number: "1️⃣", text: "quel que soit le montant que vous souhaitez investir" },
   { number: "2️⃣", text: "vous complétez votre profil en quelques minutes" },
   { number: "3️⃣", text: "nous l'anonymisons pour vous protéger" },
-  { number: "4️⃣", text: "Les spécialistes de l'épargne et du patrimoine sont mis en compétition" },
+  { number: "4️⃣", text: "les spécialistes de l'épargne et du patrimoine sont mis en compétition" },
   { number: "5️⃣", text: "ce sont eux qui viennent à vous directement dans l'application" },
   { number: "6️⃣", text: "vous matchez avec celui ou ceux qui répondent le mieux à votre besoin" },
 ];
 
 export function DescriptionStrategy() {
   return (
-    <section className="bg-[#C2E7FF] text-base md:text-[19px]">
+    <section className="bg-white text-base md:text-[19px]">
       <div className="flex flex-col md:flex-row items-center gap-16 md:gap-8 p-12 sm:p-16 sm:pb-24 ">
         <div className="md:basis-1/2">
           <Image

@@ -18,18 +18,18 @@ export const metadata: Metadata = {
     date: getYesterdayDate().toISOString(),
     "last-modified": getYesterdayDate().toISOString(),
   },
-  title: "Invstore - épargner et investir",
+  title: "Invstore | marketplace patrimoniale",
   description:
     "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
   openGraph: {
-    title: "Invstore - épargner et investir",
+    title: "Invstore | marketplace patrimoniale",
     description:
       "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
     images: { url: "/images/invstore.svg" },
     url: "https://invstore.fr/app",
   },
   twitter: {
-    title: "Invstore - épargner et investir",
+    title: "Invstore | marketplace patrimoniale",
     description:
       "Nous mettons le monde de la finance en compétition pour vous offrir les meilleurs conseils.",
     images: { url: "/images/invstore.svg" },
