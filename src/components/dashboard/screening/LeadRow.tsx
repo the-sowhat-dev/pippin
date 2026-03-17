@@ -132,7 +132,7 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
       <div className="mt-4 pt-4 border-t border-gray-100 flex gap-2">
         {/* Interactions */}
         <div className="flex items-center gap-2 flex-1">
-          {!lead.likedAt && (
+          {lead.likedAt && (
             <div
               className="flex items-center gap-1.5 bg-red-50 text-red-700 px-2 py-1 rounded-md text-xs font-medium border border-red-100"
               title="Vous avez mis ce lead en favori">
