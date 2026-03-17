@@ -1,153 +1,120 @@
 "use client";
 
-import { useMemo } from "react";
-import { toast } from "sonner";
-import { useAuth } from "@clerk/nextjs";
-import { Loader2, RefreshCw } from "lucide-react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
+import { RefreshCw, Search } from "lucide-react";
 
 import { LexendFont } from "@/utils/fonts";
-import { sortOffersByStatus } from "@/utils/sortOffers";
-import { getMatchingLeads, updateOffer } from "@/lib/api";
-import { OfferSection } from "@/components/dashboard/match/OfferSection";
-import { LikedLeadCard } from "@/components/dashboard/screening/LikedLeadCard";
-import { LeadDetailsSheet } from "@/components/dashboard/screening/LeadDetailsSheet";
-import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
 import { HeaderWithPageOnboarding } from "@/components/dashboard/onboarding/HeaderWithPageOnboarding";
+import { useArchiveOffer } from "@/hooks/useArchiveOffer";
+import { OfferList } from "@/components/dashboard/match/OfferList";
+import { StatusFilter } from "@/components/dashboard/match/StatusFilter";
+import { OfferStatusFilterType, useGetOffers } from "@/hooks/useGetOffers";
+import { PageOnboardingConfig } from "@/utils/page-onboarding-config";
+import { OfferDetailsPanel } from "@/components/dashboard/match/OfferDetailsPanel";
 
 export default function MatchPage() {
-  const { getToken } = useAuth();
-  const queryClient = useQueryClient();
+  const [selectedOfferId, setSelectedOfferId] = useState<string | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<OfferStatusFilterType>("accepted");
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({
-    queryKey: ["matching-leads"],
-    queryFn: async () => {
-      const token = await getToken();
-      return getMatchingLeads(token);
-    },
-  });
+  const archiveMutation = useArchiveOffer();
 
-  const archiveMutation = useMutation({
-    mutationFn: async ({ offerId }: { offerId: string }) => {
-      const token = await getToken();
-      return updateOffer(offerId, { archivedByProAt: new Date() }, token);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["matching-leads"] });
-      toast.success("Lead archivé avec succès");
-    },
-    onError: () => {
-      toast.error("Erreur lors de l'archivage du lead");
-    },
-  });
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+    refetch,
+    isFetching,
+  } = useGetOffers(selectedStatus);
 
-  // Pre-sort offers by status
-  const { acceptedLeads, pendingLeads, rejectedLeads, archivedLeads, likedLeads } = useMemo(
-    () => sortOffersByStatus(data),
-    [data],
+  const offersToDisplay = data?.pages.flatMap((page) => page.items) || [];
+
+  const selectedOffer = useMemo(
+    () => offersToDisplay.find((o) => o.offer.id === selectedOfferId) ?? null,
+    [offersToDisplay, selectedOfferId],
   );
-
-  if (isLoading) {
-    return (
-      <div className="p-8 max-w-7xl mx-auto flex justify-center items-center min-h-[50vh]">
-        <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-      </div>
-    );
-  }
 
   if (isError) {
     return (
       <div className="p-8 max-w-7xl mx-auto text-center text-red-500">
-        Une erreur est survenue lors du chargement des leads.
+        Une erreur est survenue lors du chargement des offres.
       </div>
     );
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-8">
-      <HeaderWithPageOnboarding
-        storageKey={PageOnboardingConfig.match.key}
-        title={PageOnboardingConfig.match.title}
-        subtitle={PageOnboardingConfig.match.subtitle}
-        short={PageOnboardingConfig.match.short}
-        full={PageOnboardingConfig.match.full}
-        action={
-          <button
-            onClick={() => refetch()}
-            disabled={isFetching}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-            <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
-            Rafraichir
-          </button>
-        }
-      />
+    <>
+      <div className="h-[calc(100vh-theme(spacing.4))] flex flex-col max-w-[1600px] mx-auto">
+        <div className="px-6 pt-6 pb-4">
+          <HeaderWithPageOnboarding
+            storageKey={PageOnboardingConfig.match.key}
+            title={PageOnboardingConfig.match.title}
+            subtitle={PageOnboardingConfig.match.subtitle}
+            short={PageOnboardingConfig.match.short}
+            full={PageOnboardingConfig.match.full}
+            action={
+              <button
+                onClick={() => refetch()}
+                disabled={isFetching}
+                className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-md hover:bg-slate-50 disabled:opacity-50 transition-all shadow-sm">
+                <RefreshCw className={`w-3.5 h-3.5 ${isFetching ? "animate-spin" : ""}`} />
+                Actualiser
+              </button>
+            }
+          />
+        </div>
 
-      {/* Accepted Offers Section */}
-      <OfferSection
-        title="Offres acceptées"
-        subtitle="Les utilisateurs ont accepté votre offre - contactez-les rapidement"
-        leads={acceptedLeads}
-        archiveMutation={archiveMutation}
-        color="green"
-      />
-
-      {/* Pending Offers Section */}
-      <OfferSection
-        title="Offres en attente"
-        subtitle="En attente de réponse des utilisateurs"
-        leads={pendingLeads}
-        archiveMutation={archiveMutation}
-        color="blue"
-      />
-
-      {/* Rejected Offers Section */}
-      <OfferSection
-        title="Offres refusées"
-        subtitle="Les utilisateurs ont décliné votre offre"
-        leads={rejectedLeads}
-        archiveMutation={archiveMutation}
-        color="red"
-      />
-
-      {/* Archived Offers Section */}
-      <OfferSection
-        title="Offres archivées"
-        subtitle="Offres que vous avez archivées"
-        leads={archivedLeads}
-        archiveMutation={archiveMutation}
-        color="gray"
-      />
-
-      <div className="h-px bg-green-700/20" />
-
-      {/* Liked Leads Section */}
-      <section>
-        <h2 className={`${LexendFont.className} text-2xl mb-2 text-green-800`}>Leads favoris</h2>
-        <p className="text-sm text-gray-500 mb-4">Les leads que vous avez ajoutés à vos favoris</p>
-        {likedLeads.length === 0 ? (
-          <p className="text-gray-500 italic">Aucun favori.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {likedLeads.map((likedLead, index) => (
-              <LikedLeadCard
-                key={`liked_lead_card_${index}`}
-                lead={likedLead.lead}
-                action={
-                  <LeadDetailsSheet
-                    key={`user_lead_details_sheet_${index}`}
-                    leadId={likedLead.lead.userId}
-                    trigger={
-                      <button className="cursor-pointer text-sm text-green-600 flex-1 hover:text-green-800 font-medium  transition-opacity items-center gap-1">
-                        Voir le détail <span aria-hidden="true">&rarr;</span>
-                      </button>
-                    }
-                  />
-                }
+        {/* Main 3-column layout */}
+        <div className="flex flex-1 min-h-0 border-t border-slate-200">
+          {/* Column 1: Filter Status */}
+          <aside className="w-64 flex-shrink-0 border-r border-slate-200 bg-slate-50/50 flex flex-col">
+            <div className="p-4">
+              <h2
+                className={`text-sm font-semibold text-slate-900 mb-4 px-2 ${LexendFont.className}`}>
+                Statut
+              </h2>
+              <StatusFilter
+                selectedStatus={selectedStatus}
+                onSelectStatus={(status) => {
+                  setSelectedStatus(status);
+                  setSelectedOfferId(null);
+                }}
               />
-            ))}
-          </div>
-        )}
-      </section>
-    </div>
+            </div>
+          </aside>
+
+          {/* Column 2: Offer List */}
+          <aside className="w-[400px] flex-shrink-0 border-r border-slate-200 flex flex-col bg-white">
+            <OfferList
+              offers={offersToDisplay}
+              total={data?.pages[0]?.pagination.total || 0}
+              selectedOfferId={selectedOfferId}
+              onSelect={setSelectedOfferId}
+              isLoading={isLoading}
+              fetchNextPage={fetchNextPage}
+              hasNextPage={hasNextPage}
+              isFetchingNextPage={isFetchingNextPage}
+              archiveMutation={archiveMutation}
+            />
+          </aside>
+
+          {/* Column 3: Offer/Lead Details */}
+          <main className="flex-1 flex flex-col bg-white min-w-0">
+            {selectedOffer ? (
+              <OfferDetailsPanel key={selectedOffer.lead.id} leadId={selectedOffer.lead.id} />
+            ) : (
+              <div className="flex-1 flex items-center justify-center text-slate-400 bg-slate-50/30">
+                <div className="text-center">
+                  <Search className="w-12 h-12 mx-auto mb-3 opacity-20" />
+                  <p>Sélectionnez une offre pour voir les détails</p>
+                </div>
+              </div>
+            )}
+          </main>
+        </div>
+      </div>
+    </>
   );
 }

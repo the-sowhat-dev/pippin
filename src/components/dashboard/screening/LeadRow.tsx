@@ -5,7 +5,7 @@ import {
   getProfessionStatusLabel,
 } from "sowhat-types";
 import { ReactNode } from "react";
-import { Info, Heart, Send, MapPin, Briefcase, Badge, User, Clock } from "lucide-react";
+import { Info, Heart, Send, MapPin, Briefcase, User, Clock, Mail, Handshake } from "lucide-react";
 
 import { SimpleBadge } from "../SimpleBadge";
 import { formatAmount } from "@/utils/formatAmount";
@@ -129,36 +129,49 @@ export const LeadRow = ({ lead, action, extraHeaderContent }: LeadRowProps) => {
       </div>
 
       {/* Action Area */}
-      {action && (
-        <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between">
-          {/* Interactions */}
-          {(lead.likedAt || lead.hasBeenOfferedAt || lead.totalOffersReceived >= 0) && (
-            <div className="flex items-center gap-2">
-              {lead.likedAt && (
-                <div
-                  className="bg-red-50 p-1.5 rounded-md border border-red-100"
-                  title="Vous avez mis ce lead en favori">
-                  <Heart className="w-4 h-4 text-red-500 fill-current" />
-                </div>
-              )}
-              {lead.hasBeenOfferedAt && (
-                <div
-                  className="bg-blue-50 p-1.5 rounded-md border border-blue-100"
-                  title="Vous avez envoyé une offre à ce lead">
-                  <Send className="w-4 h-4 text-blue-500" />
-                </div>
-              )}
-              <div
-                className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-md text-sm font-medium border border-amber-100"
-                title="Nombre d'offres reçues par le lead">
-                <Badge className="w-3.5 h-3.5" />
-                <span>{lead.totalOffersReceived}</span>
-              </div>
+      <div className="mt-4 pt-4 border-t border-gray-100 flex gap-2">
+        {/* Interactions */}
+        <div className="flex items-center gap-2 flex-1">
+          {!lead.likedAt && (
+            <div
+              className="flex items-center gap-1.5 bg-red-50 text-red-700 px-2 py-1 rounded-md text-xs font-medium border border-red-100"
+              title="Vous avez mis ce lead en favori">
+              <Heart className="w-4 h-4 text-red-500/50 fill-current" />
             </div>
           )}
-          <div className="flex items-center gap-2">{action}</div>
+
+          {lead.hasBeenOfferedAt && (
+            <div
+              className="flex items-center gap-1.5 bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-medium border border-blue-100"
+              title="Vous avez envoyé une offre à ce lead">
+              <Send className="w-4 h-4 text-blue-500" />
+              <span>Message envoyé</span>
+            </div>
+          )}
+
+          <div
+            className="flex items-center gap-1.5 bg-amber-50 text-amber-800 px-2 py-1 rounded-md text-xs font-medium border border-amber-100"
+            title="Nombre de messages reçus par le lead">
+            <Mail className="w-4 h-4 text-amber-500" />
+            <span>
+              {lead.totalOffersReceived} Message
+              {lead.totalOffersReceived > 1 ? "s reçus" : " reçu"}
+            </span>
+          </div>
+
+          <div
+            className="flex items-center gap-1.5 bg-green-50 text-green-700 px-2 py-1 rounded-md text-xs font-medium border border-green-100"
+            title="Nombre d'offres acceptées par le lead">
+            <Handshake className="w-4 h-4 text-green-500" />
+            <span>
+              {lead.totalOffersAccepted} Offre
+              {lead.totalOffersAccepted > 1 ? "s acceptées" : " acceptée"}
+            </span>
+          </div>
         </div>
-      )}
+
+        <div className="flex items-center">{action}</div>
+      </div>
     </div>
   );
 };

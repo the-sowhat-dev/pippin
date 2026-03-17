@@ -7,7 +7,6 @@ import {
   UpdateProInput,
   CreateCommercialOfferInput,
   ProCommercialOfferResponse,
-  MatchingLeadsResponse,
   getPersonalSalaryRangeKey,
   getPersonalNetWorthRangeKey,
   ProLeadsAlertResponse,
@@ -16,6 +15,8 @@ import {
   UpdateCommercialOfferAsProInput,
   ProMonthlyQuotaResponse,
   ProMonitoringResponse,
+  GetProCommercialOffersInput,
+  ProMatchOfferListResponse,
 } from "sowhat-types";
 
 import { LeadsFiltersAndSorting } from "@/utils/filters";
@@ -283,6 +284,31 @@ export async function updateOffer(
 }
 
 /**
+ * Get commercial offers for the current pro
+ */
+export async function getProCommercialOffers(
+  input: GetProCommercialOffersInput,
+  token: string | null,
+): Promise<ProMatchOfferListResponse> {
+  const params = new URLSearchParams();
+  params.append("offset", input.offset.toString());
+  params.append("limit", input.limit.toString());
+  params.append("status", input.status);
+
+  const result = await fetchWithAuth<ProMatchOfferListResponse | null>(
+    `/pro/offer?${params.toString()}`,
+    token,
+    { method: "GET" },
+  );
+
+  if (!result) {
+    throw new Error("Failed to fetch commercial offers");
+  }
+
+  return result;
+}
+
+/**
  * Toggle like for a user
  */
 export async function toggleLikeUser(
@@ -364,19 +390,4 @@ export async function getProMonitoring(
     console.error("Error fetching pro monitoring:", error);
     throw error;
   }
-}
-
-/**
- * Get matching leads (offered and liked)
- */
-export async function getMatchingLeads(token: string | null): Promise<MatchingLeadsResponse> {
-  const result = await fetchWithAuth<MatchingLeadsResponse>("/pro/match", token, {
-    method: "GET",
-  });
-
-  if (!result) {
-    throw new Error("Failed to fetch matching leads");
-  }
-
-  return result;
 }

@@ -10,7 +10,7 @@ import {
 import { ReactNode } from "react";
 import { formatAmount } from "@/utils/formatAmount";
 import { calculateDaysSinceInscription } from "@/utils/date";
-import { Heart, Send, Badge, Archive, Clock, Info } from "lucide-react";
+import { Heart, Send, Archive, Clock, Info, Mail, Handshake } from "lucide-react";
 import { SimpleBadge } from "../SimpleBadge";
 import { Button } from "@/components/ui/button";
 
@@ -120,7 +120,7 @@ export const LeadCard = ({ lead, offer, onArchive, isArchiving, onDetail }: Lead
       {/* Footer */}
       <div className="p-4 border-t border-gray-100 space-y-3">
         {/* Icons row */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {lead.likedAt && (
             <div
               className="bg-red-50 p-1.5 rounded-md border border-red-100"
@@ -130,17 +130,34 @@ export const LeadCard = ({ lead, offer, onArchive, isArchiving, onDetail }: Lead
           )}
           {lead.hasBeenOfferedAt && (
             <div
-              className="bg-blue-50 p-1.5 rounded-md border border-blue-100"
+              className="flex items-center gap-1.5 bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-medium border border-blue-100"
               title="Vous avez envoyé une offre à ce lead">
-              <Send className="w-3.5 h-3.5 text-blue-500" />
+              <Send className="w-3.5 h-3.5" />
+              <span>Message envoyé</span>
             </div>
           )}
-          <div
-            className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-md text-xs font-medium border border-amber-100"
-            title="Nombre d'offres reçues par le lead">
-            <Badge className="w-3 h-3" />
-            <span>{lead.totalOffersReceived}</span>
-          </div>
+          {lead.totalOffersReceived > 0 && (
+            <div
+              className="flex items-center gap-1.5 bg-amber-50 text-amber-800 px-2 py-1 rounded-md text-xs font-medium border border-amber-100"
+              title="Nombre de messages reçus par le lead">
+              <Mail className="w-3 h-3" />
+              <span>
+                {lead.totalOffersReceived} Message
+                {lead.totalOffersReceived > 1 ? "s reçus" : " reçu"}
+              </span>
+            </div>
+          )}
+          {lead.totalOffersAccepted > 0 && (
+            <div
+              className="flex items-center gap-1.5 bg-green-50 text-green-700 px-2 py-1 rounded-md text-xs font-medium border border-green-100"
+              title="Nombre d'offres acceptées par le lead">
+              <Handshake className="w-3 h-3" />
+              <span>
+                {lead.totalOffersAccepted} Offre
+                {lead.totalOffersAccepted > 1 ? "s acceptées" : " acceptée"}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Action buttons */}
