@@ -28,6 +28,7 @@ const PartnersLogos2 = [
   },
   { src: "/images/partners-logos/la-belle-epargne.png", alt: "La Belle Épargne" },
   { src: "/images/partners-logos/hecterea-la-fonciere.png", alt: "Hecterea La Foncière" },
+  { src: "/images/partners-logos/patrizen.png", alt: "Patrizen" },
 ];
 
 const PartnersLogosItems = ({

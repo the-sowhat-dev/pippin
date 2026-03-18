@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { AppleAppStoreButton } from "./AppleAppStoreButton";
 import { PlayStoreButton } from "./PlayStoreButton";
+import { AppQRCode } from "./AppQRCode";
 
 interface AppStoreButtonsProps {
   layout?: "row" | "column";
@@ -20,18 +20,9 @@ export function AppStoreButtons({ layout = "row", className = "" }: AppStoreButt
         <PlayStoreButton />
       </div>
 
-      {/* Desktop: Show QR code */}
+      {/* Desktop: Show QR code with "Télécharger l'app" */}
       <div className={`hidden md:flex items-center justify-center ${className}`}>
-        <div className="bg-white rounded-3xl p-4 shadow-md">
-          <Image
-            src="/images/qr-code-download.svg"
-            alt="QR Code pour télécharger l'application"
-            width={200}
-            height={200}
-            unoptimized
-            className="w-48 h-48"
-          />
-        </div>
+        <AppQRCode size={200} />
       </div>
     </>
   );

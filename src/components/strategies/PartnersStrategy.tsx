@@ -1,34 +1,29 @@
 "use client";
 
-import { LexendFont } from "@/utils/fonts";
+import { PoppinsFont } from "@/utils/fonts";
 import { PartnersLogosCarousel } from "../PartnersLogosCarousel";
 
 export function PartnersStrategy() {
   return (
-    <div className="relative">
-      <div className="absolute inset-0 flex flex-col z-0">
-        <div className="w-full h-1/2 bg-white" />
-        <div className="w-full h-1/2 bg-white" />
-      </div>
+    <section className="flex flex-col items-center">
+      <div className="flex flex-col flex-1 w-full">
+        <div className="px-6 max-w-6xl mx-auto flex flex-col gap-4 my-24 w-full">
+          <h2
+            className={`${PoppinsFont.className} text-5xl text-[50px] text-green-900 max-w-[750px] font-bold`}>
+            Conseillers en gestion de patrimoine, banques, fintechs
+          </h2>
 
-      <div className="relative z-1 p-2 sm:p-6">
-        <div
-          className={`flex flex-col items-center bg-[#35C055] p-3 sm:p-10 py-8 rounded-2xl text-green-900`}>
-          <div className="lg:max-w-xl max-w-[90%] mb-4 md:mb-8 lg:text-center">
-            <h2 className={`text-xl sm:text-2xl font-bold relative`}>
-              Nous mettons en compétition les meilleurs conseillers en gestion de patrimoine,
-              banques et fintechs
-              <br />
-              <div className="text-white/90 mt-2 text-right sm:text-left lg:text-center">
-                pour vous offrir les conseils et produits les plus adaptés à votre besoin
-              </div>
-            </h2>
-          </div>
+          <h3
+            className={`${PoppinsFont.className} text-xl lg:text-2xl lg:text-[25px] max-w-[750px] text-green-950`}>
+            Accèdez à plus de 30 professionnels
+          </h3>
+        </div>
 
+        <div className="py-12 mb-12 lg:mb-24">
           <PartnersLogosCarousel row={1} direction={"left-to-right"} />
           <PartnersLogosCarousel row={2} direction={"right-to-left"} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

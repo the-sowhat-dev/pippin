@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { OpenSans, PoppinsFont, SourceSansPro } from "@/utils/fonts";
+import { PoppinsFont } from "@/utils/fonts";
 import { AppStoreButtons } from "@/components/AppStoreButtons";
 import { QuoteIcon } from "lucide-react";
 
@@ -34,11 +34,7 @@ export function HeroAppStrategy() {
         <div className="basis-2/3 flex justify-center">
           <span
             className={`${PoppinsFont.className} font-normal text-4xl lg:text-6xl text-center text-white`}>
-            La première{" "}
-            <span className="font-bold">
-              marketplace <br /> patrimoniale
-            </span>{" "}
-            française
+            La première marketplace patrimoniale française
           </span>
         </div>
 
