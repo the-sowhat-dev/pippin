@@ -32,7 +32,7 @@ const AccordionItem = forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "border-b border-green-100 px-4 transition-colors duration-300 data-[state=open]:bg-green-300",
+      "border-b border-green-800 px-4 transition-colors duration-300 data-[state=open]:bg-green-950/40",
       className,
     )}
     {...props}
@@ -48,7 +48,7 @@ const AccordionTrigger = forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 gap-2 py-4 text-xl items-center font-opensans transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 gap-2 py-4 items-center font-opensans transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}>
@@ -65,7 +65,7 @@ const AccordionContent = forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-pretty text-lg"
+    className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-pretty"
     {...props}>
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
   </AccordionPrimitive.Content>
@@ -86,7 +86,7 @@ const AccordionContentDangerousHtml = forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-pretty text-lg",
+      "overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-pretty",
       className,
     )}
     {...props}>

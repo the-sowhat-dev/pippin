@@ -1,6 +1,7 @@
 import { OpenSans, PoppinsFont, RobotoFont, SourceSansPro } from "@/utils/fonts";
 import Image from "next/image";
 import React from "react";
+import { AppQRCode } from "../AppQRCode";
 
 interface Principle {
   id: number;
@@ -62,6 +63,7 @@ function RichText({ text }: { text: string }) {
 const PrincipleCard = ({ principle, index }: { principle: Principle; index: number }) => {
   // Alternate layout on lg+ (2nd, 4th, ... cards)
   const isAlternate = index % 2 === 1;
+  const isLast = index === principles.length - 1;
 
   return (
     <div className="grid grid-cols-1 gap-6 py-10 lg:grid-cols-2 lg:items-start">
@@ -78,14 +80,13 @@ const PrincipleCard = ({ principle, index }: { principle: Principle; index: numb
         className={`px-6 lg:row-start-1 lg:row-span-2 ${
           isAlternate ? "lg:col-start-1" : "lg:col-start-2"
         }`}>
-        <div className="aspect-square w-full rounded-2xl bg-slate-100 border border-slate-200 p-6">
-          <div className="relative h-full w-full">
+        <div className="aspect-square mx-auto w-full rounded-2xl max-w-[500px] bg-slate-100 border border-slate-200 p-6">
+          <div className="relative w-full h-full flex items-center justify-center">
             <Image
               src={`/images/${principle.image}`}
               alt={principle.title}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain"
+              fill
             />
           </div>
         </div>
@@ -101,6 +102,8 @@ const PrincipleCard = ({ principle, index }: { principle: Principle; index: numb
             <RichText text={t} />
           </p>
         ))}
+
+        {isLast && <AppQRCode size={160} className="mt-4 self-center" />}
       </div>
     </div>
   );
