@@ -18,6 +18,7 @@ export function Footer() {
       <Link href={"/legal"} target="_blank" rel="noopener noreferrer" className="text-sm underline">
         {messages.footer.legal}
       </Link>
+
       <p className="text-sm text-gray-400">Mise à jour le {formatDateFrench(getYesterdayDate())}</p>
     </footer>
   );

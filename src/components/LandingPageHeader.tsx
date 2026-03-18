@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 
 export const LandingPageHeader = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-10  bg-white/05 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-10 bg-white/05 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto flex items-center justify-between p-6">
         <InvLogo size={60} color="black" />
 

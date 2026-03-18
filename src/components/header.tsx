@@ -56,29 +56,32 @@ export default function Header() {
 
       {/* Desktop Nav */}
       <nav
-        className={`hidden sm:flex gap-4 lg:gap-8 items-center ${!showLogo ? "flex-grow justify-end" : ""}`}>
+        className={`hidden sm:flex gap-4 lg:gap-10 items-center ${!showLogo ? "flex-grow justify-end" : ""}`}>
         {isAppPage && (
-          <a href={"/pro"} key="pro">
-            <Button className="bg-white text-green-700 hover:bg-white/85">
-              <span className="hidden md:inline">Vous êtes un professionnel ?</span>
-              <span className="inline md:hidden">Professionnel</span>
-            </Button>
+          <a
+            href={"/pro"}
+            key="pro"
+            className="text-lg sm:text-xl text-green-900 hover:text-green-800">
+            <span className="inline md:hidden">Professionnel</span>
           </a>
         )}
 
         {isProPage && (
-          <a href={"/dashboard"} key="dashboard">
-            <Button className="bg-[#C6F0D0]/60 text-[#35C055] font-bold hover:bg-[#C6F0D0]/85 underline">
-              <span className="hidden md:inline">Se connecter à la Plateforme Pro</span>
-              <span className="inline md:hidden">Se connecter</span>
-            </Button>
+          <a
+            href={"/dashboard"}
+            key="dashboard"
+            className="text-lg sm:text-xl text-green-900 hover:text-green-800">
+            <span>Se connecter</span>
           </a>
         )}
 
         {/* Must use <a/> instead of `next/link` bc <Link/> does not scroll to the top... */}
         {!isLegalPage && !isBlogPage && (
-          <a href={"/blog"} key="blog">
-            <Button className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">Articles</Button>
+          <a
+            href={"/blog"}
+            key="blog"
+            className="text-lg sm:text-xl text-green-900 hover:text-green-800">
+            <span>Blog</span>
           </a>
         )}
 

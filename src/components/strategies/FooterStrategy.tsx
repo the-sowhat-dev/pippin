@@ -2,6 +2,7 @@ import { PoppinsFont } from "@/utils/fonts";
 import { PressMentionsItems } from "../PressMentionsCarousel";
 import { VideoStrategy } from "./VideoStrategy";
 import QandAStrategy from "./QandAStrategy";
+import { ContactButtonWithDialog } from "../ContactButtonWithDialog";
 
 export const FooterStrategy = () => {
   return (
@@ -24,6 +25,10 @@ export const FooterStrategy = () => {
           </h2>
 
           <QandAStrategy />
+        </div>
+
+        <div className="flex justify-center">
+          <ContactButtonWithDialog />
         </div>
       </div>
     </section>

@@ -87,10 +87,9 @@ export function ContactButtonWithDialog({ trigger }: { trigger?: React.ReactNode
         {trigger ? (
           trigger
         ) : (
-          <Button className="bg-gray-200 text-gray-900 hover:bg-gray-200/85">
-            <span className="hidden md:inline">Nous contacter</span>
-            <span className="inline md:hidden">Contact</span>
-          </Button>
+          <button className="text-lg sm:text-xl text-green-900 hover:text-green-800">
+            <span>Contact</span>
+          </button>
         )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
