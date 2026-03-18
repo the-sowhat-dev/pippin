@@ -38,6 +38,11 @@ import { LexendFont } from "@/utils/fonts";
 import { formatPostalCode } from "@/utils/formatPostalCode";
 import { sanitizeText } from "@/utils/sanitize";
 import { DetailItem } from "./DetailItem";
+import { LeadIdentitySection } from "../LeadIdentitySection";
+import { LeadActivitySection } from "../LeadActivitySection";
+import { LeadPersonalSection } from "../LeadPersonalSection";
+import { LeadFinancialSection } from "../LeadFinancialSection";
+import { LeadAISummarySection } from "../LeadAISummarySection";
 
 interface LeadDetailsSheetProps {
   leadId: string;
@@ -213,37 +218,7 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                 {/* Identity Section */}
                 {(lead.offer?.status === "ACCEPTED" ||
                   lead.offer?.status === "ACCEPTED_THEN_ARCHIVED_BY_USER") && (
-                  <section className="bg-green-50/50 -mx-6 px-6 py-4 border-b border-green-100 mb-6">
-                    <div className="px-0">
-                      <SectionTitle>Identité</SectionTitle>
-                    </div>
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-4">
-                      <DetailItem label="Prénom" value={lead.firstName} />
-                      <DetailItem label="Nom" value={lead.lastName} />
-                      <DetailItem
-                        label="Email"
-                        value={
-                          <span className="flex items-center gap-2">
-                            {lead.email}
-                            <CheckCircle2 className="w-4 h-4 text-green-500" />
-                          </span>
-                        }
-                      />
-                      <DetailItem
-                        label="Téléphone"
-                        value={
-                          lead.phoneNumber ? (
-                            <span className="flex items-center gap-2">
-                              {lead.phoneNumber}
-                              {lead.phoneNumberVerifiedAt && (
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
-                              )}
-                            </span>
-                          ) : null
-                        }
-                      />
-                    </div>
-                  </section>
+                  <LeadIdentitySection lead={lead} />
                 )}
                 {/* Rejected Section */}
                 {(lead.offer?.status === "REJECTED" ||
@@ -266,331 +241,16 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                     </div>
                   </section>
                 )}
-                {/* Activity Section  */}
-                <section>
-                  <SectionTitle>Activité</SectionTitle>
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    <DetailItem
-                      label="Montant initial d'investissement"
-                      value={lead.initialAmount ? formatAmount(lead.initialAmount) : null}
-                    />
-                    <DetailItem
-                      label="Capacité mensuelle d'investissement"
-                      value={
-                        lead.monthlyAmount ? `${formatAmount(lead.monthlyAmount)} / mois` : null
-                      }
-                    />
-                    <div className="col-span-1 xl:col-span-2">
-                      <DetailItem
-                        label="Besoin principal"
-                        value={lead.need ? getProjectNeedProLabel(lead.need) : null}
-                        badge
-                      />
-                    </div>
-                    <DetailItem
-                      label="Produit recherché"
-                      value={
-                        lead.financialProduct
-                          ? getFinancialProductLabel(lead.financialProduct)
-                          : null
-                      }
-                      badge
-                    />
-                    <DetailItem
-                      label="Dernière activité"
-                      value={lead.updatedAt ? new Date(lead.updatedAt).toLocaleDateString() : null}
-                    />
-                    <DetailItem label="Nombre d'offres reçues" value={lead.totalOffersReceived} />
-                    <DetailItem
-                      label="Nombre d'offres acceptées"
-                      value={lead.totalOffersAccepted}
-                    />
 
-                    <div className="col-span-1 xl:col-span-2"></div>
-                  </div>
-                </section>
-                {/* Personal Section */}
-                <section>
-                  <SectionTitle>Personnel</SectionTitle>
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    <DetailItem label="ID Utilisateur" value={lead.userId} />
-                    <DetailItem
-                      label="Année de naissance"
-                      value={
-                        lead.birthYear && typeof lead.birthYear === "number"
-                          ? `${lead.birthYear} (${new Date().getFullYear() - lead.birthYear} ans)`
-                          : null
-                      }
-                    />
-                    <DetailItem
-                      label="Situation maritale"
-                      value={lead.maritalStatus ? getMaritalStatusLabel(lead.maritalStatus) : null}
-                      badge
-                    />
-                    <DetailItem label="Enfants" value={lead.childrenNumber} />
-                    {lead.childrenBirthYears && lead.childrenBirthYears.length > 0 && (
-                      <DetailItem
-                        label="Années naissance enfants"
-                        value={lead.childrenBirthYears.join(", ")}
-                      />
-                    )}
-                    <DetailItem
-                      label="Profession"
-                      value={lead.profession ? getProfessionLabel(lead.profession) : null}
-                      badge
-                    />
-                    <DetailItem
-                      label="Statut professionnel"
-                      value={
-                        lead.professionStatus
-                          ? getProfessionStatusLabel(lead.professionStatus)
-                          : null
-                      }
-                      badge
-                    />
-                    <DetailItem
-                      label="Revenu personnel"
-                      value={
-                        lead.personalSalaryRange
-                          ? getPersonalSalaryRangeLabel(lead.personalSalaryRange)
-                          : null
-                      }
-                      badge
-                    />
-                    <DetailItem
-                      label="Revenu du foyer"
-                      value={
-                        lead.householdSalaryRange
-                          ? getHouseholdSalaryRangeLabel(lead.householdSalaryRange)
-                          : null
-                      }
-                      badge
-                    />
-                    <DetailItem
-                      label="Patrimoine net"
-                      value={
-                        lead.personalNetWorthRange
-                          ? getPersonalNetWorthRangeLabel(lead.personalNetWorthRange)
-                          : null
-                      }
-                      badge
-                    />
-                    <DetailItem label="Code postal" value={formatPostalCode(lead.postalCode)} />
-                    <DetailItem
-                      label="Propriétaire résidence principale"
-                      value={
-                        lead.isMainResidenceOwner
-                          ? "Oui"
-                          : lead.isMainResidenceOwner === false
-                            ? "Non"
-                            : null
-                      }
-                    />
-                    <DetailItem
-                      label="Mise à jour profil"
-                      value={
-                        lead.lastPersonalSummaryUpdatedAt
-                          ? new Date(lead.lastPersonalSummaryUpdatedAt).toLocaleDateString()
-                          : null
-                      }
-                    />
-                  </div>
-                </section>
+                <div className="px-6 py-4 gap-8 flex flex-col">
+                  <LeadActivitySection lead={lead} />
 
-                {/* Financial Section */}
-                <section>
-                  <SectionTitle>Financier</SectionTitle>
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    <DetailItem
-                      label="Mensualités crédits"
-                      value={lead.loanMonthlyPayment ? formatAmount(lead.loanMonthlyPayment) : null}
-                    />
+                  <LeadPersonalSection lead={lead} />
 
-                    <div className="col-span-1 xl:col-span-2">
-                      <DetailItem
-                        label="Produits détenus"
-                        value={
-                          lead.financialProductsOwned
-                            ?.map((p) => getFinancialProductLabel(p))
-                            .join(", ") || null
-                        }
-                      />
-                    </div>
+                  <LeadFinancialSection lead={lead} />
 
-                    <DetailItem
-                      label="Immobilier Total"
-                      value={
-                        lead.totalRealEstatesValue ? formatAmount(lead.totalRealEstatesValue) : null
-                      }
-                    />
-                    <DetailItem
-                      label="Mobilité Total"
-                      value={
-                        lead.totalMobilitiesValue ? formatAmount(lead.totalMobilitiesValue) : null
-                      }
-                    />
-                    <DetailItem
-                      label="Crypto Total"
-                      value={
-                        lead.totalCryptocurrenciesValue
-                          ? formatAmount(lead.totalCryptocurrenciesValue)
-                          : null
-                      }
-                    />
-                    <DetailItem
-                      label="Autres Actifs Total"
-                      value={
-                        lead.totalOtherAssetsValue ? formatAmount(lead.totalOtherAssetsValue) : null
-                      }
-                    />
-
-                    <DetailItem
-                      label="Comptes Épargne (Nombre)"
-                      value={!lead.totalSavingsBankAccounts ? "--" : lead.totalSavingsBankAccounts}
-                    />
-
-                    <DetailItem
-                      label="Comptes Épargne (Solde)"
-                      value={
-                        lead.totalSavingsBankAccountsBalance
-                          ? formatAmount(lead.totalSavingsBankAccountsBalance)
-                          : null
-                      }
-                    />
-
-                    <DetailItem
-                      label="Comptes Courants (Nombre)"
-                      value={
-                        !lead.totalCheckingBankAccounts ? "--" : lead.totalCheckingBankAccounts
-                      }
-                    />
-                    <DetailItem
-                      label="Comptes Courants (Solde)"
-                      value={
-                        lead.totalCheckingBankAccountsBalance
-                          ? formatAmount(lead.totalCheckingBankAccountsBalance)
-                          : null
-                      }
-                    />
-
-                    <DetailItem
-                      label="Crédits (Nombre)"
-                      value={!lead.totalLoansBankAccounts ? "--" : lead.totalLoansBankAccounts}
-                    />
-
-                    <DetailItem
-                      label="Crédits (Solde restant)"
-                      value={
-                        lead.totalLoansBankAccountsBalance
-                          ? formatAmount(lead.totalLoansBankAccountsBalance)
-                          : null
-                      }
-                    />
-
-                    <DetailItem
-                      label="Mise à jour finances"
-                      value={
-                        lead.lastFinancialSummaryUpdatedAt
-                          ? new Date(lead.lastFinancialSummaryUpdatedAt).toLocaleDateString()
-                          : null
-                      }
-                    />
-                  </div>
-                </section>
-
-                {/* AI Summary Section */}
-                {lead.aiSummary && lead.aiSummary.fullResponse && (
-                  <section>
-                    <SectionTitle>Rapport IA</SectionTitle>
-                    <div className="mt-4 space-y-4 animate-in fade-in slide-in-from-top-2">
-                      {lead.aiSummary.fullResponse.message && (
-                        <div className="py-4">
-                          <h4 className={`${LexendFont.className} text-green-900/70 text-sm mb-1`}>
-                            Message
-                          </h4>
-                          <p className="text-sm text-gray-600">
-                            {lead.aiSummary.fullResponse.message}
-                          </p>
-                        </div>
-                      )}
-
-                      {lead.aiSummary.fullResponse.synthese && (
-                        <div className="py-4">
-                          <h4 className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
-                            Synthèse
-                          </h4>
-                          <div className="grid grid-cols-3 gap-2 text-center">
-                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                              <span className="block text-xs text-gray-500">Note</span>
-                              <span className="font-bold text-green-700">
-                                {lead.aiSummary.fullResponse.synthese.note}/5
-                              </span>
-                            </div>
-                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                              <span className="block text-xs text-gray-500">Optimisation</span>
-                              <span className="font-bold text-blue-700">
-                                {lead.aiSummary.fullResponse.synthese.optimisationLevel}%
-                              </span>
-                            </div>
-                            <div className="bg-gray-50 p-2 rounded h-full flex flex-col justify-center">
-                              <span className="block text-xs text-gray-500">Produit</span>
-                              <span
-                                className="font-bold text-purple-700 text-xs break-words"
-                                title={lead.aiSummary.fullResponse.synthese.product}>
-                                {lead.aiSummary.fullResponse.synthese.product}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {lead.aiSummary.fullResponse.analyse &&
-                        lead.aiSummary.fullResponse.analyse.length > 0 && (
-                          <div className="py-4">
-                            <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
-                              Analyse
-                            </h4>
-                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                              {lead.aiSummary.fullResponse.analyse.map((item, i) => (
-                                <li key={i}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                      {lead.aiSummary.fullResponse.recommandations &&
-                        lead.aiSummary.fullResponse.recommandations.length > 0 && (
-                          <div className="py-4">
-                            <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
-                              Recommandations
-                            </h4>
-                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                              {lead.aiSummary.fullResponse.recommandations.map((item, i) => (
-                                <li key={i}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                      {lead.aiSummary.fullResponse.concretement &&
-                        lead.aiSummary.fullResponse.concretement.length > 0 && (
-                          <div className="py-4">
-                            <h4
-                              className={`${LexendFont.className} text-green-900/70 text-sm mb-2`}>
-                              Concrètement
-                            </h4>
-                            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                              {lead.aiSummary.fullResponse.concretement.map((item, i) => (
-                                <li key={i}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                    </div>
-                  </section>
-                )}
+                  <LeadAISummarySection summary={lead.aiSummary} />
+                </div>
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">Aucune donnée disponible.</div>
@@ -605,14 +265,16 @@ export function LeadDetailsSheet({ leadId, trigger }: LeadDetailsSheetProps) {
                     {!lead?.offer ? (
                       isQuotaExhausted ? (
                         <span className="text-red-400 font-medium">
-                          Quota mensuel atteint — vous ne pouvez plus envoyer d&apos;offres ce mois-ci.
+                          Quota mensuel atteint — vous ne pouvez plus envoyer d&apos;offres ce
+                          mois-ci.
                         </span>
                       ) : (
                         <span>
                           Vous n&apos;avez pas encore fait d&apos;offre à ce particulier
                           {quota !== undefined && (
                             <span className="ml-1 text-gray-400">
-                              ({quota.remaining} offre{quota.remaining > 1 ? "s" : ""} restante{quota.remaining > 1 ? "s" : ""})
+                              ({quota.remaining} offre{quota.remaining > 1 ? "s" : ""} restante
+                              {quota.remaining > 1 ? "s" : ""})
                             </span>
                           )}
                         </span>

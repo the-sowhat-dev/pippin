@@ -47,7 +47,7 @@ export default function MatchPage() {
   return (
     <>
       <div className="h-[calc(100vh-theme(spacing.4))] flex flex-col max-w-[1600px] mx-auto">
-        <div className="px-6 pt-6 pb-4">
+        <div className="px-6 pt-6">
           <HeaderWithPageOnboarding
             storageKey={PageOnboardingConfig.match.key}
             title={PageOnboardingConfig.match.title}
