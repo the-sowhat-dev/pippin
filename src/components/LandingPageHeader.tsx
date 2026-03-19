@@ -12,7 +12,7 @@ export const LandingPageHeader = () => {
 
         <div className="hidden sm:flex sm:items-center sm:justify-between gap-10">
           <a href="/pro" className="text-lg sm:text-xl text-green-900">
-            <span>Professionnel</span>
+            <span>Professionnels</span>
           </a>
           <a href="/blog" className="text-lg sm:text-xl text-green-900">
             <span>Blog</span>
@@ -35,12 +35,12 @@ export const LandingPageHeader = () => {
                   Accueil
                 </a>
                 <a href="/blog" className={`text-gray-900 hover:text-green-600 transition-colors`}>
-                  Articles
+                  Blog
                 </a>
                 <a
                   href="/contact"
                   className={`text-gray-900 cursor-pointer text-left hover:text-green-600 transition-colors`}>
-                  Contact
+                  Nous contacter
                 </a>
                 <span className="h-0.5 bg-slate-100 rounded-sm" />
                 <a href="/pro" className={`text-gray-900 hover:text-green-600 transition-colors`}>

@@ -13,19 +13,19 @@ interface Principle {
 const principles = [
   {
     id: 1,
-    title: "Analyse IA personnalisée en 5 minutes",
+    title: "Analyse IA personnalisée",
     texts: [
-      "__Installez l’app__ et complétez votre profil en quelques minutes.",
-      "__Obtenez une analyse IA immédiate__ pour optimiser votre situation.",
+      "__Installez l’app__ et complétez votre profil en moins de 5 minutes.",
+      "__Obtenez immédiatement un rapport IA__ pour comprendre votre situation.",
     ],
     image: "step-1.png",
   },
   {
     id: 2,
-    title: "Recommandations et offres de produits adaptés",
+    title: "Conseils et produits adaptés",
     texts: [
-      "__L’algorithme invstore®__ vous connecte aux meilleures opportunités, en toute confidentialité.",
-      "__Des recommandations ou offres sur-mesure__ envoyées directement dans votre application.",
+      "Laissez __le monde de la finance__ vous faire des recommandations sur-mesure.",
+      "__Les professionnels sont mis en compétition__ pour répondre à votre besoin.",
     ],
     image: "step-0.png",
   },
@@ -33,8 +33,8 @@ const principles = [
     id: 3,
     title: "Contrôle de la négociation",
     texts: [
-      "__Choisissez avec qui échanger__ selon les meilleures réponses.",
-      "__Choisissez votre conseiller__ et avancez pas à pas.",
+      "__Votre profil reste anonyme__ tout au long du processus.",
+      "Matchez uniquement avec le ou les conseillers de votre choix, __c’est sans engagement !__",
     ],
     image: "step-3.png",
   },
@@ -103,7 +103,7 @@ const PrincipleCard = ({ principle, index }: { principle: Principle; index: numb
           </p>
         ))}
 
-        {isLast && <AppQRCode size={160} className="mt-4 self-center" />}
+        {isLast && <AppQRCode size={160} className="mt-4 self-center hidden lg:block" />}
       </div>
     </div>
   );

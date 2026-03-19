@@ -15,7 +15,7 @@ export function PartnersStrategy() {
 
           <h3
             className={`${PoppinsFont.className} text-xl lg:text-2xl lg:text-[25px] max-w-[750px] text-green-950`}>
-            Accèdez à plus de 30 professionnels
+            Accèdez gratuitement à plus de 30 experts
           </h3>
         </div>
 

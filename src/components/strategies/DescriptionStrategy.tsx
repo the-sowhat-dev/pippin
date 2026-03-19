@@ -4,33 +4,33 @@ import { GlowyBackground } from "../ui/GlowyBackground";
 const steps = [
   {
     number: 1,
-    title: "Votre montant",
-    text: "Quel que soit le montant que vous souhaitez investir, nous trouvons le bon conseiller pour vous.",
+    title: "Votre budget",
+    text: "quel que soit le montant que vous souhaitez investir",
   },
   {
     number: 2,
-    title: "Votre profil",
-    text: "Complétez votre profil patrimonial en quelques minutes grâce à notre parcours guidé.",
+    title: "Votre temps",
+    text: "complétez votre profil en quelques minutes seulement",
   },
   {
     number: 3,
-    title: "Votre anonymat",
-    text: "Nous anonymisons vos données pour vous protéger avant toute mise en relation.",
+    title: "Votre intimité",
+    text: "nous anonymisons vos données pour vous protéger",
   },
   {
     number: 4,
-    title: "La mise en compétition",
-    text: "Les spécialistes de l'épargne et du patrimoine sont mis en compétition pour répondre à votre profil.",
+    title: "Vos opportunités",
+    text: "les experts sont mis en compétition pour répondre à votre besoin",
   },
   {
     number: 5,
-    title: "Ils viennent à vous",
-    text: "Ce sont eux qui vous contactent directement dans l'application, pas l'inverse.",
+    title: "Votre confort",
+    text: "ce sont eux qui viennent à vous directement dans l’application",
   },
   {
     number: 6,
-    title: "Le match",
-    text: "Vous matchez avec celui ou ceux qui répondent le mieux à votre besoin patrimonial.",
+    title: "Votre décision",
+    text: "vous matchez avec celui ou ceux de votre choix",
   },
 ];
 
@@ -68,8 +68,8 @@ export function DescriptionStrategy() {
         <div className="px-6 max-w-6xl mx-auto flex flex-col gap-4 mb-24 w-full">
           <h2
             className={`${PoppinsFont.className} text-5xl text-[50px] text-white max-w-[750px] font-bold`}>
-            Les codes des apps de rencontre, un peu d&apos;IA pour enfin trouver votre conseiller
-            financier
+            L&apos;esprit des applications de rencontre, et un peu d&apos;IA, pour vous lancer dans
+            l&apos;investissement
           </h2>
 
           <h3
@@ -99,8 +99,8 @@ export function DescriptionStrategy() {
           </div>
 
           <p className="text-white">
-            *la somme des montants d'investissement des particuliers ayant trouvé un professionnel
-            grâce à Invstore®
+            *la somme des montants d&apos;investissement envisagés par les particuliers ayant trouvé
+            un conseiller spécialisé grâce à invstore®
           </p>
         </div>
       </section>
