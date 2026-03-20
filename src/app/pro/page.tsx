@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { HeroPro } from "@/components/HeroPro";
 import ActionsStrategy from "@/components/strategies/ActionsStrategy";
-import SocialsProStrategy from "@/components/strategies/SocialsProStrategy";
 import TribuneProStrategy from "@/components/strategies/TribuneProStrategy";
 import DescriptionProStrategy from "@/components/strategies/DescriptionProStrategy";
 
@@ -26,8 +25,6 @@ export default function Page() {
       <ActionsStrategy />
 
       <TribuneProStrategy />
-
-      <SocialsProStrategy />
     </main>
   );
 }

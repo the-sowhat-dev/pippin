@@ -23,7 +23,7 @@ export default function Header() {
 
   const isContactPage = pathname.startsWith("/contact");
 
-  if (isAdvicePage || isProFormPage || isDashboardPage || isAppPage) return null;
+  if (isAdvicePage || isProFormPage || isDashboardPage || isAppPage || isBlogPage) return null;
 
   const showLogo =
     isArticlesPage ||

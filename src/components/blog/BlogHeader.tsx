@@ -10,7 +10,9 @@ import { BlogCategoryChip } from "./BlogCategoryChip";
 
 const VISIBLE_CATEGORIES = 5;
 
-const DEFAULT_BG = "#F0FDF4"; // green-50
+// green-50
+const DEFAULT_BG = "#F0FDF4";
+const DEFAULT_TEXT_COLOR = "#203649";
 
 interface BlogHeaderProps {
   categories: BlogCategoryResponse[];
@@ -36,6 +38,13 @@ export default function BlogHeader({ categories }: BlogHeaderProps) {
   });
 
   const currentCategory = searchParams.get("category");
+  const currentCategoryData = categories.find((c) => c.key === currentCategory);
+
+  const currentSecondaryColor = currentCategoryData?.secondaryColor ?? DEFAULT_TEXT_COLOR;
+  console.log("currentSecondaryColor", currentSecondaryColor);
+  const currentPrimaryColor = currentCategoryData?.primaryColor ?? DEFAULT_BG;
+  console.log("currentPrimaryColor", currentPrimaryColor);
+
   const currentSort = searchParams.get("sort") ?? "date_desc";
 
   const updateParams = (updates: Record<string, string | null>) => {
@@ -72,74 +81,88 @@ export default function BlogHeader({ categories }: BlogHeaderProps) {
   const hiddenCategoriesCount = categories.length - VISIBLE_CATEGORIES;
 
   return (
-    <div className="relative overflow-hidden border-b border-green-100 px-8 py-6">
-      {/* Static base background — updated only after an animation completes */}
-      <div className="absolute inset-0" style={{ backgroundColor: staticColor }} />
+    <>
+      <div
+        className="relative pt-28 px-8 pb-6 z-10"
+        style={{ borderBottomColor: `${currentSecondaryColor}60` }}>
+        {/* Static base background — updated only after an animation completes */}
+        <div className="absolute inset-0" style={{ backgroundColor: staticColor }} />
 
-      {/* Animated color fill — wipes left → right on each category change */}
-      {bgAnimKey > 0 && (
-        <div
-          key={bgAnimKey}
-          className="absolute inset-0"
-          style={{
-            backgroundColor: animatedColor,
-            transformOrigin: "left center",
-            animation: "fillFromLeft 500ms ease forwards",
-          }}
-          onAnimationEnd={() => setStaticColor(animatedColor)}
-        />
-      )}
+        {/* Animated color fill — wipes left → right on each category change */}
+        {bgAnimKey > 0 && (
+          <div
+            key={bgAnimKey}
+            className="absolute inset-0"
+            style={{
+              backgroundColor: animatedColor,
+              transformOrigin: "left center",
+              animation: "fillFromLeft 400ms ease forwards",
+            }}
+            onAnimationEnd={() => setStaticColor(animatedColor)}
+          />
+        )}
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-5">
-        {/* Title + Sort */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <h1 className={`text-3xl sm:text-5xl text-green-900 ${LexendFont.className}`}>Blog</h1>
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-gray-600 text-xs md:text-base">Trier par :</span>
-            <SortArticleSelect
-              value={currentSort}
-              onChange={(value) => updateParams({ sort: value })}
-            />
+        <div className="relative z-10 max-w-4xl mx-auto px-8 space-y-5">
+          {/* Title + Sort */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <h1
+              className={`text-3xl sm:text-5xl text-green-900 ${LexendFont.className}`}
+              style={{ color: currentSecondaryColor }}>
+              Blog
+            </h1>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-gray-600 text-xs md:text-base">Trier par :</span>
+              <SortArticleSelect
+                value={currentSort}
+                onChange={(value) => updateParams({ sort: value })}
+              />
+            </div>
+          </div>
+
+          {/* Category chips */}
+          <div>
+            <div className="text-gray-600 text-xs md:text-base mb-1.5 ml-2">Catégories :</div>
+            {categories.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={clearFilters}
+                  className={`px-3.5 py-1 rounded-full text-sm font-medium border transition-all ${
+                    !currentCategory
+                      ? "bg-gray-800 text-white border-transparent"
+                      : "bg-white/80 backdrop-blur-sm text-gray-600 border-gray-200 hover:border-gray-400"
+                  }`}>
+                  Tous
+                </button>
+
+                {visibleCategories.map((cat) => (
+                  <BlogCategoryChip
+                    key={cat.key}
+                    primaryColor={cat.primaryColor}
+                    secondaryColor={cat.secondaryColor}
+                    category={cat.label}
+                    isActive={currentCategory === cat.key}
+                    onClick={() => toggleCategory(cat)}
+                  />
+                ))}
+
+                {hiddenCategoriesCount > 0 && (
+                  <button
+                    onClick={() => setShowAllCategories((v) => !v)}
+                    className="px-3.5 py-1 text-sm text-green-800 font-medium hover:underline">
+                    {showAllCategories ? "Voir moins" : `+${hiddenCategoriesCount} autres`}
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Category chips */}
-        <div>
-          <div className="text-gray-600 text-xs md:text-base mb-1.5 ml-2">Catégories :</div>
-          {categories.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={clearFilters}
-                className={`px-3.5 py-1 rounded-full text-sm font-medium border transition-all ${
-                  !currentCategory
-                    ? "bg-gray-800 text-white border-transparent"
-                    : "bg-white/80 backdrop-blur-sm text-gray-600 border-gray-200 hover:border-gray-400"
-                }`}>
-                Tous
-              </button>
-
-              {visibleCategories.map((cat) => (
-                <BlogCategoryChip
-                  key={cat.key}
-                  primaryColor={cat.primaryColor}
-                  secondaryColor={cat.secondaryColor}
-                  category={cat.label}
-                  isActive={currentCategory === cat.key}
-                  onClick={() => toggleCategory(cat)}
-                />
-              ))}
-
-              {hiddenCategoriesCount > 0 && (
-                <button
-                  onClick={() => setShowAllCategories((v) => !v)}
-                  className="px-3.5 py-1 text-sm text-green-800 font-medium hover:underline">
-                  {showAllCategories ? "Voir moins" : `+${hiddenCategoriesCount} autres`}
-                </button>
-              )}
-            </div>
-          )}
-        </div>
       </div>
-    </div>
+      <div
+        className="h-10"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, ${currentPrimaryColor}, ${currentSecondaryColor}00)`,
+        }}
+      />
+    </>
   );
 }
